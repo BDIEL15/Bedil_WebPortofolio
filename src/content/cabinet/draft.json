@@ -1,0 +1,8 @@
+{
+  "id": "cabinet-draft",
+  "slug": "cabinet-draft",
+  "title": "Unpublished cabinet template",
+  "note": "Replace with an object and a personal note from the owner.",
+  "kind": "object",
+  "status": "draft"
+}

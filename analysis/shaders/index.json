@@ -1,0 +1,52 @@
+[
+  {
+    "name": "00-vertexShader.glsl",
+    "offset": 3487,
+    "length": 487
+  },
+  {
+    "name": "01-fragmentShader.glsl",
+    "offset": 3975,
+    "length": 170
+  },
+  {
+    "name": "02-vertexShader.glsl",
+    "offset": 7927,
+    "length": 152
+  },
+  {
+    "name": "03-fragmentShader.glsl",
+    "offset": 8080,
+    "length": 3578
+  },
+  {
+    "name": "04-vertexShader.glsl",
+    "offset": 20494,
+    "length": 357
+  },
+  {
+    "name": "05-fragmentShader.glsl",
+    "offset": 20852,
+    "length": 390
+  },
+  {
+    "name": "06-vertexShader.glsl",
+    "offset": 26594,
+    "length": 404
+  },
+  {
+    "name": "07-fragmentShader.glsl",
+    "offset": 26999,
+    "length": 317
+  },
+  {
+    "name": "08-vertexShader.glsl",
+    "offset": 47067,
+    "length": 342
+  },
+  {
+    "name": "09-fragmentShader.glsl",
+    "offset": 47410,
+    "length": 250
+  }
+]

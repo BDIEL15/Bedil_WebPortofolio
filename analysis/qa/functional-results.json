@@ -1,0 +1,62 @@
+[
+  {
+    "width": 1440,
+    "height": 900,
+    "initial": {
+      "canvas": true,
+      "fallback": false,
+      "overflow": false,
+      "paused": true
+    },
+    "checks": [
+      "time scrub updates output and rendered image",
+      "brightness input",
+      "all visibility toggles",
+      "hide/restore text",
+      "all hash navigation",
+      "play advances time",
+      "reset restores defaults"
+    ],
+    "errors": []
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "initial": {
+      "canvas": true,
+      "fallback": false,
+      "overflow": false,
+      "paused": true
+    },
+    "checks": [
+      "time scrub updates output and rendered image",
+      "brightness input",
+      "all visibility toggles",
+      "hide/restore text",
+      "all hash navigation",
+      "play advances time",
+      "reset restores defaults"
+    ],
+    "errors": []
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "initial": {
+      "canvas": true,
+      "fallback": false,
+      "overflow": false,
+      "paused": true
+    },
+    "checks": [
+      "time scrub updates output and rendered image",
+      "brightness input",
+      "all visibility toggles",
+      "hide/restore text",
+      "all hash navigation",
+      "play advances time",
+      "reset restores defaults"
+    ],
+    "errors": []
+  }
+]

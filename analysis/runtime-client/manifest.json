@@ -1,0 +1,72 @@
+[
+  {
+    "url": "https://www.clarissabuilds.com/projects?_rsc=3lb4g",
+    "transaction_id": "request-23",
+    "source_network_content_sequence": 110,
+    "response_sequence": 99,
+    "local_path": "projects.rsc.txt",
+    "bytes": 10834,
+    "sha256": "33dbbc3c7f2154f6e9070a55d863a95bded79d5e5da835e3fd6468f3830c319f",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/writing?_rsc=3lb4g",
+    "transaction_id": "request-24",
+    "source_network_content_sequence": 122,
+    "response_sequence": 100,
+    "local_path": "writing.rsc.txt",
+    "bytes": 53079,
+    "sha256": "347b0295cc0b8c5d597737811e055bb8d05861ec6247e8c84a16b4c663aa07bd",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/cabinet?_rsc=3lb4g",
+    "transaction_id": "request-25",
+    "source_network_content_sequence": 109,
+    "response_sequence": 91,
+    "local_path": "cabinet.rsc.txt",
+    "bytes": 13829,
+    "sha256": "e7707b14cba01edc74dc07eb07a0f7759174dd8f080c2e12ec4e971720e9b7df",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/_next/static/chunks/356-5cad24532f4c0e5d.js",
+    "transaction_id": "request-29",
+    "source_network_content_sequence": 125,
+    "response_sequence": 120,
+    "local_path": "_next/static/chunks/356-5cad24532f4c0e5d.js",
+    "bytes": 13501,
+    "sha256": "4698222107380eb90cc9307bd85ea3e7291c9a7faf770852191ba30b25afee36",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/_next/static/chunks/app/cabinet/page-682175f966b39262.js",
+    "transaction_id": "request-30",
+    "source_network_content_sequence": 123,
+    "response_sequence": 116,
+    "local_path": "_next/static/chunks/app/cabinet/page-682175f966b39262.js",
+    "bytes": 7922,
+    "sha256": "dd1f0724066fafdb5fa7381e5cfbd4889e513c54046cff5b118cc4239160dfc0",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/_next/static/chunks/app/projects/page-39377cc8f42f2048.js",
+    "transaction_id": "request-31",
+    "source_network_content_sequence": 124,
+    "response_sequence": 118,
+    "local_path": "_next/static/chunks/app/projects/page-39377cc8f42f2048.js",
+    "bytes": 6010,
+    "sha256": "4e79fa9c65cb315546b3edf81114a53c7e07c37cde478bcb264b032b329ca46c",
+    "representation": "playwright-response-body-bytes"
+  },
+  {
+    "url": "https://www.clarissabuilds.com/_next/static/chunks/app/writing/page-042cbead4bc198cd.js",
+    "transaction_id": "request-32",
+    "source_network_content_sequence": 128,
+    "response_sequence": 126,
+    "local_path": "_next/static/chunks/app/writing/page-042cbead4bc198cd.js",
+    "bytes": 9860,
+    "sha256": "f678b57334310ef891592e35e32711b184d5a649874c21d73a4a056f88ea600c",
+    "representation": "playwright-response-body-bytes"
+  }
+]

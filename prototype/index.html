@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c0b0a">
+  <title>A small universe — lensing study</title>
+  <meta name="description" content="A local interactive portfolio concept exploring gravitational lensing.">
+  <link rel="stylesheet" href="/prototype/styles.css">
+  <script type="importmap">{"imports":{"three":"/node_modules/three/build/three.module.js"}}</script>
+</head>
+<body>
+  <div id="universe" aria-hidden="true">
+    <span data-label="source">background galaxy</span><span data-label="foreground">foreground galaxy</span>
+    <span data-label="earth">earth</span><span data-label="panel">what earth sees</span>
+  </div>
+  <div class="scrim hideable"></div>
+  <main>
+    <header data-no-orbit>
+      <nav class="hideable" aria-label="Portfolio"><a href="#about" aria-current="page">about</a><a href="#projects">projects</a><a href="#writing">writing</a><a href="#cabinet">cabinet</a></nav>
+      <div class="title-row"><h1 class="hideable" id="heading">a small universe</h1><button id="hide-text" aria-label="Hide text" aria-pressed="false" title="Just the universe">◉</button></div>
+    </header>
+    <article class="hideable" id="content" data-no-orbit>
+      <p>A portfolio concept for people who like building things, asking questions, and looking a little closer.</p>
+      <p>Behind these words, a blue galaxy sends its light past a closer, heavier galaxy. Gravity bends the path. From Earth, a single source becomes a pair of images, then a ring.</p>
+      <p>Drag the space around the text to change your viewpoint. Open the controls to move the foreground galaxy through alignment and watch the light curve rise.</p>
+      <p class="links"><a href="#projects">explore the projects</a> / <a href="#writing">read the notes</a></p>
+    </article>
+  </main>
+  <button id="restore-text" hidden aria-label="Show text">show text</button>
+  <div class="caption">gravitational lensing <span>drag to orbit · double-click to reset</span></div>
+  <aside data-no-orbit>
+    <figure class="chart"><canvas id="curve" aria-label="Modeled magnification over animation time" role="img"></canvas><figcaption><span>brightness</span><span>time</span></figcaption></figure>
+    <details id="controls"><summary>simulation controls</summary>
+      <fieldset><legend>Visible objects</legend>
+        <label><input type="checkbox" name="source" checked> background galaxy</label>
+        <label><input type="checkbox" name="foreground" checked> foreground galaxy</label>
+        <label><input type="checkbox" name="earth" checked> earth</label>
+        <label><input type="checkbox" name="panel" checked> what earth sees</label>
+      </fieldset>
+      <label class="range" for="brightness">brightness <output id="brightness-value">1.00</output><input id="brightness" type="range" min="0.1" max="2" step="0.01" value="1"></label>
+      <label class="range" for="time">time <output id="time-value">48.5%</output><input id="time" type="range" min="0" max="1" step="0.001" value="0.485"></label>
+      <div class="transport"><button id="play" aria-pressed="true">pause</button><button id="reset">reset</button><output id="magnification">magnification</output></div>
+    </details>
+  </aside>
+  <p id="fallback" role="status" hidden>The 3D view could not start. The portfolio text is still available.</p>
+  <noscript><p class="fallback">Enable JavaScript to explore the lensing simulation.</p></noscript>
+  <script type="module" src="/prototype/main.js"></script>
+</body>
+</html>

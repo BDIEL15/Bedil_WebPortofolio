@@ -1,24 +1,99 @@
+'use client';
+
+import { useEffect, useId, useRef, useState } from 'react';
+import { usePathname } from 'next/navigation';
+import { useMotion } from '../motion-provider';
+import type { WorkshopScene } from '@/lib/scene/create-workshop-scene';
+
+type SceneStatus = 'poster' | 'loading' | 'ready' | 'fallback' | 'static';
+
 export function SceneHost() {
-  return <aside className="scene" aria-label="Digital Observatory illustration">
-    <div className="scene-art" aria-hidden="true">
-      <svg viewBox="0 0 600 600" fill="none" className="orbital-field">
-        <circle cx="300" cy="300" r="185" fill="#121b1c" />
-        <g stroke="#638b86" strokeWidth="1.6">
-          <ellipse cx="300" cy="300" rx="228" ry="84" transform="rotate(-30 300 300)" />
-          <ellipse cx="300" cy="300" rx="220" ry="106" transform="rotate(38 300 300)" />
-          <ellipse cx="300" cy="300" rx="112" ry="202" transform="rotate(20 300 300)" />
-        </g>
-        <g fill="#a4beb4">
-          {Array.from({ length: 72 }, (_, i) => {
-            const angle = i * 2.399963;
-            const radius = 35 + Math.sqrt(i / 72) * 145;
-            return <rect key={i} x={300 + Math.cos(angle) * radius} y={300 + Math.sin(angle) * radius} width={i % 5 === 0 ? 4 : 2} height={i % 5 === 0 ? 4 : 2} opacity={0.3 + (i % 4) * 0.15} />;
-          })}
-        </g>
-        <g className="orbiting-point"><circle cx="496" cy="250" r="5" fill="#dfb689" /><circle cx="496" cy="250" r="12" stroke="#dfb689" strokeWidth="2" /></g>
-        <circle cx="300" cy="300" r="7" fill="#e9e2d3" />
-      </svg>
+  const id = useId();
+  const pathname = usePathname();
+  const { paused, focusView, exitFocus } = useMotion();
+  const liveHost = useRef<HTMLDivElement>(null);
+  const engine = useRef<WorkshopScene | null>(null);
+  const [ready, setReady] = useState(false);
+  const [status, setStatus] = useState<SceneStatus>('poster');
+  const [staticView, setStaticView] = useState(false);
+  const [attempt, setAttempt] = useState(0);
+  const [inspecting, setInspecting] = useState(false);
+  const [exploring, setExploring] = useState(false);
+  const activeInspection = inspecting;
+  const latest = useRef({ paused, inspecting: activeInspection, exploring: exploring || focusView });
+  latest.current = { paused, inspecting: activeInspection, exploring: exploring || focusView };
+  useEffect(() => {
+    try { setStaticView(localStorage.getItem('observatory-static') === 'true'); } catch { /* Storage is optional. */ }
+    setReady(true);
+  }, []);
+  useEffect(() => {
+    setInspecting(false); setExploring(false);
+  }, [pathname]);
+  useEffect(() => {
+    if (!ready) return;
+    if (staticView) { setStatus('static'); return; }
+    let cancelled = false;
+    let owned: WorkshopScene | null = null;
+    const controller = new AbortController();
+    setStatus('loading');
+    import('@/lib/scene/create-workshop-scene').then(async ({ createWorkshopScene }) => {
+      if (cancelled || !liveHost.current) return;
+      const created = await createWorkshopScene(liveHost.current, () => {
+        owned = null; engine.current = null; setStatus('fallback'); setExploring(false);
+      }, controller.signal);
+      if (cancelled) { created.dispose(); return; }
+      owned = created;
+      engine.current = created;
+      created.setPaused(latest.current.paused);
+      created.setInspecting(latest.current.inspecting);
+      created.setExploring(latest.current.exploring);
+      if (engine.current === created) setStatus('ready');
+    }).catch(() => { if (!cancelled) { setStatus('fallback'); setExploring(false); } });
+    return () => { cancelled = true; controller.abort(); owned?.dispose(); engine.current = null; };
+  }, [ready, staticView, attempt]);
+  useEffect(() => { engine.current?.setPaused(paused); }, [paused]);
+  useEffect(() => { engine.current?.setInspecting(activeInspection); }, [activeInspection]);
+  useEffect(() => { engine.current?.setExploring(exploring || focusView); }, [exploring, focusView]);
+
+  const interactive = status === 'ready';
+  return <><aside className="scene" aria-label="Digital Observatory robotics workshop" data-state={status} data-inspecting={activeInspection} data-exploring={exploring || focusView} data-motion={paused ? 'paused' : 'playing'}>
+    <div id={id} className="scene-art" tabIndex={interactive && (exploring || focusView) ? 0 : undefined}
+      role="img" aria-label={exploring || focusView ? 'A robot arm on a laboratory workbench. Use left and right arrow keys to rotate; Escape exits exploration.' : 'A dim robotics workshop with an industrial arm, workbench and perspective floor.'}
+      onKeyDown={event => {
+        if (!exploring && !focusView) return;
+        if (event.key === 'Escape') {
+          setExploring(false);
+          if (focusView) { exitFocus(); document.getElementById('focus-view-toggle')?.focus(); }
+          else document.getElementById(id + '-explore')?.focus();
+        }
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') { event.preventDefault(); engine.current?.rotate(event.key === 'ArrowLeft' ? -1 : 1); }
+      }}
+      >
+      <div className="scene-poster"><picture><source media="(max-width: 699px)" srcSet="/scene/workshop-mobile.webp" /><source media="(max-aspect-ratio: 11/10)" srcSet="/scene/workshop-tablet.webp" /><img src="/scene/workshop-desktop.webp" alt="" width="1440" height="1000" /></picture></div>
+      <div className="scene-live" ref={liveHost} />
     </div>
-    <div className="scene-caption"><p>Digital Observatory</p><span>A quiet space for systems & ideas.</span></div>
-  </aside>;
+    </aside>
+    <div className="scene-caption">
+      <div className="scene-heading"><p>Robotics study</p><span role="status">{status === 'fallback' || status === 'static' ? 'Static view' : 'Digital Observatory'}</span></div>
+      <p className="scene-description">An illustrated workbench · <a href="/models/NOTICE-IRB52.txt">model credits</a></p>
+      <div className="scene-actions">
+        <button type="button" disabled={!interactive} aria-controls={id} aria-pressed={inspecting} onClick={() => setInspecting(value => !value)}>Inspect as ASCII <span aria-hidden="true">{inspecting ? '−' : '+'}</span></button>
+        <button type="button" id={id + '-explore'} disabled={!interactive} aria-pressed={exploring} onClick={() => setExploring(value => !value)}>{exploring ? 'Exit exploration' : 'Explore view'}</button>
+      </div>
+      {exploring && <div className="view-controls"><p>Drag the scene, or use these controls.</p><div>
+        <button type="button" aria-label="Rotate left" onClick={() => engine.current?.rotate(-1)}>←</button>
+        <button type="button" onClick={() => engine.current?.reset()}>Reset view</button>
+        <button type="button" aria-label="Rotate right" onClick={() => engine.current?.rotate(1)}>→</button>
+      </div></div>}
+      <button type="button" className="static-control" disabled={!ready} onClick={() => {
+        setExploring(false);
+        if (status === 'fallback') setAttempt(value => value + 1);
+        else {
+          const value = !staticView;
+          setStaticView(value);
+          try { localStorage.setItem('observatory-static', String(value)); } catch { /* Preference remains in memory. */ }
+        }
+      }}>{status === 'fallback' ? 'Try 3D again' : staticView ? 'Enable 3D' : 'Use static view'}</button>
+    </div>
+  </>;
 }

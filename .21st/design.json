@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "project": {
+    "name": "abdiel-digital-observatory",
+    "productType": "personal portfolio",
+    "stack": [
+      "nextjs",
+      "react",
+      "typescript",
+      "css",
+      "threejs",
+      "gsap"
+    ]
+  },
+  "sources": {
+    "tokens": [
+      "src/app/globals.css"
+    ],
+    "components": [],
+    "assets": [
+      "public/models/irb52.glb",
+      "public/scene",
+      "public/fonts"
+    ],
+    "instructions": [
+      "AGENTS.md"
+    ]
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {
+      "--ground": {
+        "value": "#0c0b0a",
+        "source": "src/app/globals.css"
+      },
+      "--ink": {
+        "value": "#e9e2d3",
+        "source": "src/app/globals.css"
+      },
+      "--muted": {
+        "value": "#b4ac9e",
+        "source": "src/app/globals.css"
+      },
+      "--accent": {
+        "value": "#d6a47a",
+        "source": "src/app/globals.css"
+      }
+    },
+    "typography": {
+      "body": "Libertinus Serif",
+      "display": "Libertinus Sans"
+    },
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "unknown"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [
+      "Navigation",
+      "MotionProvider",
+      "SceneHost",
+      "SplitText"
+    ],
+    "patterns": []
+  },
+  "constraints": {
+    "must": [
+      "Implementation paused by owner for personal-concept brainstorming; previous Clarissa Builds/robotics visual baseline is provisional, not a final mandate.",
+      "Preserve current full-viewport scene and accessible HTML as saved implementation; only change after owner decisions and request to resume.",
+      "Real owner content and honest empty states",
+      "Pause, reduced motion, keyboard and native mobile scroll"
+    ],
+    "avoid": [
+      "Split two-column hero with abstract sphere",
+      "Invented portfolio projects",
+      "Scroll hijacking",
+      "Unnecessary animation engines"
+    ]
+  },
+  "decisions": [
+    {
+      "date": "2026-10-23",
+      "decision": "Owner chose Clarissa Builds as primary reference; React Bits/21st supply only supporting motion."
+    },
+    {
+      "date": "2026-10-23",
+      "decision": "Implementation candidate: one robotics workshop with licensed ROS-Industrial arm. Await owner visual review; not final design approval."
+    },
+    {
+      "date": "2026-10-23",
+      "decision": "Latest owner instruction: pause implementation, retain all code/assets and brainstorm a more personal concept in a new chat. No replacement chosen; prior preferences are not automatically rejected or final. Read TODO pause checkpoint and PRD section 2.4 before further work."
+    }
+  ],
+  "evidence": [
+    {
+      "fact": "Owner direction",
+      "source": "docs/PRD-PORTOFOLIO.md#74-koreksi-arah-visual-dan-rencana-sebelum-eksekusi"
+    },
+    {
+      "fact": "21st CLI search requires login; no component retrieved",
+      "source": "TODO.md"
+    },
+    {
+      "fact": "Owner paused for personality-led concept brainstorming; no new runtime changes",
+      "source": "docs/PRD-PORTOFOLIO.md#24-keputusan-terbaru-jeda-dan-brainstorming-ulang-konsep-personal"
+    }
+  ],
+  "generatedAt": "2026-10-22T17:39:35.927Z"
+}

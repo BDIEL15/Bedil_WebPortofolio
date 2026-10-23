@@ -1,6 +1,8 @@
 # Digital Observatory — Abdiel Deandra EL Dzaky
 
-Fondasi portofolio personal dengan suasana Clarissa Builds dan nuansa laboratorium digital. Implementasi tahap pertama sedang dijeda; hasil dan pekerjaan lanjutan tercatat di [TODO.md](TODO.md).
+Fondasi portofolio personal dengan suasana Clarissa Builds dan nuansa laboratorium digital. Tahap pertama dapat dijalankan; hasil dan pekerjaan lanjutan tercatat di [TODO.md](TODO.md).
+
+**Dijeda atas permintaan pemilik, 23 Oktober 2026.** Pemilik akan brainstorming ulang konsep di chat baru agar lebih mencerminkan kepribadiannya. Digital Observatory/Robotics study adalah baseline implementasi yang disimpan, bukan arah final yang sudah disetujui. Tidak ada konsep pengganti yang dipilih. Baca checkpoint dan prompt handoff di awal [TODO](TODO.md) sebelum melanjutkan; implementasi berikutnya menunggu arahan pemilik.
 
 ## Dokumen inti
 
@@ -15,9 +17,15 @@ Detail arsitektur, UI/UX dan workflow sementara tetap berada dalam PRD/AGENTS; t
 
 ## Status kode saat ini
 
-Aplikasi produksi Next.js App Router + React + TypeScript + CSS berada di root dengan struktur `src/`. About memuat identitas/pengalaman pemilik; Projects, Writing dan Cabinet memakai empty state hingga materi siap. Ilustrasi SVG/CSS masih merupakan fallback visual sementara, bukan scene 3D final. Build sudah berhasil, tetapi review UI dan pengujian interaksi belum selesai; lihat checkpoint TODO.
+Aplikasi Next.js App Router + React + TypeScript + CSS berada di root dengan struktur `src/`. About memuat identitas/pengalaman pemilik; Projects, Writing dan Cabinet memakai empty state hingga materi siap. Kandidat desain ulang **Robotics study** menggunakan scene satu viewport di belakang konten editorial. Build dan pemeriksaan browser produksi lulus; penerimaan visual akhir oleh pemilik serta QA perangkat nyata tetap terbuka. Lihat [QA Robotics study](docs/QA-WORKSHOP.md).
 
 `prototype/` tetap studi vanilla JavaScript + Three.js untuk lensing, dengan copy contoh dan hash navigation; terpisah dari aplikasi produksi.
+
+Visual bola Signal study dan layout dua kolom sudah diganti. Scene baru memuat model robot ABB IRB 52 dari ROS-Industrial di meja kerja, kamera pengamatan ilustratif, lantai perspektif dan bayangan. Model, notice Apache-2.0, font Libertinus berlisensi OFL dan tiga poster hasil render disajikan lokal. Sumber/ukuran/reproduksi tercatat di [manifest aset](docs/ASSETS.md). Robot dan props bukan klaim karya atau kepemilikan pemilik.
+
+**Explore view** mengaktifkan drag/arrow keys dan reset. **Hide text** membuka pandangan tanpa konten, **Show text** atau Escape memulihkannya. Gerak robot dan typing mengikuti pause/reduced motion. ASCII terlokalisasi di objek dan dipilih eksplisit; pada poster statis kontrol ini disabled. Tanpa JS/WebGL, saat model gagal/context loss, atau melalui **Use static view**, poster scene tetap terlihat. Mode statis bertahan antar-reload. Satu renderer/kamera dipertahankan antarroute; transisi halaman, reveal judul singkat berbasis GSAP dan fade poster ke scene tidak menahan navigasi. SplitText telah diadaptasi ke CSS biasa dan teks SSR tetap terbaca.
+
+React Bits menjadi sumber konsep reveal; pencarian katalog 21st melalui CLI memerlukan login, sehingga tidak ada komponen 21st yang dipasang. Review eksternal 21st tidak dijalankan karena pemeriksaan izin menolak potensi pengiriman source; review lokal digunakan. Konteks desain lokal ada di `.21st/`. Tidak ada dependency runtime tambahan pada iterasi Robotics study; GSAP/Three sudah tersedia.
 
 ## Menjalankan aplikasi produksi
 
@@ -30,7 +38,11 @@ npm run dev
 
 Buka http://127.0.0.1:3000. `npm run check` menjalankan TypeScript, tes konten dan pemeriksaan sintaks prototype. `npm run build` menjalankan check lalu build produksi; `npm start` menjalankan hasil build. Dev/build memakai Webpack karena Turbopack mengalami kegagalan izin junction pada lingkungan Windows ini.
 
-Struktur: `src/app/` untuk route, `src/components/` untuk UI/kontrol/scene fallback, `src/lib/content/` untuk pembacaan dan validasi server, `src/content/` untuk JSON dan Markdown/MDX, serta `tests/content.test.ts` untuk pemeriksaan konten. Styling menggunakan CSS biasa tanpa Tailwind.
+Hentikan dev server sebelum build di checkout yang sama. Browser smoke tersimpan di `tests/browser-smoke.js`; dengan `playwright-cli` tersedia, jalankan `playwright-cli open http://127.0.0.1:3000` lalu `playwright-cli run-code --filename=tests/browser-smoke.js`. Ini pemeriksaan terpisah dari `npm run check`.
+
+Tes scene/lifecycle: `playwright-cli run-code --filename=tests/scene-browser.js`. Motion/loading race: `playwright-cli run-code --filename=tests/workshop-motion.js`. Probe render lokal: `playwright-cli run-code --filename=tests/scene-rendering-probe.js`. Screenshot/poster: `playwright-cli run-code --filename=tests/capture-workshop.js`. Jalankan terhadap hasil produksi untuk menghindari refresh kompilasi dev saat pengujian.
+
+Struktur: `src/app/` untuk route, `src/components/` untuk UI/kontrol/scene host, `src/lib/scene/create-workshop-scene.ts` untuk engine aktif, `src/lib/content/` untuk pembacaan dan validasi server, `src/content/` untuk JSON/Markdown/MDX, `public/` untuk aset produksi beserta lisensi, serta `tests/` untuk pemeriksaan. Engine/komponen Signal study lama tersimpan sebagai riwayat studi dan tidak dipasang pada halaman. Styling menggunakan CSS biasa tanpa Tailwind. `node scripts/prepare-robot.mjs` membangun ulang GLB dari sumber yang dipatok; akses jaringan diperlukan bila cache kosong.
 
 Konten writing memakai YAML frontmatter dan body `.md`/`.mdx`. Draft contoh berada di `src/content/`, bukan `public/`. Status `published` memerlukan tanggal `publishedAt` yang valid dan tidak di masa depan. MDX hanya untuk sumber lokal tepercaya milik pemilik; jangan menerima kode MDX dari input publik. Komponen interaktif dapat didaftarkan melalui prop `components` pada renderer artikel ketika benar-benar dibutuhkan. Aset draft jangan diletakkan di `public/`.
 

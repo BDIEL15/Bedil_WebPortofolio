@@ -1,6 +1,6 @@
 # PRD — Portofolio Personal Interaktif
 
-**Versi:** 1.1 · **Tanggal:** 22 Oktober 2026 · **Status:** persiapan implementasi; diperbarui mengikuti pilihan Digital Observatory, ASCII/pixel dan kebutuhan writing interaktif.
+**Versi:** 1.7 · **Tanggal:** 23 Oktober 2026 · **Status:** implementasi dijeda atas permintaan pemilik untuk brainstorming ulang konsep personal (§2.4). Robotics study dan motion tersimpan sebagai kandidat; build/pemeriksaan browser terakhir lulus, belum ada konsep pengganti atau persetujuan visual final. Kebutuhan di bawah adalah baseline sebelumnya untuk dikaji, bukan mandat melanjutkan saat dijeda atau klaim seluruhnya selesai. Status aktual: [TODO](../TODO.md), [QA Robotics study](QA-WORKSHOP.md) dan [manifest aset](ASSETS.md).
 
 **Pemilik produk:** Abdiel Deandra EL Dzaky. **Referensi pengalaman:** [clarissabuilds.com](https://www.clarissabuilds.com/). **Dasar penelitian:** [report REA](../analysis/REPORT.md), [arsitektur](../analysis/architecture.md), [jaringan](../analysis/network.md). **Bahasa dokumen:** Indonesia.
 
@@ -56,6 +56,16 @@ Empat nama objek pada homepage adalah anotasi, sedangkan brightness/time merupak
 | Bahasa publik | Satu bahasa; usulan Inggris untuk lintas peluang kerja/magang | Pemilik boleh memilih Indonesia sebelum content freeze |
 | Tingkat personalisasi | Konten sepenuhnya milik pemilik; visual berangkat dari referensi | Prinsip tetap |
 | Analytics | Opsional; tidak menahan rilis | Mengikuti preferensi pemilik dan kebutuhan pengukuran |
+
+### 2.4 Keputusan terbaru: jeda dan brainstorming ulang konsep personal
+
+Pada 23 Oktober 2026 pemilik meminta pekerjaan berhenti sementara, semua informasi diperbarui, dan berencana brainstorming di chat baru. Ada kemungkinan besar beberapa konsep berubah supaya portofolio lebih menyatu dengan kepribadiannya. Belum ada konsep pengganti, pilihan objek baru atau persetujuan final terhadap kandidat Robotics study.
+
+Bagian visual/positioning/rekomendasi setelah bagian ini merekam arah sebelumnya: Digital Observatory, laboratorium digital, Clarissa Builds dan robotics. Semuanya menjadi bahan yang dapat dikaji ulang; tidak otomatis dibatalkan dan tidak boleh dipaksakan sebagai konsep akhir. Fakta identitas/pengalaman, kejujuran konten, aksesibilitas dan pemisahan konten/scene tetap berlaku. Preferensi spesifik yang berubah ditetapkan melalui instruksi pemilik berikutnya.
+
+Kode, aset/lisensi, prototype dan bukti penelitian dipertahankan. Tidak ada implementasi baru, penggantian aset atau deployment selama jeda. Brainstorming berikutnya dimulai dari karakter pribadi, cerita/minat yang ingin ditonjolkan, tujuan pengunjung dan suasana yang terasa cocok. Hasilnya perlu merumuskan konsep, hierarki konten dan preferensi lama yang dipertahankan/diubah sebelum memilih efek/library. Setelah keputusan tersedia dan pemilik meminta eksekusi, perbarui dokumen lalu gunakan kembali fondasi yang relevan.
+
+Handoff, fakta profil, pemeriksaan terakhir, batas QA, backlog dan perintah menjalankan kembali dirangkum pada checkpoint teratas [TODO](../TODO.md). Tidak ada build/browser baru pada pembaruan dokumentasi jeda ini.
 
 ## 3. Masalah dan peluang
 
@@ -146,6 +156,58 @@ Kontrol pause terlihat, tombol nyaman disentuh, ukuran teks lebih terbaca, karya
 
 Token awal yang boleh disesuaikan: background `#0c0b0a`, ink `#e9e2d3`, accent `#d98b5f`. Warna muted dipilih ulang setelah uji kontras. Teks utama ditargetkan 16–18px, line-height 1.6–1.75; kolom 28–32rem untuk halaman ringkas dan 40–46rem untuk artikel/case study. Heading ringkas 28–36px; ukuran dapat berubah responsif. Dua keluarga font utama cukup; font label ketiga hanya dipakai jika memberi manfaat nyata. Font akhir beserta lisensinya dicatat dalam asset manifest.
 
+### 7.4 Koreksi arah visual dan rencana sebelum eksekusi
+
+**Status 23 Oktober:** rencana di bawah telah menghasilkan kandidat implementasi yang dapat diperiksa (§7.6). Catatan penolakan merujuk pada Signal study sebelumnya, bukan keputusan pemilik terhadap kandidat baru.
+
+**Masukan terbaru pemilik:** desain dan background Signal study masih jauh dari suasana referensi. Pemilik secara khusus mengincar kualitas background robotics pada Projects. Layout dua kolom dengan bola besar di samping tidak menjadi arah lanjutan. Pengujian fungsional yang lulus tidak berarti visual diterima.
+
+**Bukti visual terbatas:** pada tinjauan langsung [Projects referensi](https://www.clarissabuilds.com/projects), 22 Oktober 2026, desktop 1440×1000 menunjukkan lantai grid perspektif yang memudar ke horizon gelap, robot beroda di kiri, lengan robot pada meja di kanan, objek mirip wahana kecil di bagian atas, serta bayangan objek/meja. Konten HTML berada di depan ruang yang sama. Tampilan tanpa teks pada 390×844 mempertahankan ruang tersebut dengan framing berbeda. Screenshot: `analysis/reference-projects-desktop.png`, `analysis/reference-projects-scene.png`, `analysis/reference-projects-mobile-scene.png`. Tinjauan ini hanya visual, tidak mengklaim teknik render internal baru atau melakukan REA ulang.
+
+**Arah komposisi:** gunakan scene satu viewport penuh di belakang konten. About memakai kolom editorial ringkas sekitar 26–30rem dengan navigasi dekat headline; Projects menyesuaikan lebar menurut konten nyata. Paragraf serif hangat dan judul/navigasi sans sederhana menjadi kandidat pasangan tipografi. Objek, arah cahaya dan kamera menyediakan ruang tenang untuk membaca; hindari menutup model seluruhnya dengan lapisan gelap. Mobile perlu kamera/framing tersendiri, bukan sekadar mengecilkan desktop.
+
+**Usulan utama, belum keputusan bentuk final:** ruang uji robotics redup dengan satu lengan robot di meja kerja. Bentuk mekanis yang terbaca, permukaan meja, lantai perspektif, kontak/bayangan dan pencahayaan terarah harus memberi rasa ruang. Material logam/polimer dibuat terkendali, dengan satu aksen hangat kecil. Mulai dengan satu objek berkualitas; robot beroda dapat menjadi alternatif bila kandidat asetnya lebih kuat. Jangan menjanjikan dua robot atau replika ruangan penuh sebelum tersedia aset dan budget. Voyager serta robot milik referensi tidak otomatis menjadi objek portofolio ini. Jika belum berasal dari karya pemilik, objek disebut ilustrasi konseptual dan Projects tetap memiliki empty state yang jujur.
+
+**Urutan pekerjaan:**
+
+1. Kurasi kandidat model orisinal atau GLB/glTF berlisensi jelas. Catat sumber, lisensi, atribusi, kualitas siluet/material, ukuran transfer, mesh dan tekstur. Aset referensi tidak diambil untuk produksi. Bila kandidat belum memadai, selesaikan pemilihan/pembuatan model sebelum integrasi.
+2. Buat bukti visual satu tampilan diam memakai kandidat aset nyata: posisi model, meja/lantai, kamera, material, cahaya dan overlay teks. Siapkan desktop dan mobile. Projects menjadi tolok ukur background; About mendapat studi komposisi editorial yang konsisten. Ini keluaran berikutnya, bukan empat scene baru.
+3. Tinjau berdampingan dengan referensi. Siluet, skala, kedalaman, bayangan dan ruang baca harus meyakinkan sebelum menambahkan animasi. Perbaiki tampilan diam bila belum tepat; efek tambahan tidak menggantikan tahap ini.
+4. Setelah arah visual disepakati, integrasikan satu scene menggunakan lifecycle engine yang sudah ada. Model/material perlu dikerjakan ulang; pause, reduced motion, keyboard, fallback, pemisahan input dan cleanup tetap dipertahankan. Poster fallback berasal dari komposisi scene yang sama.
+5. Tambahkan satu gerak kecil yang tenang, misalnya gerak sendi terbatas. ASCII/pixel hanya pada bagian objek ketika dieksplorasi. Uji build, desktop/mobile, focus, pause, tanpa WebGL, loading aset, pergantian route dan performa. Variasi scene per halaman mengikuti setelah scene pertama memenuhi kualitas.
+
+**Kriteria penerimaan visual:** objek memiliki siluet/material yang jelas; lantai dan bayangan membentuk kedalaman; konten terbaca tanpa berinteraksi; model tidak mengganggu headline dan navigasi; tidak ada clipping/overflow di mobile; tampilan paused dan fallback tetap menarik; scene ilustratif tidak menyiratkan karya/telemetri yang belum ada. Evaluasi screenshot aktual dan penilaian pemilik menjadi acuan, didampingi pemeriksaan aksesibilitas/performa. Tidak ada implementasi visual baru pada pencatatan rencana ini.
+
+### 7.5 Motion yang menyatu dan sumber komponen pendukung
+
+**Tambahan pemilik, 23 Oktober 2026:** tinjau React Bits dan 21st.dev untuk animasi yang baik; Clarissa Builds tetap acuan gaya utama. Pengalaman harus terasa seamless dengan animasi halus. Ini kebutuhan untuk desain ulang, bukan klaim bahwa transisi baru sudah dipasang.
+
+**Sumber dan kandidat:** [React Bits Split Text](https://reactbits.dev/text-animations/split-text) menawarkan entrance bertahap per karakter/kata; [Fade Content](https://reactbits.dev/animations/fade-content) menawarkan kemunculan konten. Kandidat untuk situs ini adalah reveal singkat per kata/baris dan fade sederhana. [Katalog 21st.dev](https://21st.dev/) menjadi sumber tambahan untuk navigasi, hover/focus dan transisi yang sesuai. Komponen akhir belum dipilih. Pencarian metadata via CLI pada tinjauan ini meminta login; katalog publik tetap dapat ditinjau. Tidak perlu menambah dependency sebelum menilai source, kompatibilitas CSS, lisensi dan manfaatnya.
+
+**Ritme awal untuk diuji:**
+
+| Bagian | Perilaku yang direncanakan | Durasi awal |
+| --- | --- | --- |
+| Pembukaan | Judul/intro muncul sekali, fade dan pergeseran kecil 4–8px; teks utama tetap bersih | 350–500ms total, termasuk stagger |
+| Navigasi/kontrol | Perubahan warna atau underline halus, focus segera terlihat; area klik tetap stabil | 120–180ms |
+| Perpindahan route | Konten tujuan segera tersedia, entrance ringan tanpa menunggu exit atau animasi scene | 180–250ms |
+| Poster ke scene / pergantian scene | Komposisi dan framing selaras, fade saat scene siap; poster tetap ada selama loading agar tidak flash/kosong | 250–350ms |
+| Scene idle | Gerak mekanis kecil dan lambat, kamera awal stabil; eksplorasi tetap opsional | Ditentukan setelah model diam matang |
+
+Angka di atas usulan, bukan hasil pengukuran. Gunakan keluarga easing yang konsisten, misalnya ease-out lembut tanpa pantulan; batasi stagger agar nama lengkap tidak lama tersembunyi. Scene yang sudah aktif dipertahankan saat berpindah halaman bila memang memakai scene sama; jangan sengaja reset kamera/renderer untuk membuat transisi. Pergantian aset kelak perlu menjaga ownership serta budget GPU, bukan menyalakan dua renderer terus-menerus untuk crossfade.
+
+**Batas pengalaman:** pertahankan scroll dokumen alami, respons sentuh dan navigasi keyboard; tidak memerlukan scroll hijacking atau smooth-scroll library. Konten SSR terlihat tanpa JS dan tetap tersedia bila animasi/aset gagal. Reduced motion dan pause global meniadakan entrance/gerak dekoratif, menyelesaikan reveal ke keadaan terbaca, serta menghentikan idle/typing sesuai kebijakan preference. Perubahan preference saat situs terbuka segera diterapkan. Jangan menahan navigasi, fokus atau klik sampai animasi selesai. Efek per huruf berulang, glitch, cursor khusus dan animasi scroll panjang tidak masuk prioritas arah editorial ini.
+
+**Kondisi kode dan urutan:** pada persiapan awal, SplitText registry menyembunyikan teks sampai ready, memakai utility Tailwind pada aplikasi CSS biasa dan belum terhubung pause global/perubahan reduced motion. Versi tersebut kini diganti adaptasi ringkas: reveal kata memakai GSAP yang sudah ada, SSR terlihat, nama aksesibel utuh, serta pause/reduced motion menyelesaikan reveal. Interaksi sederhana/route memakai CSS; tidak menambah engine kedua. Bukti visual diam dan contoh pembukaan + route + poster/scene sudah tersedia. Tanpa JS/WebGL, keyboard, pause, reduced motion dinamis, mobile, navigasi back dan beban render singkat telah diperiksa di Chromium produksi. Pengukuran CLS, perangkat nyata dan browser lain masih terbuka.
+
+### 7.6 Kandidat implementasi Robotics study — 23 Oktober 2026
+
+Scene aktif memenuhi viewport dengan konten editorial terpusat di depan. Model lengan ABB IRB 52 dari ROS-Industrial dipatok ke revision sumber, dikonversi menjadi GLB lokal, diberi pose/material presentasi, lalu ditempatkan pada meja kerja di atas lantai perspektif. Kamera pengamatan dan props sederhana merupakan ilustrasi buatan proyek. Sumber, author, lisensi Apache-2.0/OFL, ukuran file dan reproduksi tersedia di [manifest aset](ASSETS.md). Scene bukan bukti karya atau kepemilikan robot pemilik.
+
+Satu renderer/kamera dipakai lintas empat route; framing portrait berbeda dari desktop. HTML tetap tersedia selama loading; tiga poster hasil render dipertahankan hingga canvas siap dan saat fallback. Motion mencakup gerak sendi kecil, reveal judul singkat, entrance route, fade poster/scene dan feedback kontrol. Model yang gagal atau masih loading dapat dibatalkan tanpa memasang resource dari owner yang sudah dilepas. ASCII hanya dipilih eksplisit pada objek aktif; mode poster menonaktifkan kontrol yang tidak tersedia. Tools mengikuti alur dokumen pada mobile.
+
+Build dan tes browser/lifecycle/motion produksi lulus; lihat [laporan QA](QA-WORKSHOP.md). Inspector desain generik masih 2 FAIL/3 WARN karena antara lain aksen hangat dan jumlah foto; ini dicatat sebagai batas audit, tidak diubah dengan menambahkan karya/foto fiktif. Source lint lulus dengan pengecualian scrim netral untuk keterbacaan. Penerimaan visual oleh pemilik tetap terbuka; scene ini kandidat yang dapat dinilai langsung, bukan klaim sudah sama atau lebih baik dari referensi. Belum ada variasi empat scene, integrasi CMS/admin/ManimGX atau deployment.
+
 ## 8. Opsi twist personal
 
 ### Opsi A — Signal & Systems: aliran sinyal digital
@@ -170,11 +232,15 @@ Sebuah meja kerja abstrak dengan objek terbatas: papan digital atau komponen, je
 
 Interaksi utama: fokus pada satu objek untuk memperlihatkan catatan atau karya terkait. Tidak ada navigasi wajib lewat dunia 3D. Risiko: beban aset dan fokus konten terpecah. Karena membutuhkan model/komposisi lebih banyak, opsi ini lebih tepat P1 setelah konten dan shell stabil.
 
-### Arah yang dipilih: Digital Observatory
+### Baseline sebelum jeda: Digital Observatory
+
+Status saat ini mengikuti §2.4: arah ini disimpan untuk brainstorming, bukan keputusan final yang wajib diteruskan.
 
 Keputusan terbaru menggantikan rekomendasi awal Opsi A sebagai tema tunggal: **Digital Observatory dengan nuansa laboratorium digital**. Pengunjung mengamati karya, eksperimen dan cara berpikir pemilik. Gaya tetap gelap, tenang dan editorial seperti reference. Satu scene utama tampil halus; sentuhan ASCII/pixel muncul secara terlokalisasi saat hover, focus, tap atau mode eksplorasi, bukan mengubah semua teks menjadi terminal.
 
-About dapat memakai objek/medan yang diamati; Projects diagram sistem; Writing visual lebih tenang; Cabinet konstelasi benda terpilih. Ini arah komposisi, bukan kewajiban empat scene kompleks pada rilis pertama. Objek perdana belum dipilih. Opsi A–C di atas menjadi bahan eksplorasi yang dapat dipakai sesuai tema payung ini.
+About dapat memakai objek/medan yang diamati; Projects mengarah pada ruang robotics sesuai rencana §7.4; Writing visual lebih tenang; Cabinet dikurasi kemudian. Ini arah komposisi, bukan kewajiban empat scene kompleks pada rilis pertama. Signal study merupakan studi teknis perdana yang visualnya ditolak pemilik. Opsi A–C di atas tetap bahan eksplorasi sesuai tema payung ini.
+
+Riwayat studi: **Signal study**, medan sinyal berbentuk bola titik dengan gelombang dan inspeksi ASCII lokal, pernah menjadi scene aktif setelah studi SVG. Komposisi tersebut sudah diganti kandidat **Robotics study** (§7.6). Prinsip lifecycle, orbit/reset, pause/reduced motion, hide/show text dan fallback dipertahankan; scene tetap bukan syarat akses konten. Kode studi lama disimpan sebagai riwayat dan tidak dipasang pada halaman.
 
 Detail efek harus menjaga teks depan tetap bersih, input mobile tetap nyaman, dan makna/tautan penting punya alternatif HTML. Mode statis mempertahankan komposisi tanpa efek gerak. ManimGX bukan dependency latar; dapat dipertimbangkan untuk video penjelasan artikel tertentu di kemudian hari.
 
@@ -679,7 +745,7 @@ Total bila dikerjakan berurutan sekitar 16–27 hari kerja, kira-kira 3–6 ming
 | ID | Yang perlu dipilih/diisi | Default/opsi | Kapan dibutuhkan |
 | --- | --- | --- | --- |
 | O-01 | Panggilan, frasa typing dan intro final | Nama Abdiel Deandra EL Dzaky sudah diketahui; headline diminta sudah dicatat | Sebelum copy final |
-| O-02 | Objek scene perdana dan lokasi efek | Tema Digital Observatory sudah disukai; posisi ASCII/pixel perlu uji visual | Sebelum aset/scene final |
+| O-02 | Konsep personal setelah brainstorming | Digital Observatory/Robotics study adalah baseline tersimpan; tentukan cerita/karakter, preferensi yang dipertahankan/diubah dan konsep yang disepakati (§2.4) | Sebelum implementasi visual dilanjutkan |
 | O-03 | Bahasa rilis | Usulan Inggris; Indonesia tetap opsi | Sebelum content freeze |
 | O-04 | Jabatan/periode/deskripsi | Tiga role yang diberikan; detail dari pemilik | Sebelum publish experience |
 | O-05 | Karya unggulan | Pilih berdasarkan bukti dan kontribusi, bukan hanya jumlah | Sebelum Projects final |
@@ -695,7 +761,7 @@ Materi minimal dari pemilik: nama dan intro; uraian pengalaman; daftar karya bes
 
 ## 28. Rekomendasi baseline untuk profil ini
 
-Pertahankan suasana gelap, sederhana, dan editorial dari reference. Tema aktif adalah **Digital Observatory** dengan nuansa lab digital: visual halus untuk diamati, sentuhan ASCII/pixel saat dieksplorasi, dan nama serta baris typing yang diminta pemilik. Jadikan Teknik Komputer UI sebagai jangkar; tampilkan software/robotics dan komunikasi visual melalui karya nyata. Sediakan Projects yang membedakan konteks teknis dan kreatif, serta case study yang menjelaskan kontribusi.
+Rekomendasi sebelum jeda adalah suasana gelap, sederhana dan editorial dari reference dengan tema **Digital Observatory** bernuansa lab digital: visual halus, ASCII/pixel saat eksplorasi, serta nama dan baris typing yang diminta pemilik. Arah ini kini bahan brainstorming sesuai §2.4. Teknik Komputer UI dan fakta pengalaman tetap menjadi konteks profil; tunjukkan kontribusi melalui karya nyata tanpa menjadikan robot atau referensi visual sebagai pengganti kepribadian pemilik.
 
 Bangun P0 dengan empat area konten, satu engine visual, controls minimum yang terlihat, fallback statis, serta JSON/Markdown/MDX. CMS/database bukan dependensi awal; Supabase tetap opsi bila dibutuhkan. Identitas akhir ditentukan dari copy, pilihan karya dan objek personal, bukan dari menyalin nama-nama objek atau scene milik reference.
 

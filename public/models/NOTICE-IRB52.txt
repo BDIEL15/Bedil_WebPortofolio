@@ -1,0 +1,5 @@
+ABB IRB 52 presentation model
+Source: https://github.com/ros-industrial/abb/tree/45f4769d826cf3ac62a65495f2db67b78b0c81df/abb_irb52_support
+Authors listed by the source package: Michael Ripperger; Levi Armstrong (SwRI); ROS-Industrial community.
+License: Apache-2.0; see LICENSE-IRB52.txt.
+Changes: STL links indexed and assembled from URDF offsets, converted to glTF/Y-up, posed, and assigned presentation materials. No textures or branding added. This illustration is not a project or robot owned by Abdiel.

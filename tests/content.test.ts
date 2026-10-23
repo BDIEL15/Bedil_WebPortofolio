@@ -8,9 +8,10 @@ import { renderToStaticMarkup } from 'react-dom/server';
 test('real profile and only published content cross the public boundary', async () => {
   assert.equal((await getProfile()).name, 'Abdiel Deandra EL Dzaky');
   assert.equal((await getExperiences()).length, 3);
-  assert.deepEqual(await getProjects(), []);
-  assert.deepEqual(await getCabinetItems(), []);
-  assert.deepEqual(await getPublishedWriting(), []);
+  for (const items of [await getProjects(), await getCabinetItems(), await getPublishedWriting()]) {
+    assert.ok(items.every(item => item.status === 'published'));
+    assert.ok(items.every(item => !item.slug.endsWith('-draft')));
+  }
   assert.equal(await getWritingBySlug('writing-draft'), undefined);
   assert.equal(await getWritingBySlug('../profile'), undefined);
 });

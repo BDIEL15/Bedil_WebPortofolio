@@ -1,4 +1,79 @@
-# Aset visual — Robotics study
+# Aset visual — Personal Electronics Lab dan studi tersimpan
+
+## About / Experience — 24 Oktober 2026
+
+Geometri dan grafis asli di `src/lib/scene/story-corners.ts`: meja baca/lampu/notebook dua halaman/buku/pensil untuk About; board dokumentasi/lembar berklip/stack notebook/pencil cup untuk Experience. Atlas kertas berisi ilustrasi chip, kode dan komunitas, bukan sertifikat atau dokumen karya pemilik. Nama/peran/tahun nyata tetap HTML dari JSON published; tidak dibakar ke poster atau bundle scene. Tidak ada foto/logo/aset eksternal baru.
+
+Kedua area fisik berada di kiri Home (X=-7,4 dan -13,4). Geometri statis dibatch bersama menurut material dengan utilitas Three.js yang sudah terpasang; sumber geometri sementara dibersihkan setelah merge. Material kayu/metal/paper memakai palette yang sama, grafis cetak memakai CanvasTexture lokal. Satu spotlight statis tambahan melayani keduanya dan di-cache; tidak ada render idle baru.
+
+Builder penuh: **347 mesh / 122.418 rendered triangle termasuk instances / 173 geometri bersama / 14 tekstur**. Budget lama <350 mesh/<150.000 triangle tidak dilonggarkan. Ini bukan pengukuran FPS/GPU/perangkat fisik; shadow/environment menambah biaya di luar jumlah tersebut.
+
+## Poster delapan pose — produksi terbaru
+
+Empat sudut masing-masing memiliki mode baca dan overview; tiga resolusi 1440×1000 / 768×1024 / 390×844 menghasilkan **24 WebP, total 717.670 byte**. Browser memilih pose/resolusi relevan. Semua capture scene-only tanpa HTML/scrim/controls, pose robot istirahat deterministik. Reproduksi: `tests/capture-lab-views.js`, lalu `node scripts/prepare-lab-posters.mjs`.
+
+| Prefix `public/scene/` | Desktop | Tablet | Mobile |
+| --- | ---: | ---: | ---: |
+| `personal-lab-` | 63.478 byte | 28.924 byte | 14.004 byte |
+| `lab-projects-` | 49.056 byte | 21.450 byte | 11.762 byte |
+| `lab-overview-` | 63.484 byte | 40.528 byte | 16.446 byte |
+| `lab-projects-overview-` | 49.628 byte | 33.940 byte | 14.430 byte |
+| `lab-about-` | 52.958 byte | 22.962 byte | 11.952 byte |
+| `lab-experience-` | 29.226 byte | 16.122 byte | 9.318 byte |
+| `lab-about-overview-` | 52.214 byte | 32.750 byte | 15.146 byte |
+| `lab-experience-overview-` | 32.648 byte | 24.146 byte | 11.098 byte |
+
+## Riwayat model/motion dua workspace
+
+Data ukuran di bagian historis berikut tidak menggantikan manifest terbaru di atas.
+
+## Model dan motion terbaru — 24 Oktober 2026
+
+Robot prosedural kini memakai pivot turret/bahu/siku/pergelangan/tool, housing tirus, bearing/collar, flange, gripper/pad dan kabel per-link. Baut basis instanced; keyboard robotics mengklon geometri/tekstur keyboard Home yang sama, dan storage memiliki muka/handle. Kayu lebih netral dengan roughness 0,65; enamel/logam memakai material PBR yang dibedakan. Tidak ada aset, model atau dependency eksternal baru.
+
+Motion observasional 16 detik mengubah joint transform tanpa rebuild geometry/texture, menjaga gripper tegak; bukan simulasi/pick-and-place. Shadow Home di-cache; hanya spotlight robotics diperbarui saat robot bergerak. Render sekitar maksimum 30Hz selama Projects terlihat dan motion aktif; pause/reduced/hidden/route lain/static menghentikan loop. Poster dari pose istirahat awal deterministik. Hasil: QA-ROBOT-MOTION.
+
+## Dua workspace / empat pose — 24 Oktober 2026
+
+Home dan Projects berada dalam satu scene/renderer. Projects kini meja kedua di X=8,5 dengan arm/gripper, fixture, sample cube, monitor diagram, keyboard kecil dan storage. Geometri, CanvasTexture dan label asli repository; tidak menggunakan GLB historis atau aset referensi. Seluruhnya ilustrasi konseptual, bukan dokumentasi karya/peralatan pemilik. Tidak ada dependency/aset pihak ketiga baru.
+
+Builder revisi motion terukur **335 mesh, 107.980 triangle yang dirender (termasuk instances), 161 geometri bersama dan 12 tekstur**. Shadow/environment menambah biaya renderer di luar hitungan itu; bukan bukti performa ponsel fisik. Batas tes 350 mesh/150.000 triangle dipertahankan. Lampu/shadow workspace ditangani lifecycle engine.
+
+Empat pose: Home, Projects, overview Home dan overview Projects; masing-masing portrait/tablet/desktop. Semua poster dari render aktual tanpa HTML/scrim/kontrol. Detail byte berikut berasal dari capture produksi final, total 380.460 byte.
+
+| Prefix `public/scene/` | Desktop 1440×1000 | Tablet 768×1024 | Mobile 390×844 |
+| --- | ---: | ---: | ---: |
+| `personal-lab-` | 63.436 byte | 28.924 byte | 14.004 byte |
+| `lab-projects-` | 49.056 byte | 21.450 byte | 11.762 byte |
+| `lab-overview-` | 51.394 byte | 30.512 byte | 12.472 byte |
+| `lab-projects-overview-` | 49.628 byte | 33.378 byte | 14.444 byte |
+
+Browser memilih poster pose/resolusi yang relevan dari 12 WebP; bukan semua dimuat saat awal. Tanpa JS dimulai pada poster route; Hide Text pada static/no-WebGL memakai overview workspace aktif. Inspect ASCII dihapus dari engine/UI aktif; semua kode/studi/lisensi historis tetap disimpan.
+
+## Home Personal Electronics Lab — 23 Oktober 2026
+
+**Perbaikan props 24 Oktober:** keyboard ANSI 60% lima baris, 61 keycap instanced dengan warna/legenda CanvasTexture; spiral kabel tersampling 320 segmen, konektor serta probe terhubung ke soket. Casing/bezel/knob/ventilasi/kaki instrumen, stand monitor, cover/halaman notebook, obeng dan kepala lampu dibentuk ulang. RoundedBoxGeometry di-cache menurut dimensi, bukan diskalakan dari satu rounded cube. Tekstur pegboard 1536×512 dan mat 1024×512 mengikuti rasio permukaan. Semua tetap geometri/tekstur asli tanpa merek/aset eksternal baru. Builder terukur 254 mesh, 71.432 triangle yang dirender, 104 geometri bersama dan 9 tekstur; tidak termasuk biaya tambahan shadow/environment renderer.
+
+Poster riwayat hasil render props sebelum revisi material/motion: **63.914 / 29.160 / 14.144 byte**, dimensi dan konversi quality 84 tetap. Tidak ada HTML/scrim/kontrol di dalam poster.
+
+**Riwayat revisi kamera 24 Oktober:** poster dari pandangan duduk menghadap pegboard, dengan keyboard/kabel di foreground. Dimensi/skrip reproduksi tetap; ukuran WebP saat revisi kamera sebelum perbaikan props: 57.968 / 26.892 / 13.390 byte. Geometri, tekstur prosedural, sumber dan lisensi belum berubah pada revisi kamera tersebut.
+
+Scene aktif menggunakan geometri dan tekstur prosedural asli repository, bukan model/foto yang disalin dari referensi. `src/lib/scene/personal-lab.ts` membentuk meja/rak kayu, pegboard, lampu, instrumen generik, monitor, keyboard instanced, kabel, cutting mat dan catatan. CanvasTexture menggambar serat kayu, lubang pegboard, grid mat, layar ilustratif dan label. Tidak ada merek, data telemetri nyata, manga atau stiker yang belum dipilih. Lampu/material/tekstur adalah ilustrasi, bukan dokumentasi ruang/karya pemilik.
+
+`public/scene/personal-lab-{desktop,tablet,mobile}.webp` adalah render dari scene yang sama tanpa HTML/scrim/kontrol, pada 1440×1000, 768×1024 dan 390×844. Poster dipakai sebelum scene siap dan saat fallback/statik. Rasio viewport lain memakai crop; tidak dijanjikan identik per piksel pada setiap perangkat.
+
+Reproduksi dengan server port 3000 dan `playwright-cli` tersedia:
+
+```powershell
+playwright-cli open http://127.0.0.1:3000/
+playwright-cli run-code --filename=tests/capture-lab-views.js
+node scripts/prepare-lab-posters.mjs
+playwright-cli close
+```
+
+Capture empat pose menyimpan PNG lokal di `.taste-skill/lab-views/`; konversi memakai sharp yang sudah disertakan dependency Next.js. Foto pemilik dalam `analysis/workbench-references/` hanya referensi desain, tidak diimpor/disalin ke public. Tidak mengunduh model, tekstur atau source dari Hamza/Clarissa. Tidak ada dependency/aset pihak ketiga baru pada Home; font lokal berikut tetap dipakai sesuai lisensinya.
+
+## Riwayat Robotics study
 
 Semua aset produksi disajikan lokal. Objek pada scene adalah ilustrasi konseptual, bukan bukti project atau kepemilikan robot oleh Abdiel.
 
@@ -8,7 +83,7 @@ Implementasi dijeda untuk brainstorming ulang konsep personal pada 23 Oktober 20
 
 - Model: ABB IRB 52 7/1.2, tujuh visual mesh dari [ROS-Industrial abb_irb52_support](https://github.com/ros-industrial/abb/tree/45f4769d826cf3ac62a65495f2db67b78b0c81df/abb_irb52_support).
 - Revision sumber: `45f4769d826cf3ac62a65495f2db67b78b0c81df`. Author menurut package: Michael Ripperger, Levi Armstrong (SwRI); pemelihara ROS-Industrial community.
-- Lisensi paket: Apache-2.0. Teks lengkap dan notice ada di `public/models/LICENSE-IRB52.txt` dan `NOTICE-IRB52.txt`; tautan credits tersedia pada caption scene.
+- Lisensi paket: Apache-2.0. Teks lengkap dan notice tetap ada di `public/models/LICENSE-IRB52.txt` dan `NOTICE-IRB52.txt`. Model ini tidak dimuat oleh engine Home baru; caption/credits lama tersimpan dalam kode studi sebelumnya.
 - Produksi: `public/models/irb52.glb`, 1.550.104 byte, 26.060 triangle, tujuh mesh, dua material, tanpa tekstur/decoder/dependency eksternal. Ukuran transfer aktual bergantung kompresi server; angka ini ukuran file.
 - Transformasi: STL diindeks, dirangkai memakai offset URDF (termasuk offset visual link_4), diubah dari Z-up ke Y-up, diberi pose dan material presentasi. Tidak memakai kontrol atau perhitungan kinematika untuk klaim simulasi akurat.
 - Reproduksi: `node scripts/prepare-robot.mjs`. Memakai cache `.taste-skill/robot-source/` jika tersedia, atau mengunduh mesh/lisensi dari revision yang dipatok. Script menyertakan assert struktur, dimensi dan budget; memerlukan akses jaringan bila cache kosong. Tidak dijalankan dalam build aplikasi.

@@ -15,8 +15,8 @@ export default function SplitText({ text, tag = 'h1', id, className = '' }: {
     if (paused || reduced || played.current || !ref.current) return;
     played.current = true;
     const context = gsap.context(() => {
-      gsap.fromTo('.split-word', { opacity: 0, y: 6 }, {
-        opacity: 1, y: 0, duration: .35, stagger: .025, ease: 'power2.out', clearProps: 'all',
+      gsap.fromTo('.split-word', { y: 6 }, {
+        y: 0, duration: .35, stagger: .025, ease: 'power2.out', clearProps: 'all',
       });
     }, ref);
     // Revert immediately on pause/preference change; never freeze invisible words.

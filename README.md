@@ -1,52 +1,77 @@
-# Digital Observatory — Abdiel Deandra EL Dzaky
+# Personal Electronics Lab — Abdiel Deandra EL Dzaky
 
-Fondasi portofolio personal dengan suasana Clarissa Builds dan nuansa laboratorium digital. Tahap pertama dapat dijalankan; hasil dan pekerjaan lanjutan tercatat di [TODO.md](TODO.md).
+**Koreksi visual terbaru:** pemilik meminta satu workbench kompak dengan fokus objek/POV per halaman seperti pendekatan Hamza. Empat meja yang ada di kode belum dikonsolidasikan; itu baseline teknis, bukan komposisi final. Ikuti checkpoint teratas TODO sebelum memperluas scene.
 
-**Dijeda atas permintaan pemilik, 23 Oktober 2026.** Pemilik akan brainstorming ulang konsep di chat baru agar lebih mencerminkan kepribadiannya. Digital Observatory/Robotics study adalah baseline implementasi yang disimpan, bukan arah final yang sudah disetujui. Tidak ada konsep pengganti yang dipilih. Baca checkpoint dan prompt handoff di awal [TODO](TODO.md) sebelum melanjutkan; implementasi berikutnya menunggu arahan pemilik.
+Portofolio personal dengan workbench elektronik 3D hangat dan konten editorial. **Home, About, Projects dan Experience menempati satu lab/renderer dengan transisi kamera dan overview saat Hide Text.** Ini belum desain final atau penyelesaian seluruh PRD; sudut lain dan materi karya mengikuti review/data pemilik.
+
+**About & Experience, 24 Oktober:** dua route kini mempunyai sudut fisik sendiri di lab yang sama. About memakai meja baca dengan notebook terbuka/lampu/buku; Experience memakai board dokumentasi dengan tiga grafis kategori asli, sementara HTML memuat tiga peran nyata dari JSON. Semua sudut memiliki portrait framing, overview, keyboard/orbit dan fallback. Satu renderer dipertahankan; 24 poster lokal untuk delapan pose × tiga resolusi. Transisi biasa 1,25 detik, perjalanan jauh >14 unit 1,6 detik, overview 1,15 detik; pause/reduced motion langsung ke tujuan. Anchor lama `/#about`/`/#experience` tetap tersedia. Lihat [QA kedua sudut](docs/QA-STORY-CORNERS.md).
+
+**Revisi 3D dan motion, 24 Oktober:** robot kini berhierarki sendi, housing tirus, bearing/collar, flange, gripper dan kabel per-link. Gerak observasi 16 detik menjaga tool tegak, dengan render dibatasi sekitar 30Hz. Pause/reduced motion membekukan pose; tab hidden, Home/route lain dan static menghentikan loop. Material kayu/logam, keyboard robotics dan laci diperbaiki. Home tetap tanpa render idle. Lihat [QA motion](docs/QA-ROBOT-MOTION.md).
+
+**Pembaruan terbaru 24 Oktober:** Projects kini memiliki meja robotics terpisah dengan lengan/gripper, fixture dan monitor diagram asli, bukan hanya sudut instrumen Home. Home → Projects/restore berdurasi 1,25 detik; Hide Text ke overview workspace aktif 1,15 detik. Hide Text langsung mengaktifkan drag/arrow/reset tanpa klik Explore lagi; Show Text/Escape memulihkan sudut, fokus dan scroll baca. Explore tetap pilihan saat teks terlihat. Inspect ASCII dihapus dari aplikasi aktif; studi/prototype lama dipertahankan. Pause/reduced motion langsung ke tujuan. Empat sudut, delapan pose dan 24 poster memakai satu renderer; robot Projects kini bergerak sesuai revisi terbaru. Lihat [QA robotics](docs/QA-ROBOTICS-BAY.md).
+
+**Revisi 24 Oktober:** Home memakai sudut pandang duduk menghadap pegboard. Intro berada pada bidang pegboard, keyboard/kabel di foreground; kaki meja dan alas panggung keluar dari framing utama. Desktop/portrait serta poster telah disesuaikan. Teks tetap HTML yang dapat dibaca/diseleksi, bukan mesh 3D; saat Explore, konten mempertahankan layout bacanya. Tidak ada model/dependency baru.
+
+Item Home kemudian diperbaiki: keyboard ANSI 60% dengan legenda, spiral dan konektor kabel, panel/soket instrumen, dudukan monitor, notebook/alat/lampu, serta bevel dan rasio tekstur yang sesuai bentuk. Test geometri menjaga jarak keycap, posisi terhadap meja dan budget internal. Benda tetap ilustrasi generik, bukan klaim karya/peralatan milik pemilik.
 
 ## Dokumen inti
 
-| File | Fungsinya |
-| --- | --- |
-| [PRD](docs/PRD-PORTOFOLIO.md) | Apa yang dibangun, fitur, UI/UX, arsitektur target, data dan kriteria penerimaan |
-| [AGENTS.md](AGENTS.md) | Panduan kerja untuk coding agent di repository ini |
-| [TODO.md](TODO.md) | Urutan pekerjaan, status nyata dan keputusan yang masih terbuka |
-| README ini | Cara menjalankan serta penjelasan struktur kode saat ini |
+- [TODO](TODO.md): checkpoint terbaru dan pekerjaan berikutnya.
+- [PRD](docs/PRD-PORTOFOLIO.md), terutama §2.5, §7.7 dan §16.5: keputusan produk/arsitektur.
+- [Brief lab](docs/REDESIGN-LAB.md): referensi, milestone dan batas lingkup.
+- [QA Home](docs/QA-HOME-LAB.md): hasil aktual serta batas pemeriksaan redesign.
+- [QA About/Experience](docs/QA-STORY-CORNERS.md): route/sudut baru, grafis, fallback dan hasil pemeriksaan terbaru.
+- [QA motion](docs/QA-ROBOT-MOTION.md): perbaikan model dan lifecycle animasi robot terbaru.
+- [QA robotics](docs/QA-ROBOTICS-BAY.md): meja kedua, orbit otomatis, penghapusan ASCII dan pemeriksaan terbaru.
+- [QA kamera](docs/QA-LAB-CAMERA.md): riwayat transisi Home/Projects/overview dan batas verifikasinya.
+- [Manifest aset](docs/ASSETS.md) dan [AGENTS](AGENTS.md): asal aset dan panduan kerja.
 
-Detail arsitektur, UI/UX dan workflow sementara tetap berada dalam PRD/AGENTS; tidak perlu membuat dokumen terpisah yang menduplikasi isinya. Skill khusus proyek belum diperlukan.
+## Status kode
 
-## Status kode saat ini
+Next.js App Router + React + TypeScript + CSS berada di root dengan `src/`. Home memakai intro `Hi, I'm Abdiel.`, typing dua kandidat frasa, dan informasi nyata pemilik. Navigasi About dan Experience menuju route/sudut tersendiri; ringkasan/anchor Home lama dipertahankan. Projects, Writing dan Cabinet tetap empty state yang jujur. JSON dan Markdown/MDX lokal memakai content layer yang sudah ada; tidak ada database/admin baru.
 
-Aplikasi Next.js App Router + React + TypeScript + CSS berada di root dengan struktur `src/`. About memuat identitas/pengalaman pemilik; Projects, Writing dan Cabinet memakai empty state hingga materi siap. Kandidat desain ulang **Robotics study** menggunakan scene satu viewport di belakang konten editorial. Build dan pemeriksaan browser produksi lulus; penerimaan visual akhir oleh pemilik serta QA perangkat nyata tetap terbuka. Lihat [QA Robotics study](docs/QA-WORKSHOP.md).
+Engine aktif `src/lib/scene/create-personal-lab-scene.ts` diimpor dinamis oleh SceneHost. Geometri/tekstur prosedural asli berada di `personal-lab.ts`: meja kayu, pegboard, rak, instrumen ilustratif, lampu, mechanical keyboard, kabel, cutting mat dan catatan. Foto referensi tidak dikirim ke produksi. Home **diam saat idle**; render berlangsung selama transisi kamera, resize/Explore. Robot Projects memiliki loop terbatas ketika terlihat dan motion aktif; waktu animasi tidak berjalan saat pause/hidden/route lain.
 
-`prototype/` tetap studi vanilla JavaScript + Three.js untuk lensing, dengan copy contoh dan hash navigation; terpisah dari aplikasi produksi.
+Explore mengaktifkan drag/arrow keys, reset dan Escape saat teks terlihat; default touch menjaga scroll/zoom. Hide Text otomatis membuka orbit, termasuk touch; Show Text/Escape mengembalikan native scroll dan posisi baca. Pause/reduced motion mengendalikan typing/reveal. Poster baru dari render yang sama tersedia tanpa JS/WebGL, saat context loss atau melalui Use static view; preferensi statis bertahan antar-reload. Satu renderer dipakai antarroute. Kontak/CV yang belum diberikan tidak ditampilkan.
 
-Visual bola Signal study dan layout dua kolom sudah diganti. Scene baru memuat model robot ABB IRB 52 dari ROS-Industrial di meja kerja, kamera pengamatan ilustratif, lantai perspektif dan bayangan. Model, notice Apache-2.0, font Libertinus berlisensi OFL dan tiga poster hasil render disajikan lokal. Sumber/ukuran/reproduksi tercatat di [manifest aset](docs/ASSETS.md). Robot dan props bukan klaim karya atau kepemilikan pemilik.
+Robotics/Signal study, GLB/lisensinya, `prototype/` dan `analysis/` dipertahankan. Engine lama tidak aktif; [QA Robotics](docs/QA-WORKSHOP.md) merupakan riwayat, bukan hasil QA Home baru. Tidak ada dependency baru, commit atau deploy. Pencarian metadata 21st pada tahap About/Experience berhasil (Impact Experience/editorial lists), tetapi gaya hover-imagery/accordion tidak diperlukan. Navigation, SplitText dan pola editorial proyek dipakai kembali; tidak mengambil kode komponen berbayar, menambah dependency, menggunakan generation, atau mengirim source ke review eksternal.
 
-**Explore view** mengaktifkan drag/arrow keys dan reset. **Hide text** membuka pandangan tanpa konten, **Show text** atau Escape memulihkannya. Gerak robot dan typing mengikuti pause/reduced motion. ASCII terlokalisasi di objek dan dipilih eksplisit; pada poster statis kontrol ini disabled. Tanpa JS/WebGL, saat model gagal/context loss, atau melalui **Use static view**, poster scene tetap terlihat. Mode statis bertahan antar-reload. Satu renderer/kamera dipertahankan antarroute; transisi halaman, reveal judul singkat berbasis GSAP dan fade poster ke scene tidak menahan navigasi. SplitText telah diadaptasi ke CSS biasa dan teks SSR tetap terbaca.
+## Menjalankan aplikasi
 
-React Bits menjadi sumber konsep reveal; pencarian katalog 21st melalui CLI memerlukan login, sehingga tidak ada komponen 21st yang dipasang. Review eksternal 21st tidak dijalankan karena pemeriksaan izin menolak potensi pengiriman source; review lokal digunakan. Konteks desain lokal ada di `.21st/`. Tidak ada dependency runtime tambahan pada iterasi Robotics study; GSAP/Three sudah tersedia.
-
-## Menjalankan aplikasi produksi
-
-Gunakan Node.js 22+ dan npm. Dependency terkunci di `package-lock.json`.
+Node.js 22+ dan npm; dependency dikunci di `package-lock.json`.
 
 ```powershell
 npm ci
 npm run dev
 ```
 
-Buka http://127.0.0.1:3000. `npm run check` menjalankan TypeScript, tes konten dan pemeriksaan sintaks prototype. `npm run build` menjalankan check lalu build produksi; `npm start` menjalankan hasil build. Dev/build memakai Webpack karena Turbopack mengalami kegagalan izin junction pada lingkungan Windows ini.
+Buka http://127.0.0.1:3000/. `npm run prototype` menjalankan studi lama pada port 4173. Dev/build memakai Webpack karena masalah izin junction Turbopack pada Windows ini. **Hentikan dev sebelum build pada checkout yang sama.**
 
-Hentikan dev server sebelum build di checkout yang sama. Browser smoke tersimpan di `tests/browser-smoke.js`; dengan `playwright-cli` tersedia, jalankan `playwright-cli open http://127.0.0.1:3000` lalu `playwright-cli run-code --filename=tests/browser-smoke.js`. Ini pemeriksaan terpisah dari `npm run check`.
+```powershell
+npm run check
+npm run build
+npm start
+```
 
-Tes scene/lifecycle: `playwright-cli run-code --filename=tests/scene-browser.js`. Motion/loading race: `playwright-cli run-code --filename=tests/workshop-motion.js`. Probe render lokal: `playwright-cli run-code --filename=tests/scene-rendering-probe.js`. Screenshot/poster: `playwright-cli run-code --filename=tests/capture-workshop.js`. Jalankan terhadap hasil produksi untuk menghindari refresh kompilasi dev saat pengujian.
+Check mencakup TypeScript, sembilan tes konten/geometri/motion/studi terdahulu dan syntax prototype; build menjalankan check lalu Next.js. QA browser Home baru terpisah, dengan server pada port 3000 dan `playwright-cli` tersedia:
 
-Struktur: `src/app/` untuk route, `src/components/` untuk UI/kontrol/scene host, `src/lib/scene/create-workshop-scene.ts` untuk engine aktif, `src/lib/content/` untuk pembacaan dan validasi server, `src/content/` untuk JSON/Markdown/MDX, `public/` untuk aset produksi beserta lisensi, serta `tests/` untuk pemeriksaan. Engine/komponen Signal study lama tersimpan sebagai riwayat studi dan tidak dipasang pada halaman. Styling menggunakan CSS biasa tanpa Tailwind. `node scripts/prepare-robot.mjs` membangun ulang GLB dari sumber yang dipatok; akses jaringan diperlukan bila cache kosong.
+```powershell
+playwright-cli open http://127.0.0.1:3000/
+playwright-cli run-code --filename=tests/personal-lab-smoke.js
+playwright-cli run-code --filename=tests/personal-lab-browser.js
+playwright-cli run-code --filename=tests/personal-lab-rendering.js
+playwright-cli run-code --filename=tests/lab-camera-browser.js
+playwright-cli run-code --filename=tests/robot-motion-browser.js
+playwright-cli run-code --filename=tests/story-corners-browser.js
+playwright-cli run-code --filename=tests/capture-lab-views.js
+playwright-cli close
+```
 
-Konten writing memakai YAML frontmatter dan body `.md`/`.mdx`. Draft contoh berada di `src/content/`, bukan `public/`. Status `published` memerlukan tanggal `publishedAt` yang valid dan tidak di masa depan. MDX hanya untuk sumber lokal tepercaya milik pemilik; jangan menerima kode MDX dari input publik. Komponen interaktif dapat didaftarkan melalui prop `components` pada renderer artikel ketika benar-benar dibutuhkan. Aset draft jangan diletakkan di `public/`.
+Tes `browser-smoke.js`, `scene-browser.js`, `workshop-motion.js` dan probe lama menyimpan asumsi Robotics study; jangan menganggapnya tes Home yang masih sesuai. Skrip capture menghasilkan PNG lokal di `.taste-skill/lab-views/`; reproduksi poster ada di manifest aset.
 
-Hasil penelitian website reference tersedia di [report REA](analysis/REPORT.md). Simpan hasil penelitian sebagai bukti; aplikasi produksi tidak memuat bundle asli dari `analysis/`.
+Struktur: `src/app/` route; `src/components/` UI/SceneHost; `src/lib/scene/` engine/geometri; `src/lib/content/` pembacaan/validasi server; `src/content/` JSON/Markdown/MDX; `public/` aset/lisensi; `tests/` pemeriksaan. CSS biasa, tanpa migrasi framework styling.
+
+Writing memakai YAML frontmatter dan body `.md`/`.mdx` lokal tepercaya. Status published memerlukan tanggal valid yang tidak di masa depan. Draft tidak ditempatkan di public; komponen interaktif didaftarkan saat artikel benar-benar membutuhkannya. Tidak menerima kode MDX dari input publik. Materi karya, kontak/CV dan kontribusi rinci masih menunggu pemilik.
 
 ## Menjalankan prototype
 

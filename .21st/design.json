@@ -68,10 +68,17 @@
   },
   "constraints": {
     "must": [
-      "Implementation paused by owner for personal-concept brainstorming; previous Clarissa Builds/robotics visual baseline is provisional, not a final mandate.",
-      "Preserve current full-viewport scene and accessible HTML as saved implementation; only change after owner decisions and request to resume.",
-      "Real owner content and honest empty states",
-      "Pause, reduced motion, keyboard and native mobile scroll"
+      "Latest composition correction: one compact workbench/room, one hero object per route, bespoke desktop/portrait POV. Consolidate repeated desks before adding details/corners. Current four-desk implementation is a retained baseline, not accepted final composition.",
+      "Selected concept: personal electronics workbench/lab with simplified 3D forms like Hamza, warm materials/light and calm Clarissa Builds editorial composition. Home/Projects/About/Experience implemented under owner authorization; Writing/Cabinet corners remain pending.",
+      "Preserve full-viewport scene and accessible HTML; All four lab corners share one renderer and the existing lifecycle.",
+      "English content for recruitment and reach-out; tell the owner's journey. Home, Projects, About and Experience have dedicated corners; Writing/Cabinet remain on Home camera.",
+      "Observation-first scene; no required game or instrument simulation. Writing may use trusted MDX for article-specific explanations.",
+      "Owner object candidates: cables and mechanical keyboard; manga and meme stickers tentative. Real owner content and honest empty states",
+      "Pause, reduced motion, keyboard and native mobile scroll",
+      "Accepted file-first JSON/Markdown/MDX, no initial database/admin. Mobile portrait framing, scroll by default, explicit Explore while reading; Hide Text automatically enables orbit. Preparation brief: docs/REDESIGN-LAB.md; local photos in analysis/workbench-references are design references only.",
+      "Latest: separate illustrative robotics bay for Projects; remove active Inspect ASCII. Hide Text immediately enables orbit/reset/arrow/touch, Show Text/Escape restores reading pose/focus/scroll. Eight poses and 24 fallback posters across Home/About/Projects/Experience. Writing/Cabinet remain pending.",
+      "Robot motion requirement: refine existing 3D and animate the Projects robot. Calm linked 16s motion, upright gripper; freeze on pause/reduced motion and stop loop on hidden/other routes/static. Home/About/Experience stay event-driven; no new dependency.",
+      "Latest: dedicated About reading desk and Experience documentation board, truthful published JSON HTML, original illustrative chip/code/community graphics, 24 posters, one renderer and native portrait scroll. Legacy Home anchors remain available; no database/admin/deploy."
     ],
     "avoid": [
       "Split two-column hero with abstract sphere",
@@ -91,7 +98,47 @@
     },
     {
       "date": "2026-10-23",
-      "decision": "Latest owner instruction: pause implementation, retain all code/assets and brainstorm a more personal concept in a new chat. No replacement chosen; prior preferences are not automatically rejected or final. Read TODO pause checkpoint and PRD section 2.4 before further work."
+      "decision": "Historical pause: retain code/assets and brainstorm a personal concept. Superseded as concept status by the next decision; implementation remains paused."
+    },
+    {
+      "date": "2026-10-23",
+      "decision": "Owner selected a simplified warm 3D electronics lab/workbench, drawing on photo 2 warmth, photo 3 composition, photo 4 activity and photo 1 shelving density. Recruitment/reach-out, personal journey, English, observation-first. Content arrives later. Read latest TODO checkpoint and PRD 2.5/7.7."
+    },
+    {
+      "date": "2026-10-23",
+      "decision": "Owner accepted file-first authoring and mobile framing/scroll approach, then requested preparation before redesign. docs/REDESIGN-LAB.md records assets, composition, milestones, QA and handoff. No new runtime implementation or database; await execution request."
+    },
+    {
+      "date": "2026-10-23",
+      "decision": "Execution resumed through the owner prompt. Original procedural Home lab and matching portrait/desktop posters implemented; static idle rendering. Other camera corners await owner visual feedback. No new dependency, database, commit or deployment."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Owner requested seated eye-line Home facing the pegboard behind readable HTML intro, keyboard/cables in foreground. Camera/portrait/posters updated; existing geometry retained, no new dependencies. Review Home before other corners."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Owner requested more faithful background item shapes. Refined original procedural keyboard/cables/instruments/monitor/notebook/tools/lamp and world-unit bevels/texture aspect ratios. Seated camera and lowered HTML intro retained; review pending, no new dependency or third-party asset."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Owner authorized Home to Projects plus smooth raised overview for Hide Text. One renderer, GSAP transitions of camera/target/FOV/fog, portrait presets, direct-route initial pose, retargetable motion, pause/reduced-motion snapping, reading-position restore and matching posters. Other corners remain pending. QA-LAB-CAMERA.md records actual checks/limits."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Projects now has its own original procedural robotics workbench, not merely an instrument camera. Owner removed Inspect ASCII and requested automatic exploration upon Hide Text. Implemented with one renderer, per-workspace overview and no new dependencies. See QA-ROBOTICS-BAY."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Positive overall owner feedback; refine procedural 3D and add visible Projects robot motion. Hierarchical articulated rig, conservative 16s cycle and ~30Hz render cap with pause/reduced/visibility lifecycle. Previous no-idle-animation restriction on Projects is superseded."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Owner authorized About/Experience after next-step recommendation. Implemented separate physical reading/documentation areas, dedicated route/camera/overview/portrait and batched static graphics, reusing editorial project tokens and primitives."
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Pemilik menolak pengulangan banyak meja. Arah berikutnya: satu workbench/ruang kompak, setiap halaman fokus satu objek/kelompok benda dengan POV khusus; overview penuh untuk Home/Hide Text seperlunya. Referensi Hamza dipakai untuk komposisi ruang/fokus kamera; Clarissa tetap suasana hangat/editorial. Runtime empat meja yang ada belum direfaktor pada checkpoint ini; jangan menambah meja/sudut lengkap baru."
     }
   ],
   "evidence": [
@@ -104,8 +151,36 @@
       "source": "TODO.md"
     },
     {
-      "fact": "Owner paused for personality-led concept brainstorming; no new runtime changes",
-      "source": "docs/PRD-PORTOFOLIO.md#24-keputusan-terbaru-jeda-dan-brainstorming-ulang-konsep-personal"
+      "fact": "Owner selected warm simplified 3D lab concept; implementation remains paused, no new runtime changes",
+      "source": "docs/PRD-PORTOFOLIO.md#25-hasil-brainstorming-labworkbench-personal"
+    },
+    {
+      "fact": "Current Home implementation and actual browser QA; 21st connector search failed, no external source review or component retrieval.",
+      "source": "docs/QA-HOME-LAB.md"
+    },
+    {
+      "fact": "Home/Projects/overview implementation and camera matrix QA",
+      "source": "docs/QA-LAB-CAMERA.md"
+    },
+    {
+      "fact": "Separate robotics bay, ASCII removal and automatic Hide Text exploration; verification scope and limits",
+      "source": "docs/QA-ROBOTICS-BAY.md"
+    },
+    {
+      "fact": "Robot model refinement and actual-pixel motion/lifecycle verification",
+      "source": "docs/QA-ROBOT-MOTION.md"
+    },
+    {
+      "fact": "21st metadata search: minimal editorial personal about experience list dark; results Impact Experience (18893), Editorial Testimonial (9637), Editorial service list (37530). No source retrieved.",
+      "source": "https://21st.dev/@uilayout.contact/components/impact-experience"
+    },
+    {
+      "fact": "Dedicated About/Experience implementation and browser verification",
+      "source": "docs/QA-STORY-CORNERS.md"
+    },
+    {
+      "fact": "Direct browser visual review of room overview, Projects monitor, Experience pegboard cards, About robot screen and portrait; no asset/source extraction.",
+      "source": "https://www.raomuhammadhamza.tech/"
     }
   ],
   "generatedAt": "2026-10-22T17:39:35.927Z"

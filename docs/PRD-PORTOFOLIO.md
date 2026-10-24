@@ -1,6 +1,6 @@
 # PRD — Portofolio Personal Interaktif
 
-**Versi:** 1.7 · **Tanggal:** 23 Oktober 2026 · **Status:** implementasi dijeda atas permintaan pemilik untuk brainstorming ulang konsep personal (§2.4). Robotics study dan motion tersimpan sebagai kandidat; build/pemeriksaan browser terakhir lulus, belum ada konsep pengganti atau persetujuan visual final. Kebutuhan di bawah adalah baseline sebelumnya untuk dikaji, bukan mandat melanjutkan saat dijeda atau klaim seluruhnya selesai. Status aktual: [TODO](../TODO.md), [QA Robotics study](QA-WORKSHOP.md) dan [manifest aset](ASSETS.md).
+**Versi:** 1.14 · **Tanggal:** 24 Oktober 2026 · **Status:** revisi komposisi ke satu workbench kompak/fokus objek per halaman disepakati melalui koreksi pemilik (§7.7). Runtime empat meja sebelumnya masih baseline yang harus dikonsolidasikan. Transisi/fallback dan pemeriksaan produksi tersedia; penerimaan visual serta QA perangkat nyata masih terbuka. Hasil terbaru: [QA About/Experience](QA-STORY-CORNERS.md); QA motion sebelumnya historis; QA robotics sebelumnya historis; QA kamera sebelumnya historis, [TODO](../TODO.md) dan [manifest aset](ASSETS.md). Sudut lain tetap lanjutan. Kode/QA Robotics dipertahankan sebagai riwayat; rencana §16.5 bukan integrasi database.
 
 **Pemilik produk:** Abdiel Deandra EL Dzaky. **Referensi pengalaman:** [clarissabuilds.com](https://www.clarissabuilds.com/). **Dasar penelitian:** [report REA](../analysis/REPORT.md), [arsitektur](../analysis/architecture.md), [jaringan](../analysis/network.md). **Bahasa dokumen:** Indonesia.
 
@@ -32,8 +32,8 @@ Rilis pertama berupa situs publik dengan konten terstruktur dalam repository, ta
 | Pengalaman robotics, programming, webdev, editing video, Figma dan lainnya | Sistem project harus mendukung karya teknis dan kreatif serta format bukti yang berbeda |
 | Tujuan memamerkan karya, termasuk untuk kerja dan magang | Projects, kontribusi individual, CV, dan kontak perlu mudah ditemukan |
 | Sangat menyukai desain referensi; twist tetap ingin punya opsi | Struktur visual dipertahankan; konsep personal dipilih dari alternatif yang terdefinisi |
-| Menyukai arah Digital Observatory dengan nuansa laboratorium digital | Menjadi arah aktif; tiga opsi awal pada §8 tetap menjadi catatan eksplorasi |
-| Menginginkan pixel effect, ASCII interaktif dan baris minat mengetik/menghapus | Efek dilokalisasi dan harus menjaga keterbacaan; reduced motion serta pause berlaku |
+| Pernah menyukai arah Digital Observatory dengan nuansa laboratorium digital | Baseline sebelum jeda; kini dapat dikaji dalam brainstorming personal (§2.4), belum ada pengganti yang dipilih |
+| Baris minat mengetik/menghapus; permintaan ASCII sebelumnya dibatalkan 24 Oktober | Typing menjaga layout, pause dan reduced motion. Inspect ASCII tidak ada pada aplikasi aktif; studi lama disimpan |
 | Menyebut digital, robotics dan AI enthusiast; photography sebagai kandidat frasa | Minat dapat muncul pada intro; kurasi frasa akhir tidak otomatis menjadi klaim profesi |
 
 Nama panggilan, foto, angkatan, periode jabatan, tugas rinci, teknologi yang dikuasai, prestasi, ketersediaan kerja, minat pribadi di luar bidang di atas, dan metrik hasil belum diberikan. Jangan mengarang atau menerbitkan placeholder untuk informasi tersebut.
@@ -49,11 +49,11 @@ Empat nama objek pada homepage adalah anotasi, sedangkan brightness/time merupak
 | Keputusan | Default PRD | Status |
 | --- | --- | --- |
 | Identitas utama | Mahasiswa Teknik Komputer yang berkarya pada sistem, software, dan komunikasi visual | Berdasarkan profil; copy akhir perlu dipilih |
-| Struktur | About, Projects, Writing, Cabinet; kontak/CV terintegrasi | Diusulkan sebagai baseline |
-| Twist visual | Digital Observatory dengan nuansa lab digital; scene halus dengan sentuhan ASCII/pixel | Arah disukai pemilik; objek scene pertama belum ditetapkan |
+| Struktur | Home, About, Projects, Experience, Writing, Cabinet; kontak/CV bila tersedia | Home proof aktif; sudut/route terpisah mengikuti review §7.7 |
+| Twist visual | Lab/workbench elektronik personal dengan material/cahaya hangat | Konsep §2.5; Home sudah diimplementasikan, menunggu review visual |
 | Pengelolaan konten | JSON + Markdown/MDX lokal tepercaya, validasi saat build | Writing mendukung komponen interaktif bila diperlukan |
 | Database/admin | Supabase opsional untuk data/media/admin | Belum diwajibkan; writing file-based tidak memerlukan database |
-| Bahasa publik | Satu bahasa; usulan Inggris untuk lintas peluang kerja/magang | Pemilik boleh memilih Indonesia sebelum content freeze |
+| Bahasa publik | Inggris untuk perekrutan dan narasi perjalanan | Disepakati pemilik §2.5 |
 | Tingkat personalisasi | Konten sepenuhnya milik pemilik; visual berangkat dari referensi | Prinsip tetap |
 | Analytics | Opsional; tidak menahan rilis | Mengikuti preferensi pemilik dan kebutuhan pengukuran |
 
@@ -66,6 +66,19 @@ Bagian visual/positioning/rekomendasi setelah bagian ini merekam arah sebelumnya
 Kode, aset/lisensi, prototype dan bukti penelitian dipertahankan. Tidak ada implementasi baru, penggantian aset atau deployment selama jeda. Brainstorming berikutnya dimulai dari karakter pribadi, cerita/minat yang ingin ditonjolkan, tujuan pengunjung dan suasana yang terasa cocok. Hasilnya perlu merumuskan konsep, hierarki konten dan preferensi lama yang dipertahankan/diubah sebelum memilih efek/library. Setelah keputusan tersedia dan pemilik meminta eksekusi, perbarui dokumen lalu gunakan kembali fondasi yang relevan.
 
 Handoff, fakta profil, pemeriksaan terakhir, batas QA, backlog dan perintah menjalankan kembali dirangkum pada checkpoint teratas [TODO](../TODO.md). Tidak ada build/browser baru pada pembaruan dokumentasi jeda ini.
+
+### 2.5 Hasil brainstorming: lab/workbench personal
+
+**Keputusan pemilik, 23 Oktober 2026:** arah baru adalah lab/workspace elektronik 3D dengan bentuk sederhana seperti [Hamza](https://www.raomuhammadhamza.tech/), material dan pencahayaan hangat, serta komposisi/editorial tenang seperti Clarissa. Foto 2 paling disukai; perpaduan komposisi foto 3, kehangatan foto 2, aktivitas foto 4 dan kepadatan rak foto 1 disetujui sebagai arahan. Foto adalah referensi suasana, bukan bukti ruangan/aset milik pemilik.
+
+- Prioritas pengunjung: perekrut; tujuan tindakan: menghubungi pemilik. Narasi yang ingin disampaikan adalah perjalanan pemilik, tanpa menetapkan tiga atribut kepribadian yang belum dipilih.
+- Bahasa utama Inggris. Intro mengarah ke `Hi, I'm Abdiel.` dan typing frasa minat di bawah; copy final belum dikurasi. Status mahasiswa harus tepat; `a computer engineering student` kandidat yang jujur.
+- Home membuka pandangan workbench dengan intro di tengah. About, Projects, Experience, Writing dan Cabinet mempunyai sudut masing-masing dalam lab yang sama. Robot pada meja Projects merupakan kandidat visual, bukan otomatis bukti karya pemilik.
+- Kandidat benda: kabel dan mechanical keyboard; manga serta stiker meme tentatif. Benda/penempatan akhir belum diputuskan.
+- Interaksi scene terutama observasi/inspeksi. Tidak ada komitmen membuat game, simulasi alat atau robot yang diprogram pengunjung. Writing boleh memuat penjelasan interaktif jika relevan.
+- Karya dan detail pengalaman diisi kemudian; konten belum siap tetap draft. Writing bebas topik, termasuk fisika/pembelajaran, dengan Markdown/MDX sebagai rencana authoring. Pemilik meminta perencanaan database; penyedia, admin dan workflow editor belum dipilih (§16.5).
+
+Keputusan ini menggantikan pernyataan belum ada konsep pengganti di §2.3/§2.4 dan rekomendasi historis di §8. Kode/aset/lisensi lama dipertahankan. Persetujuan konsep belum merupakan permintaan eksekusi; jangan mengubah scene, memasang database atau memulai server sampai diminta.
 
 ## 3. Masalah dan peluang
 
@@ -208,7 +221,29 @@ Satu renderer/kamera dipakai lintas empat route; framing portrait berbeda dari d
 
 Build dan tes browser/lifecycle/motion produksi lulus; lihat [laporan QA](QA-WORKSHOP.md). Inspector desain generik masih 2 FAIL/3 WARN karena antara lain aksen hangat dan jumlah foto; ini dicatat sebagai batas audit, tidak diubah dengan menambahkan karya/foto fiktif. Source lint lulus dengan pengecualian scrim netral untuk keterbacaan. Penerimaan visual oleh pemilik tetap terbuka; scene ini kandidat yang dapat dinilai langsung, bukan klaim sudah sama atau lebih baik dari referensi. Belum ada variasi empat scene, integrasi CMS/admin/ManimGX atau deployment.
 
+### 7.7 Konsep terpilih: satu lab, beberapa sudut
+
+**Koreksi terbaru — kepadatan dan POV, 24 Oktober:** Pemilik menolak pengulangan banyak meja. Arah berikutnya: satu workbench/ruang kompak, setiap halaman fokus satu objek/kelompok benda dengan POV khusus; overview penuh untuk Home/Hide Text seperlunya. Referensi Hamza dipakai untuk komposisi ruang/fokus kamera; Clarissa tetap suasana hangat/editorial. Runtime empat meja yang ada belum direfaktor pada checkpoint ini; jangan menambah meja/sudut lengkap baru. Observasi langsung situs Hamza menunjukkan room overview dan fokus section ke monitor/kartu pegboard/layar robot. Target: satu hero object per halaman, kelompok pendamping kecil, close/medium framing yang disengaja serta konten HTML terbaca. Desktop dan portrait dikomposisikan tersendiri. Konsolidasi furniture dan validasi Home/Projects lebih dulu; jangan menambah meja untuk setiap route. Hasil QA empat meja di bawah tidak menjadi penerimaan atau bukti desain kompak.
+
+**Implementasi About/Experience terbaru, 24 Oktober:** pemilik menerima rekomendasi melanjutkan kedua sudut dengan grafis berkualitas. `/about` menampilkan meja baca dengan notebook terbuka, lampu, buku dan pensil; `/experience` menampilkan pegboard dokumentasi dengan grafis kategori lab/software/community. Grafis ilustratif bukan sertifikat atau bukti karya pemilik. Identitas/intro tetap dari profile JSON; peran/organisasi/tahun dari published experiences JSON, tanpa menambah periode/kontribusi. Keduanya route langsung dengan kamera/portrait/overview sendiri dalam satu renderer. Anchor Home lama tetap ada untuk bookmark. Props baru dibatch per material; 24 poster dari delapan pose. Transisi jauh >14 unit 1,6 detik, biasa 1,25 detik, overview 1,15 detik. Pause/reduced motion langsung ke tujuan; kedua sudut diam saat idle dan robot hanya bergerak di Projects. Writing/Cabinet masih sudut Home sementara, database/admin ditunda. Hasil/batas: QA-STORY-CORNERS.
+
+**Revisi 3D/motion terbaru, 24 Oktober:** pemilik menerima arah keseluruhan secara positif, meminta perbaikan objek 3D dan robot bergerak. Robot memakai hirarki turret/bahu/siku/pergelangan/tool; housings/bearing/flange/gripper/kabel mengikuti joint. Siklus observasi 16 detik menggerakkan sendi dan gripper, menjaga tool tegak; bukan simulasi fisika atau klaim karya pemilik. Rendering Projects dibatasi sekitar 30Hz saat terlihat dan motion aktif. Pause/reduced motion membekukan pose; tab hidden, route lain dan static menghentikan loop serta waktu animasi. Camera transition menyelesaikan/menunda motion robot agar tidak menjalankan dua render loop. Home tetap event-driven; pernyataan lama tanpa idle animation untuk Projects digantikan revisi ini. Sudut/halaman lain tetap lanjutan. Laporan: QA-ROBOT-MOTION.
+
+**Scope implementasi terbaru, 24 Oktober:** Projects memiliki meja robotics terpisah di lab yang sama, dengan lengan/gripper prosedural asli, fixture dan monitor diagram. Ini ilustrasi, bukan karya milik pemilik; koleksi tetap empty state. GSAP menggerakkan kamera/target/FOV/fog (Home/Projects/restore 1,25 detik; overview 1,15 detik), dapat retarget/diinterupsi input. Hide Text memakai overview workspace aktif dan langsung mengaktifkan drag/arrow/reset, termasuk touch, tanpa klik Explore lagi. Show Text/Escape memulihkan sudut/fokus/scroll; saat membaca Explore tetap eksplisit. Inspect ASCII dihapus dari UI/engine aktif; prototype dan studi lama disimpan. Pause/reduced motion langsung ke tujuan, idle tanpa loop. Direct load langsung ke tujuan; empat pose dengan 12 poster untuk fallback. Sudut lain masih lanjutan. Bukti/batas: [QA robotics](QA-ROBOTICS-BAY.md).
+
+**Revisi pemilik, 24 Oktober:** Home harus terasa seperti duduk memakai workbench. Kamera dekat dan menghadap pegboard, tempat intro terbaca; keyboard, kabel dan permukaan meja menjadi foreground. Tidak menampilkan keseluruhan meja sebagai objek pajangan. Bentuk/material dasar diterima sebagai arah, bukan penerimaan final framing baru. Desktop/portrait dan poster kini disesuaikan. Teks tetap HTML di depan scene untuk aksesibilitas/seleksi, bukan huruf mesh yang mengikuti orbit; konten panjang tetap mengikuti scroll. Sudut lain menunggu review Home.
+
+**Implementasi Home, 23 Oktober:** geometri/tekstur prosedural asli, material hangat, intro/typing, kamera portrait dan poster baru telah dipasang. Scene diam saat idle; Explore/ASCII/reset/fallback memakai shell yang sama. About/Experience masih anchor konten nyata di Home; belum ada sudut/route baru. Review visual pemilik menjadi tahap berikutnya sebelum memperluas ruang. Detail QA di QA-HOME-LAB; bagian konsep berikut tetap target lanjutan.
+
+Home memakai meja yang terasa dihuni: lampu kerja hangat, monitor, cutting mat, rak instrumen dan benda personal. Bentuk 3D disederhanakan; realisme fotografis dan gaya industrial dingin bukan target. Sisakan ruang tenang untuk headline tengah serta typing. Material kayu/logam/polimer, warna layar dan tingkat kepadatan masih perlu dibuktikan lewat komposisi diam.
+
+Pemetaan sudut berikut adalah **usulan agent**, belum persetujuan penempatan rinci: About di buku/benda personal; Projects di area eksperimen/robot dan monitor; Experience di pegboard dokumentasi; Writing di buku/monitor membaca; Cabinet di laci/rak koleksi. Menu langsung tetap tersedia; objek hanyalah jalur tambahan. Halaman detail dapat dibuka langsung tanpa perjalanan kamera dari Home. Pindah route memakai transisi singkat yang dapat dihentikan; reduced motion langsung ke framing tujuan. Mobile mendapat framing sendiri dan native scroll.
+
+Konten HTML tidak bergantung pada render WebGL. Writing/detail memakai area baca lega dengan scene diam/tereduksi agar tidak mengganggu. Observasi dapat mencakup orbit terbatas, melihat objek dan membuka konteks; tidak menjanjikan seluruh benda dapat dimanipulasi. Satu renderer dan struktur lifecycle lama dievaluasi untuk dipakai kembali setelah eksekusi diminta. Keterbacaan, akses kontak/CV dan orientasi route menjadi kriteria penerimaan selain kualitas ruang.
+
 ## 8. Opsi twist personal
+
+Bagian ini merekam opsi historis; arah terbaru adalah §2.5/§7.7.
 
 ### Opsi A — Signal & Systems: aliran sinyal digital
 
@@ -248,7 +283,9 @@ Detail efek harus menjaga teks depan tetap bersih, input mobile tetap nyaman, da
 
 | Route | Tujuan | Scope |
 | --- | --- | --- |
-| `/` | About: identitas, pengalaman ringkas, pilihan karya, kontak | P0 |
+| `/` | Home: workbench, intro/typing, jalur konten dan kontak | Bukti visual Home tersedia; kontak menunggu data |
+| `/about` | Cerita/perjalanan pemilik dan profil | Direncanakan; belum diimplementasikan |
+| `/experience` | Pengalaman dan kontribusi dengan periode/bukti yang tersedia | Direncanakan; detail konten menyusul |
 | `/projects` | Daftar karya teknis dan kreatif | P0 |
 | `/projects/[slug]` | Case study satu project | P0 untuk project yang memiliki materi cukup |
 | `/writing` | Daftar tulisan/catatan | P0 |
@@ -258,7 +295,7 @@ Detail efek harus menjaga teks depan tetap bersih, input mobile tetap nyaman, da
 | `/cv.pdf` atau aset CV ekuivalen | CV terbaru yang dapat dibuka/diunduh | P0 jika CV sudah siap |
 | `/uses`, `/now`, RSS | Halaman tambahan bila ada kebutuhan konten | P1/P2; bukan route kosong untuk memenuhi sitemap |
 
-Navigasi utama tetap empat item. Kontak dan CV berada pada area yang mudah ditemukan tanpa menambah banyak menu. Kontak tidak memerlukan halaman tersendiri pada P0. Semua halaman detail menyediakan link kembali yang tetap bekerja bila dibuka langsung, tanpa mengandalkan browser history.
+Target navigasi baru: Home melalui identitas situs, serta About, Projects, Experience, Writing dan Cabinet. Home sudah aktif, About/Experience sementara anchor di Home; Projects/Writing/Cabinet tetap route koleksi. Sudut tersendiri masih target lanjutan. Kontak dan CV berada pada area yang mudah ditemukan; action hanya ditampilkan ketika datanya tersedia. Kontak tidak memerlukan halaman tersendiri pada P0. Semua halaman detail menyediakan link kembali yang tetap bekerja bila dibuka langsung, tanpa mengandalkan browser history.
 
 ## 10. User journeys
 
@@ -394,9 +431,9 @@ Panel simulasi lanjutan bukan default visual pada halaman utama. Bila tersedia, 
 | ID | Prioritas | Requirement | Acceptance criteria |
 | --- | --- | --- | --- |
 | FR-49 | P0 | Headline nama dan typing minat | Nama lengkap sesuai ejaan pemilik; seluruh frasa memakai `a/an` yang benar; tinggi area disediakan agar tidak menggeser konten; pause global menghentikan typing; reduced motion menampilkan teks tetap; pembaca layar mendapat deskripsi stabil tanpa pengumuman tiap karakter |
-| FR-50 | P1 | Efek ASCII/pixel terlokalisasi | Diterapkan pada objek/area yang dipilih setelah uji visual; ada trigger touch/focus yang sesuai; teks utama tidak dipixelkan; reduced/static mode tidak memerlukan efek; kualitas turun atau efek dinonaktifkan bila mengganggu performa |
+| FR-50 | Dibatalkan | Inspect ASCII | Dihapus dari aplikasi aktif atas permintaan pemilik 24 Oktober; prototype/studi historis tetap disimpan. Tidak menjadi kriteria penerimaan versi ini |
 
-Efek ASCII/pixel tetap menjadi arah desain yang ingin diwujudkan; penempatannya diuji pada satu area terlebih dahulu. Penetapan P1 menjaga fondasi konten/scene tidak menunggu seluruh variasi efek selesai. Mockup awal boleh mendemonstrasikan efek tersebut sebelum rollout produksi.
+Permintaan ASCII lama pada bagian historis tidak berlaku lagi untuk aplikasi aktif. Gerak dan kualitas visual difokuskan pada komposisi lab, transisi kamera, material, keterbacaan dan input yang alami.
 
 ## 13. Pola layout dan interaksi
 
@@ -511,6 +548,34 @@ Jika CMS dipakai, konten publik dapat tetap dibangun statis setelah publish. Pre
 ### 16.4 Media dan biaya
 
 Mulai dengan aset teroptimasi di repository untuk jumlah yang kecil. Video panjang disediakan lewat hosting video atau object storage yang dipilih belakangan; embed/load hanya setelah interaksi. Media metadata tetap berada di content layer. Sebelum memilih layanan, ukur ukuran file dan pola akses yang nyata. Tidak menetapkan harga hosting/CMS tanpa penyedia, paket dan kebutuhan aktual.
+
+### 16.5 Rencana konten, database dan MDX setelah brainstorming
+
+**Status:** rencana agent berdasarkan permintaan pemilik, belum pemilihan layanan atau implementasi. Materi dapat diisi kemudian; schema dan workflow diputuskan dahulu. Database menyimpan/mengelola konten, sedangkan scene hanya menyajikan pintu masuk. Mengubah karya/tulisan tidak boleh mewajibkan pengubahan model 3D.
+
+**Keputusan workflow terbaru:** pemilik menerima rekomendasi file-first: JSON untuk data terstruktur, Markdown/MDX di editor untuk naskah, lalu preview/build/publish. Gunakan content layer yang tersedia; database/dashboard ditunda. Opsi CMS berikut tetap rencana bila kebutuhan authoring berubah, bukan lingkup implementasi awal. Jangan memasang Supabase hanya karena perencanaan database telah dibuat.
+
+**Model data logis (dapat dimulai dari file dan dipetakan ke tabel kemudian):**
+
+| Entitas | Isi inti dan hubungan |
+| --- | --- |
+| `profile` | Satu profil, nama/intro/bio, frasa typing, link kontak/CV yang disetujui |
+| `projects` | ID stabil, slug unik, judul/ringkasan, role/kontribusi, kategori, periode dengan presisi jujur, link, body ref, featured/urutan, status |
+| `experiences` | Organisasi, role, periode opsional, kontribusi dan urutan; relasi ke project melalui `project_experiences` hanya jika benar diperlukan |
+| `writing` | ID/slug, judul/deskripsi, topik, bahasa, tanggal publikasi/perubahan, status, body ref; mendukung topik di luar teknik |
+| `cabinet_items` | Judul, jenis, catatan personal, link/media, tags, urutan dan status |
+| `media` | Storage key/path, jenis, ukuran/dimensi, alt/caption, credit/lisensi dan visibility; berkas terpisah dari record |
+| Relasi media | Cover melalui foreign key; galeri project melalui relasi berurutan jika memakai database. Hindari skema tanpa foreign key yang mencampur semua owner dalam satu kolom |
+
+Setiap entitas yang dapat diterbitkan mempunyai `draft/published`, ID stabil dan timestamps. Slug unik per jenis; indeks urutan/status/tanggal mengikuti query nyata. Konten mentah, preview draft dan aset draft harus terlindungi sebelum masuk HTML, RSC, API, sitemap, pencarian dan storage publik. Media hanya dipublikasikan setelah isi dan hak pakainya siap. Satu sumber kebenaran per field/body; jangan menduplikasi naskah aktif di file dan database.
+
+**Writing:** Markdown untuk tulisan biasa; MDX untuk teks yang menyisipkan komponen React terpilih, misalnya diagram atau visualisasi fisika. MDX tidak otomatis membuat simulasi atau notasi matematika; komponen dan dukungan rumus dipilih ketika artikel membutuhkannya. Library komponen artikel terpisah dari engine lab, dimuat hanya di artikel terkait. Default body tetap file tepercaya dan metadata bersumber dari frontmatter; jika ada database, indeks metadata dapat diturunkan dari file dengan proses yang eksplisit. Alternatif editor browser dengan body di CMS menjadi pilihan sumber utama yang berbeda dan memerlukan desain preview/versioning, bukan salinan file yang diedit terpisah. Jangan mengompilasi MDX dari input publik atau sumber tidak tepercaya.
+
+**Jika database dipilih:** Supabase/Postgres salah satu kandidat, belum keputusan final. Rencanakan autentikasi satu pemilik, kebijakan RLS baca published untuk publik dan tulis hanya pemilik, proteksi storage draft, preview terautentikasi, validasi publish, ekspor/backup serta pemulihan. Hak privileged hanya server; tidak semua pengguna authenticated otomatis editor. Publikasi harus memperbarui halaman/list/metadata/cache bersama, termasuk saat unpublish. Uji akses anonim, non-owner dan draft sebagai bagian acceptance sebelum rilis.
+
+**Urutan rencana:** (1) workflow file-first dipilih; (2) tetapkan schema/relasi/status serta contoh draft privat; (3) tentukan source of truth dan kebutuhan media; (4) implementasi setelah diminta; (5) verifikasi draft, preview/publish/unpublish, direct URL dan fallback. Admin lengkap, pengunjung login, komentar dan scheduler belum diminta. Perencanaan ini tidak mewajibkan pengisian semua karya sekarang. Brief operasional dan QA: [REDESIGN-LAB](REDESIGN-LAB.md).
+
+Referensi teknis: [Next.js MDX](https://nextjs.org/docs/app/guides/mdx) dan [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security), ditinjau 23 Oktober 2026. Sumber ini mendukung kemampuan/pembatasan platform, bukan bukti implementasi fitur pada repository.
 
 ## 17. Arsitektur teknis yang diusulkan
 
@@ -745,8 +810,8 @@ Total bila dikerjakan berurutan sekitar 16–27 hari kerja, kira-kira 3–6 ming
 | ID | Yang perlu dipilih/diisi | Default/opsi | Kapan dibutuhkan |
 | --- | --- | --- | --- |
 | O-01 | Panggilan, frasa typing dan intro final | Nama Abdiel Deandra EL Dzaky sudah diketahui; headline diminta sudah dicatat | Sebelum copy final |
-| O-02 | Konsep personal setelah brainstorming | Digital Observatory/Robotics study adalah baseline tersimpan; tentukan cerita/karakter, preferensi yang dipertahankan/diubah dan konsep yang disepakati (§2.4) | Sebelum implementasi visual dilanjutkan |
-| O-03 | Bahasa rilis | Usulan Inggris; Indonesia tetap opsi | Sebelum content freeze |
+| O-02 | Komposisi detail konsep terpilih | Lab/workbench 3D sederhana dan hangat disepakati (§2.5/§7.7); pemetaan benda/sudut dan bukti visual masih terbuka | Sebelum implementasi visual dilanjutkan |
+| O-03 | Bahasa rilis | Inggris dipilih pemilik; copy akhir belum dikurasi | Sebelum content freeze |
 | O-04 | Jabatan/periode/deskripsi | Tiga role yang diberikan; detail dari pemilik | Sebelum publish experience |
 | O-05 | Karya unggulan | Pilih berdasarkan bukti dan kontribusi, bukan hanya jumlah | Sebelum Projects final |
 | O-06 | Media dan link karya | Repo/demo/Figma/video bila memang tersedia | Sebelum case study final |
@@ -761,9 +826,9 @@ Materi minimal dari pemilik: nama dan intro; uraian pengalaman; daftar karya bes
 
 ## 28. Rekomendasi baseline untuk profil ini
 
-Rekomendasi sebelum jeda adalah suasana gelap, sederhana dan editorial dari reference dengan tema **Digital Observatory** bernuansa lab digital: visual halus, ASCII/pixel saat eksplorasi, serta nama dan baris typing yang diminta pemilik. Arah ini kini bahan brainstorming sesuai §2.4. Teknik Komputer UI dan fakta pengalaman tetap menjadi konteks profil; tunjukkan kontribusi melalui karya nyata tanpa menjadikan robot atau referensi visual sebagai pengganti kepribadian pemilik.
+Konsep terpilih adalah **lab/workbench elektronik personal 3D** (§2.5/§7.7), dengan bentuk sederhana seperti Hamza, material/cahaya hangat dan ketenangan editorial Clarissa. Narasi mengikuti perjalanan pemilik; bahasa Inggris; tujuan perekrutan dan reach-out. Digital Observatory/Robotics study tetap riwayat dan fondasi kode/aset yang dievaluasi untuk reuse, bukan konsep akhir yang harus dipertahankan. Robot dan dekorasi bukan pengganti bukti karya.
 
-Bangun P0 dengan empat area konten, satu engine visual, controls minimum yang terlihat, fallback statis, serta JSON/Markdown/MDX. CMS/database bukan dependensi awal; Supabase tetap opsi bila dibutuhkan. Identitas akhir ditentukan dari copy, pilihan karya dan objek personal, bukan dari menyalin nama-nama objek atau scene milik reference.
+Target konsep mencakup Home, About, Projects, Experience, Writing dan Cabinet, dengan satu lab dan kontrol observasi minimum, fallback serta konten HTML. Implementasi tetap dijeda. JSON/Markdown/MDX sudah menjadi fondasi; kebutuhan database/editor direncanakan di §16.5 sebelum dipilih. Identitas akhir ditentukan dari copy, pilihan karya dan objek personal, bukan dari menyalin benda atau aset referensi.
 
 ## 29. Lampiran template editorial
 

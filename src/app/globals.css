@@ -69,7 +69,6 @@ footer p{margin:0}
 .scene-live{opacity:0;transition:opacity 320ms var(--ease)}
 .scene[data-state=ready] .scene-live{opacity:1}
 .scene-live canvas{display:block;position:absolute;inset:0;width:100%;height:100%}
-.scene-ascii[hidden]{display:none}
 .scene:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 360px 420px at 50% 40%,#0c0b0ad4 0%,#0c0b0a8f 55%,transparent 100%);opacity:1;transition:opacity 250ms var(--ease)} /* taste-skill-ignore: neutral reading scrim over the rendered scene, per PRD §7.4. */
 .scene[data-exploring=true] .scene-art{pointer-events:auto;cursor:grab}
 .scene[data-exploring=true] .scene-art:active{cursor:grabbing}
@@ -88,7 +87,7 @@ footer p{margin:0}
 .observatory[data-focus-view=true] .scene:after{opacity:0}
 .observatory[data-focus-view=true] .scene-caption{opacity:1}
 .page-transition[data-animate=true]{animation:page-in 240ms var(--ease) both}
-@keyframes page-in{from{opacity:.25;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes page-in{from{transform:translateY(5px)}to{transform:none}}
 .observatory[data-paused=true] .page-transition{animation:none}
 .observatory[data-paused=true] .scene-live{transition:none}
 @media(min-width:1500px){.page-shell{width:29rem}}
@@ -97,7 +96,8 @@ footer p{margin:0}
   body{font-size:17px}
   .page-shell{padding:46px 0 60px;justify-content:flex-start;width:calc(100% - 48px)}
   .site-header{margin-bottom:24px}
-  nav{gap:0;justify-content:space-between;font-size:15px}
+  nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8px;font-size:15px}
+  nav a{justify-content:center}
   h1{font-size:28px;line-height:1.23}
   .intro-copy{font-size:17px}
   .experience{margin-top:28px}
@@ -117,3 +117,94 @@ footer p{margin:0}
 }
 @media(max-width:350px){.page-shell{width:calc(100% - 36px)}h1{font-size:26px}.experience li{display:block;margin-bottom:12px}.experience-role{display:block}.experience-organization{text-align:left}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Home visual proof: a quiet introduction framed by the workbench. */
+.observatory[data-page=home] .page-shell{width:min(100% - 48px,38rem);padding:0 0 120px;justify-content:flex-start}
+.observatory[data-page=home] .site-header{margin:6svh 0 18px;background:#14120ff2}
+.observatory[data-page=home] nav{justify-content:center;gap:23px;flex-wrap:wrap;padding:0 12px}
+.home-intro{text-align:center;min-height:calc(94svh - 62px);padding-top:25svh}
+.home-intro h1{font-size:44px;letter-spacing:-.035em;margin-bottom:16px}
+.home-intro .interest-line{font-size:17px;margin-bottom:20px}
+.home-intro .intro-copy{font-size:17px;max-width:24rem;margin:0 auto 12px;text-wrap:balance}
+.home-links{display:flex;justify-content:center;gap:26px}
+.home-details{max-width:29rem;margin:0 auto;padding:36px 28px;background:#14120ff5;scroll-margin-top:32px}
+.home-details section{scroll-margin-top:32px}
+.home-about h2{margin-bottom:18px}
+.home-details p{color:var(--muted)}
+.observatory[data-page=home] footer{max-width:29rem;width:100%;margin:30px auto 0}
+.observatory[data-page=home] .scene:after{background:radial-gradient(ellipse 420px 240px at 50% 42%,#14120fd6 0%,#14120f86 60%,transparent 100%)} /* taste-skill-ignore: neutral reading scrim over the lab. */
+.observatory[data-page=home] .scene-caption{max-width:calc(100% - 56px);display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 8px;background:#14120ff2}
+.observatory[data-page=home] .scene-caption .scene-heading,.observatory[data-page=home] .scene-description{display:none}
+.observatory[data-page=home] .scene-actions{display:contents}
+.observatory[data-page=home] .scene-caption button{min-height:44px;font-size:13px;padding:8px 6px;white-space:nowrap}
+.observatory[data-page=home] .view-controls{flex-basis:100%;order:1;padding-bottom:8px;text-align:center}
+.observatory[data-page=home] .view-controls>div{justify-content:center}
+@media(max-width:699px){
+  .observatory[data-page=home] .page-shell{width:calc(100% - 40px);padding-bottom:100px}
+  .observatory[data-page=home] .site-header{margin:30px 0 20px}
+  .observatory[data-page=home] nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8px}
+  .observatory[data-page=home] nav a{justify-content:center}
+  .home-intro{min-height:calc(100svh - 138px);padding-top:16svh}
+  .home-intro h1{font-size:36px}
+  .home-intro .interest-line{font-size:16px;margin-bottom:16px}
+  .home-intro .intro-copy{font-size:16px;max-width:21rem}
+  .home-details{padding:28px 14px}
+  .observatory[data-page=home] .scene:after{background:radial-gradient(ellipse 300px 220px at 50% 39%,#14120fe8 0%,#14120f93 62%,transparent 100%)} /* taste-skill-ignore: neutral portrait reading scrim. */
+  .observatory[data-page=home] .scene-caption{position:fixed;bottom:68px;left:18px;right:18px;max-width:none;margin:0;display:flex;align-items:center;justify-content:center;gap:6px;padding:0;background:#14120fe0}
+  .observatory[data-page=home] .scene-caption .scene-heading,.observatory[data-page=home] .scene-description{display:none}
+  .observatory[data-page=home] .scene-actions{display:contents}
+  .observatory[data-page=home] .scene-caption button{min-height:44px;font-size:13px;padding:8px 6px;white-space:nowrap}
+}
+
+/* Projects has its own robotics bench; portrait reading follows the scene. */
+.observatory[data-page=projects] .page-shell{width:min(100% - 64px,72rem);padding:6svh 0 124px;justify-content:flex-start}
+.observatory[data-page=projects] .site-header{align-self:center;width:min(100%,38rem);margin-bottom:12svh;background:#14120ff2}
+.observatory[data-page=projects] nav{justify-content:center;gap:23px;flex-wrap:wrap;padding:0 12px}
+.observatory[data-page=projects] .collection{width:min(100%,27rem);min-height:0;padding:30px;background:#14120ff2}
+.observatory[data-page=projects] footer{width:min(100%,27rem);padding:14px 30px;margin-top:0;background:#14120ff2;opacity:1}
+.observatory[data-page=projects] .scene:after{background:none}
+@media(min-width:700px) and (max-aspect-ratio:11/10){
+  .observatory[data-page=projects] .collection{margin-top:44svh}
+  .observatory[data-page=projects][data-focus-view=false] .scene-caption{position:relative;left:auto;bottom:auto;margin:0 32px 90px;max-width:calc(100% - 64px)}
+}
+@media(max-width:699px){
+  .observatory[data-page=projects] .page-shell{width:calc(100% - 40px);padding:0 0 40px}
+  .observatory[data-page=projects] .site-header{margin:30px 0 24px}
+  .observatory[data-page=projects] nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8px}
+  .observatory[data-page=projects] .collection{padding:24px 20px;margin-top:50svh}
+  .observatory[data-page=projects] footer{padding:14px 20px}
+}
+
+/* Story corners retain readable HTML in front of the physical reading/documentation areas. */
+.observatory:is([data-page=about],[data-page=experience]) .page-shell{width:min(100% - 64px,72rem);padding:6svh 0 160px;justify-content:flex-start}
+.observatory:is([data-page=about],[data-page=experience]) .site-header{align-self:center;width:min(100%,38rem);margin-bottom:12svh;background:#14120ff2}
+.observatory:is([data-page=about],[data-page=experience]) nav{justify-content:center;gap:23px;flex-wrap:wrap;padding:0 12px}
+.story-page{width:min(100%,27rem);padding:30px;background:#14120ff2}
+.story-page h1{font-size:34px;margin-bottom:20px}
+.story-page p{color:var(--muted)}
+.story-page .story-name{font:18px/1.45 var(--sans);color:var(--ink);margin-bottom:24px}
+.story-page .story-lead{font-size:20px;line-height:1.5;color:var(--ink)}
+.story-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:26px}
+.role-list{margin:30px 0 24px}
+.role-list li{margin-bottom:28px}
+.role-heading{display:flex;gap:16px;justify-content:space-between;align-items:baseline}
+.role-heading h2{font-size:20px}
+.role-year{font:14px var(--sans);color:var(--accent)}
+.role-list p{margin:6px 0 0;font-size:17px}
+.observatory:is([data-page=about],[data-page=experience]) footer{width:min(100%,27rem);padding:14px 30px;margin-top:0;background:#14120ff2;opacity:1}
+.observatory:is([data-page=about],[data-page=experience]) .scene:after{background:none}
+@media(max-aspect-ratio:11/10){
+  .observatory:is([data-page=about],[data-page=experience]) .story-page{margin-top:40svh}
+  .observatory:is([data-page=about],[data-page=experience])[data-focus-view=false] .scene-caption{position:relative;left:auto;bottom:auto;margin:0 32px 90px;max-width:calc(100% - 64px)}
+}
+@media(max-width:699px){
+  .observatory:is([data-page=about],[data-page=experience]) .page-shell{width:calc(100% - 40px);padding:0 0 44px}
+  .observatory:is([data-page=about],[data-page=experience]) .site-header{margin:30px 0 24px}
+  .observatory:is([data-page=about],[data-page=experience]) nav{display:grid;grid-template-columns:repeat(3,1fr);gap:0 8px}
+  .story-page{padding:26px 20px}
+  .story-page h1{font-size:30px}
+  .story-page .story-name{font-size:17px}
+  .story-page .story-lead{font-size:19px}
+  .observatory:is([data-page=about],[data-page=experience]) .story-page{margin-top:46svh}
+  .observatory:is([data-page=about],[data-page=experience]) footer{padding:14px 20px}
+}

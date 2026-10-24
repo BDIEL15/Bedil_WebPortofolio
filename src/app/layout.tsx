@@ -6,8 +6,8 @@ import { PageTransition } from '@/components/page-transition';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: { default: 'Abdiel Deandra EL Dzaky — Digital Observatory', template: '%s — Abdiel Deandra EL Dzaky' },
-  description: 'Computer Engineering student at Universitas Indonesia. A personal observatory for software, robotics, and visual explorations.',
+  title: { default: 'Abdiel Deandra EL Dzaky — Personal lab', template: '%s — Abdiel Deandra EL Dzaky' },
+  description: 'Computer Engineering student at Universitas Indonesia. A personal workbench for software, robotics, and a journey of learning.',
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return <html lang="en" data-scroll-behavior="smooth"><body><MotionProvider>
@@ -15,7 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <div className="page-shell">
         <header className="site-header"><Navigation /></header>
         <main id="main" tabIndex={-1}><PageTransition>{children}</PageTransition></main>
-        <footer><p>Abdiel Deandra EL Dzaky</p><span>Digital Observatory</span></footer>
+        <footer><p>Abdiel Deandra EL Dzaky</p><span>Personal lab</span></footer>
       </div>
     </ReadingContent>
     <SceneHost />

@@ -1,6 +1,162 @@
-# TODO — Digital Observatory
+# TODO — Personal Electronics Lab
 
-Status: **implementasi dijeda atas permintaan pemilik untuk brainstorming ulang konsep di chat baru**. Kandidat Robotics study dan motion tetap disimpan dan dapat dijalankan; build serta QA browser produksi terakhir lulus, belum ada persetujuan visual akhir atau konsep pengganti. Hasil terakhir: [QA Robotics study](docs/QA-WORKSHOP.md) dan [manifest aset](docs/ASSETS.md). Checkbox berarti hasil nyata, bukan persetujuan desain atau seluruh PRD sudah selesai.
+Status: **revisi arah ke satu workbench kompak dan fokus objek per halaman**. Pemilik merasa empat meja terlalu berulang. Implementasi empat sudut masih tersimpan sebagai baseline yang harus dikonsolidasikan; jangan menganggapnya komposisi final yang diterima.
+
+## Koreksi komposisi — satu workbench, fokus objek — 24 Oktober 2026
+
+- Pemilik menolak pengulangan banyak meja. Arah berikutnya: satu workbench/ruang kompak, setiap halaman fokus satu objek/kelompok benda dengan POV khusus; overview penuh untuk Home/Hide Text seperlunya. Referensi Hamza dipakai untuk komposisi ruang/fokus kamera; Clarissa tetap suasana hangat/editorial. Runtime empat meja yang ada belum direfaktor pada checkpoint ini; jangan menambah meja/sudut lengkap baru.
+- [x] Situs publik https://www.raomuhammadhamza.tech/ ditinjau langsung lewat browser: room overview, Projects/monitor, Experience/kartu pegboard, About/layar robot, serta About portrait. Screenshot lokal di `.taste-skill/lab-views/hamza-*`; tidak mengambil model, tekstur, bundle/source atau menjalankan ulang REA.
+- [x] Prinsip yang diambil: satu ruang koheren, satu objek hero per section, benda pendamping sebagai konteks, close/medium framing dan perpindahan kamera antarobjek. Kepadatan props tidak diselesaikan dengan membuat banyak meja lengkap.
+- [ ] Konsolidasikan meja yang berulang; gunakan kembali robot/notebook/lampu/pegboard yang sudah dibuat. Kurangi furniture/dekorasi duplikat dan panel baca generik yang menutupi konteks objek.
+- [ ] Rancang POV per route secara khusus (arah, jarak/lensa, target, ruang konten) dan portrait tersendiri. Siluet objek utama terbaca, bukan seluruh meja/kaki/dinding mendominasi setiap halaman. HTML/aksesibilitas, navigasi, pause/reduced motion/fallback tetap berlaku.
+- [ ] Buktikan ulang Home + Projects desktop/mobile sebagai contoh arah kompak sebelum memperluas komposisi ke About/Experience/Writing/Cabinet. Pemetaan kandidat: About notebook/benda personal; Projects robot+monitor; Experience pegboard; Writing area baca; Cabinet laci.
+- Runtime belum diubah pada checkpoint arah ini. Hasil build/QA empat sudut di bawah tetap historis dan tidak membuktikan redesign kompak. Perangkat fisik masih belum diuji.
+- Validasi perubahan arah: dokumen/konteks desain disinkronkan, JSON/whitespace diperiksa. Tidak perlu build baru karena hanya dokumen yang berubah. Server dev tetap milik tugas sebelumnya; browser referensi sudah ditutup. Perintah tetap `npm run dev`, `npm run prototype`, `npm run check`, hentikan dev sebelum `npm run build` lalu `npm start`.
+
+## Riwayat About / Experience empat sudut — 24 Oktober 2026
+
+Komposisi beberapa meja pada tahap ini dikoreksi pemilik; kode/QA dipertahankan sebagai baseline, bukan hasil visual final.
+
+- Pemilik mengizinkan kelanjutan rekomendasi dua sudut dengan grafis yang bagus. Gerbang tidak memperluas sudut otomatis di riwayat sebelumnya sudah digantikan izin ini khusus About/Experience.
+- [x] Route `/about` dengan meja baca fisik, notebook terbuka, lampu/buku/pensil; identitas/intro/bio dari profile JSON. `/experience` dengan board dokumentasi dan tiga grafis kategori asli; daftar HTML dari published experiences JSON. Tidak mengarang kontribusi, periode, karya, sertifikat, kontak atau tautan.
+- [x] Navigasi langsung, active nav dan Home About link menuju route baru; anchor Home lama dipertahankan untuk bookmark. Kamera baca/portrait/overview terpisah, direct URL/history, Hide Text auto-Explore/arrow/reset/Escape dan Show Text/fokus/scroll pulih.
+- [x] Satu renderer/ruang untuk empat sudut. Transisi biasa/restore 1,25 detik, perjalanan >14 unit 1,6 detik, overview 1,15 detik; pause/reduced motion langsung ke tujuan. Story corners diam saat idle; robot berhenti di Home/About/Experience serta hidden/reduced/static.
+- [x] Props statis dibatch per material, shared palette/tekstur asli dan spotlight statis cached. Builder 347 mesh / 122.418 rendered triangle / 173 geometri / 14 tekstur, tetap di bawah budget lama 350/150.000. Tidak menambah dependency/aset eksternal.
+- [x] 24 poster dari delapan pose × desktop/tablet/mobile direkam ulang dari produksi, total 717.670 byte. Tanpa JS/WebGL/static/context loss mengikuti poster route/overview aktif. Grafis tidak memuat data draft/identitas peran ke aset publik.
+- [x] Build/check **9 tes lulus**. Enam suite browser produksi lulus tanpa page error: story corners, smoke enam route/reflow320–1440/noJS, kamera/scroll/history, robot motion, lifecycle/context loss/retry dan probe rendering. About/Experience/Home idle berhenti; unit fit empat sudut pada lima rasio. Detail: [QA story](docs/QA-STORY-CORNERS.md).
+- [x] Capture delapan pose desktop/tablet/mobile dibuka; source lint About/Experience/Nav/CSS 0 FAIL/0 WARN. Dua belas screenshot inspector final ditinjau. Audit generik About 4 FAIL/2 WARN dan Experience 4 FAIL/3 WARN; warna hangat, scene 3D tunggal, komposisi panel/hero dan idle diam dipertahankan sesuai produk. Detail di QA story; audit belum sepenuhnya lulus.
+- [ ] Review pemilik atas framing notebook/lampu dan tiga lembar Experience, serta rasa perjalanan jauh antar-sudut. Render ini kandidat yang sudah bisa diperiksa, bukan penerimaan visual otomatis.
+- [ ] QA mobile fisik, Safari/Firefox, screen reader/zoom lengkap, cold-load/CLS, frame pacing/GPU/memory/thermal jangka panjang. Statistik geometri dan cap render tidak menggantikannya.
+- [ ] Materi kontribusi nyata, karya/tulisan/koleksi dan kontak/CV; sudut Writing/Cabinet masih lanjutan. Database/admin/ManimGX/deploy ditunda.
+- Error fungsional/build yang belum lulus pada pemeriksaan yang dijalankan: tidak ada. Poster baru sempat 404 saat capture dev pertama sebelum dibuat; setelah konversi, seluruh uji produksi termasuk noJS/WebGL blocked lulus.
+- Metadata 21st dicari (Impact Experience/editorial lists), lalu memakai Navigation/SplitText/pola HTML proyek. Tidak retrieval kode berbayar/generation/dependency atau review source eksternal. Riwayat pencarian gagal sebelumnya tidak menjadi hasil pencarian tahap ini.
+- Menjalankan: `npm run dev` untuk edit; `npm run prototype` untuk studi lama. Hentikan dev sebelum `npm run build`, lalu `npm start` untuk produksi. README mencakup `tests/story-corners-browser.js`; capture `tests/capture-lab-views.js`, konversi `node scripts/prepare-lab-posters.mjs`.
+- Akhir sesi: semua perubahan lokal tersimpan; prototype/analysis/studi/model/lisensi dipertahankan. Browser QA ditutup dan server produksi sementara dihentikan; preview dev aktif kembali di http://127.0.0.1:3000/ untuk review `/about` dan `/experience`. Tidak stage/commit/deploy. Jalankan `npm run dev` bila proses sudah berhenti, hentikan sebelum build.
+
+## Riwayat revisi model 3D dan motion robot — 24 Oktober 2026
+
+Pernyataan sudut About/Experience belum diperluas pada bagian ini digantikan checkpoint terbaru.
+
+- Pemilik memberi respons positif pada keseluruhan, lalu meminta bentuk 3D diperbagus dan robot bergerak. Ini menggantikan larangan animasi idle Projects sebelumnya, tanpa memperluas semua sudut otomatis.
+- [x] Rig bertingkat turret/bahu/siku/pergelangan/tool; housing tirus, bearing/collar/hub, flange, gripper/pad dan kabel per-link. Baut basis instanced; gripper tetap tegak. Material kayu/enamel/logam, keyboard robotics dan muka/handle laci diperbaiki.
+- [x] Motion observasional 16 detik memakai easing halus dan bukaan gripper; bukan demo pick-and-place/fisika atau klaim project. Maksimum render sekitar 30Hz hanya di Projects terlihat dan motion aktif. Tidak rebuild geometry/texture atau React state per frame.
+- [x] Pause/reduced motion membekukan pose; tab hidden/route lain/static menghentikan loop/waktu. Transisi kamera sementara menghentikan loop robot, lalu melanjutkan fase. Hanya shadow spotlight robotics diperbarui; shadow Home di-cache. Dispose/context loss membersihkan loop.
+- [x] Home tetap idle 0 render tambahan. Inspect ASCII tetap tidak ada; Hide Text langsung orbit/reset/arrow/touch, Show Text/Escape memulihkan baca/fokus/scroll. Dua belas poster baru dari pose istirahat deterministik, total 380.460 byte.
+- [x] Build/check produksi lulus **8 tes**; unit menjaga sudut/loop/kelancaran, tool tegak, travel nyata, clearance fixture dan geometri 129 pose. Builder 335 mesh / 107.980 rendered triangle / 161 geometri / 12 tekstur; budget lama tidak dilonggarkan.
+- [x] Motion browser produksi membuktikan piksel bergerak dengan kamera tetap, Pause membekukan piksel identik, resume, hidden/Home/reduced/static dan portrait motion/scroll. Lifecycle/context loss/retry/20 route, render probe, kamera dan smoke produksi lulus tanpa page error. Kamera merekam 206 view matrix perantara. Source lint 0 FAIL/0 WARN. Detail: [QA motion](docs/QA-ROBOT-MOTION.md).
+- [x] Capture produksi empat pose × desktop/tablet/mobile; model akhir dan poster dibuka. Enam screenshot inspector final diperiksa. Audit visual generik tetap 4 FAIL/4 WARN (palet hangat, jumlah gambar, komposisi panel/robot, hitungan motion DOM, footage/judul/subjudul/gap portrait); detail dan batas di QA motion. Audit belum sepenuhnya lulus.
+- [ ] Review pemilik atas bentuk/material/kecepatan/jarak gerak robot. Model masih stilisasi prosedural; respons positif sebelumnya bukan penerimaan otomatis atas revisi ini.
+- [ ] Uji perangkat ponsel fisik, Safari/Firefox, screen reader/zoom, cold-load/CLS, frame pacing dan GPU/memory/thermal jangka panjang. Render cap bukan jaminan performa semua perangkat.
+- [ ] Berikutnya setelah review: QA perangkat nyata dan kurasi materi Projects/Experience/Writing/Cabinet/kontak/CV. Sudut lain belum diperluas, database/admin/ManimGX/deploy tetap ditunda.
+- Error build/fungsional yang masih terbuka pada suite yang dijalankan: tidak ada. Uji batas awal menangkap roundoff grip negatif sangat kecil (easing di-clamp); tes piksel awal menangkap overlay tombol, helper scene-only diperbaiki tanpa melonggarkan assertion. Batas audit visual/perangkat fisik tetap terbuka.
+- Perintah: `npm run dev` untuk edit/preview; `npm run prototype` untuk studi lama. Hentikan dev sebelum `npm run build`, lalu `npm start` untuk produksi. Urutan QA pada README sekarang mencakup `tests/robot-motion-browser.js`; capture lalu `node scripts/prepare-lab-posters.mjs`.
+- Seluruh perubahan lokal disimpan, prototype/analysis/studi/aset/lisensi dipertahankan; tidak menambah dependency, stage/commit atau deploy.
+- Akhir sesi motion: browser QA ditutup, server produksi sementara dihentikan dan preview **dev aktif kembali** pada http://127.0.0.1:3000/. Jalankan `npm run dev` bila proses sudah berhenti. Build/check 8 tes dan lima suite fungsional browser produksi lulus; audit visual/perangkat nyata tetap terbuka.
+
+## Riwayat Projects robotics statis + Hide Text otomatis — 24 Oktober 2026
+
+Aturan tanpa animasi/render idle untuk Projects pada checkpoint ini digantikan revisi motion terbaru; Home tetap event-driven.
+
+- [x] Projects sekarang menuju meja robotics terpisah dalam lab yang sama, dengan arm/gripper, fixture/sample cube, monitor diagram, storage dan notebook asli. Bukan hanya pemindahan sudut kamera ke instrumen Home, dan bukan project milik pemilik.
+- [x] Inspect ASCII dihapus dari UI/engine aktif dan overlay canvas. Prototype, studi/model/lisensi lama serta perubahan lokal dipertahankan. Satu canvas/renderer aktif; string tombol tidak ada pada bundle produksi.
+- [x] Hide Text langsung mengaktifkan drag/arrow/reset termasuk touch; input saat tween dapat langsung mengambil alih. Show Text/Escape dari dalam/luar canvas mengembalikan pose, HTML/fokus dan posisi baca. Saat teks terlihat, native scroll dan Explore eksplisit tetap tersedia.
+- [x] Overview mengikuti bounds workspace aktif, dengan framing portrait sendiri. Route/restore 1,25 detik dan overview 1,15 detik; pause/reduced motion langsung ke tujuan. Tanpa animasi/render idle. Empat pose/12 WebP lokal untuk SSR/static/context loss/no-WebGL.
+- [x] Panel Projects mobile/tablet portrait dipindah ke bawah hero robot; kontrol scene tablet mengikuti alur halaman agar tidak menumpuk teks. Empty state tetap jujur. Tidak menambah dependency atau mengunduh model.
+- [x] Build produksi/check lulus 7 tes. Smoke/lifecycle/render probe/kamera produksi lulus tanpa page error; kamera final mengamati 218 view matrix perantara, direct Projects, immediate drag, Escape global, reset, retarget/history, scroll, pause/reduced motion dan fallback. Idle 0 render tambahan; budget geometri tidak dilonggarkan. Detail/reproduksi: [QA robotics](docs/QA-ROBOTICS-BAY.md) dan [ASSETS](docs/ASSETS.md).
+- [x] Capture produksi empat pose × desktop/tablet/mobile dan poster scene-only direkam; hasil akhir dibuka. Source lint 0 FAIL/0 WARN. Audit visual generik masih 4 FAIL/4 WARN; palet hangat, scene WebGL tunggal, komposisi panel/robot dan idle diam dipertahankan sesuai produk. Batas audit dicatat, bukan dianggap lulus.
+- [ ] Review pemilik atas meja robotics, framing/proporsi robot dan rasa transisi. Material/model prosedural masih dapat diperbaiki berdasarkan masukan; bukan klaim setara referensi.
+- [ ] QA mobile fisik, Safari/Firefox, screen reader/zoom, cold-load/CLS, frame pacing dan GPU/memory jangka panjang. Pengujian Chromium/emulasi belum menjawabnya.
+- [ ] Sudut tersendiri About/Experience/Writing/Cabinet, materi karya/tulisan/koleksi nyata dan kontak/CV tetap berikutnya. Tidak memperluas semua sudut otomatis; Supabase/admin/ManimGX dan deployment ditunda.
+- Error fungsional/build yang belum lulus: tidak ada pada suite yang dijalankan. Audit desain di atas dan QA perangkat nyata tetap terbuka. Poster overview Projects yang belum tersedia saat uji dev awal sudah dibuat dan lulus suite produksi; tidak ada assertion dilonggarkan.
+- Berikutnya: review visual Home → Projects dan Hide Text pada preview; koreksi berdasarkan masukan, lalu QA perangkat nyata/konten sebelum sudut lain.
+- Menjalankan kembali: `npm ci` bila dependency belum tersedia; `npm run dev` di port 3000, `npm run prototype` untuk studi lama. Hentikan dev sebelum `npm run build`, lalu `npm start` untuk hasil produksi. Browser QA/capture: urutan di README, lalu `node scripts/prepare-lab-posters.mjs`.
+- Akhir sesi: seluruh perubahan tersimpan lokal; tidak stage/commit/deploy. Browser QA ditutup, server produksi sementara dihentikan dan preview dev kembali aktif di http://127.0.0.1:3000/. Jalankan `npm run dev` bila proses sudah berhenti; hentikan sebelum build.
+
+## Riwayat Home → Projects pada instrumen / overview awal — 24 Oktober 2026
+
+Perilaku Explore eksplisit pada overview dan sembilan poster pada bagian ini digantikan checkpoint terbaru.
+
+- Pemilik mengizinkan satu perpindahan lengkap Home → Projects dan Hide Text dengan POV lebih tinggi untuk melihat meja 3D. Scope ini menggantikan gerbang Home-only; sudut lain belum otomatis dikerjakan.
+- [x] Satu renderer/ruang untuk pose Home, Projects dan overview. Projects menyorot instrumen/area eksperimen, dengan HTML/empty state nyata. About/Experience tetap anchor; Writing/Cabinet belum mendapat sudut sendiri.
+- [x] GSAP menggerakkan kamera/target/FOV/fog bersama dan dapat retarget dari pose saat ini. Direct load langsung pada tujuan. Resize, pause/reduced motion dan tab hidden menyelesaikan transisi lalu diam. Tidak ada idle animation.
+- [x] Hide Text membuka overview desktop/portrait; Show Text/Escape memulihkan sudut aktif, HTML/fokus dan posisi baca. Drag tetap melalui Explore eksplisit, termasuk pada overview.
+- [x] Sembilan poster Home/Projects/overview untuk SSR/tanpa WebGL/static/context loss. Capture `tests/capture-lab-views.js`, konversi `node scripts/prepare-lab-posters.mjs`.
+- Unit check kini tujuh tes, termasuk pose/fit kamera. QA matriks/transisi/history/scroll dan batasnya di [QA kamera](docs/QA-LAB-CAMERA.md). QA props lama bukan bukti gerak kamera baru.
+- [x] Build, tujuh tes dan smoke/lifecycle/probe/kamera produksi lulus; page error kosong. Uji final merekam 142 view matrix perantara, direct Projects tanpa pose Home, retarget, hidden tab, pause/reduced motion, scroll restore, static/retry dan touch/no-WebGL. Idle tetap 0 render tambahan. Inspector Projects masih 4 FAIL/3 WARN; perangkat nyata belum diuji.
+- Berikutnya: review perpindahan Home → Projects/overview, QA perangkat nyata dan materi karya. Tidak menambah dependency/database/admin, mengubah staging, commit atau deploy.
+- Akhir pengerjaan: browser QA ditutup, server produksi sementara dihentikan, preview dev dipulihkan pada http://127.0.0.1:3000/. Seluruh perubahan tersimpan lokal; `npm run dev` untuk kembali mengedit, hentikan sebelum `npm run build`/`npm start`. Tujuh tes dan seluruh suite fungsional produksi lulus; audit visual/perangkat nyata tetap terbuka.
+
+## Riwayat perbaikan bentuk item Home — 24 Oktober 2026
+
+- [x] Keyboard diganti layout ANSI 60% lima baris/61 keycap instanced, modifier/spacebar berukuran benar dan legenda lokal. Tombol Esc tidak lagi menumpuk dua mesh; baris bawah tidak saling bertabrakan.
+- [x] Spiral kabel mendapat sampling yang memadai, arah lilitan yang terbaca, konektor dan ujung yang terhubung. Kabel probe mengikuti soket instrumen; ASCII memakai posisi instance keycap aktual.
+- [x] Instrumen mempunyai casing/panel/bezel, knob berpenunjuk, soket, ventilasi dan kaki. Dudukan monitor diletakkan di atas meja. Notebook memiliki cover/halaman/spine/elastic; alat pegboard berbentuk obeng, bukan balok; kepala lampu dan kanal lampu rak diperbaiki.
+- [x] Bevel kotak dibuat sesuai dimensi asli dan di-cache, sehingga tidak terdistorsi dari skala unit cube. Rasio tekstur pegboard/mat diperbaiki agar lubang/grid tidak melebar.
+- [x] Check/build lulus enam tes, termasuk finite geometry, keycap tidak beririsan, benda tidak menembus meja/mat dan sampling spiral. Builder berisi 254 mesh, 71.432 triangle yang dirender dan 9 tekstur prosedural. Batas tes bukan bukti performa ponsel fisik.
+- [x] Smoke/lifecycle/probe browser produksi lulus tanpa page error: reflow 320–1440, keyboard/touch, ASCII, context loss/static/retry dan tanpa JS/WebGL. Idle 0 render tambahan. Screenshot props dan poster responsif direkam ulang.
+- Source lint lulus; inspector props masih 4 FAIL/3 WARN pada kategori audit generik yang dijelaskan di QA Home. Framing/material belum diterima final oleh pemilik; QA perangkat nyata tetap terbuka.
+- Kamera duduk dan posisi intro yang sudah diturunkan dipertahankan. Tidak menambah dependency, mengunduh model/tekstur, memperluas sudut lain, commit atau deploy. Aset/prototype/analysis/lisensi tersimpan.
+- Berikutnya: review bentuk/material Home dari render terbaru dan lanjutkan QA perangkat nyata; sudut/route lain tetap mengikuti review. Perintah tidak berubah; hasil detail di QA Home dan ASSETS.
+- Akhir pengerjaan props: browser QA ditutup, server produksi sementara dihentikan, preview dev dipulihkan pada http://127.0.0.1:3000/. Perubahan tersimpan lokal; staging tidak diubah.
+
+## Revisi Home — sudut pandang duduk, 24 Oktober 2026
+
+- Penyesuaian lanjutan sesuai review: seluruh blok intro diturunkan 5svh pada desktop/tablet dan 6svh pada mobile; scrim baca ikut bergeser. Kamera/geometri/poster tetap sama. Pekerjaan berikut yang diusulkan: pematangan Home, lalu satu sudut Projects beserta transisi singkat setelah framing diterima; belum memulai perluasan tersebut.
+- Verifikasi penyesuaian posisi: build/check dan smoke produksi lulus, tanpa overflow 320–1440 atau page error. Screenshot desktop/mobile dibuka; preview dev dipulihkan. Log `intro-lower-*`; tidak mengulang audit generik atau lifecycle engine karena engine tidak berubah.
+
+- Pemilik menilai fondasi visual sudah cocok, lalu meminta tulisan berada pada pegboard dan pengalaman seperti duduk menggunakan meja. Permintaan melanjutkan diterima; review ini bukan izin memperluas sudut/halaman lain.
+- [x] Kamera depan setinggi mata; pegboard menjadi bidang intro, keyboard/kabel/cutting mat di foreground. Kaki meja dan alas panggung tidak masuk framing utama. Kamera portrait disesuaikan tanpa mengubah geometri/aset atau menambah dependency.
+- [x] Intro mobile dipindah ke bidang pegboard. Navigasi mendapat latar untuk kontras; kontrol scene Home dipadatkan, panel Explore membungkus pada layar sempit. HTML, pause/reduced motion, static/retry dan native scroll tetap dipertahankan.
+- [x] Poster baru dari scene yang sama menggantikan fallback sebelumnya; kode/model studi lama dipertahankan. Screenshot dan log revisi memakai prefix `seated-` di `.taste-skill/personal-lab/`.
+- [x] Build/check, smoke dan lifecycle produksi lulus tanpa page error; reflow 320–1440 termasuk panel Explore pada 320/390; probe idle mencatat 0 render tambahan. Source lint lulus. Inspector generik tetap 4 FAIL/3 WARN; QA perangkat nyata dan penerimaan framing belum selesai.
+- [ ] Review pemilik terhadap framing duduk desktop/mobile. Konten panjang tetap mengikuti document flow; teks utama masih HTML di depan scene, bukan huruf mesh 3D yang mengikuti orbit.
+- Berikutnya setelah review: koreksi Home bila diperlukan sebelum sudut/route dan transisi kamera lanjutan. Belum ada database/admin, karya/kontak/CV baru, commit atau deploy.
+- Perintah tetap: `npm run dev`, `npm run prototype`, `npm run check`; hentikan server sebelum `npm run build`, lalu `npm start`. Hasil QA revisi di [QA Home](docs/QA-HOME-LAB.md).
+- Akhir revisi: sesi browser QA ditutup, server produksi sementara dihentikan dan preview dev kembali aktif di http://127.0.0.1:3000/. Tidak mengubah staging; seluruh perubahan tetap lokal.
+
+## Riwayat bukti visual Home awal — 23 Oktober 2026
+
+- [x] Home nyata di aplikasi: meja/rak/pegboard, instrumen generik, lampu, mechanical keyboard, kabel, cutting mat dan catatan. Geometri/tekstur dibuat dalam kode; foto referensi tidak menjadi aset produksi. Tidak menambah dependency.
+- [x] Intro Inggris dan dua kandidat typing dari brief; nama lengkap serta tiga pengalaman nyata tetap tersedia. Navigasi langsung enam label; About/Experience sementara anchor Home, bukan route/sudut baru. Koleksi kosong tetap jujur; kontak/CV tidak dikarang.
+- [x] Kamera portrait khusus dan poster desktop/tablet/mobile dari render yang sama; static/retry, Explore/drag/arrow/reset/Escape, Hide/Show text, pause/reduced motion dipertahankan. Scene 3D diam saat idle; motion detail belum ditambahkan.
+- [x] Check/build produksi, smoke empat route/reflow 320–1440, lifecycle/fallback/context loss dan probe render dijalankan. Detail hasil serta audit visual yang belum lulus ada di [QA Home](docs/QA-HOME-LAB.md). QA studi lama tidak dipakai sebagai bukti redesign.
+- [x] Screenshot aktual Home desktop/tablet/mobile direkam di `.taste-skill/personal-lab/`. Koreksi QA: grid nav mobile, intro tablet dijauhkan dari rak, judul/reveal tetap terbaca tanpa fade awal.
+- [ ] Review pemilik atas komposisi, material, kehangatan cahaya dan framing Home. Ini gerbang berikutnya sebelum memperluas sudut/halaman; konsep yang disetujui belum berarti render disetujui.
+- [ ] Setelah review: revisi Home sesuai masukan, kemudian rancang sudut dan koordinasi kamera antarroute. About/Experience terpisah, konten karya/tulisan/cabinet, kontak/CV, motion lanjutan dan QA perangkat nyata belum selesai.
+- Catatan QA: satu timeout saat Enable 3D pada rangkaian produksi yang bersamaan dengan inspector; uji lifecycle ulang di sesi bersih lulus tanpa melonggarkan assertion. Penyebab timeout belum dipastikan, bukan bukti memory/GPU jangka panjang aman.
+- Audit visual generik final masih **4 FAIL/3 WARN** (palet hangat, jumlah foto, motion, perhitungan isi DOM/gap, footage dan ambang subjudul); detail/penjelasan di QA Home. Late-title sudah diperbaiki dan tidak muncul lagi. Penerimaan pemilik dan QA perangkat nyata tetap terbuka.
+- Perintah kembali: `npm ci` bila perlu, `npm run dev`; prototype `npm run prototype`. Hentikan server sebelum `npm run build`, lalu `npm start`. Panduan QA/capture terbaru ada di README dan QA Home. Tidak commit/deploy atau mengubah staging.
+- Akhir sesi: browser QA/referensi ditutup, server produksi sementara dihentikan, preview **dev dipulihkan pada http://127.0.0.1:3000/** untuk review Home. Screenshot yang disimpan berasal dari produksi, bukan overlay dev.
+
+- Pemilik mengirim prompt lengkap yang mengaktifkan kembali implementasi dan menggantikan arahan visual lama yang bertentangan. Tidak lagi menunggu izin melanjutkan atau mengulang brainstorming.
+- Git diverifikasi pada HEAD `3e9f8c3` (Prototype pertama); perubahan dokumen/konteks desain lokal dan referensi foto dipertahankan. Tidak reset/clean/stash/stage/commit. Preview port 3000 sudah berjalan dari repository yang sama.
+- Baca REDESIGN-LAB, PRD §2.5/§7.7/§16.5 dan empat foto lokal. Foto hanya referensi, tidak masuk aset produksi. Target tahap ini adalah komposisi diam Home desktop/mobile di aplikasi nyata, dengan konten/navigasi langsung, Explore, pause/reduced motion dan poster scene baru.
+- Kamera antar-sudut/scene per route, Experience terpisah, konten karya, database/admin dan efek lanjutan belum dikerjakan pada tahap bukti visual ini. Kontak/CV yang belum tersedia tidak dikarang.
+
+## Riwayat checkpoint brainstorming — lab personal, 23 Oktober 2026
+
+Bagian berikut adalah riwayat sebelum prompt eksekusi dikirim. Pernyataan menunggu implementasi/jeda di bawah tidak menggantikan status Home di atas.
+
+### Persiapan redesign terbaru
+
+- Prompt lengkap untuk chat pengerjaan sebelumnya siap di [PROMPT-REDESIGN](docs/PROMPT-REDESIGN.md), termasuk panduan kapan mempertimbangkan Medium/High/XHigh/Astra/Luna. Pergantian melalui kontrol pemilik; rekomendasi berdasarkan bukti, bukan kewajiban upgrade. File prompt tidak otomatis memulai implementasi.
+
+- Pemilik menerima rekomendasi file-first: JSON untuk data terstruktur, Markdown/MDX tepercaya untuk naskah; editor lokal → preview → deploy. Database/dashboard bukan kebutuhan versi pertama.
+- Mobile disepakati sebagai lab dengan framing portrait khusus, bukan desktop yang dikecilkan: default scroll/tap, Explore eksplisit untuk orbit, daftar konten mengikuti document flow dan Writing berfokus pada membaca. Tetap perlu dibuktikan lewat render/QA.
+- Permintaan aktif terbaru adalah **menyiapkan kebutuhan redesign**, belum mulai implementasi. Brief, daftar aset, urutan milestone, QA dan prompt lanjut ada di [REDESIGN-LAB](docs/REDESIGN-LAB.md). Foto lampiran disalin tanpa modifikasi ke `analysis/workbench-references/`, diverifikasi SHA-256 terhadap sumber; bukan aset publik dan hak distribusinya belum diketahui.
+- Keperluan perencanaan siap; model/komposisi baru, copy final, data kontak/CV dan materi karya belum semuanya tersedia. Saat diminta melanjutkan: verifikasi checkout lalu bukti visual Home desktop/mobile. Jangan mengulang brainstorming atau memasang database secara otomatis.
+- Validasi persiapan: whitespace diff, parse JSON konteks desain dan link/path dokumen lokal diperiksa. Tidak menjalankan build/browser aplikasi baru karena runtime tidak berubah. Hasil QA lama tetap historis.
+
+- **Disepakati pemilik:** lab/workbench elektronik 3D, bentuk sederhana seperti Hamza, cahaya/material hangat, ketenangan editorial Clarissa. Referensi foto: komposisi foto 3, kehangatan foto 2, aktivitas foto 4, kepadatan rak foto 1.
+- Home menampilkan workbench dengan intro di tengah dan baris typing. About, Projects, Experience, Writing dan Cabinet memiliki tempat/sudut sendiri dalam lab yang sama; susunan persis dan copy belum final. Navigasi langsung, konten HTML, fallback dan scroll mobile tetap menjadi batas desain.
+- Tujuan utama perekrutan dan dihubungi; narasi yang diinginkan menunjukkan perjalanan pemilik. Bahasa publik Inggris. Tidak menambahkan klaim sifat/keahlian hanya dari usulan agent.
+- Scene untuk observasi/inspeksi; demo knob, game atau simulasi robot tidak diwajibkan. Interaksi artikel Writing dapat lebih mendalam jika membantu penjelasan.
+- Kandidat benda dari pemilik: kabel dan mechanical keyboard; manga serta stiker meme tentatif, dipilih kemudian. Foto referensi bukan bukti workspace/aset milik pemilik.
+- Karya dan detail pengalaman akan dimasukkan belakangan. Writing bebas topik, termasuk pelajaran fisika; Markdown/MDX dipilih untuk naskah/komponen artikel. Rencana data/database ada di PRD §16.5; database/admin ditunda dengan workflow file-first.
+- **Berikutnya:** setelah pemilik meminta eksekusi, ikuti REDESIGN-LAB: verifikasi kondisi Git dan buat satu bukti visual Home desktop/mobile memakai fondasi yang relevan. Persetujuan konsep belum merupakan persetujuan hasil visual atau izin melanjutkan implementasi.
+- Pembaruan ini hanya dokumen dan konteks desain. Tidak menjalankan aplikasi/build/tes browser baru, menambah dependency, membuat database, mengubah staging, commit atau deploy.
+
+Catatan jeda dan backlog di bawah adalah riwayat. Pernyataan lama bahwa belum ada konsep pengganti digantikan checkpoint ini; batas QA kode lama tetap berlaku.
 
 ## Checkpoint jeda dan handoff — 23 Oktober 2026
 
@@ -19,6 +175,8 @@ Status: **implementasi dijeda atas permintaan pemilik untuk brainstorming ulang 
 - Belum selesai: konsep personal final; materi project/tulisan/cabinet dan kontribusinya; kontak/CV; metadata/sitemap; QA mobile fisik, lintas browser, screen reader/zoom, CLS/loading/bundle serta GPU/memory jangka panjang.
 - Kendala terdahulu: Windows Turbopack junction membuat dev/build memakai Webpack. Pada QA sebelumnya CLI 21st meminta login dan external review ditolak auto-review karena potensi pengiriman source; review lokal digunakan. Itu bukan pengujian koneksi MCP/akun pada chat berikutnya; verifikasi kemampuan yang tersedia bila nanti diperlukan dan jangan otomatis mengirim source.
 - Pembaruan checkpoint ini hanya menyentuh dokumentasi/konteks desain. Build/browser tidak dijalankan ulang karena tidak ada perubahan runtime; hasil di atas adalah hasil pemeriksaan implementasi sebelumnya.
+- Preview dev milik repository dihentikan untuk jeda; port 3000 diperiksa dan tidak memiliki listener setelah penghentian. Tidak memulai proses/background baru. Perubahan tersimpan lokal; Git memuat staged dan unstaged changes. Tidak mengubah staging atau melakukan commit/reset/stash.
+- HEAD saat checkpoint diverifikasi: `3e9f8c3` (`Prototype pertama`). Hash pada riwayat checkpoint lama bukan acuan HEAD sekarang; verifikasi lagi saat melanjutkan. Pemeriksaan whitespace staged/unstaged dan validasi JSON konteks desain lulus.
 
 ### Berikutnya setelah brainstorming
 

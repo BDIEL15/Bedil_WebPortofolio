@@ -1,8 +1,224 @@
 # TODO — Personal Electronics Lab
 
-Status: **revisi arah ke satu workbench kompak dan fokus objek per halaman**. Pemilik merasa empat meja terlalu berulang. Implementasi empat sudut masih tersimpan sebagai baseline yang harus dikonsolidasikan; jangan menganggapnya komposisi final yang diterima.
+Status: **UI lebih lembut dan dummy interaktif melalui `?preview=1`**, di depan enam POV pada satu workbench/rak/renderer/overview. Home tanpa section/CTA About me; tiga name tag dari prioritas published JSON. Foto null dan mode konten asli tetap empty state jujur.
 
-## Koreksi komposisi — satu workbench, fokus objek — 24 Oktober 2026
+## Fade masuk Home — 26 Oktober 2026
+
+- [x] Fade langsung pada header/judul/interest/deskripsi/ikon, stagger tanpa pergeseran layout. Menggantikan animasi pembungkus display:contents yang tidak merender opacity; tidak terpotong ketika atribut boot dihapus.
+- [x] Mark pending sebelum first paint, cleanup/failsafe, noJS/pause/reduced/focus/hidden; cold entry Home tetap fade ketika sesi boot sudah pernah dilihat, navigasi kembali Home tidak menggandakan animasi. Interest berhenti selama boot agar muncul utuh.
+- [x] Check dan suite arrival dev desktop/mobile lulus; urutan, opacity aktual, posisi heading, lifetime mandiri, cached-session refresh, no replay route serta aksesibilitas dasar diperiksa. Source lint tiga file 0/0.
+- [x] Build/check 15 tes dan tiga suite produksi arrival/boot/navigation lulus; pageErrors kosong. Screenshot mid-fade dan hasil desktop/mobile dibuka; lint 0/0, diff/JSON desain bersih. [QA Home arrival](docs/QA-HOME-ARRIVAL.md).
+- [ ] Review pemilik atas tempo fade; HP fisik belum diuji. Browser QA ditutup, produksi sementara dihentikan dan dev dipulihkan; tidak stage/commit/push/deploy.
+
+## Kilau keberhasilan opening — 26 Oktober 2026
+
+- [x] Review lanjutan: tambahkan vignette radial hijau, glow tepi lebih lebar dan blend screen agar sukses terasa lebih terang; teks tengah tetap jelas. Perubahan hanya CSS, durasi serta scene tetap.
+- [x] Suite boot dev desktop/mobile, Skip/reduced/fallback/timeout dan first paint lulus, pageErrors kosong; source lint 0/0. Snapshot puncak glow dibekukan hanya di fixture QA untuk review; durasi produk tetap. Build tidak diulang untuk penyesuaian CSS ini, dev tetap aktif; browser QA ditutup.
+
+- [x] Outline hijau-krem menyala sekali saat pengetikan selesai, opacity-only 620ms. Bezel memakai material terpisah, emisi rendah maksimal .3 dan memudar pada clock kamera; material meja lain tetap netral.
+- [x] Emisi direset saat Skip/pause/hidden/interruption/end; reduced motion mengikuti guard dan CSS. Tidak ada bloom, model/tekstur/dependency baru atau tambahan durasi; poster tidak berubah.
+- [x] Pemeriksaan dev boot desktop/mobile lulus, screenshot ditinjau dan intensitas bezel diturunkan. Source lint 0/0, dengan pengecualian terdokumentasi untuk glow yang diminta pemilik.
+- [x] Build/check 15 tes, lint 0/0 dan suite produksi boot/lifecycle lulus; pageErrors kosong. Success cue sesudah typing, isolated material/reset, Skip/reduced/static/noJS, deadline/retry dan context loss diperiksa. Screenshot produksi setelah penurunan intensitas ditinjau. Log `.taste-skill/unlock-*.txt`.
+- [ ] Review pemilik; HP fisik belum diuji. Tidak mengulang seluruh tes navigasi/kamera karena jalur/tempo/route tidak berubah. Browser QA ditutup dan dev dipulihkan; tidak stage/commit/push/deploy.
+
+## Koreksi pengetikan terminal — 26 Oktober 2026
+
+- [x] Perintah diketik dulu sebelum persiapan 3D, hasil bertahap, cursor dan baris akhir; handoff menunggu readiness dan teks selesai. Clock dibatasi agar frame macet tidak melompati karakter; tidak ada React state per karakter.
+- [x] Placeholder first paint memakai anchor yang sama; preparation environment/model/warm render memberi giliran antarframe dan shadow saat flight maksimal 30Hz. Satu loop WebGL lama; RAF typing sementara dihentikan saat selesai/Skip.
+- [x] Deadline sebelum command selesai tidak membangkitkan loader baru; retry eksplisit tetap bekerja. Fixture deadline disesuaikan dengan durasi mengetik, ditambah regresi early timeout/retry.
+- [x] Build/check 15 tes dan source lint lulus. Kasus typing/handoff/Skip desktop-mobile dev lulus; fixture deadline lama 400ms diperbarui karena kini command harus diketik dulu.
+- [x] Build/check 15 tes, lint 0/0 dan lima suite produksi boot/cinematic-camera/lifecycle/smoke/navigation lulus; pageErrors kosong. Test canvas mencatat banyak state command berurutan, durasi ketik >500ms dan tidak melompati karakter; first-paint anchor desktop/mobile, early timeout/retry dan late import lulus. Screenshot placeholder serta terminal/pullback dibuka. Poster tidak perlu dibuat ulang.
+- [ ] Review pemilik; HP fisik tetap belum diuji. Dev dipulihkan setelah QA, tidak stage/commit/push/deploy.
+
+## Terminal opening dan coding — 26 Oktober 2026
+
+- [x] Terminal HTML/monitor memakai painter yang sama, resolusi 1536×864 dan layout boot portrait yang tidak terpotong. Tahap nyata interface/workbench/grafis/frame, tanpa persen unduhan palsu.
+- [x] Persiapan shader dan warm render di belakang terminal, handoff 320ms/hold 360ms, kamera dari monitor mundur/naik ke POV Home selama 3s desktop/2.6s portrait; intro/header fade setelah 65% flight.
+- [x] Sekali per sesi; Skip/Escape, reduced/paused/static/hidden/direct route/noJS, timeout loader 12s dan failsafe script 15s. Konten inert/scroll lock dipulihkan; late import tidak membangkitkan renderer yang dibatalkan.
+- [x] Editor ilustratif mengetik, koreksi, pause, scroll/cursor dan keycap sinkron memakai loop scene lama. Tekstur hanya diunggah saat tampilan berubah; matrix keycap dilepas saat idle/boot, tanpa tangan/audio/dependency baru.
+- [x] Check 14 tes dan source lint UI 0/0 lulus. Suite boot dev desktop/mobile, repeat session, Skip, fallback, timeout/late import lulus; screenshot terminal/pullback/Home dibuka. 21 poster baru (794.568 byte), budget 248 mesh/90.432 triangle/182 geometri/12 tekstur.
+- [x] Build akhir/check 14 tes dan lima suite produksi (boot, cinematic-camera, personal-lab lifecycle, smoke, navigation) lulus; pageErrors kosong. Boot diulang setelah koreksi opacity handoff, frame monitor opaque dan tidak menampilkan ghost poster. Source lint 0/0, whitespace/JSON desain bersih. [QA opening](docs/QA-TERMINAL-OPENING.md).
+- [ ] Review pemilik atas timing/visual dan QA HP fisik/browser lain. Inspector Home tetap 3 FAIL/3 WARN generik dengan alasan pada QA; bukan audit penuh lulus.
+- Browser QA ditutup, produksi sementara dihentikan dan dev dipulihkan. Perintah tetap `npm run dev`, `npm run check`, `npm run prototype`; hentikan dev sebelum `npm run build`/`npm start`. Opening dapat ditinjau ulang dalam sesi privat baru. Tidak stage/commit/push/deploy.
+
+## Area baca dan footer tetap — 26 Oktober 2026
+
+- [x] Home CTA Projects diganti ikon GitHub/LinkedIn/Instagram/email dari tautan pemilik; data di profile.socialLinks, validasi HTTPS/mailto, SVG lokal + lisensi. Label aksesibel, tooltip hover/fokus dan target 44px; header Projects dan legacy #experience tetap.
+- [x] Check TypeScript/konten/13 tes dan source lint tiga file 0/0 lulus. Suite navigasi dev pada 1440/768/390/320 px lulus tanpa page error: href tepat, SVG lokal, tab baru aman, tooltip fokus, noJS, legacy hash dan marker nav. Screenshot Home desktop/mobile dibuka. Tidak membuka akun sosial/mengirim email; build produksi tidak diulang untuk perubahan tautan ini. Log `.taste-skill/home-social-*.txt`.
+
+- [x] Review lanjutan: Explore view/Use static view beserta retry/Enable 3D hanya di Home; caption kosong di route lain dihapus. Hide Text/rotasi/Reset/Escape dan preferensi static lintasroute tetap.
+- [x] Check TypeScript/konten/13 tes dan source lint SceneHost 0/0 lulus. Browser dev kontrol Home desktop/mobile serta smoke keenam route (termasuk noJS/reduced motion) lulus tanpa page error; screenshot Experience desktop/mobile dibuka. Tes static non-Home disesuaikan memakai preferensi tersimpan, tombol Home diuji terpisah. Build produksi tidak diulang untuk perubahan kondisi kontrol ini.
+- [x] Suite Experience dev juga lulus pada 1440/768/390/320 px, static/noJS/noWebGL, pageErrors kosong. Browser QA ditutup; dev tetap aktif. Log `.taste-skill/home-controls-*.txt`.
+
+- [x] Main dibatasi pada ruang di bawah header/di atas footer tanpa mengganti scroll dokumen; RAF scroll dan ResizeObserver menyesuaikan batas, tanpa React state per frame. Scroll-padding/fokus keyboard mengikuti area baca.
+- [x] Footer nama/Personal lab fixed kiri bawah, naik di atas kontrol mobile; tidak lagi ikut fade route. Home tetap tanpa footer. Scene, kamera dan poster tidak berubah.
+- [x] Pemeriksaan dev keenam route pada 1440/390/320 px, scroll, fokus keyboard, overflow dan jarak kontrol lulus; screenshot desktop/mobile dibuka. TypeScript, konten, 13 tes dan source lint empat file 0/0 lulus.
+- [x] Build/check 13 tes dan empat suite produksi (reading-frame, navigation, ui-preview, text-transition) lulus; pageErrors kosong. Semua 30 arah transisi desktop/mobile, pause/reduced/history/native fallback lulus. QA: `docs/QA-READING-FRAME.md`.
+- [ ] Review pemilik; HP fisik/browser lain belum diuji. Audit desain generik About preview masih 6 FAIL/4 WARN, alasan/batas pada laporan QA.
+- Perintah tetap: `npm run dev`, `npm run check`, `npm run prototype`. Hentikan dev sebelum `npm run build`/`npm start`.
+
+## Experience profil dan prioritas badge — 26 Oktober 2026
+
+- [x] Review lanjutan pemilik: hapus latar kotak besar timeline dan padding sampingnya agar daftar sejajar dengan pengantar; ikon organisasi dan hierarki teks tetap.
+- [x] Koreksi tanpa panel diperiksa visual desktop/mobile; suite Experience dev lulus pada 1440/768/390/320 px, static/noJS/noWebGL dan tanpa page error. Build tidak diulang untuk koreksi CSS ini.
+
+- [x] Panel profil seperti hierarchy LinkedIn: monogram generik, heading peran, organisasi dan tahun nyata. Lab tanpa periode rekaan; tidak menambah klaim kontribusi/durasi/tipe pekerjaan.
+- [x] Sesuai klarifikasi pemilik, Lab menggantikan slot IME yang dekat kamera. Fisik kiri→kanan IME → EXERCISE → Lab; list/JSON tetap Lab → EXERCISE → IME. Warna/foto tetap mengikuti peran/ID.
+- [x] Perbarui 21 poster (790.772 byte); perbaiki nav indicator agar mewarisi hidden pada capture scene-only. Tidak menambah geometri/model/tekstur/dependency; kamera/motion tetap.
+- [x] Build/check 13 tes dan source lint 0/0 lulus, termasuk proyeksi prioritas/pemisahan/occlusion di lima rasio. Dev Experience pada 1440/768/390/320 px, noJS/noWebGL/static lulus; pageErrors kosong.
+- [x] Lima suite produksi lulus: experience, story-corners, smoke, personal-lab lifecycle, navigation. PageErrors kosong; static/noWebGL/noJS dan capture hygiene lulus. [QA Experience](docs/QA-EXPERIENCE-PROFILE.md).
+- [x] Review before/after: inspector 5 FAIL/3 WARN → 4 FAIL/3 WARN; alasan pada QA, audit generik belum sepenuhnya lulus. Lab terlihat di slot bekas IME, bukan dipindah ke kiri yang tertutup teks.
+- [ ] Review pemilik; foto, periode/jabaran kontribusi nyata dan QA HP fisik/browser lain tetap terbuka.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Browser QA ditutup, produksi sementara dihentikan dan preview dev dipulihkan. Perubahan tersimpan tanpa stage/commit/push/deploy.
+- Perintah: npm run dev → /experience?preview=1; npm run check / npm run prototype. Hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Home ringkas dan header tetap — 26 Oktober 2026
+
+- [x] Hapus panel Experience dan strip footer Home; Home menjadi intro/typing/CTA/scene, tanpa halaman bawah ekstra pada desktop normal. Fakta pengalaman tetap di halaman Experience.
+- [x] Header fixed dengan ruang konten/scroll-margin; satu marker transform-only 460ms mengikuti route committed, retarget visual, Back/Forward/Enter, grid dua baris, font/resize, pause/reduced/hidden dan cleanup. Fallback active link noJS tetap ada; Hide Text menyembunyikan header seperti sebelumnya.
+- [x] CTA Home mempertahankan preview; bookmark #experience dialihkan ke /experience dengan JS. Tes scroll restore memakai About preview yang panjang.
+- [x] Build/check final 13 tes (termasuk content-workflow yang kini ada di repository) dan source lint empat file 0/0 lulus. Tes navigasi dev pada 1440/768/390/320 px lulus; pageErrors kosong.
+- [x] Lima suite produksi lulus sesudah koreksi snapshot native yang sempat menutupi header saat scroll: navigation, lab-camera, smoke, ui-preview, text-transition (30 arah desktop/mobile). PageErrors kosong. Screenshot desktop/mobile membuktikan header bebas overlay; review Home tiga ukuran. [QA navigasi](docs/QA-HOME-NAVIGATION.md).
+- [x] Inspector final Home 3 FAIL/3 WARN (sebelum 4 FAIL/5 WARN); alasan/batas pada QA, audit generik belum sepenuhnya lulus. Tidak menambah media/motion rekaan untuk memenuhi meter.
+- [ ] Review pemilik atas Home/header/tempo marker; HP fisik/browser lain tetap belum diuji.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Browser QA ditutup, produksi sementara dihentikan dan dev dipulihkan di http://127.0.0.1:3000/. Semua file tersimpan tanpa stage/commit/push/deploy.
+- Perintah: npm run dev → /?preview=1; npm run check / npm run prototype. Hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Alur edit konten file-first — 26 Oktober 2026
+
+- [x] Pemilik memilih konten statis/file-first; Supabase/database/admin ditunda. JSON/Markdown/MDX tetap sumber utama; tidak ada perubahan scene/route/deploy.
+- [x] [Panduan edit](docs/EDIT-CONTENT.md): peta file/field, urutan koleksi, gambar publik, draft vs sample preview, review lokal, build/deploy dan unpublish. README/PRD mengikuti keputusan terbaru.
+- [x] `npm run content:new -- <project|writing|cabinet> <slug>` membuat draft dari `templates/content/` di luar pipeline konten. Slug dibatasi; file lama tidak ditimpa, termasuk bentrok Writing `.mdx`.
+- [x] `npm run content:check` memvalidasi konten asli dan mengompilasi body Writing published; masuk `npm run check`/build. Tes Experience tidak lagi mengunci jumlah/urutan tiga isian awal agar prioritas dapat diedit.
+- [x] `npm run check`: TypeScript, pemeriksaan konten, 13 tes dan syntax prototype lulus. Tidak mengubah konten published atau menambahkan karya contoh.
+- [ ] Deployment hosting/static export tetap tahap terpisah. File-first sekarang belum `output: 'export'`; query sample preview masih membutuhkan server Next.js. Build penuh/browser/deploy tidak dijalankan untuk perubahan panduan/tooling ini.
+
+## Riwayat perencanaan Supabase — 26 Oktober 2026 (ditunda)
+
+- [x] Pemilik memilih Supabase dan meminta penjelasan persiapan serta urutan penerapan. Keputusan layanan dicatat pada PRD §16.5; runtime tetap file-first.
+- Rekomendasi migrasi data/media dan pengelolaan Supabase Dashboard di bawah keputusan sebelumnya dibatalkan untuk lingkup sekarang; digantikan alur file-first di atas.
+- Migrations/RLS/Storage/admin dapat dievaluasi kembali jika pemilik membutuhkan editor browser; bukan pekerjaan aktif.
+
+## UI lembut dan contoh konten — 26 Oktober 2026
+
+- [x] Navigasi/kontrol pill, active/hover/focus, kartu membulat, label terbaca dan reading scrim lebih lebar. Kontrol Explore masuk alur halaman baca panjang, overlay saat Hide Text.
+- [x] About berisi fakta nyata + slot foto/copy contoh; Projects tiga kartu dan detail case study; Writing tiga contoh bacaan; Cabinet empat display hobi pilihan pemilik. SVG ilustratif asli, tanpa foto/model/klaim rekaan.
+- [x] JSON contoh terpisah, mode eksplisit `?preview=1` dengan Sample/Layout preview/noindex; navigasi mempertahankan mode. View real content/URL biasa tidak memuat sample payload dan tidak mengakses draft. Empat route membaca query di server; database belum terhubung.
+- [x] Dialog native: keyboard/fokus kembali, Escape/backdrop/Close, sticky toolbar, scroll lock/cleanup dan reduced/pause. NoJS mendapat penjelasan; HTML/navigasi asli tetap tersedia.
+- [x] Build produksi/check 12 tes dan source lint sembilan file 0/0 lulus. Empat suite produksi lulus: ui-preview, smoke, text-transition (30 arah desktop/mobile), lab-camera; pageErrors kosong. Preview mencakup 1440/768/390/320 px.
+- [x] Review render sebelum/sesudah tiga ukuran dan detail terpilih. Inspector final Projects 4 FAIL/4 WARN, About 6 FAIL/3 WARN; alasan/batas pada [QA UI](docs/QA-UI-PREVIEW.md). Audit generik belum sepenuhnya lulus.
+- [ ] Review pemilik atas bentuk kartu/dialog, lalu isi foto/copy/karya/tulisan nyata. Integrasi database/admin dan detail route permanen mengikuti kebutuhan berikutnya, belum dikerjakan. HP fisik/browser lain belum diuji.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Browser QA ditutup, produksi sementara dihentikan dan preview dev dipulihkan. Perubahan tersimpan tanpa stage/commit/push/deploy.
+- Menjalankan: npm run dev; buka http://127.0.0.1:3000/projects?preview=1. Mode asli: /projects?preview=0. npm run prototype / npm run check; hentikan dev sebelum npm run build, lalu npm start.
+
+## Koreksi animasi yang terpotong — 26 Oktober 2026
+
+- [x] Reproduksi dua regresi pada kode sebelum perbaikan: native capture dilewati sesudah commit tanpa fade cadangan; resize saat flight langsung melompat ke endpoint.
+- [x] Fallback incoming fade untuk native capture gagal/dilewati, dengan token terbaru dan pause/reduced/hidden tetap dihormati. Resize menarget ulang dari pose/kecepatan saat ini.
+- [x] Tes semua 30 arah antarhalaman desktop/mobile, termasuk setiap kembali ke Home. Tes native-skip dan resize lulus di dev; build produksi/check 12 tes serta source lint file berubah 0/0 lulus.
+- [x] Empat suite produksi lulus: text-transition, cinematic, camera, smoke. Semua 30 arah desktop/mobile beranimasi, setiap kembali ke Home punya >12 frame kamera berbeda. Native-skip, resize, klik cepat/history/keyboard/pause/reduced/hidden/fallback lulus; pageErrors kosong. Detail [QA](docs/QA-SOFT-TRANSITIONS.md).
+- [ ] Review pemilik pada browser/perangkat sendiri. HP fisik/browser lain belum diuji; konten/foto asli tetap terbuka.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Browser QA ditutup; server produksi sementara dihentikan dan preview dev dipulihkan di http://127.0.0.1:3000/. Semua perubahan tersimpan tanpa stage/commit/push/deploy.
+- Perintah: npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Teks stasioner dan kamera halus — 26 Oktober 2026
+
+- [x] Hapus translate wrapper/reveal judul ganda; heading HTML stasioner/SSR. Fade-through main/footer, tanpa animasi geometri/posisi snapshot; history/API tidak tersedia memakai incoming fade.
+- [x] Guard 350ms untuk route lambat, token klik cepat, modifier/hash/external normal, pause/reduced/hidden/unmount cleanup. Scrim Home memudar terpisah; helper capture scene-only disesuaikan.
+- [x] Satu loop cap 60Hz flight/30Hz menetap; arc lebih kecil, tanpa lens breathing, tempo route 1,5–2,35s / overview 1,95 / reset 1,25. Pose/geometri/poster/konten tidak berubah, tanpa dependency baru.
+- [x] Build/check 12 tes, delapan suite browser produksi dan source lint 0/0 lulus. Native/fallback/history/keyboard/pause/reduced/route lambat/hidden sebelum callback terverifikasi; [laporan](docs/QA-SOFT-TRANSITIONS.md).
+- [x] Review 12 screenshot Home/About dan empat frame fade; audit generik Home 4 FAIL/4 WARN, About 4 FAIL/3 WARN, batas di QA. Pose/poster tidak diubah. Audit visual belum sepenuhnya lulus.
+- [ ] Review pemilik atas fade/tempo dan QA perangkat fisik/browser lain; konten/foto asli tetap terbuka.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Foto tetap null; tidak menambah dependency/model/deploy.
+- Browser QA ditutup dan produksi sementara dihentikan; preview dev aktif kembali di http://127.0.0.1:3000/ (Ready). Semua perubahan tersimpan di file, tanpa stage/commit/push/deploy.
+- Perintah npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Kamera cinematic — 25 Oktober 2026
+
+- [x] Kalibrasi pose/lensa tiap objek pada desktop/portrait, lensa portrait berkelanjutan saat aspect berubah; About notebook utuh pada ponsel, Projects tetap memuat 129 pose robot.
+- [x] Opening Home dari establishing shot pendek ke POV duduk; sekali per entry yang eligible. Navigasi/HTML/scroll langsung tersedia; direct non-Home, pause/reduced/hidden/static/retry tidak memutar ulang.
+- [x] Lintasan quintic, arc/lens breathing ringan dan incoming velocity saat retarget. Pengereman halus sebelum area benda menangani overview→route yang diklik cepat. Kamera memakai loop robot/monitor yang sama, tanpa state React per frame/ticker baru.
+- [x] Build produksi/check 12 tes lulus; unit menguji 280 lintasan awal dan 5.880 retarget di lima rasio, endpoint/kecepatan/batas perjalanan serta fit objek dan occlusion badge. Source lint 0/0.
+- [x] Tujuh suite browser produksi lulus; capture 12 state × tiga ukuran dan 21 poster diperbarui (790.038 byte), static sesudah konversi lulus. [QA kamera](docs/QA-CINEMATIC-CAMERA.md).
+- [x] Dua belas screenshot inspector Home/Writing final dan render sudut lain ditinjau; masing-masing audit generik 4 FAIL/4 WARN, alasan/batas di QA. Audit visual belum sepenuhnya lulus. Rekaman scene native tersedia di .taste-skill/lab-views/cinema-camera.webm; overlay HTML tidak direkam.
+- [ ] Review pemilik atas framing/tempo entry/transisi; foto/konten asli dan QA perangkat fisik/browser lain tetap terbuka.
+- Error build/fungsional final pada pemeriksaan yang dijalankan: tidak ada. Perekam full-page tanpa ffmpeg tidak tersedia; alternatif canvas native berhasil tanpa dependency baru. Foto tetap null.
+- Browser QA ditutup, produksi sementara dihentikan dan preview dev dipulihkan di http://127.0.0.1:3000/ (Ready). Untuk melihat opening, aktifkan motion lalu refresh Home. Perubahan tersimpan, tanpa stage/commit/push/deploy.
+- Perintah: npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Riwayat koreksi kepadatan dan name tag — 25 Oktober 2026
+
+- [x] Hapus rak tingkat dua, empat instrumen atas dan kabel terkait; isi rak utama dikelompokkan: alat di ujung, hobi di tengah, organizer kecil di sela. Satu meja/rak/renderer/overview.
+- [x] Hapus section dan CTA About me di Home; route/nav `/about` tetap, `/#experience` tetap. Tes restore scroll memakai anchor Experience yang masih ada.
+- [x] Perbaiki name tag: holder berbingkai, slot/clip/ring, tali tiga warna, organisasi/nama/peran/tahun nyata. Ukuran dan POV disesuaikan agar foto/identitas tidak tertutup monitor/rak pada desktop/portrait.
+- [x] Tiga badge berasal dari tiga pengalaman published pertama di JSON, sesuai urutan prioritas pemilik. Server mengirim hanya field publik pilihan; urutan/foto mengikuti ID. Daftar HTML Experience tetap lengkap, foto tetap null.
+- [x] Build produksi/check 11 tes, enam suite browser produksi dan source lint 0/0 lulus. Unit mencakup pemisahan badge, dukungan satu rak, fit lima rasio dan raycast occlusion terhadap mesh monitor/rak. [Laporan](docs/QA-LAB-CLEANUP.md).
+- [x] Capture 12 state × tiga ukuran dan 21 poster diperbarui (823.632 byte). Mode statis Home/Experience memuat poster baru tanpa canvas/page error. Dua belas screenshot inspector final Home/Experience dibuka: audit Home 4 FAIL/4 WARN, Experience 5 FAIL/3 WARN; alasan/batas di QA. Audit visual belum sepenuhnya lulus.
+- [ ] Review kerapian satu rak/name tag/POV; isi foto dan konten asli. QA perangkat fisik/browser lain tetap terbuka.
+- Error build/fungsional yang belum lulus pada pemeriksaan final yang dijalankan: tidak ada. Foto asli masih null; tidak mengarang credential/kontribusi/ranking baru.
+- Browser QA ditutup, produksi sementara dihentikan, preview dev dipulihkan di http://127.0.0.1:3000/ (Ready). Seluruh perubahan tersimpan di file.
+- Menjalankan: npm run dev / npm run prototype / npm run check. Hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Riwayat lab padat dan display hobi — 25 Oktober 2026
+
+- [x] Satu workbench diperlebar, rak atas/instrumen/parts drawers/test leads dan kabel ditambahkan, sambungan dan kait diperbaiki. Geometry statis dibatch; intro tetap lega.
+- [x] Cabinet menjadi kamera, figure Power stilisasi asli, audio player/headphones dan kaset sesuai pilihan pemilik. Experience tiga lanyard dengan slot foto, Writing tiga paper gantung dan chalkboard fisika.
+- [x] Lima slot foto netral siap diganti dari public/photos lewat src/data/scene-photo-slots.json; tidak ada foto rekaan. Unit crop portrait/landscape/error/cleanup lulus. [Panduan foto](docs/SCENE-PHOTOS.md).
+- [x] Build/check 11 tes, enam suite browser produksi dan source lint 0/0 lulus. 404 hydration React 418 pada URL draft/unknown diperbaiki dengan path artikel published dari server; tidak mengabaikan error. [QA terbaru](docs/QA-LAB-PERSONALITY.md).
+- [x] 236 mesh/96.510 triangle/171 geometri/12 generated texture; tetap di bawah budget lama. 21 poster 897.964 byte, capture 12 state pada tiga ukuran diperbarui setelah lampu/foto portrait dikoreksi.
+- [ ] Review kepadatan/figure/POV, isi foto asli dan cerita minat/karya/kontribusi/kontak/CV nyata. QA HP fisik/Safari/Firefox/screen reader/CLS/GPU/memory tetap terbuka.
+- Error build/fungsional final yang belum lulus pada suite yang dijalankan: tidak ada. Foto asli masih null. Dua belas screenshot inspector Home/Cabinet final ditinjau; audit generik masing-masing 4 FAIL/3 WARN, alasan dan batas dicatat di QA terbaru. Audit visual belum sepenuhnya lulus.
+- Browser QA ditutup, server produksi sementara dihentikan dan preview dev aktif kembali di http://127.0.0.1:3000/ (Ready). Perubahan tersimpan di file.
+- Perintah npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Riwayat Writing dan Cabinet
+
+- [x] Writing fokus catatan ilustratif di pegboard kanan belakang robot; Cabinet fokus case rak lama dengan handle/slot/rivet. Enam POV baca berbeda, satu meja/renderer/overview. Desktop/portrait tersendiri, artikel memakai sudut Writing dengan layout baca biasa.
+- [x] HTML/published JSON/Markdown/MDX/empty state tetap, tidak mengarang artikel atau benda koleksi. Animasi lintasroute dan notebook About tetap berjalan, Pause/reduced/hidden/static/dispose tetap menghentikan loop.
+- [x] Build/check 10 tes, enam suite browser produksi dan source lint 0/0 lulus. Unit memeriksa hero di lima rasio 320px–ultrawide; history/direct/Explore/reset/Escape/scroll/static/noGL/noJS serta motion/lifecycle lulus. Detail: [QA koleksi](docs/QA-COLLECTION-VIEWS.md).
+- [x] 212 mesh/63.400 triangle/138 geometri/9 tekstur; 21 poster aktif total 687.460 byte. Capture 12 state × desktop/tablet/mobile diperbarui, termasuk koreksi Cabinet portrait final.
+- [ ] Review visual pemilik untuk Writing/pegboard dan Cabinet/rak; masukkan materi tulisan/koleksi/karya/kontribusi/kontak/CV nyata saat tersedia. QA HP fisik/Safari/Firefox/screen reader/CLS/GPU/memory tetap terbuka.
+- Error build/fungsional yang masih terbuka pada suite final: tidak ada. Clipping 320px dan helper static yang membaca img sebelum selesai dimuat sudah diperbaiki, seluruh pemeriksaan terkait diulang. Dua belas screenshot Writing/Cabinet final ditinjau; audit generik masing-masing 4 FAIL/4 WARN, alasan/batas di QA koleksi. Browser QA ditutup, produksi sementara dihentikan dan preview dev aktif kembali di http://127.0.0.1:3000/.
+- Berikutnya: review enam POV dan isi konten file-first, tanpa menambah meja atau database/admin/ManimGX. Perintah npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Riwayat aktivitas workbench
+
+- [x] Robot dan monitor bergerak lintasroute termasuk Home serta selama transisi kamera. About menambah pensil dan tinta progresif 12 detik. Satu loop cap sekitar 30Hz, tanpa geometry/texture/state React baru per frame.
+- [x] Pause/reduced motion/hidden/static/context loss/dispose menghentikan loop; resume menjaga fase tanpa catch-up. Tracker juga membersihkan buffer/material THREE.Line.
+- [x] Build/check **10 tes**, enam suite browser produksi lulus: smoke, kamera, story, motion piksel monitor/Home robot/notebook, lifecycle/retry dan probe Pause idle 0. Ekspektasi tes lama Home diam diperbarui sesuai permintaan pemilik; reduced dev probe sempat gagal, produksi final lulus.
+- [x] 198 mesh/60.984 triangle/131 geometri/8 tekstur; 15 poster produksi baru, total 479.634 byte. Capture desktop/tablet/mobile selesai. Hasil dan batas: [QA aktivitas](docs/QA-LAB-ACTIVITY.md).
+- [ ] Review gerak monitor/robot, gesture pensil/ink dan kecepatan; tulisan masih goresan ilustratif, belum handwriting personal. QA perangkat fisik/GPU/memory/thermal, Safari/Firefox dan screen reader lengkap tetap terbuka.
+- [x] POV Writing pada pegboard belakang robot dan Cabinet pada rak disukai pemilik, lalu dieksekusi pada revisi koleksi terbaru (QA-COLLECTION-VIEWS). Jangan mengembalikan About ke monitor: permintaan terbaru About tetap notebook menulis.
+- Berikutnya: review animasi lalu implementasi dua POV tersebut dalam meja yang sama; konten nyata tetap diperlukan. Perintah npm run dev / npm run prototype / npm run check; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy. Dua belas screenshot Home/About final ditinjau, audit generik masing-masing 4 FAIL/3 WARN. Browser QA ditutup, produksi sementara dihentikan, preview dev dipulihkan.
+
+## Riwayat isi meja dan keseimbangan Home
+
+- [x] Kamera Home/target x=0 dan desktop sedikit lebih jauh; keyboard/mat terpusat dan lurus. Tambahkan mouse/pad, circuit study, cup alat, tray komponen dan dua case rak pada satu workbench.
+- [x] Build/check 9 tes, smoke/kamera/motion robot/render probe produksi lulus; enam screenshot inspector Home final dibuka. 193 mesh/60.780 triangle/124 geometri/8 tekstur, 15 poster baru (473.618 byte). Tidak ada dependency baru.
+- [x] README, AGENTS, brief, konteks desain, manifest aset dan QA diperbarui. Detail hasil/batas di QA-COMPACT-WORKBENCH. Build sandbox awal EPERM sudah teratasi pada pengulangan; tidak ada error fungsional terbuka pada suite yang dijalankan.
+- [ ] Audit generik Home tetap 4 FAIL/3 WARN; review kepadatan/keseimbangan pemilik dan QA perangkat fisik tetap terbuka. Dua suite lifecycle/story tidak diulang untuk edit props ini, baseline tetap dicatat.
+- Berikutnya: tinjau Home dan Hide Text desktop/mobile sebelum menambah benda atau sudut baru. Preview dev dipulihkan, QA browser/produksi sementara dihentikan. Perintah: npm run dev; npm run prototype; hentikan dev sebelum npm run build lalu npm start. Tidak stage/commit/push/deploy.
+
+## Proof satu workbench — 24 Oktober 2026
+
+- Pemilik melanjutkan setelah push. Checkout awal bersih pada `fb27fc0` (Prototype 2); tidak reset/clean/stash, stage/commit/push atau deploy oleh agent.
+- [x] Empat meja dikonsolidasikan secara geometri menjadi satu `main-workbench`, satu keyboard/monitor/lampu. Robot/fixture di kanan, notebook di kiri, kartu pada pegboard yang sama. Furniture/props duplikat dihapus dari builder aktif; prototype/analysis/studi/model/lisensi tetap disimpan.
+- [x] POV Home duduk, Projects close/medium robot, desktop/portrait tersendiri. Panel kotak desktop diganti scrim netral; portrait tetap scroll biasa. Status scene tetap tersedia bagi pembaca layar tanpa menambah label visual. About/Experience diarahkan ke props bersama untuk kompatibilitas, bukan dinyatakan desain final seluruh halaman.
+- [x] Satu overview workbench lintasroute lewat Hide Text, otomatis orbit/reset/arrow/touch. Show Text/Escape memulihkan route, fokus dan scroll. Direct URL/history tetap berfungsi; transisi/restore 1,25 detik, overview 1,15 detik; pause/reduced motion langsung ke tujuan.
+- [x] Robot bergerak hanya di Projects; satu key shadow map meja ikut diperbarui, tanpa shadow pose lama. Home/About/Experience/hidden/reduced/static menghentikan loop. Tidak ada state React atau geometry/texture baru per frame.
+- [x] Builder **141 mesh / 53.288 rendered triangle / 101 geometri / 8 tekstur**, turun dari 347 mesh/122.418 triangle. Budget lama tetap. Unit memastikan satu meja/keyboard, seluruh props dalam satu bounds, overview sama, dan framing 129 pose robot di empat aspek 320px–desktop.
+- [x] Build/check **9 tes lulus**. Enam suite fungsional produksi lulus (smoke, kamera, route story, motion robot, lifecycle/context loss/retry, render probe), page error kosong. Home idle 0 render tambahan. Detail dan batas di [QA kompak](docs/QA-COMPACT-WORKBENCH.md).
+- [x] 15 poster aktif (empat POV baca + overview bersama × tiga ukuran). Sembilan overview per-route lama tidak dipakai dihapus; versi baseline tetap ada di Git. Capture menunggu scrim settled sebelum screenshot HTML agar kontras tidak dinilai saat fade sementara.
+- [x] Capture delapan state desktop/tablet/mobile ditinjau. Audit menemukan headline Home bersinggungan shelf pada tablet; framing/posisi intro tablet dikoreksi, lalu pemeriksaan terkait diulang. Source lint 0 FAIL/0 WARN. Dua belas screenshot inspector final dibuka: Home 4 FAIL/3 WARN, Projects 4 FAIL/4 WARN; alasan dan batas dicatat di QA kompak. Audit belum sepenuhnya lulus. Setelah koreksi tablet, build/9 tes, smoke, kamera, capture/poster dan source lint diulang; empat suite lain lulus sebelum koreksi tablet.
+- [ ] Review pemilik terhadap proof Home/Projects: kepadatan satu meja, keseimbangan robot/teks, ukuran objek dan rasa transisi. Jangan menganggap persetujuan arah sebagai penerimaan render ini.
+- [ ] Setelah review: perhalus POV notebook/pegboard pada About/Experience di workbench yang sama. Writing/Cabinet fokus objek berikutnya tetap lanjutan; jangan membuat meja/furniture lengkap baru.
+- [ ] Materi kontribusi/karya/tulisan/koleksi dan kontak/CV, QA ponsel fisik/Safari/Firefox/screen reader/zoom, cold-load/CLS, frame pacing dan GPU/memory/thermal. Statistik geometri bukan jaminan performa perangkat.
+- Error build/fungsional yang masih terbuka pada suite yang dijalankan: tidak ada. Audit visual generik dan perangkat fisik tetap terbuka. Tidak ada dependency/aset eksternal baru atau integrasi database/admin/ManimGX.
+- Perintah tetap: `npm run dev`, `npm run prototype`, `npm run check`; hentikan dev sebelum `npm run build`, lalu `npm start`. Reproduksi QA/capture pada README dan QA kompak. Browser QA ditutup, server produksi sementara dihentikan; preview dev dijalankan kembali untuk review lokal. Tidak stage/commit/push/deploy.
+
+## Riwayat koreksi komposisi sebelum eksekusi — 24 Oktober 2026
+
+Pernyataan runtime belum diubah di bawah merekam checkpoint arah sebelum implementasi terbaru.
 
 - Pemilik menolak pengulangan banyak meja. Arah berikutnya: satu workbench/ruang kompak, setiap halaman fokus satu objek/kelompok benda dengan POV khusus; overview penuh untuk Home/Hide Text seperlunya. Referensi Hamza dipakai untuk komposisi ruang/fokus kamera; Clarissa tetap suasana hangat/editorial. Runtime empat meja yang ada belum direfaktor pada checkpoint ini; jangan menambah meja/sudut lengkap baru.
 - [x] Situs publik https://www.raomuhammadhamza.tech/ ditinjau langsung lewat browser: room overview, Projects/monitor, Experience/kartu pegboard, About/layar robot, serta About portrait. Screenshot lokal di `.taste-skill/lab-views/hamza-*`; tidak mengambil model, tekstur, bundle/source atau menjalankan ulang REA.

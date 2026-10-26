@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { useMotion } from './motion-provider';
 
 export function InterestLine({ phrases, description }: { phrases: string[]; description: string }) {
-  const { paused, reduced } = useMotion();
+  const { paused, reduced,booting } = useMotion();
   const [typing, setTyping] = useState({ index: 0, length: phrases[0].length, deleting: true });
   useEffect(() => {
-    if (paused) return;
+    if (paused||booting) return;
     const phrase = phrases[typing.index];
     const delay = typing.length === phrase.length ? 2200 : typing.length === 0 ? 400 : typing.deleting ? 45 : 85;
     const timeout = setTimeout(() => {
@@ -18,6 +18,6 @@ export function InterestLine({ phrases, description }: { phrases: string[]; desc
       });
     }, delay);
     return () => clearTimeout(timeout);
-  }, [paused, phrases, typing]);
+  }, [paused,booting, phrases, typing]);
   return <p className="interest-line"><span className="sr-only">{description}</span><span aria-hidden="true">{paused && reduced ? phrases[0] : phrases[typing.index].slice(0, typing.length)}<span className="cursor">_</span></span></p>;
 }

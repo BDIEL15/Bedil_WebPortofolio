@@ -1,13 +1,17 @@
 import assert from 'node:assert/strict';
 import { test } from 'node:test';
-import { getCabinetItems, getExperiences, getProfile, getProjects, getPublishedWriting, getWritingBySlug } from '../src/lib/content/files';
+import { getCabinetItems, getExperiences, getFeaturedExperiences, getProfile, getProjects, getPublishedWriting, getWritingBySlug } from '../src/lib/content/files';
 import { parseContent, publishedOnly, writingSchema } from '../src/lib/content/schema';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { renderToStaticMarkup } from 'react-dom/server';
 
 test('real profile and only published content cross the public boundary', async () => {
   assert.equal((await getProfile()).name, 'Abdiel Deandra EL Dzaky');
-  assert.equal((await getExperiences()).length, 3);
+  const experiences = await getExperiences();
+  assert.ok(experiences.every(role => role.status === 'published'));
+  const featured=await getFeaturedExperiences();
+  assert.deepEqual(featured, experiences.slice(0, 3).map(({id,organization,role,year})=>({id,organization,role,year})));
+  assert.ok(featured.every(role=>!('status' in role)),'Scene receives selected public fields only');
   for (const items of [await getProjects(), await getCabinetItems(), await getPublishedWriting()]) {
     assert.ok(items.every(item => item.status === 'published'));
     assert.ok(items.every(item => !item.slug.endsWith('-draft')));

@@ -6,7 +6,7 @@ async page => {
   for (const [name,width,height] of [['desktop',1440,1000],['mobile',390,844]]) {
     await page.setViewportSize({width,height});
     await page.waitForTimeout(500);
-    const cover=await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after{opacity:0!important;transition:none!important}'});
+    const cover=await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after,.scene-scrim{opacity:0!important;transition:none!important}'});
     await page.locator('.workshop-canvas').screenshot({path:`.taste-skill/workshop/poster-${name}.png`});
     await cover.evaluate(el=>el.remove());
     await page.screenshot({path:`.taste-skill/workshop/projects-${name}.png`,fullPage:true});
@@ -18,7 +18,7 @@ async page => {
   }
   await page.setViewportSize({width:768,height:1024});
   await page.waitForTimeout(300);
-  const cover=await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after{opacity:0!important;transition:none!important}'});
+  const cover=await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after,.scene-scrim{opacity:0!important;transition:none!important}'});
   await page.locator('.workshop-canvas').screenshot({path:'.taste-skill/workshop/poster-tablet.png'});
   await cover.evaluate(el=>el.remove());
   await page.screenshot({path:'.taste-skill/workshop/projects-tablet.png',fullPage:true});

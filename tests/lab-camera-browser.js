@@ -101,27 +101,28 @@ async page => {
     assert(await p.evaluate(()=>window.__labFrames)===settled,'Pause did not settle camera rendering');
     await p.getByRole('button',{name:'Show text',exact:true}).click();await idle('projects');
     await nav('Home');await idle('home');
-    await p.goto(origin+'/#about');await ready();await idle('home');
-    await p.waitForFunction(()=>window.scrollY>0);await p.waitForTimeout(500);
+    await p.goto(origin+'/about?preview=1');await ready();await idle('about');
+    await p.evaluate(()=>window.scrollTo({top:250,behavior:'instant'}));await p.waitForTimeout(100);
     const scroll=await p.evaluate(()=>window.scrollY);assert(scroll>0,'Reading position was not scrolled');
     await p.getByRole('button',{name:'Hide text',exact:true}).click();await idle('overview');
-    await p.getByRole('button',{name:'Show text',exact:true}).click();await idle('home');
+    await p.getByRole('button',{name:'Show text',exact:true}).click();await idle('about');
     assert(Math.abs(await p.evaluate(()=>window.scrollY)-scroll)<2,'Show Text lost reading position');
     report.push('Pause settles at destination without a running loop; Show Text restores the prior reading scroll position.');
+    await nav('Home');await idle('home');
 
     await p.getByRole('button',{name:'Motion paused',exact:true}).click();
     await p.getByRole('button',{name:'Hide text',exact:true}).click();await moving();await p.emulateMedia({reducedMotion:'reduce'});await idle('overview');
     await p.getByRole('button',{name:'Show text',exact:true}).click();await idle('home');
     assert(await p.locator('.scene').getAttribute('data-motion')==='paused','Reduced motion did not settle camera');
     await nav('Projects');await idle('projects');
-    await p.getByRole('button',{name:'Use static view',exact:true}).click();
+    await p.evaluate(()=>localStorage.setItem('observatory-static','true'));await p.reload();
     await p.locator('.scene[data-state=static]').waitFor();
     assert(await p.locator('.scene-poster img').evaluate(el=>el.complete&&el.naturalWidth>0&&el.currentSrc.includes('lab-projects')),'Projects static poster missing');
     await p.getByRole('button',{name:'Hide text',exact:true}).click();
     await p.waitForFunction(()=>document.querySelector('.scene-poster img').currentSrc.includes('overview'));
     assert(await p.locator('.scene-poster img').evaluate(el=>el.complete&&el.naturalWidth>0),'Overview static poster missing');
     await p.getByRole('button',{name:'Show text',exact:true}).click();
-    await p.getByRole('button',{name:'Enable 3D',exact:true}).click();await ready();await idle('projects');
+    await p.evaluate(()=>localStorage.removeItem('observatory-static'));await p.reload();await ready();await idle('projects');
     assert(matches(projects,await matrix()),'Retry did not start at the active route');
     report.push('Live reduced-motion change snaps safely; route/overview posters and re-enable use the current route.');
 

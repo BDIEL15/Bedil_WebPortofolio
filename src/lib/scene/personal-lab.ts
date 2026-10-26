@@ -1,10 +1,12 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 import { robotPose } from './robot-motion';
-import { buildStoryCorners } from './story-corners';
+import { buildStoryCorners, type ExperienceBadge } from './story-corners';
+import { buildLabDetails } from './lab-details';
+import {codingFrame,paintWorkspace,workspaceSize} from './workspace-screen';
 
 /** Original, illustrative geometry. Reference photographs are never loaded as assets. */
-export function buildPersonalLab() {
+export function buildPersonalLab(experiences:readonly ExperienceBadge[]=[]) {
   const lab = new THREE.Group();
   lab.name = 'personal-electronics-lab';
   const cube = new THREE.BoxGeometry(1, 1, 1);
@@ -17,8 +19,7 @@ export function buildPersonalLab() {
   const orange = new THREE.MeshStandardMaterial({ color: '#bb713e', roughness: .62 });
   const green = new THREE.MeshStandardMaterial({ color: '#345246', roughness: .84 });
   const paper = new THREE.MeshStandardMaterial({ color: '#c4b492', roughness: .92 });
-  const red = new THREE.MeshStandardMaterial({ color: '#903e2c', roughness: .64 });
-  const materials = { metal, ivory, sand, black, copper, orange, green, paper, red };
+  const materials = { metal, ivory, sand, black, copper, orange, green, paper };
 
   function texture(width: number, height: number, paint: (ink: CanvasRenderingContext2D) => void) {
     const canvas = document.createElement('canvas');
@@ -56,14 +57,6 @@ export function buildPersonalLab() {
     const mesh = new THREE.Mesh(new THREE.TubeGeometry(curve, segments, radius, 8, false),material);
     mesh.castShadow = true; parent.add(mesh); return mesh;
   }
-  function label(text: string, w: number, h: number, x: number, y: number, z: number, color = '#a7b9a6', ground = '#12211d', parent: THREE.Object3D = lab) {
-    const map = texture(512,256,ink => {
-      ink.fillStyle = ground; ink.fillRect(0,0,512,256);
-      ink.fillStyle = color; ink.font = '30px sans-serif'; ink.textAlign = 'center'; ink.textBaseline = 'middle'; ink.fillText(text,256,128);
-    });
-    const mesh = new THREE.Mesh(new THREE.PlaneGeometry(w,h),new THREE.MeshBasicMaterial({map,toneMapped:false}));
-    mesh.position.set(x,y,z); parent.add(mesh); return mesh;
-  }
   const woodMap = texture(1024,256,ink => {
     ink.fillStyle = '#765137'; ink.fillRect(0,0,1024,256);
     let seed = 73;
@@ -79,47 +72,39 @@ export function buildPersonalLab() {
   const wood = new THREE.MeshStandardMaterial({map:woodMap,color:'#b6aa95',roughness:.65});
   const darkWood = new THREE.MeshStandardMaterial({color:'#49372a',roughness:.92});
   // Texture aspect matches the board so its holes remain circular.
-  const pegMap = texture(1536,512,ink=>{
-    ink.fillStyle='#393c33'; ink.fillRect(0,0,1536,512);
-    for(let y=16;y<512;y+=30) for(let x=16;x<1536;x+=30) {
+  const pegMap = texture(1536,640,ink=>{
+    ink.fillStyle='#393c33'; ink.fillRect(0,0,1536,640);
+    for(let y=16;y<640;y+=30) for(let x=16;x<1536;x+=30) {
       ink.fillStyle='#252b25'; ink.beginPath();ink.arc(x,y,3,0,Math.PI*2);ink.fill();
       ink.strokeStyle='#55584b';ink.lineWidth=1;ink.beginPath();ink.arc(x,y+.6,3,0,Math.PI);ink.stroke();
     }
   });
   const pegboard = new THREE.MeshStandardMaterial({map:pegMap,roughness:.94});
-  // A compact room, composed as a workbench rather than an endless industrial stage.
-  box(9,.16,5.8,0,-.1,0,darkWood,lab,false);
-  box(8.7,4.75,.13,0,2.3,-1.55,darkWood,lab,false);
-  box(8.35,2.8,.06,0,2.45,-1.43,pegboard,lab,false);
-  box(8.6,.18,2.85,0,1.25,0,wood);
-  box(8.6,.08,.06,0,1.27,1.45,darkWood);
-  for (const x of [-3.75,3.75]) for(const z of [-1.05,1.05]) box(.1,1.17,.1,x,.58,z,metal);
-  box(7.55,.08,.08,0,.28,-1.05,metal);
-  // Shelf and storage: density at the edges keeps the centre available for the intro.
-  box(8.4,.12,.74,0,3.87,-1.02,wood);
-  for(const x of [-3.65,3.65]) {
-    box(.055,.75,.055,x,3.48,-1.34,metal);
-    box(.055,.055,.56,x,3.79,-1.08,metal);
+  // One physical workbench; every route looks at objects on this surface.
+  box(8.4,4.84,.13,0,2.23,-1.55,darkWood,lab,false);
+  box(8.1,3.4,.06,0,2.75,-1.43,pegboard,lab,false);
+  box(8.2,.18,2.85,0,1.25,0,wood).name='main-workbench';
+  box(8.2,.06,.06,0,1.27,1.45,darkWood);
+  for(const x of [-3.75,3.75])for(const z of [-1.05,1.05])box(.10,1.35,.10,x,.495,z,metal);
+  box(7.5,.08,.08,0,.25,-1.05,metal);
+  box(8.2,.12,.62,0,3.55,-1.08,wood).name='main-shelf';
+  for(const x of [-3.75,3.75]) {
+    box(.05,.65,.05,x,3.18,-1.47,metal);
+    box(.05,.05,.48,x,3.47,-1.10,metal);
   }
-  const strip = new THREE.MeshStandardMaterial({color:'#ffe2a0',emissive:'#ffb959',emissiveIntensity:2.2,roughness:1});
-  box(5.8,.035,.13,0,3.785,-1.1,metal);
-  box(5.7,.012,.085,0,3.762,-1.1,strip);
-  for (let row=0;row<3;row++) for(let column=0;column<3;column++) {
-    const x=-3.15+column*.41, y=4.08+row*.18;
-    box(.38,.15,.43,x,y,-1.04,black);
-    box(.34,.115,.035,x,y,-.79,sand);
-    box(.11,.025,.025,x,y-.01,-.758,metal);
-  }
-  for(let i=0;i<7;i++) {
+  const strip=new THREE.MeshStandardMaterial({color:'#ffe2a0',emissive:'#ffb959',emissiveIntensity:2.2,roughness:1});
+  box(4.8,.035,.12,0,3.465,-1.1,metal);
+  box(4.7,.012,.08,0,3.442,-1.1,strip);
+  for(let i=0;i<4;i++) {
     const book=new THREE.Group(),height=.43+(i%3)*.08;
-    book.position.set(2.4+i*.14,3.93+height/2,-1.04);lab.add(book);
+    book.position.set(-2.62+i*.15,3.61+height/2,-1.08);lab.add(book);
     const cover=[green,orange,sand,black][i%4];
-    box(.085,height-.025,.32,0,0,0,paper,book);
-    for(const side of [-1,1])box(.012,height,.36,side*.05,0,0,cover,book);
-    box(.11,height,.018,0,0,.17,cover,book);
-    for(const y of [-height*.32,height*.32])box(.075,.008,.004,0,y,.182,paper,book,false);
+    box(.085,height-.025,.30,0,0,0,paper,book);
+    for(const side of [-1,1])box(.012,height,.34,side*.05,0,0,cover,book);
+    box(.11,height,.018,0,0,.16,cover,book);
+    box(.075,.012,.004,0,height*.27,.173,paper,book,false);
   }
-  // Two generic instruments; screens are an illustrative study, not live measurements.
+  // One shelf instrument; screens are an illustrative study, not live measurements.
   function instrument(x:number,y:number,z:number,scale=1) {
     const group=new THREE.Group();group.position.set(x,y,z);group.scale.setScalar(scale);lab.add(group);
     box(1.34,.71,.72,0,0,0,sand,group);
@@ -152,29 +137,29 @@ export function buildPersonalLab() {
     for(let i=0;i<7;i++)box(.004,.012,.34,-.674,.15-i*.036,-.04,black,group,false);
     return group;
   }
-  instrument(1.95,4.27,-1.02,.83);
-  instrument(-1.35,4.24,-1.02,.75);
-  const scope=instrument(2.76,1.78,-.84,1.07); scope.rotation.y=-.12;
+  instrument(2.3,3.88,-1.02,.65);
   // Monitor and stand on the left, with a quiet original screen graphic.
-  const monitor=new THREE.Group();monitor.position.set(-2.15,2.08,-.68);monitor.rotation.y=.15;lab.add(monitor);
-  box(1.75,1.06,.11,0,0,0,black,monitor);
+  const monitor=new THREE.Group();monitor.name='desk-monitor';monitor.position.set(-1.65,2.065,-.75);monitor.rotation.y=.15;lab.add(monitor);
+  const monitorBezel=black.clone();monitorBezel.emissive.set('#c9dab1');monitorBezel.emissiveIntensity=0;
+  box(1.75,1.06,.11,0,0,0,monitorBezel,monitor).name='monitor-bezel';
+  function setUnlockGlow(strength:number){monitorBezel.emissiveIntensity=Math.max(0,Math.min(.3,strength));}
   box(1.65,.96,.08,0,0,-.075,metal,monitor);
   rod(new THREE.Vector3(0,-.69,-.1),new THREE.Vector3(0,-.47,-.03),.045,metal,monitor);
   box(.58,.035,.36,0,-.70,.02,metal,monitor).name='monitor-base';
-  const monitorMap=texture(768,432,ink=>{
-    ink.fillStyle='#182b28';ink.fillRect(0,0,768,432);
-    ink.fillStyle='#7f9c86';ink.font='22px sans-serif';ink.fillText('a place for ideas',38,55);
-    ink.strokeStyle='#739685';ink.lineWidth=2;
-    ink.beginPath();ink.arc(540,225,100,0,Math.PI*2);ink.stroke();
-    ink.beginPath();ink.ellipse(540,225,150,30,-.45,0,Math.PI*2);ink.stroke();
-    ink.fillStyle='#dab77d';ink.beginPath();ink.arc(632,168,7,0,Math.PI*2);ink.fill();
-    for(let i=0;i<8;i++){ink.fillStyle=i===0?'#b89b6d':'#3b574a';ink.fillRect(40,119+i*27,100+(i%3)*40,5);}
-  });
+  const monitorMap=texture(workspaceSize.width,workspaceSize.height,ink=>paintWorkspace(ink,'code'));
+  const monitorInk=(monitorMap.image as HTMLCanvasElement).getContext('2d')!;
   const screen=new THREE.Mesh(new THREE.PlaneGeometry(1.6,.9),new THREE.MeshBasicMaterial({map:monitorMap,toneMapped:false}));
-  screen.position.z=.062;monitor.add(screen);
+  screen.name='workspace-screen';screen.position.z=.062;monitor.add(screen);
+  let bootMode=false,bootAspect=16/9,lastScreen='';
+  function setBootMode(value:boolean,aspect=16/9){bootMode=value;bootAspect=aspect;lastScreen='';animateMonitor(0);}
+  function animateMonitor(seconds:number) {
+    const frame=codingFrame(seconds),signature=bootMode?'boot':frame.text+frame.cursor;
+    if(signature!==lastScreen){paintWorkspace(monitorInk,bootMode?'boot':'code',seconds,3,bootAspect);monitorMap.needsUpdate=true;lastScreen=signature;}
+    animateKeyboard(bootMode?0:seconds,bootMode);
+  }
   box(.018,.008,.004,.71,-.49,.058,green,monitor,false);
   // An articulated task lamp, with a real warm light aimed at the work surface.
-  const lamp=new THREE.Group();lamp.position.set(-3.65,1.36,.2);lab.add(lamp);
+  const lamp=new THREE.Group();lamp.position.set(-3.60,1.385,.18);lab.add(lamp);
   const base=new THREE.Mesh(new THREE.CylinderGeometry(.27,.31,.09,32),metal);lamp.add(base);
   rod(new THREE.Vector3(0,.04,0),new THREE.Vector3(-.15,1.16,-.25),.033,metal,lamp);
   rod(new THREE.Vector3(-.15,1.16,-.25),new THREE.Vector3(.5,1.55,-.24),.033,metal,lamp);
@@ -195,9 +180,9 @@ export function buildPersonalLab() {
     ink.globalAlpha=.65;ink.fillStyle='#adba9b';ink.font='11px monospace';
     for(let i=1;i<31;i++)ink.fillText(String(i),16+i*32,12);
   });
-  const mat=box(3.55,.018,1.68,.4,1.354,.35,new THREE.MeshStandardMaterial({map:matMap,roughness:1}),lab,false);
+  const mat=box(2.4,.018,1.58,0,1.354,.35,new THREE.MeshStandardMaterial({map:matMap,roughness:1}),lab,false);
   mat.name='cutting-mat';
-  const keyboard=new THREE.Group();keyboard.name='mechanical-keyboard';keyboard.position.set(-.48,1.44,.68);keyboard.rotation.set(-.06,.07,0);lab.add(keyboard);
+  const keyboard=new THREE.Group();keyboard.name='mechanical-keyboard';keyboard.position.set(0,1.44,.68);keyboard.rotation.set(-.06,0,0);lab.add(keyboard);
   box(1.93,.1,.77,0,0,0,black,keyboard).name='keyboard-case';
   box(1.88,.025,.72,0,.035,0,metal,keyboard);
   const rows: [string,number][][] = [
@@ -211,7 +196,7 @@ export function buildPersonalLab() {
   const keyMaterial=ivory.clone();keyMaterial.color.set('#ffffff');
   const keys=new THREE.InstancedMesh(keyGeometry,keyMaterial,rows.flat().length);
   keys.name='keycaps';keys.castShadow=true;keys.receiveShadow=true;keyboard.add(keys);
-  const matrix=new THREE.Matrix4();let key=0;
+  const matrix=new THREE.Matrix4(),restKeys:THREE.Matrix4[]=[],keyIndices=new Map<string,number>();let key=0;
   const legends=texture(1536,576,ink=>{
     ink.clearRect(0,0,1536,576);ink.fillStyle='#49473c';ink.textAlign='center';ink.textBaseline='middle';
     rows.forEach((row,rowIndex)=>{
@@ -219,6 +204,7 @@ export function buildPersonalLab() {
       for(const [text,units] of row) {
         const width=units*.119-.011,x=left+units*.119/2,z=-.256+rowIndex*.128;
         matrix.makeScale(width/.108,1,1);matrix.setPosition(x,.0715,z);keys.setMatrixAt(key,matrix);
+        restKeys.push(matrix.clone());keyIndices.set(text,key);
         keys.setColorAt(key,new THREE.Color(key===0?'#bb713e':units>1&&text?'#aaa38e':'#e6dec7'));
         ink.font=text.length>1?'17px sans-serif':'24px sans-serif';
         ink.fillText(text,(x/1.785+.5)*1536,(z/.64+.5)*576-8);
@@ -227,6 +213,15 @@ export function buildPersonalLab() {
     });
   });
   keys.instanceMatrix.needsUpdate=true;
+  keys.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+  let previousKey:number|undefined;
+  function animateKeyboard(seconds:number,rest=false){
+    const frame=codingFrame(seconds),active=rest||frame.press===0?undefined:keyIndices.get(frame.key??'__none');
+    if(previousKey!==undefined)keys.setMatrixAt(previousKey,restKeys[previousKey]);
+    if(active!==undefined){matrix.copy(restKeys[active]);matrix.elements[13]-=.012*frame.press;keys.setMatrixAt(active,matrix);}
+    if(previousKey!==undefined||active!==undefined)keys.instanceMatrix.needsUpdate=true;
+    previousKey=active;
+  }
   const legendPlane=new THREE.Mesh(new THREE.PlaneGeometry(1.785,.64),new THREE.MeshBasicMaterial({map:legends,transparent:true,depthWrite:false,toneMapped:false}));
   legendPlane.rotation.x=-Math.PI/2;legendPlane.position.y=.1005;keyboard.add(legendPlane);
   box(.09,.035,.035,-.1,.012,-.396,metal,keyboard);
@@ -246,71 +241,45 @@ export function buildPersonalLab() {
   monitor.updateMatrixWorld(true);
   const monitorPort=new THREE.Vector3(.35,-.43,-.13).applyMatrix4(monitor.matrixWorld);
   cable([connectorEnd.toArray(),[.8,1.38,-.65],[.4,1.38,-1.1],[-1.75,1.38,-1.12],monitorPort.toArray()],black,.018);
-  scope.updateMatrixWorld(true);
-  for(const [index,px] of [-.37,-.05].entries()) {
-    const port=new THREE.Vector3(px,-.264,.46).applyMatrix4(scope.matrixWorld);
-    const color=index?black:red;
-    const end=new THREE.Vector3(index?2.8:1.86,1.4,1.05);
-    cable([port.toArray(),[port.x,1.39,-.08],[index?3.1:1.82,1.39,.4],end.toArray()],color,.018);
-    const tip=new THREE.Vector3(index?2.52:2.08,1.4,.8);
-    rod(end,tip,.026,color);
-    rod(tip,tip.clone().add(new THREE.Vector3(index?-.10:.08,0,-.10)),.008,metal);
+  // Small working clusters enrich the desk without filling the pegboard reading area.
+  const details=new THREE.Group();details.name='workbench-details';lab.add(details);
+  const mouse=new THREE.Group();mouse.name='desk-mouse';mouse.position.set(1.20,1.34,1.02);details.add(mouse);
+  box(.34,.014,.58,0,.007,0,green,mouse);
+  const mouseShell=new THREE.Mesh(new THREE.SphereGeometry(1,24,12,0,Math.PI*2,0,Math.PI/2),ivory);
+  mouseShell.scale.set(.13,.13,.23);mouseShell.position.y=.018;mouseShell.castShadow=true;mouse.add(mouseShell);
+  box(.008,.007,.14,0,.144,-.06,black,mouse,false);
+  const wheel=new THREE.Mesh(new THREE.CylinderGeometry(.028,.028,.045,16),metal);
+  wheel.rotation.z=Math.PI/2;wheel.position.set(0,.139,-.10);mouse.add(wheel);
+  const circuit=new THREE.Group();circuit.name='circuit-study';circuit.position.set(-.12,1.34,-.94);circuit.rotation.y=-.12;details.add(circuit);
+  for(const x of [-.31,.31])for(const z of [-.19,.19])box(.04,.035,.04,x,.018,z,metal,circuit,false);
+  box(.73,.025,.48,0,.048,0,green,circuit);
+  box(.21,.065,.23,0,.093,0,black,circuit);
+  for(const side of [-1,1])for(let i=0;i<7;i++)box(.045,.018,.014,side*.125,.085,-.09+i*.03,copper,circuit,false);
+  box(.12,.065,.11,-.27,.092,0,metal,circuit);
+  for(const x of [.22,.28])box(.024,.055,.30,x,.088,0,black,circuit,false);
+  cable([[-.27,.105,.17],[-.18,.19,.21],[.12,.19,.18],[.22,.12,.12]],orange,.009,circuit);
+  const tools=new THREE.Group();tools.name='bench-tool-cup';tools.position.set(-3.02,1.34,.80);details.add(tools);
+  const cup=new THREE.Mesh(new THREE.CylinderGeometry(.14,.12,.25,24,1,true),metal);
+  cup.material=metal.clone();cup.material.side=THREE.DoubleSide;cup.position.y=.125;cup.castShadow=true;tools.add(cup);
+  const cupBottom=new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,.012,24),metal);cupBottom.position.y=.006;tools.add(cupBottom);
+  for(const [i,x] of [-.07,.02,.07].entries()) {
+    rod(new THREE.Vector3(x,.04,0),new THREE.Vector3(x+(i-1)*.025,.43+i*.035,.02),.012,metal,tools);
+    rod(new THREE.Vector3(x+(i-1)*.025,.32+i*.035,.02),new THREE.Vector3(x+(i-1)*.035,.53+i*.035,.025),.032,i===1?orange:black,tools);
   }
-  // Notebook, board, tools and a handful of components: illustrative, no invented work.
-  const notebook=new THREE.Group();notebook.position.set(1.24,1.4,.58);notebook.rotation.y=-.17;lab.add(notebook);
-  box(.61,.045,.83,.006,0,0,paper,notebook);
-  for(const y of [-.03,.03])box(.65,.014,.87,0,y,0,green,notebook);
-  box(.024,.065,.85,-.313,0,0,green,notebook);
-  const note=label('LAB NOTES',.32,.13,-.02,.038,-.15,'#c4b492','#345246',notebook);note.rotation.x=-Math.PI/2;
-  box(.018,.003,.85,.235,.039,0,black,notebook,false);
-  for(let i=0;i<3;i++)box(.002,.002,.78,.312,-.012+i*.011,0,sand,notebook,false);
-  rod(new THREE.Vector3(1.67,1.385,.25),new THREE.Vector3(1.61,1.385,.84),.015,black);
-  rod(new THREE.Vector3(1.61,1.385,.84),new THREE.Vector3(1.6,1.385,.91),.008,metal);
-  box(.56,.025,.4,2.31,1.37,.85,green);
-  box(.17,.045,.16,2.31,1.4,.84,black);
-  for(let i=0;i<6;i++)for(const z of [.68,1.02])box(.025,.055,.025,2.08+i*.08,1.41,z,copper);
-  // Pegboard edges: tools and hanging wire, leaving the middle deliberately calm.
-  for(let i=0;i<4;i++) {
-    const x=-3.45+i*.3;
-    const handle=new THREE.Mesh(new THREE.CapsuleGeometry(.038,.28,4,12),i%2?orange:black);
-    handle.position.set(x,3.0,-1.27);handle.castShadow=true;lab.add(handle);
-    rod(new THREE.Vector3(x,3.15,-1.27),new THREE.Vector3(x,3.43,-1.27),.009,metal);
-    box(.026,.055,.006,x,3.445,-1.27,metal);
-    rod(new THREE.Vector3(x,3.14,-1.4),new THREE.Vector3(x,3.14,-1.215),.009,metal);
-  }
-  for(let i=0;i<3;i++) {
-    const torus=new THREE.Mesh(new THREE.TorusGeometry(.23+i*.022,.013,6,48),i===1?red:black);
-    torus.position.set(3.5,2.97,-1.26+i*.014);lab.add(torus);
-  }
-  for(let i=0;i<3;i++) {
-    const storage=box(.46,.24,.52,3.35,1.5+i*.25,-.76,ivory);
-    box(.34,.16,.025,3.35,1.5+i*.25,-.48,sand);
-    storage.name=`parts-drawer-${i}`;
-  }
-  for(let i=0;i<3;i++)box(.66,.08,.54,-3.08,1.4+i*.085,.65,[orange,paper,green][i]);
-  // Two warm sources under the shelf, in addition to the task lamp.
-  for(const x of [-1.9,1.9]) {
-    const light=new THREE.PointLight('#ffd393',5.5,5,1.7);light.position.set(x,3.67,-.78);lab.add(light);
-  }
+  const tray=new THREE.Group();tray.name='parts-tray';tray.position.set(2.94,1.34,.97);details.add(tray);
+  box(.48,.025,.55,0,.013,0,sand,tray);
+  for(const x of [-.225,0,.225])box(.025,.065,.55,x,.045,0,sand,tray);
+  for(const z of [-.26,.26])box(.48,.065,.025,0,.045,z,sand,tray);
+  for(let i=0;i<4;i++)box(.075,.045,.065,i<2?-.11:.11,.045,(i%2)*.17-.10,i<2?black:copper,tray);
+  const {details:extraDetails}=buildLabDetails({...materials,wood,darkWood});lab.add(extraDetails);
+  const shelfFill=new THREE.PointLight('#ffd393',4,4.5,1.7);shelfFill.position.set(0,3.35,-.8);lab.add(shelfFill);
 
-  // A second physical workspace, not a route-specific replacement for the Home desk.
-  const bay=new THREE.Group();bay.name='projects-bay';bay.position.x=8.5;lab.add(bay);
+  // Robot and fixture are a compact group on the same tabletop.
+  const bay=new THREE.Group();bay.name='robotics-tools';bay.position.set(1.95,1.34,-.05);bay.scale.setScalar(.7);lab.add(bay);
   const enamel=new THREE.MeshStandardMaterial({color:'#d8d6c8',roughness:.34,metalness:.18});
   const machined=new THREE.MeshStandardMaterial({color:'#8d968d',roughness:.3,metalness:.82});
-  const paint=new THREE.MeshStandardMaterial({color:'#253731',roughness:.9});
-  box(6.7,.16,5.3,0,-.1,0,darkWood,bay,false);
-  box(6.4,4.4,.13,0,2.1,-1.55,paint,bay,false);
-  box(6.2,.18,2.85,0,1.25,0,wood,bay).name='robotics-workbench';
-  for(const x of [-2.65,2.65])for(const z of [-1.05,1.05])box(.11,1.17,.11,x,.58,z,metal,bay);
-  box(5.4,.08,.08,0,.3,-1.05,metal,bay);
-  box(6.2,.12,.65,0,3.95,-1.04,wood,bay);
-  box(4.7,.035,.13,0,3.865,-1.1,metal,bay);
-  box(4.6,.012,.085,0,3.842,-1.1,strip,bay);
-  label('ROBOTICS STUDY',2.2,.32,.85,3.43,-1.465,'#b8b69a','#253731',bay);
-  box(2.6,.026,1.72,1,1.355,.12,metal,bay);
-  box(2.45,.008,1.57,1,1.373,.12,black,bay,false);
-
-  const robot=new THREE.Group();robot.name='robotics-study-arm';robot.position.set(.55,1.38,-.26);bay.add(robot);
+  box(2.1,.045,1.30,0,.0225,.15,metal,bay);
+  const robot=new THREE.Group();robot.name='robotics-study-arm';robot.position.set(0,.055,0);bay.add(robot);
   function cylinder(radius:number,height:number,x:number,y:number,z:number,material:THREE.MeshStandardMaterial,parent:THREE.Object3D=robot) {
     const mesh=new THREE.Mesh(new THREE.CylinderGeometry(radius,radius,height,32),material);
     mesh.position.set(x,y,z);mesh.castShadow=true;mesh.receiveShadow=true;parent.add(mesh);return mesh;
@@ -369,36 +338,13 @@ export function buildPersonalLab() {
     fingers.forEach((finger,i)=>{finger.position.x=(i===0?-1:1)*(.12+pose.grip);});
   }
   animateRobot(0);
-  // A generic fixture and sample block; these are scene props, never published work.
-  box(.7,.06,.64,1.5,1.407,.64,sand,bay);
-  box(.19,.20,.19,1.5,1.537,.64,orange,bay);
-  for(const x of [1.21,1.79])box(.065,.035,.065,x,1.4545,.64,metal,bay);
-
-  const display=new THREE.Group();display.position.set(-1.9,2.11,-.72);display.rotation.y=.17;bay.add(display);
-  box(1.4,.95,.1,0,0,0,black,display);
-  box(.5,.04,.36,0,-.74,.03,metal,display);
-  rod(new THREE.Vector3(0,-.72,-.04),new THREE.Vector3(0,-.43,-.02),.04,metal,display);
-  const diagram=texture(768,512,ink=>{
-    ink.fillStyle='#12231e';ink.fillRect(0,0,768,512);
-    ink.fillStyle='#a7b79b';ink.font='24px sans-serif';ink.fillText('MOTION / FORM',42,55);
-    ink.strokeStyle='#718c76';ink.lineWidth=5;ink.beginPath();ink.moveTo(200,410);ink.lineTo(200,330);ink.lineTo(150,180);ink.lineTo(410,130);ink.lineTo(500,265);ink.stroke();
-    for(const [x,y] of [[200,330],[150,180],[410,130],[500,265]]){ink.fillStyle='#d0aa72';ink.beginPath();ink.arc(x,y,12,0,Math.PI*2);ink.fill();}
-    ink.strokeStyle='#455f50';ink.lineWidth=2;ink.beginPath();ink.arc(360,310,190,Math.PI,Math.PI*1.8);ink.stroke();
-  });
-  const diagramScreen=new THREE.Mesh(new THREE.PlaneGeometry(1.27,.81),new THREE.MeshBasicMaterial({map:diagram,toneMapped:false}));
-  diagramScreen.position.z=.054;display.add(diagramScreen);
-  const terminalKeys=keyboard.clone();terminalKeys.name='robotics-keyboard';terminalKeys.scale.setScalar(.48);terminalKeys.position.set(-1.8,1.39,.43);terminalKeys.rotation.set(-.06,.10,0);bay.add(terminalKeys);
-  for(const x of [-2.9,-2.3])for(const y of [1.46,1.71]) {
-    box(.52,.24,.62,x,y,-.87,sand,bay);
-    box(.46,.18,.018,x,y,-.55,enamel,bay);
-    box(.13,.025,.032,x,y,-.526,metal,bay);
-  }
-  box(.94,.07,.62,-1.42,1.375,.96,paper,bay);
-  const log=label('ROBOTICS / NOTES',.7,.2,-1.42,1.412,.96,'#65604b','#c4b492',bay);log.rotation.x=-Math.PI/2;
-  const bayLight=new THREE.SpotLight('#ffe0a8',32,12,.67,.6,1.3);
-  bayLight.position.set(-1.5,6,4);bayLight.target.position.set(.55,1.7,0);bayLight.castShadow=true;
-  bayLight.shadow.mapSize.set(1024,1024);bayLight.shadow.normalBias=.02;bay.add(bayLight,bayLight.target);
-  const shelfLight=new THREE.PointLight('#ffd393',4,5,1.7);shelfLight.position.set(0,3.7,-.9);bay.add(shelfLight);
-  const {story,about,experience}=buildStoryCorners({...materials,wood,darkWood});lab.add(story);
-  return { lab, keyboard, projects:bay, about, experience, robot, robotLight:bayLight, animateRobot, materials };
+  // Illustrative fixture only; the animation does not claim to pick up the sample.
+  box(.52,.05,.47,.88,.07,.56,sand,bay);
+  box(.14,.15,.14,.88,.17,.56,orange,bay);
+  for(const x of [.66,1.10])box(.04,.025,.04,x,.11,.56,metal,bay);
+  const bayLight=new THREE.SpotLight('#ffe0a8',14,8,.65,.65,1.3);
+  bayLight.position.set(-1.5,5,3);bayLight.target.position.set(0,1.3,0);bay.add(bayLight,bayLight.target);
+  const {story,about,experience,animateWriting,photoSlots}=buildStoryCorners({...materials,wood,darkWood},experiences);lab.add(story);
+  animateMonitor(0);
+  return { lab, keyboard, projects:bay, about, experience, robot, robotLight:bayLight, animateRobot, animateMonitor, setBootMode,setUnlockGlow, animateWriting, photoSlots, materials };
 }

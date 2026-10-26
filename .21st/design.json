@@ -51,10 +51,10 @@
       "display": "Libertinus Sans"
     },
     "spacing": {},
-    "radius": {},
+    "radius": {"control":"999px","card":"24px"},
     "shadows": {},
     "motion": {},
-    "density": "unknown"
+    "density": "comfortable editorial"
   },
   "components": {
     "installed": [],
@@ -68,17 +68,19 @@
   },
   "constraints": {
     "must": [
-      "Latest composition correction: one compact workbench/room, one hero object per route, bespoke desktop/portrait POV. Consolidate repeated desks before adding details/corners. Current four-desk implementation is a retained baseline, not accepted final composition.",
-      "Selected concept: personal electronics workbench/lab with simplified 3D forms like Hamza, warm materials/light and calm Clarissa Builds editorial composition. Home/Projects/About/Experience implemented under owner authorization; Writing/Cabinet corners remain pending.",
-      "Preserve full-viewport scene and accessible HTML; All four lab corners share one renderer and the existing lifecycle.",
-      "English content for recruitment and reach-out; tell the owner's journey. Home, Projects, About and Experience have dedicated corners; Writing/Cabinet remain on Home camera.",
+      "Latest composition correction: one compact workbench/room, one hero object per route, bespoke desktop/portrait POV. Maintain one workbench and do not duplicate desks when adding detail. Current runtime has one shared workbench; Home/Projects visual proof awaits owner review.",
+      "Selected concept: personal electronics workbench/lab with simplified 3D forms like Hamza, warm materials/light and calm Clarissa Builds editorial composition. Home/Projects/About/Experience implemented under owner authorization; Writing/Cabinet now focus right pegboard/hobby display.",
+      "Preserve full-viewport scene and accessible HTML; All six object POVs share one renderer and the existing lifecycle.",
+      "English content for recruitment and reach-out; tell the owner's journey. Home, Projects, About and Experience have object POVs on one workbench; Writing/Cabinet focus right pegboard/hobby shelf.",
       "Observation-first scene; no required game or instrument simulation. Writing may use trusted MDX for article-specific explanations.",
       "Owner object candidates: cables and mechanical keyboard; manga and meme stickers tentative. Real owner content and honest empty states",
       "Pause, reduced motion, keyboard and native mobile scroll",
       "Accepted file-first JSON/Markdown/MDX, no initial database/admin. Mobile portrait framing, scroll by default, explicit Explore while reading; Hide Text automatically enables orbit. Preparation brief: docs/REDESIGN-LAB.md; local photos in analysis/workbench-references are design references only.",
-      "Latest: separate illustrative robotics bay for Projects; remove active Inspect ASCII. Hide Text immediately enables orbit/reset/arrow/touch, Show Text/Escape restores reading pose/focus/scroll. Eight poses and 24 fallback posters across Home/About/Projects/Experience. Writing/Cabinet remain pending.",
-      "Robot motion requirement: refine existing 3D and animate the Projects robot. Calm linked 16s motion, upright gripper; freeze on pause/reduced motion and stop loop on hidden/other routes/static. Home/About/Experience stay event-driven; no new dependency.",
-      "Latest: dedicated About reading desk and Experience documentation board, truthful published JSON HTML, original illustrative chip/code/community graphics, 24 posters, one renderer and native portrait scroll. Legacy Home anchors remain available; no database/admin/deploy."
+      "Latest: illustrative robot assembly on the shared workbench for Projects; remove active Inspect ASCII. Hide Text immediately enables orbit/reset/arrow/touch, Show Text/Escape restores reading pose/focus/scroll. Six object POVs plus one shared overview, 21 active posters. Writing/Cabinet implemented.",
+      "Continuous activity: robot and monitor animate across all routes including Home and camera transitions; About has progressive notebook ink and pencil. One roughly 30Hz loop. Pause/reduced motion/hidden/static/dispose suspend it. No new dependency.",
+      "Latest: About notebook and Experience lanyards on the shared tabletop/pegboard, truthful published JSON HTML, original illustrative chip/code/community graphics, 21 active posters, one renderer and native portrait scroll. Legacy Home anchors remain available; no database/admin/deploy.",
+      "Latest owner feedback supersedes two-rack density: one main shelf with clear object clusters. Home has no About me section/CTA. Three featured experience badges come from server-selected published entries in JSON order; full HTML experience list stays available. See docs/QA-LAB-CLEANUP.md.",
+      "Current camera motion supersedes historical 1.25s GSAP travel: one renderer loop handles camera/object activity, distance-based 1.25–2s route flights, 1.7s overview, 1.15s reset and one eligible Home establishing entry. Preserve pause/reduced/native scroll and velocity continuity."
     ],
     "avoid": [
       "Split two-column hero with abstract sphere",
@@ -88,6 +90,34 @@
     ]
   },
   "decisions": [
+    {
+      "date": "2026-10-26",
+      "decision": "Home hero enters with staggered opacity on actual elements, independent of the boot attribute lifetime; header also fades. Keep text positions fixed, hold interest typing during boot, respect motion/focus fallback and avoid replay on route return."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Owner requests a brief success glow after terminal typing: green/cream outline pulse, radial green vignette and screen-blend brightening, then low isolated bezel emission fading during pullback. Keep the center clear, opening duration unchanged and reset on motion interruption; no bloom/dependency/new geometry."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Type the boot command before 3D preparation and finish the typed terminal before camera handoff. Keep real readiness separate from the bounded presentation clock; align SSR/canvas text anchors, yield preparation frames and refresh flight shadows at most 30Hz."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Home first-session monitor terminal boot, shared responsive HTML/3D painter, actual readiness stages and bounded Skip/Escape fallbacks; cinematic pullback to existing Home. Quiet illustrative coding editor and synchronized keycaps run on the existing loop across routes. No fake percentage, hands, sound or dependency."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Replace Home intro Projects CTA with owner-provided GitHub/LinkedIn/Instagram/email icon links from profile JSON. Local SVGs, warm currentColor, 44px targets, accessible names and hover/focus tooltips; retain Projects in header and legacy Experience hash redirect."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Explore view and static/retry/re-enable controls appear only on Home. Other reading routes omit the empty scene caption; Hide Text exploration and shared static preference remain available."
+    },
+    {
+      "date": "2026-10-26",
+      "decision": "Keep text clear of the fixed header/footer with measured main-content clipping and native document scroll. Fix identity footer bottom-left, above mobile controls; exclude footer from route fades and keep Home footer hidden. Experience timeline has no enclosing panel."
+    },
     {
       "date": "2026-10-23",
       "decision": "Owner chose Clarissa Builds as primary reference; React Bits/21st supply only supporting motion."
@@ -139,7 +169,22 @@
     {
       "date": "2026-10-24",
       "decision": "Pemilik menolak pengulangan banyak meja. Arah berikutnya: satu workbench/ruang kompak, setiap halaman fokus satu objek/kelompok benda dengan POV khusus; overview penuh untuk Home/Hide Text seperlunya. Referensi Hamza dipakai untuk komposisi ruang/fokus kamera; Clarissa tetap suasana hangat/editorial. Runtime empat meja yang ada belum direfaktor pada checkpoint ini; jangan menambah meja/sudut lengkap baru."
-    }
+    },
+    {
+      "date": "2026-10-24",
+      "decision": "Compact implementation after owner pushed fb27fc0: consolidate duplicated tables/props to one workbench, close robot POV for Projects, seated Home, one shared overview and 15 active posters. Prove Home/Projects before further corner expansion."
+    },
+    "Owner requests a fuller desk and balanced Home: centered x=0 frontal camera, slightly wider desktop framing, aligned keyboard/mat, restrained original working clusters (mouse, circuit board, tool cup, parts tray and shelf cases). Keep one shared workbench and readable HTML.",
+    "Owner requests continuous robot and monitor across routes including Home/camera travel, plus animated pencil/ink on About. One capped loop stops on pause/reduced motion/hidden/static/dispose. Writing pegboard behind robot and Cabinet shelf selected as future POVs, not implemented in this motion revision.",
+    "Owner authorized Writing/right pegboard behind robot and Cabinet/existing shelf cases. Implemented distinct desktop/portrait POVs, shared overview and 21 posters; ordinary local article layout retains Writing camera. Original illustrative props, truthful empty states, no invented collection or new table.",
+    "Owner selected denser electronics racks/cables, Experience lanyards and replaceable real-photo mounts, Writing hanging papers/physics chalkboard, and Cabinet hobbies: camera, Power fan stylization, audio player and cassettes. One wider workbench, existing motion and 21 posters; empty published collections remain truthful. Five public photo paths remain null.",
+    "Owner correction 25 October: remove the too-busy second-tier rack/instruments/cables, keep one clearly grouped main shelf (electronics ends, hobbies middle, compact organizer). Remove Home About me section/CTA, retain About route. Refined clipped lanyard name tags show the first three published JSON experiences in owner priority order via selected server props; match public photo slots by ID, all still null. Keep one desk/renderer/overview and motion; no new dependency.",
+    "25 October owner likes the clean one-shelf composition and requests closer/more deliberate page POVs, cinematic seamless travel and first Home entry. Implemented calibrated desktop/portrait framing, continuous portrait lens, quintic outward arcs with velocity-preserving retarget and soft clearance braking in the single renderer loop. Home entry once per eligible document: 2.6s desktop/2.1s portrait nominal; pause/reduced/hidden/static/direct non-Home/retry skip it. Content/navigation/scroll stay immediately usable; no new geometry/model/dependency. QA-CINEMATIC-CAMERA.md records checks and limits.",
+    "26 October: owner reports jumping route text/stiff camera. Stationary SSR headings replace stacked wrapper/word translations. Main/footer fade through independent old/new native snapshots, without group geometry animation; history/no-API opacity fallback. 350ms capture guard, skip on pause/reduced/hidden, preserve selected navigation when hidden, rapid-click tokens and cleanup. Home scrim fades separately. Single renderer cap 60Hz in flight/30Hz settled; smaller arc/no lens breathing, unchanged geometry/poses/posters/content, no new dependency. QA-SOFT-TRANSITIONS.md.",
+    "26 October follow-up: owner reports missing animations on other directions and returning Home. Preserve the design and timing; native capture rejection after commit gets the incoming opacity fallback. Mid-flight resize retargets from the current pose/velocity instead of snapping. Cover all 30 directed route pairs on desktop/mobile, skipped capture and mid-flight resize. Pause/reduced/hidden remain intentional motion exceptions. QA-SOFT-TRANSITIONS.md.",
+    "26 October UI: owner requests softer rounded controls and dummy About/Projects/Writing/Cabinet layouts before database integration. Pill controls/navigation and warm rounded cards retain palette/type/scene. Projects use featured/supporting cards with case-study dialog; Writing editorial notes/reading dialog, Cabinet chosen hobby illustrations. Explicit preview=1, Sample/Layout preview labels and noindex, separate sample JSON; normal URLs keep published/empty content. Native dialog focus/Escape/backdrop, sticky Close and scroll cleanup. No database/admin/dependency/deploy. QA-UI-PREVIEW.md.",
+    "26 October Home/nav: remove Home Experience summary and repeating footer, keep intro/scene. Compact fixed header with reserved reading space and a single 460ms transform-only active marker. Marker and aria-current follow committed routes; visual retarget for fast navigation, history/keyboard, font/resize/two-row mobile, pause/reduced/hidden cleanup and noJS fallback. Home CTA keeps preview; legacy experience hash redirects to Experience with JS. Hide Text still hides header. No scene/camera/asset/dependency changes. QA-HOME-NAVIGATION.md.",
+    "26 October Experience: professional profile hierarchy with role heading, organization, known year and generic initials inside a warm timeline panel. No invented Lab period or claims. Owner clarified Lab replaces the former IME slot nearest the camera: physical left-to-right IME, EXERCISE, Lab; JSON/list priority stays Lab, EXERCISE, IME. Photo IDs/colors follow roles; all 21 posters regenerated. Nav marker uses opacity to inherit hidden in scene-only captures. No dependency/model/database. QA-EXPERIENCE-PROFILE.md."
   ],
   "evidence": [
     {
@@ -181,6 +226,10 @@
     {
       "fact": "Direct browser visual review of room overview, Projects monitor, Experience pegboard cards, About robot screen and portrait; no asset/source extraction.",
       "source": "https://www.raomuhammadhamza.tech/"
+    },
+    {
+      "fact": "Compact workbench geometry, visual proof and production verification",
+      "source": "docs/QA-COMPACT-WORKBENCH.md"
     }
   ],
   "generatedAt": "2026-10-22T17:39:35.927Z"

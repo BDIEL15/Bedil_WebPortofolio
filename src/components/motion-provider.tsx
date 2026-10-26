@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState
 import { usePathname } from 'next/navigation';
 import { labViewForPath } from '@/lib/scene/lab-camera';
 
-const MotionContext = createContext({ paused: true, reduced: false, focusView: false, exitFocus: () => {} });
+const MotionContext = createContext({ paused: true, reduced: false, ready:false,booting:false,setBooting:(_value:boolean)=>{}, focusView: false, exitFocus: () => {} });
 export function useMotion() { return useContext(MotionContext); }
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
@@ -12,6 +12,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
   const [reduced, setReduced] = useState(false);
   const [ready, setReady] = useState(false);
   const [focusView, setFocusView] = useState(false);
+  const [booting,setBooting]=useState(false);
   const pathname = usePathname();
   const readingPosition = useRef<{ pathname: string; y: number } | null>(null);
   const reading = pathname.startsWith('/writing/');
@@ -42,10 +43,10 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     return () => query.removeEventListener('change', change);
   }, []);
   const effectivePause = paused || reading;
-  return <MotionContext value={{ paused: effectivePause, reduced, focusView, exitFocus: () => setFocusView(false) }}>
-    <div className="observatory" data-page={pathname==='/'||['/projects','/about','/experience'].includes(pathname)?labViewForPath(pathname):'content'} data-paused={effectivePause} data-focus-view={focusView}>
+  return <MotionContext value={{ paused: effectivePause, reduced, ready,booting,setBooting, focusView, exitFocus: () => setFocusView(false) }}>
+    <div className="observatory" data-page={pathname==='/'||['/projects','/about','/experience','/writing','/cabinet'].includes(pathname)?labViewForPath(pathname):'content'} data-paused={effectivePause} data-focus-view={focusView}>
       {children}
-      <div className="motion-controls">
+      <div className="motion-controls" inert={booting} aria-hidden={booting||undefined}>
         <button type="button" aria-pressed={effectivePause} disabled={!ready || reading} onClick={() => {
           setPaused(!paused);
           try { localStorage.setItem('observatory-paused', String(!paused)); } catch { /* Preference remains in memory. */ }
@@ -60,6 +61,6 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 }
 
 export function ReadingContent({ children }: { children: React.ReactNode }) {
-  const { focusView } = useMotion();
-  return <div className="reading-content" hidden={focusView} inert={focusView}>{children}</div>;
+  const { focusView,booting } = useMotion();
+  return <div className="reading-content" hidden={focusView} inert={focusView||booting} aria-hidden={booting||undefined}>{children}</div>;
 }

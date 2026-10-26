@@ -38,7 +38,7 @@ async page => {
   const art = page.locator('.scene-art');
   const canvas = page.locator('.workshop-canvas');
   async function sceneFrame() {
-    const cover = await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after{opacity:0!important;transition:none!important}'});
+    const cover = await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after,.scene-scrim{opacity:0!important;transition:none!important}'});
     try { return await canvas.screenshot(); } finally { await cover.evaluate(el=>el.remove()); }
   }
   assert(await page.locator('.scene-live canvas').count() === 2, 'Expected one WebGL and one ASCII canvas');

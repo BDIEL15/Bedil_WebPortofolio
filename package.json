@@ -7,7 +7,9 @@
     "build": "npm run check && next build --webpack",
     "start": "next start --hostname 127.0.0.1",
     "prototype": "node server.mjs",
-    "check": "tsc --noEmit && tsx --test tests/content.test.ts tests/scene.test.ts && npm run check:prototype",
+    "content:new": "node scripts/new-content.mjs",
+    "content:check": "tsx scripts/check-content.ts",
+    "check": "tsc --noEmit && npm run content:check && tsx --test tests/content.test.ts tests/content-workflow.test.ts tests/scene.test.ts && npm run check:prototype",
     "check:prototype": "node --check prototype/main.js && node --check prototype/lensing.js"
   },
   "dependencies": {

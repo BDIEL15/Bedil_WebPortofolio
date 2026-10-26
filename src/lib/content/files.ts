@@ -12,6 +12,10 @@ async function collection<T extends { id: string; slug: string; status: string }
 }
 export async function getProfile() { return parseContent(profileSchema, await json('profile.json'), 'profile.json'); }
 export async function getExperiences() { return parseContent(experienceSchema, await json('experiences.json'), 'experiences.json').filter(item => item.status === 'published'); }
+// File order is the owner's display priority; only the first three published roles enter the scene.
+export async function getFeaturedExperiences() {
+  return (await getExperiences()).slice(0,3).map(({id,organization,role,year})=>({id,organization,role,year}));
+}
 export function getProjects() { return collection('projects', projectSchema); }
 export function getCabinetItems() { return collection('cabinet', cabinetSchema); }
 export async function getPublishedWriting() {

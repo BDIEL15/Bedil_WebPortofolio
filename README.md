@@ -1,20 +1,47 @@
 # Personal Electronics Lab — Abdiel Deandra EL Dzaky
 
-**Koreksi visual terbaru:** pemilik meminta satu workbench kompak dengan fokus objek/POV per halaman seperti pendekatan Hamza. Empat meja yang ada di kode belum dikonsolidasikan; itu baseline teknis, bukan komposisi final. Ikuti checkpoint teratas TODO sebelum memperluas scene.
+**Terminal opening:** kunjungan pertama ke Home dalam sesi menyiapkan scene melalui terminal, kemudian kamera mundur dari monitor ke Home. Skip intro/Escape tersedia. Saved pause/static, reduced motion dan direct route melewati opening; gagal/timeout 3D tetap membuka konten. Monitor menampilkan editor ilustratif dan keyboard mengetik sinkron lintasroute. Untuk melihat ulang opening gunakan sesi/jendela privat baru. [QA opening](docs/QA-TERMINAL-OPENING.md).
 
-Portofolio personal dengan workbench elektronik 3D hangat dan konten editorial. **Home, About, Projects dan Experience menempati satu lab/renderer dengan transisi kamera dan overview saat Hide Text.** Ini belum desain final atau penyelesaian seluruh PRD; sudut lain dan materi karya mengikuti review/data pemilik.
+Terminal awal kini mengetik per karakter: perintah dahulu, lalu persiapan 3D, hasil bertahap dan baris akhir sebelum kamera bergerak. Pengetikan adalah presentasi; status tetap mengikuti readiness nyata, bukan persen unduhan rekaan.
 
-**About & Experience, 24 Oktober:** dua route kini mempunyai sudut fisik sendiri di lab yang sama. About memakai meja baca dengan notebook terbuka/lampu/buku; Experience memakai board dokumentasi dengan tiga grafis kategori asli, sementara HTML memuat tiga peran nyata dari JSON. Semua sudut memiliki portrait framing, overview, keyboard/orbit dan fallback. Satu renderer dipertahankan; 24 poster lokal untuk delapan pose × tiga resolusi. Transisi biasa 1,25 detik, perjalanan jauh >14 unit 1,6 detik, overview 1,15 detik; pause/reduced motion langsung ke tujuan. Anchor lama `/#about`/`/#experience` tetap tersedia. Lihat [QA kedua sudut](docs/QA-STORY-CORNERS.md).
+Saat siap, outline dan vignette hijau mencerahkan layar secara singkat, bezel monitor sedikit menyala, lalu efek memudar ketika kamera menjauh. Efek mengikuti pengaturan gerak dan tidak menambah durasi opening.
 
-**Revisi 3D dan motion, 24 Oktober:** robot kini berhierarki sendi, housing tirus, bearing/collar, flange, gripper dan kabel per-link. Gerak observasi 16 detik menjaga tool tegak, dengan render dibatasi sekitar 30Hz. Pause/reduced motion membekukan pose; tab hidden, Home/route lain dan static menghentikan loop. Material kayu/logam, keyboard robotics dan laci diperbaiki. Home tetap tanpa render idle. Lihat [QA motion](docs/QA-ROBOT-MOTION.md).
+Judul, minat, deskripsi dan ikon Home masuk melalui fade bertahap yang tetap berjalan hingga selesai. Refresh Home untuk melihat ulang reveal teks; sesi privat diperlukan hanya untuk mengulang opening 3D penuh. Pause/reduced motion menampilkan konten langsung.
 
-**Pembaruan terbaru 24 Oktober:** Projects kini memiliki meja robotics terpisah dengan lengan/gripper, fixture dan monitor diagram asli, bukan hanya sudut instrumen Home. Home → Projects/restore berdurasi 1,25 detik; Hide Text ke overview workspace aktif 1,15 detik. Hide Text langsung mengaktifkan drag/arrow/reset tanpa klik Explore lagi; Show Text/Escape memulihkan sudut, fokus dan scroll baca. Explore tetap pilihan saat teks terlihat. Inspect ASCII dihapus dari aplikasi aktif; studi/prototype lama dipertahankan. Pause/reduced motion langsung ke tujuan. Empat sudut, delapan pose dan 24 poster memakai satu renderer; robot Projects kini bergerak sesuai revisi terbaru. Lihat [QA robotics](docs/QA-ROBOTICS-BAY.md).
+**Sosial Home:** intro menampilkan ikon GitHub, LinkedIn, Instagram dan email yang diberikan pemilik, menggantikan CTA Projects. Edit `socialLinks` di `src/content/profile.json`; Projects tetap tersedia di header. SVG lokal tanpa dependency tambahan; sumber/lisensi di [ASSETS](docs/ASSETS.md).
 
-**Revisi 24 Oktober:** Home memakai sudut pandang duduk menghadap pegboard. Intro berada pada bidang pegboard, keyboard/kabel di foreground; kaki meja dan alas panggung keluar dari framing utama. Desktop/portrait serta poster telah disesuaikan. Teks tetap HTML yang dapat dibaca/diseleksi, bukan mesh 3D; saat Explore, konten mempertahankan layout bacanya. Tidak ada model/dependency baru.
+**Kontrol scene:** Explore view dan Use static view tersedia hanya di Home. Hide Text tetap memungkinkan eksplorasi pada halaman lain. Pilihan static dari Home berlaku lintasroute; untuk mengaktifkan 3D kembali gunakan Enable 3D di Home.
 
-Item Home kemudian diperbaiki: keyboard ANSI 60% dengan legenda, spiral dan konektor kabel, panel/soket instrumen, dudukan monitor, notebook/alat/lampu, serta bevel dan rasio tekstur yang sesuai bentuk. Test geometri menjaga jarak keycap, posisi terhadap meja dan budget internal. Benda tetap ilustrasi generik, bukan klaim karya/peralatan milik pemilik.
+**Area baca, 26 Oktober:** konten tidak lagi melintas di belakang header/footer tetap. Footer identitas diam di kiri bawah, dengan posisi di atas kontrol scene pada mobile; Home tetap tanpa footer. Scroll dokumen, fokus keyboard dan transisi konten dipertahankan. [QA area baca](docs/QA-READING-FRAME.md).
+
+**Experience, 26 Oktober:** daftar peran kini memakai hierarchy profil seperti LinkedIn dalam tema hangat: peran, organisasi, tahun yang tersedia dan monogram. Sesuai klarifikasi pemilik, name tag Lab menggantikan slot IME yang dekat kamera; urutan fisik IME → EXERCISE → Lab, sedangkan daftar prioritas tetap Lab → EXERCISE → IME. Semua 21 fallback diselaraskan. [QA Experience](docs/QA-EXPERIENCE-PROFILE.md).
+
+**Mengedit konten:** mulai dari [panduan edit konten](docs/EDIT-CONTENT.md). Buat draft dengan `npm run content:new -- project nama-proyek` (juga `writing`/`cabinet`), isi file, lalu `npm run content:check`. Konten asli di `src/content/`; `?preview=1` hanya contoh layout. Keputusan terbaru: file-first tanpa database; Supabase ditunda. Ini belum static export HTML murni—deployment masih membutuhkan dukungan Next.js.
+
+**Home/header, 26 Oktober:** Home kini intro + scene tanpa ringkasan Experience atau strip footer. Header tetap di atas viewport pada semua route (disembunyikan saat Hide Text), dengan satu penanda aktif yang bergeser pada klik dan Back/Forward. Pause/reduced/hidden menghentikan gerak penanda, resize/font menyesuaikan posisinya. CTA Home mempertahankan mode preview. [QA navigasi](docs/QA-HOME-NAVIGATION.md).
+
+**UI preview, 26 Oktober:** navigasi/kontrol kini membulat dan lebih lembut. Buka [Projects dummy](http://127.0.0.1:3000/projects?preview=1), lalu gunakan navigasi untuk About/Writing/Cabinet. Kartu Projects membuka detail case study; Writing membuka contoh bacaan, Cabinet membuka cerita display hobi. Label `Layout preview`/`Sample` selalu membedakan contoh dari karya asli. `View real content` mengembalikan konten published/empty state; parameter preview diteruskan oleh navigasi. Mode preview diberi noindex dan tidak membaca draft. Data contoh terpisah di `src/data/ui-preview.json`; belum terhubung database. Lihat [QA UI](docs/QA-UI-PREVIEW.md).
+
+**Status terbaru:** teks antarhalaman memakai fade-through tanpa geser posisi/reveal kata ganda. Kamera lebih tenang, arc diperkecil dan cap render 60Hz selama flight/30Hz saat menetap dalam satu loop. Enam pose, satu rak/meja/renderer/overview, 21 poster dan konten tetap; foto masih null. Lihat [QA transisi halus](docs/QA-SOFT-TRANSITIONS.md), [QA kamera cinematic](docs/QA-CINEMATIC-CAMERA.md) dan [panduan foto](docs/SCENE-PHOTOS.md).
+
+Portofolio personal dengan workbench elektronik 3D hangat dan konten editorial. **Home, About, Projects, Experience, Writing dan Cabinet memakai satu workbench/renderer dengan POV objek dan overview bersama saat Hide Text.** Ini belum desain final atau penyelesaian seluruh PRD; materi karya dan penyempurnaan berikutnya mengikuti review/data pemilik.
+
+Robot mempertahankan gerak sendi pelan 16 detik; loop bersama monitor (cap 60Hz saat flight, 30Hz saat menetap) berlanjut lintasroute, termasuk transisi. Pause/reduced motion membekukan pose; hidden/static/dispose menghentikan loop. Konten HTML, navigasi, fallback, keyboard dan native mobile scroll tetap berfungsi. Bookmark lama `/#experience` diarahkan ke `/experience` saat JavaScript aktif; navigasi Experience tetap tersedia tanpa JavaScript. About hanya di `/about`. Tidak ada database/admin atau dependency baru.
+
+Riwayat empat meja, tahap props dan motion sebelum konsolidasi tersedia dalam laporan QA terdahulu; status aktif selalu mengikuti TODO dan QA kompak.
 
 ## Dokumen inti
+
+- [QA transisi halus](docs/QA-SOFT-TRANSITIONS.md): fade-through teks, fallback/history dan render kamera adaptif.
+
+- [QA kamera cinematic](docs/QA-CINEMATIC-CAMERA.md): framing, opening, lintasan halus dan pemeriksaan kontinuitas/lifecycle.
+
+- [QA cleanup](docs/QA-LAB-CLEANUP.md): satu rak utama, Home ringkas dan name tag tiga pengalaman prioritas.
+
+- [QA lab personal](docs/QA-LAB-PERSONALITY.md): rak/instrumen/kabel, lanyard/foto, paper/chalkboard dan display hobi.
+- [Panduan foto](docs/SCENE-PHOTOS.md): isi slot lanyard dan bingkai lewat aset lokal publik.
+- [QA Writing/Cabinet](docs/QA-COLLECTION-VIEWS.md): dua POV koleksi, enam halaman dalam satu ruang, fallback dan batas QA.
+- [QA kompak](docs/QA-COMPACT-WORKBENCH.md): satu meja, proof Home/Projects, fallback dan hasil pemeriksaan terbaru.
 
 - [TODO](TODO.md): checkpoint terbaru dan pekerjaan berikutnya.
 - [PRD](docs/PRD-PORTOFOLIO.md), terutama §2.5, §7.7 dan §16.5: keputusan produk/arsitektur.
@@ -28,9 +55,15 @@ Item Home kemudian diperbaiki: keyboard ANSI 60% dengan legenda, spiral dan kone
 
 ## Status kode
 
-Next.js App Router + React + TypeScript + CSS berada di root dengan `src/`. Home memakai intro `Hi, I'm Abdiel.`, typing dua kandidat frasa, dan informasi nyata pemilik. Navigasi About dan Experience menuju route/sudut tersendiri; ringkasan/anchor Home lama dipertahankan. Projects, Writing dan Cabinet tetap empty state yang jujur. JSON dan Markdown/MDX lokal memakai content layer yang sudah ada; tidak ada database/admin baru.
+Implementasi aktif adalah satu meja dan satu rak utama. Satu overview lintasroute, 21 WebP aktif, geometri penuh 249 mesh / 90.444 rendered triangle / 184 geometri / 12 tekstur. Writing fokus paper gantung/chalkboard kanan, Cabinet display hobi; About mempertahankan notebook dan Experience kini name tag/slot foto. Badge statis dibatch per kartu agar bounds dan pemisahannya dapat diuji. Pose/lensa desktop/portrait dikalibrasi per objek. Durasi nominal route/restore 1,5–2,35 detik mengikuti jarak, overview 1,95 detik, reset 1,25 detik. Lintasan quintic dengan arc kecil tanpa lens breathing, velocity continuity saat retarget dan pengereman di depan benda. Satu shadow map key workbench diperbarui bersama robot.
 
-Engine aktif `src/lib/scene/create-personal-lab-scene.ts` diimpor dinamis oleh SceneHost. Geometri/tekstur prosedural asli berada di `personal-lab.ts`: meja kayu, pegboard, rak, instrumen ilustratif, lampu, mechanical keyboard, kabel, cutting mat dan catatan. Foto referensi tidak dikirim ke produksi. Home **diam saat idle**; render berlangsung selama transisi kamera, resize/Explore. Robot Projects memiliki loop terbatas ketika terlihat dan motion aktif; waktu animasi tidak berjalan saat pause/hidden/route lain.
+Opening Home bergerak dari sudut sedikit lebih lebar/tinggi ke POV duduk, nominal 2,6 detik desktop atau 2,1 detik portrait. Hanya entry dokumen Home yang pertama dan motion aktif yang menjalankannya. Direct route lain, pause tersimpan/reduced/hidden dan static/retry tidak memutar opening. HTML/nav/scroll langsung tersedia; pause/hidden menyelesaikan flight, drag/arrow menginterupsi. Resize saat bergerak menarget ulang dari pose/kecepatan sekarang; resize saat idle langsung menyesuaikan framing. Satu loop cap 60Hz selama kamera bergerak lalu 30Hz saat menetap; bukan jaminan FPS perangkat. Durasi route kini 1,5–2,35 detik, overview 1,95/reset 1,25, tanpa lens breathing. Durasi bisa memanjang bila frame tertunda agar tidak mengejar waktu dengan loncatan.
+
+Heading tetap stasioner dan SSR; transisi main/footer menggunakan snapshot native bila didukung: keluar 160ms, masuk 520ms sesudahnya. Pose/ukuran snapshot tidak bergerak dan renderer tidak menjadi snapshot root. Route lambat melewati animasi capture setelah guard 350ms; history/browser tanpa API serta native capture yang gagal/dilewati memakai incoming opacity fade. Pause/reduced/hidden melewati animasi. Tidak ada dependency baru.
+
+Next.js App Router + React + TypeScript + CSS berada di root dengan `src/`. Home memakai intro `Hi, I'm Abdiel.`, typing dua kandidat frasa, informasi nyata pemilik dan ringkasan Experience; section/CTA About me di Home dihapus. Navigasi About dan Experience menuju route/sudut tersendiri. Projects, Writing dan Cabinet tetap empty state yang jujur. JSON dan Markdown/MDX lokal memakai content layer yang sudah ada; tidak ada database/admin baru.
+
+Engine aktif `src/lib/scene/create-personal-lab-scene.ts` diimpor dinamis oleh SceneHost. Geometri/tekstur prosedural asli berada di `personal-lab.ts`, `lab-details.ts` dan `story-corners.ts`: meja kayu, pegboard, rak, instrumen ilustratif, lampu, mechanical keyboard, kabel, cutting mat dan catatan. Foto referensi tidak dikirim ke produksi. Robot dan monitor kini bergerak lintasroute, termasuk Home, dengan loop yang sama dengan cap adaptif 60Hz flight/30Hz menetap. Monitor memakai trace/satelit ringan; About menambahkan pensil dan goresan ilustratif yang berulang. Transisi kamera tidak membekukan aktivitas. Pause/reduced motion, tab hidden, static/context loss/dispose menghentikan loop; tidak mengejar waktu yang terlewat. Lihat [QA aktivitas](docs/QA-LAB-ACTIVITY.md).
 
 Explore mengaktifkan drag/arrow keys, reset dan Escape saat teks terlihat; default touch menjaga scroll/zoom. Hide Text otomatis membuka orbit, termasuk touch; Show Text/Escape mengembalikan native scroll dan posisi baca. Pause/reduced motion mengendalikan typing/reveal. Poster baru dari render yang sama tersedia tanpa JS/WebGL, saat context loss atau melalui Use static view; preferensi statis bertahan antar-reload. Satu renderer dipakai antarroute. Kontak/CV yang belum diberikan tidak ditampilkan.
 
@@ -53,7 +86,7 @@ npm run build
 npm start
 ```
 
-Check mencakup TypeScript, sembilan tes konten/geometri/motion/studi terdahulu dan syntax prototype; build menjalankan check lalu Next.js. QA browser Home baru terpisah, dengan server pada port 3000 dan `playwright-cli` tersedia:
+Check mencakup TypeScript, dua belas tes konten/geometri/motion/studi terdahulu dan syntax prototype; build menjalankan check lalu Next.js. QA browser terpisah, dengan server pada port 3000 dan `playwright-cli` tersedia:
 
 ```powershell
 playwright-cli open http://127.0.0.1:3000/
@@ -61,6 +94,8 @@ playwright-cli run-code --filename=tests/personal-lab-smoke.js
 playwright-cli run-code --filename=tests/personal-lab-browser.js
 playwright-cli run-code --filename=tests/personal-lab-rendering.js
 playwright-cli run-code --filename=tests/lab-camera-browser.js
+playwright-cli run-code --filename=tests/cinematic-camera-browser.js
+playwright-cli run-code --filename=tests/text-transition-browser.js
 playwright-cli run-code --filename=tests/robot-motion-browser.js
 playwright-cli run-code --filename=tests/story-corners-browser.js
 playwright-cli run-code --filename=tests/capture-lab-views.js

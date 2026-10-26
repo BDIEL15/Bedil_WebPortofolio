@@ -1,5 +1,51 @@
 # Aset visual — Personal Electronics Lab dan studi tersimpan
 
+**Terminal/coding, 26 Oktober:** monitor trace/orbit diganti satu CanvasTexture editor 1536×864 yang berbagi painter dengan terminal HTML. Keycap tetap 61 instance pada keyboard yang sama. Budget terbaru 248 mesh/90.432 triangle/182 geometri/12 tekstur. Semua 21 poster diperbarui (794.568 byte). Tidak menambah model/dependency/aset eksternal; karakter kode dan amplop tetap ilustrasi asli proyek. QA-TERMINAL-OPENING.md.
+
+**Urutan badge, 26 Oktober:** Lab dipindah ke slot terdekat kamera bekas IME, sesuai klarifikasi pemilik. Fisik kiri→kanan IME → EXERCISE → Lab; pilihan server/urutan prioritas JSON tetap Lab → EXERCISE → IME, foto keyed ID. Semua 21 poster diperbarui: **790.772 byte**. Tidak ada geometri/model/tekstur baru; budget 249 mesh/90.444 triangle/184 geometri/12 tekstur tetap. Nav marker opacity mewarisi visibility saat UI disembunyikan, sehingga tidak bocor ke poster scene-only. QA terbaru: QA-EXPERIENCE-PROFILE.md.
+
+**Kamera cinematic, 25 Oktober:** tidak ada geometry/material/model baru. Enam pose baca/lensa diperbarui dan poster diregenerasi; overview fisik tetap satu. Opening tidak memakai video/tekstur eksternal: kamera bergerak langsung di engine. Rekaman QA canvas lokal bukan aset produksi. Hasil terbaru: [QA kamera cinematic](QA-CINEMATIC-CAMERA.md).
+
+## Koreksi satu rak — 25 Oktober 2026
+
+Rak tingkat dua beserta empat instrumen dan kabel terkait dihapus sesuai review pemilik. Satu `main-shelf` menahan alat di ujung, hobi di tengah dan organizer enam drawer di sela. Kabel alat yang dipertahankan berakhir pada socket; test leads tetap berkait. Tidak menambah meja/aset eksternal/dependency. Name tag memakai atlas asli untuk organisasi/nama/peran/tahun dari tiga pengalaman published teratas yang dipilih server, bukan credential rekaan. Holder/clip/ring dan tali tiga warna dibatch per badge, dengan lima mount foto netral tetap null. QA aktif: [QA cleanup](QA-LAB-CLEANUP.md). Revisi dua tingkat berikut historis.
+
+## Lab padat dan sudut hobi — 24–25 Oktober 2026
+
+Foto meja dari pemilik dipakai sebagai referensi kepadatan rak/instrumen/kabel, bukan tekstur produksi. Geometri tambahan berada di lab-details.ts dan dibatch per material oleh bake-static.ts; source geometry statis dibuang sesudah penggabungan. Workbench tetap satu, diperlebar untuk rak/parts drawers tambahan, tanpa menaikkan budget 350 mesh/150.000 triangle. Satu key shadow map mencakup ruang lebih tinggi/lebar.
+
+Cabinet memakai kamera generik, portable cassette player/headphones, dua kaset dan figure Power stilisasi asli yang dipilih pemilik. Acuan karakter: [situs resmi Chainsaw Man](https://chainsawman.dog/tvseries/character/). Tidak mengunduh atau membundel model/gambar karakter resmi; mesh adalah interpretasi fan art sederhana. Bukan foto/model dari koleksi fisik pemilik.
+
+Experience memakai tiga lanyard dengan organisasi nyata tanpa nomor/credential/periode rekaan. Lima mount foto netral (tiga badge, dua bingkai) dapat diganti dengan foto publik siap tampil lewat src/data/scene-photo-slots.json; semua path saat ini null. Panduan: [SCENE-PHOTOS](SCENE-PHOTOS.md). Writing memakai tiga paper pada cord dan chalkboard F=ma, E=½mv², V=IR, ω=2πf, ∇·E=ρ/ε₀, ∇·B=0; sketsa bukan tulisan published. Seluruh atlas/label/mount asli dibuat lokal, tidak memuat draft pemilik.
+
+## Satu workbench kompak — produksi terbaru
+
+Empat meja dikonsolidasikan menjadi satu mesh `main-workbench`. Satu keyboard/monitor/lampu dipakai bersama; robot dan fixture berada di kanan, notebook di kiri, lanyard/foto serta paper/chalkboard pada pegboard yang sama. Meja/laci/keyboard/lampu/shelf/instrumen duplikat dihapus dari builder aktif, bukan disembunyikan lewat kamera. Prototype, analysis, model/lisensi dan commit baseline pemilik `fb27fc0` tetap dipertahankan.
+
+Grafis NOTES/IDEAS pada pegboard kanan adalah sketsa ilustratif asli, bukan judul artikel/draft pemilik. Cabinet memakai display hobi pilihan pemilik; tidak mengarang catatan koleksi terpublikasi. Batch statis kini mengonversi world transform ke koordinat lokal root agar posisi pegboard tidak diterapkan dua kali.
+
+Geometri/CanvasTexture masih asli repository. Builder penuh **249 mesh / 90.444 rendered triangle termasuk instances / 184 geometri / 12 tekstur**. Budget lama 350 mesh/150.000 triangle tetap; batching per badge mempertahankan bounds/pemisahan yang bisa diuji. Ini bukan benchmark FPS atau GPU perangkat fisik. Robot/monitor bergerak lintasroute; About menambah penulisan. Dua buffer garis digunakan ulang (trace 64 titik dan goresan notebook); tidak membuat texture/canvas/geometry per frame. Satu key shadow map workbench diperbarui; fill robot tidak membuat shadow map kedua. Geometri bergerak dikecualikan dari batch statis; tracker/dispose juga mencakup THREE.Line.
+
+## Poster aktif: enam POV objek + satu overview bersama
+
+Home/Projects/About/Experience/Writing/Cabinet memiliki poster baca masing-masing. Semua route Hide Text memakai `lab-overview-`, sehingga ada **21 WebP aktif, total 790.038 byte**. Sembilan poster overview per-route lama yang tidak dipakai dihapus; versi historis tetap tersedia melalui Git. Capture merekam 12 state UI untuk regresi, converter hanya menghasilkan tujuh pose unik. Hasil scene-only tanpa HTML/scrim/tools; robot di pose istirahat deterministik. Poster memakai pose akhir diam, bukan frame opening sementara.
+
+| Prefix `public/scene/` | Desktop 1440×1000 | Tablet 768×1024 | Mobile 390×844 |
+| --- | ---: | ---: | ---: |
+| `personal-lab-` | 71.536 byte | 31.116 byte | 14.772 byte |
+| `lab-projects-` | 95.144 byte | 44.396 byte | 23.200 byte |
+| `lab-about-` | 50.038 byte | 23.418 byte | 13.750 byte |
+| `lab-experience-` | 58.452 byte | 29.456 byte | 15.524 byte |
+| `lab-writing-` | 81.406 byte | 37.510 byte | 18.018 byte |
+| `lab-cabinet-` | 48.780 byte | 24.724 byte | 16.536 byte |
+| `lab-overview-` | 51.432 byte | 29.072 byte | 11.758 byte |
+
+Reproduksi: server port 3000 → `tests/capture-lab-views.js` → `node scripts/prepare-lab-posters.mjs`. Screenshot HTML menunggu scrim kembali settled setelah scene-only capture; tidak memakai frame fade sementara sebagai bukti kontras.
+
+## Riwayat empat meja / poster per-route
+
+Bagian berikut historis dan tidak menggantikan manifest aktif di atas.
+
 ## About / Experience — 24 Oktober 2026
 
 Geometri dan grafis asli di `src/lib/scene/story-corners.ts`: meja baca/lampu/notebook dua halaman/buku/pensil untuk About; board dokumentasi/lembar berklip/stack notebook/pencil cup untuk Experience. Atlas kertas berisi ilustrasi chip, kode dan komunitas, bukan sertifikat atau dokumen karya pemilik. Nama/peran/tahun nyata tetap HTML dari JSON published; tidak dibakar ke poster atau bundle scene. Tidak ada foto/logo/aset eksternal baru.
@@ -109,3 +155,7 @@ Rekam ulang: jalankan aplikasi pada port 3000, lalu `playwright-cli run-code --f
 SplitText proyek merupakan adaptasi ringkas konsep [React Bits Split Text](https://reactbits.dev/text-animations/split-text): reveal kata dengan GSAP yang sudah terpasang, SSR terlihat, mengikuti pause dan reduced motion. Versi registry awal yang belum terintegrasi diganti; tidak memuat ScrollTrigger, plugin SplitText, hover spring atau utility Tailwind yang tidak tersedia. Transisi route/kontrol memakai CSS.
 
 Pencarian 21st melalui CLI memerlukan login dan belum tersedia di lingkungan ini. Tidak ada komponen atau kode 21st yang diklaim sudah dipasang; tidak memakai hosted generation/credit. Konteks desain lokal di `.21st/` mencatat keputusan pemilik dan keterbatasan ini.
+
+## Home social SVG — 26 Oktober 2026
+
+`public/icons/github.svg`, `linkedin.svg`, `instagram.svg`: SVG Simple Icons v11.15.0, disalin dari [repository sumber](https://github.com/simple-icons/simple-icons/tree/11.15.0/icons). [Lisensi CC0](https://github.com/simple-icons/simple-icons/blob/11.15.0/LICENSE.md) disimpan pada `public/icons/SIMPLE-ICONS-LICENSE.md`. `email.svg` adalah geometri amplop sederhana asli proyek. SVG dipakai sebagai CSS mask berwarna currentColor, lokal tanpa CDN/dependency runtime. Tautan akun/email berasal langsung dari pemilik, disimpan pada `src/content/profile.json`.

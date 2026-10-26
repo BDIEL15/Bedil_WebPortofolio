@@ -5,7 +5,7 @@ async page => {
   const origin = 'http://127.0.0.1:3000';
   const report = [];
   const failures = [];
-  page.on('pageerror', error => failures.push(error.message));
+  page.on('pageerror', error => failures.push(page.url()+': '+error.message));
   await page.goto(origin);
   await page.evaluate(() => localStorage.removeItem('observatory-paused'));
   await page.reload();
@@ -16,12 +16,14 @@ async page => {
     assert((await page.locator('h1').innerText()).includes(title), `Heading ${path}`);
     assert(await page.locator('nav [aria-current="page"]').count() === 1, `Active nav ${path}`);
     assert(!(await page.content()).includes('Unpublished'), `Draft leak ${path}`);
+    if(path==='/')assert(await page.locator('main').getByText('About me',{exact:true}).count()===0,'Removed Home About section/CTA returned');
     for (const width of [1440, 768, 390, 320]) {
       await page.setViewportSize({ width, height: 900 });
       assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `Overflow ${path} @${width}`);
       if(path==='/projects') assert(await page.evaluate(()=>{
         const a=document.querySelector('.collection').getBoundingClientRect();
-        const b=document.querySelector('.scene-caption').getBoundingClientRect();
+        const caption=document.querySelector('.scene-caption');if(!caption)return true;
+        const b=caption.getBoundingClientRect();
         return a.bottom<=b.top || b.bottom<=a.top || a.right<=b.left || b.right<=a.left;
       }),`Projects reading panel overlaps scene controls @${width}`);
     }

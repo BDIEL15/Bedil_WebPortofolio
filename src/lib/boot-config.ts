@@ -1,0 +1,3 @@
+export const bootSessionKey='personal-lab-opening-v1';
+// Runs before first paint. With JS disabled the ordinary server-rendered page stays visible.
+export const bootScript=`(()=>{try{if(location.pathname!=='/'||location.hash||document.hidden||matchMedia('(prefers-reduced-motion: reduce)').matches||localStorage.getItem('observatory-paused')==='true')return;const root=document.documentElement;root.dataset.homeArrival='pending';setTimeout(()=>{if(root.dataset.homeArrival==='pending')delete root.dataset.homeArrival;},15000);if(localStorage.getItem('observatory-static')==='true'||sessionStorage.getItem('${bootSessionKey}'))return;root.dataset.labBoot='loading';setTimeout(()=>{delete root.dataset.labBoot;},15000);}catch{}})();`;

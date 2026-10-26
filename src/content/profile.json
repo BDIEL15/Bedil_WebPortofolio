@@ -4,5 +4,13 @@
   "intro": "I'm a Computer Engineering student at Universitas Indonesia, interested in software and robotics.",
   "bio": "I also explore web development, design, and video—ways to turn an idea into something you can experience.",
   "interests": ["a computer engineering student", "a robotics enthusiast"],
-  "interestsDescription": "A computer engineering student interested in robotics."
+  "interestsDescription": "A computer engineering student interested in robotics.",
+  "education": {"course": "Computer Engineering", "institution": "Universitas Indonesia"},
+  "focusAreas": ["Software & robotics", "Design & visual work"],
+  "socialLinks": [
+    {"label":"GitHub","icon":"github","href":"https://github.com/BDIEL15"},
+    {"label":"LinkedIn","icon":"linkedin","href":"https://www.linkedin.com/in/abdieldeandra/"},
+    {"label":"Instagram","icon":"instagram","href":"https://www.instagram.com/abdiel.deandra"},
+    {"label":"Email","icon":"email","href":"mailto:abdiel.deandra@gmail.com"}
+  ]
 }

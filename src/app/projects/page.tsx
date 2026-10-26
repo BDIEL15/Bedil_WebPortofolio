@@ -1,8 +1,10 @@
-import type { Metadata } from 'next';
 import { EmptyState } from '@/components/empty-state';
 import { getProjects } from '@/lib/content';
-export const metadata: Metadata = { title: 'Projects', description: 'Technical and creative work by Abdiel Deandra EL Dzaky.' };
-export default async function Projects() {
-  const items = await getProjects();
-  return <section className="collection"><h1>Projects</h1><p className="collection-intro">Systems, software, and visual work.</p>{items.length ? <ul className="content-list">{items.map(item => <li key={item.id}><h2>{item.title}</h2><p>{item.summary}</p></li>)}</ul> : <EmptyState title="Work is being gathered." description="There are no published projects here yet. Each one will have its own context, contribution, and process when it is ready to share." />}</section>;
+import {SampleCollection} from '@/components/sample-collection';
+import {PreviewNote} from '@/components/preview-note';
+import {isUiPreview,previewMetadata,samples,type PreviewSearch} from '@/lib/ui-preview';
+export function generateMetadata({searchParams}:{searchParams:PreviewSearch}) {return previewMetadata('Projects','Technical and creative work by Abdiel Deandra EL Dzaky.',searchParams);}
+export default async function Projects({searchParams}:{searchParams:PreviewSearch}) {
+  const [items,preview]=await Promise.all([getProjects(),isUiPreview(searchParams)]);
+  return <section className="collection collection-projects"><h1>Projects</h1><p className="collection-intro">Things made with curiosity.<br/>Software, robotics, and a little visual thinking.</p><PreviewNote active={preview}/>{preview?<SampleCollection items={samples.projects} variant="projects"/>:items.length?<SampleCollection sample={false} variant="projects" items={items.map(item=>({id:item.id,title:item.title,category:'Project',kind:'signal',summary:item.summary,tags:[],intro:item.summary,sections:[]}))}/>:<EmptyState title="Work is being gathered." description="There are no published projects here yet. Each one will have its own context, contribution, and process when it is ready to share."/>}</section>;
 }

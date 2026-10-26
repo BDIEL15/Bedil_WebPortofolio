@@ -38,7 +38,7 @@ async page => {
   const art = page.locator('.scene-art');
   const canvas = page.locator('.workshop-canvas');
   async function sceneFrame() {
-    const cover = await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after{opacity:0!important;transition:none!important}'});
+    const cover = await page.addStyleTag({content:'.page-shell,.scene-caption,.motion-controls,nextjs-portal{visibility:hidden!important}.scene:after,.scene-scrim{opacity:0!important;transition:none!important}'});
     try { return await canvas.screenshot(); } finally { await cover.evaluate(el=>el.remove()); }
   }
   assert(await page.locator('.scene-live canvas').count() === 1, 'Expected one WebGL canvas');
@@ -69,13 +69,13 @@ async page => {
   await page.waitForTimeout(250);
   const moving = await sceneFrame();
   await page.waitForTimeout(450);
-  assert(moving.equals(await sceneFrame()), 'Static visual proof unexpectedly runs idle motion');
+  assert(!moving.equals(await sceneFrame()), 'Home workbench pixels stopped after resuming motion');
   await page.getByRole('button', { name: 'Pause motion' }).click();
   const frozen = await sceneFrame();
   await page.waitForTimeout(350);
   assert(frozen.equals(await sceneFrame()), 'Pause did not stop actual rendering changes');
   assert(await page.getByRole('button', { name: 'Inspect as ASCII' }).count() === 0, 'Removed ASCII control returned');
-  report.push('The scene settles when motion is enabled or paused; only one WebGL canvas and no ASCII control.');
+  report.push('The scene animates when enabled and freezes when paused; only one WebGL canvas and no ASCII control.');
   const hide = page.getByRole('button', { name: 'Hide text' });
   await hide.focus(); await page.keyboard.press('Space');
   assert(await page.getByRole('button', { name: 'Show text' }).evaluate(el => el === document.activeElement), 'Restore text control lost focus');

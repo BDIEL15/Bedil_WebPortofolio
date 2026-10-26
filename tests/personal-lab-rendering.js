@@ -12,13 +12,15 @@ async page => {
   const assert = (value, message) => { if (!value) throw new Error(message); };
   await probe.goto('http://127.0.0.1:3000/');
   await probe.locator('.scene[data-state=ready]').waitFor();
-  await probe.waitForTimeout(400);
+  await probe.getByRole('button',{name:'Pause motion',exact:true}).click();
+  await probe.locator('.scene-live[data-robot-motion=paused]').waitFor();
+  await probe.waitForTimeout(100);
   const count = () => probe.evaluate(() => window.__labFrames);
   const initial = await count();
   assert(initial > 0, 'Probe must observe actual rendered frames');
   await probe.waitForTimeout(1000);
   const idleDelta = await count() - initial;
-  assert(idleDelta === 0, 'Static proof keeps rendering while idle');
+  assert(idleDelta === 0, 'Paused scene keeps rendering while idle');
   await probe.getByRole('button', { name: 'Explore view', exact: true }).click();
   await probe.getByRole('button', { name: 'Rotate right', exact: true }).click();
   const interactionDelta = await count() - initial;
@@ -31,5 +33,5 @@ async page => {
   await probe.waitForTimeout(350);
   assert(await count() > settled, 'Resize did not render new framing');
   await context.close();
-  return { idleDelta, interactionDelta, condition: 'Chromium touch-size emulation; event-driven static study. No animated FPS or physical-device performance claim.' };
+  return { idleDelta, interactionDelta, condition: 'Chromium portrait emulation with Pause active; verifies suspended idle, input and resize. Active activity is tested separately, not physical-device FPS.' };
 }

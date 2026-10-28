@@ -1,5 +1,7 @@
 # Panduan kerja repository
 
+**Judul koleksi tetap — 27 Oktober:** Projects, Experience, Writing dan Cabinet memakai collection-heading statis + collection-scroll native untuk isi. ReadingFrame mengukur tinggi hingga batas footer. Offset portrait scene-first pada keempat route digantikan; Home/About/artikel tetap memakai layout masing-masing. Jangan kembalikan judul/deskripsi ke area scroll. QA regresi `tests/collection-heading-browser.js` (4 route × 4 viewport, keyboard/dialog/navigasi).
+
 **Home arrival — revisi pemilik:** teks Home yang tiba-tiba muncul kini fade bertahap pada elemen aktual: judul, interest, deskripsi dan ikon. ReadingContent display:contents tidak dapat membawa opacity; animasi awal dipindah ke HomeArrival, tanpa translate/layout shift. Durasi independen dari atribut boot sehingga tidak terpotong saat kamera selesai. Mark first-paint pending punya failsafe; noJS/pause/reduced tetap terbaca, fokus/hidden menyelesaikan fade. Berjalan pada cold entry Home, termasuk sesi boot yang sudah dilihat, tidak berulang saat navigasi kembali Home. Interest typing ditahan selama boot agar reveal dimulai dari frasa lengkap. QA-HOME-ARRIVAL.md.
 
 **Vignette sukses — revisi pemilik:** efek sukses kini memiliki vignette radial hijau yang lebih terasa di tepi, sedikit pencerahan tengah dan blend screen; durasi/guard/tempo opening tetap. Ini eksplisit diminta pemilik, bukan gradient dekoratif untuk UI umum.

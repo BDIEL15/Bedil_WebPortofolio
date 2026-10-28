@@ -2,7 +2,7 @@ import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { parse as parseYaml } from 'yaml';
 import type { z } from 'zod';
-import { cabinetSchema, experienceSchema, parseContent, profileSchema, projectSchema, publishedOnly, writingSchema } from './schema';
+import { aboutSchema, cabinetSchema, experienceSchema, parseContent, profileSchema, projectSchema, publishedOnly, writingSchema } from './schema';
 
 const root = path.join(process.cwd(), 'src/content');
 async function json(file: string) { return JSON.parse(await readFile(path.join(root, file), 'utf8')); }
@@ -11,6 +11,7 @@ async function collection<T extends { id: string; slug: string; status: string }
   return publishedOnly(await Promise.all(files.map(async file => parseContent(schema, await json(`${folder}/${file}`), `${folder}/${file}`))));
 }
 export async function getProfile() { return parseContent(profileSchema, await json('profile.json'), 'profile.json'); }
+export async function getAbout() { return parseContent(aboutSchema, await json('about.json'), 'about.json'); }
 export async function getExperiences() { return parseContent(experienceSchema, await json('experiences.json'), 'experiences.json').filter(item => item.status === 'published'); }
 // File order is the owner's display priority; only the first three published roles enter the scene.
 export async function getFeaturedExperiences() {

@@ -1,5 +1,7 @@
 # Mengisi foto pada scene
 
+**27 Oktober:** tiga foto ID card dari pemilik sudah aktif: `digilab-id.png` → `digital-laboratory`, `exercise-id.png` → `exercise-2026`, `kominfo-ime-id.png` → `ime-2026`. PNG asli disalin tanpa perubahan; alpha diteruskan pada material foto agar warna kartu terlihat di belakang cutout. Slot memory tetap kosong. Semua 21 poster diperbarui dari scene paused pada desktop/tablet/mobile; capture scene-only sementara dilepas sesudahnya.
+
 Lima slot tersedia: foto untuk tiga lanyard Experience dan dua bingkai kenangan di sisi kiri. Saat kosong, scene menampilkan mount netral bertuliskan PHOTO, tanpa wajah atau dokumentasi rekaan.
 
 **26 Oktober:** prioritas pertama kini berada di slot kanan/dekat kamera (bekas IME), sesuai klarifikasi pemilik. Dengan urutan JSON saat ini, posisi fisik kiri→kanan adalah IME → EXERCISE → Lab. ID foto tetap mengikuti peran yang sama; tidak perlu menukar file foto/key ketika slot berpindah.

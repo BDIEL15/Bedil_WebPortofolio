@@ -1,9 +1,9 @@
 import { compileMDX } from 'next-mdx-remote/rsc';
-import { getProfile, getExperiences, getProjects, getCabinetItems, getPublishedWriting } from '../src/lib/content/files';
+import { getAbout, getProfile, getExperiences, getProjects, getCabinetItems, getPublishedWriting } from '../src/lib/content/files';
 
 try {
   const [, experiences, projects, cabinet, writing] = await Promise.all([
-    getProfile(), getExperiences(), getProjects(), getCabinetItems(), getPublishedWriting(),
+    getProfile(), getExperiences(), getProjects(), getCabinetItems(), getPublishedWriting(), getAbout(),
   ]);
   for (const article of writing) {
     try {

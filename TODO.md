@@ -1,5 +1,18 @@
 # TODO — Personal Electronics Lab
 
+## Judul koleksi tetap — 27 Oktober 2026
+
+- [x] Projects, Experience, Writing dan Cabinet: judul/deskripsi berada di luar area scroll. Kartu, preview note, timeline dan tautan lanjutan scroll di bawahnya.
+- [x] ReadingFrame mengukur tinggi tersisa sebelum footer; layout portrait tidak lagi mendorong koleksi ke bawah scene. Scroll native di area isi, keyboard/fokus/dialog tetap tersedia. Home, About, artikel dan scene tidak diubah.
+- [x] `npm run check`: TypeScript, konten, 15 tes dan syntax prototype lulus. Browser dev: 4 route × 4 viewport (1440, 768, 390 dan landscape 844), posisi judul, batas header/footer, overflow, keyboard, dialog, reset scroll navigasi lulus; pageErrors kosong. Wheel dan noJS diuji terpisah. Source lint 5 file 0/0.
+- [ ] Review pemilik dan HP fisik; build produksi tidak diulang untuk perubahan layout ini. Dev tetap tersedia lewat `npm run dev`.
+
+
+## Konten About — 26 Oktober 2026
+
+- [x] Copy final pemilik (huruf kecil, tiga paragraf) dan foto terlampir menggantikan About/placeholder preview; konten tersimpan di `src/content/about.json`, divalidasi melalui content layer. Foto memakai optimasi Next Image dan rasio asli. Home tetap memakai profil sendiri.
+- [ ] Review pemilik; belum deploy.
+
 Status: **UI lebih lembut dan dummy interaktif melalui `?preview=1`**, di depan enam POV pada satu workbench/rak/renderer/overview. Home tanpa section/CTA About me; tiga name tag dari prioritas published JSON. Foto null dan mode konten asli tetap empty state jujur.
 
 ## Fade masuk Home — 26 Oktober 2026
@@ -567,3 +580,31 @@ Pada akhir checkpoint fondasi sebelumnya server dihentikan. Sesudah iterasi Sign
 - ManimGX untuk video penjelasan tertentu jika relevan; tidak diperlukan oleh latar interaktif.
 
 Keputusan yang masih terbuka: penerimaan/kurasi kandidat Robotics study dan komposisi visual, frasa typing akhir, bahasa konten, karya/cabinet, kontak/CV, domain, serta apakah perlu dashboard. Signal study tetap riwayat; Robotics study kini scene aktif. Detail kebutuhan materi ada di PRD §27.
+
+## Tata letak About — 26 Oktober 2026
+- [x] Foto bulat dengan crop CSS, sapaan sejajar foto, intro lebih jelas dan jarak paragraf lapang. Konten portrait dimulai lebih awal (22svh). Copy/foto asli dipertahankan. TypeScript dan 15 tes lulus; screenshot desktop/tablet/mobile ditinjau.
+- [ ] Review pemilik; belum deploy.
+
+## Koreksi About — 27 Oktober 2026
+- [x] Foto di kiri dan sapaan di kanan, gap konsisten; kapitalisasi kalimat, FPGA, AI, Universitas Indonesia, DigiLab DTE FTUI, FTUI dan IME FTUI diperbarui sesuai permintaan terbaru. Menggantikan keputusan copy huruf kecil sebelumnya. Check 15 tes lulus.
+
+## About satu layar — 27 Oktober 2026
+- [x] Desktop landscape (minimal 1000x700) memakai foto 96px, kolom baca 40rem dan jarak lebih ringkas. Browser 1280x720: tinggi dokumen 720px, seluruh isi dan tautan berada di atas footer. Layar kecil/zoom tetap dapat scroll agar konten tidak terpotong.
+- [x] CTA diganti prompt Still curious about me? Try exploring these. dengan tautan uppercase Projects / Experience / Writing / Cabinet. Query preview diteruskan, fokus keyboard memakai gaya aksesibel proyek. TypeScript/content check dan 15 tes lulus; belum build/deploy.
+
+## Posisi About — 27 Oktober 2026
+- [x] Kolom dikembalikan ke 36rem (576px), foto 144px dan tipografi mendekati versi sebelumnya pada desktop tinggi. Blok dipusatkan vertikal pada area baca; desktop pendek memakai skala lebih ringkas. Menggantikan kolom 40rem/foto 96px pada checkpoint sebelumnya.
+- [x] Browser 1920x1080 dan 1280x720: tinggi dokumen sama dengan viewport, konten lengkap di atas footer. Screenshot diperiksa, ukuran viewport browser dipulihkan. Perubahan hanya CSS; tidak mengulang tes aplikasi/build/deploy.
+
+## Experience LinkedIn — 27 Oktober 2026
+- [x] Lima entri dari screenshot pemilik: Laboratory Assistant, Software Staff, Communication & Information staff, GDGoC UI member, dan AIgnite. Periode, employment type/lokasi bila diberikan, deskripsi, skill yang terlihat dan tiga pencapaian AIgnite; empat logo asli di public/logos. Prioritas array/name tag Lab → EXERCISE → IME dipertahankan.
+- [x] Schema mendukung detail opsional; server tetap membatasi payload badge ke field identitas. Tanggal pakai bulan/tahun tanpa durasi statis. Tes browser lama diperbarui ke konten baru (syntax diperiksa; suite itu belum dieksekusi). Check TypeScript/content/15 tes lulus. Browser desktop dan 390px: lima baris, semua logo loaded, tiga achievements, tanpa overflow horizontal atau console error.
+- [ ] File/URL sertifikat AIgnite dan nama skill tersembunyi belum tersedia. Belum build/deploy; poster fallback 3D belum diregenerasi setelah perbaikan label jabatan (masih memakai label sebelumnya).
+
+## Foto ID card — 27 Oktober 2026
+- [x] Tiga PNG pemilik dipasang ke slot DigiLab, EXERCISE dan Kominfo IME berdasarkan ID. UV crop yang sudah ada dipakai; material foto meneruskan alpha PNG agar menyatu dengan latar kartu. Unit test memeriksa transparansi setelah load.
+- [x] Semua 21 poster diperbarui pada 1440x1000, 768x1024 dan 390x844 melalui browser; contact sheet ditinjau dan capture yang belum stabil diulang. CSS capture sementara dipulihkan. Dokumen scene photos/aset diperbarui.
+- [x] Build produksi (di luar sandbox setelah kegagalan izin output EPERM), TypeScript, content check dan 15 tes lulus. Preview dev dipulihkan. Tidak commit/push/deploy.
+
+## Identitas tab website — 27 Oktober 2026
+- [x] Favicon memakai gambar Power yang diberikan pemilik; judul website disingkat menjadi abdiel pada Home dan semua route, termasuk Writing. Browser Experience terverifikasi document.title=abdiel dan rel=icon menuju icon.jpg. Check TypeScript/konten/15 tes lulus. Belum build/deploy.

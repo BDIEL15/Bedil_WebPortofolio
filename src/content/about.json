@@ -1,0 +1,14 @@
+{
+  "heading": "Hey, I'm Abdiel!",
+  "paragraphs": [
+    "I'm a Computer Engineering student @ Universitas Indonesia, currently learning and building projects around FPGA, AI, and web development.",
+    "Along the way, I became a laboratory assistant at DigiLab DTE FTUI, where I design case studies and pre-test problems for the Digital Systems Design course. I've also served as software and Kominfo staff for FTUI organizations, building websites and designing feeds for IME FTUI's social media.",
+    "I like web development, FPGA hardware architecture, cinematography, movies, and cats! (I really want to adopt one someday :3). I also enjoy recreating coffee shop drinks at home and playing games."
+  ],
+  "portrait": {
+    "src": "/photos/abdiel-portrait.jpg",
+    "alt": "Portrait of Abdiel wearing glasses and a black shirt",
+    "width": 1536,
+    "height": 2730
+  }
+}

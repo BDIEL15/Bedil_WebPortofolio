@@ -51,7 +51,10 @@
       "display": "Libertinus Sans"
     },
     "spacing": {},
-    "radius": {"control":"999px","card":"24px"},
+    "radius": {
+      "control": "999px",
+      "card": "24px"
+    },
     "shadows": {},
     "motion": {},
     "density": "comfortable editorial"
@@ -90,6 +93,10 @@
     ]
   },
   "decisions": [
+    {
+      "date": "2026-10-27",
+      "decision": "Projects, Experience, Writing and Cabinet keep heading and description outside a native independently scrolling content region. Fit between fixed navigation and footer, including portrait; preserve scene, palette, typography and dialogs."
+    },
     {
       "date": "2026-10-26",
       "decision": "Home hero enters with staggered opacity on actual elements, independent of the boot attribute lifetime; header also fades. Keep text positions fixed, hold interest typing during boot, respect motion/focus fallback and avoid replay on route return."
@@ -184,7 +191,11 @@
     "26 October follow-up: owner reports missing animations on other directions and returning Home. Preserve the design and timing; native capture rejection after commit gets the incoming opacity fallback. Mid-flight resize retargets from the current pose/velocity instead of snapping. Cover all 30 directed route pairs on desktop/mobile, skipped capture and mid-flight resize. Pause/reduced/hidden remain intentional motion exceptions. QA-SOFT-TRANSITIONS.md.",
     "26 October UI: owner requests softer rounded controls and dummy About/Projects/Writing/Cabinet layouts before database integration. Pill controls/navigation and warm rounded cards retain palette/type/scene. Projects use featured/supporting cards with case-study dialog; Writing editorial notes/reading dialog, Cabinet chosen hobby illustrations. Explicit preview=1, Sample/Layout preview labels and noindex, separate sample JSON; normal URLs keep published/empty content. Native dialog focus/Escape/backdrop, sticky Close and scroll cleanup. No database/admin/dependency/deploy. QA-UI-PREVIEW.md.",
     "26 October Home/nav: remove Home Experience summary and repeating footer, keep intro/scene. Compact fixed header with reserved reading space and a single 460ms transform-only active marker. Marker and aria-current follow committed routes; visual retarget for fast navigation, history/keyboard, font/resize/two-row mobile, pause/reduced/hidden cleanup and noJS fallback. Home CTA keeps preview; legacy experience hash redirects to Experience with JS. Hide Text still hides header. No scene/camera/asset/dependency changes. QA-HOME-NAVIGATION.md.",
-    "26 October Experience: professional profile hierarchy with role heading, organization, known year and generic initials inside a warm timeline panel. No invented Lab period or claims. Owner clarified Lab replaces the former IME slot nearest the camera: physical left-to-right IME, EXERCISE, Lab; JSON/list priority stays Lab, EXERCISE, IME. Photo IDs/colors follow roles; all 21 posters regenerated. Nav marker uses opacity to inherit hidden in scene-only captures. No dependency/model/database. QA-EXPERIENCE-PROFILE.md."
+    "26 October Experience: professional profile hierarchy with role heading, organization, known year and generic initials inside a warm timeline panel. No invented Lab period or claims. Owner clarified Lab replaces the former IME slot nearest the camera: physical left-to-right IME, EXERCISE, Lab; JSON/list priority stays Lab, EXERCISE, IME. Photo IDs/colors follow roles; all 21 posters regenerated. Nav marker uses opacity to inherit hidden in scene-only captures. No dependency/model/database. QA-EXPERIENCE-PROFILE.md.",
+    {
+      "date": "2026-10-26",
+      "decision": "About uses the owner portrait in a circular CSS crop focused on the face, opposite the greeting, with a full-width readable introduction and spaced body paragraphs. Portrait layouts begin the content after 22svh of scene space. Preserve original photo, lowercase owner copy, typography, shared 3D scene and motion."
+    }
   ],
   "evidence": [
     {

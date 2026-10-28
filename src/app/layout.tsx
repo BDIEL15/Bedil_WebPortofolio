@@ -10,7 +10,8 @@ import { getFeaturedExperiences, getPublishedWriting } from '@/lib/content';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: { default: 'Abdiel Deandra EL Dzaky — Personal lab', template: '%s — Abdiel Deandra EL Dzaky' },
+  title: 'abdiel',
+  applicationName: 'abdiel',
   description: 'Computer Engineering student at Universitas Indonesia. A personal workbench for software, robotics, and a journey of learning.',
 };
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

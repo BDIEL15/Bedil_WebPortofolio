@@ -17,7 +17,7 @@ export function loadScenePhotos(slots:ScenePhoto[],own:(texture:THREE.Texture)=>
       const aspect=image.naturalWidth/image.naturalHeight;
       if(aspect>slot.aspect){texture.repeat.x=slot.aspect/aspect;texture.offset.x=(1-texture.repeat.x)/2;}
       else{texture.repeat.y=aspect/slot.aspect;texture.offset.y=(1-texture.repeat.y)/2;}
-      texture.needsUpdate=true;own(texture);slot.material.map=texture;slot.material.needsUpdate=true;redraw();
+      texture.needsUpdate=true;own(texture);slot.material.map=texture;slot.material.transparent=true;slot.material.needsUpdate=true;redraw();
     };
     image.onerror=()=>{}; // A missing replacement leaves the neutral mount intact.
     image.src=src;

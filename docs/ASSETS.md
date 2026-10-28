@@ -1,5 +1,11 @@
 # Aset visual — Personal Electronics Lab dan studi tersimpan
 
+**Foto ID card, 27 Oktober:** `digilab.png`, `exer.png` dan `kominfo_ime.png` diberikan langsung oleh pemilik untuk dipublikasikan pada tiga lanyard. Salinan PNG asli di `public/photos/digilab-id.png`, `exercise-id.png` dan `kominfo-ime-id.png`; crop dilakukan oleh UV texture yang sudah ada, alpha memakai material transparan. Semua 21 WebP scene diganti hasil capture baru (1440×1000, 768×1024, 390×844). Capture memakai source dev yang sama, motion dijeda dan CSS scene-only sementara kemudian dipulihkan; contact sheet `.taste-skill/id-card-posters-sheet.png` ditinjau.
+
+**Logo IME, 27 Oktober:** pemilik mengganti JPG dengan `ikatan_mahasiswa_elektro_ftui_ime_ftui_logo-removebg-preview.png`. Salinan asli di `public/logos/ime-ftui.png`, ditampilkan tanpa latar/border-radius kotak agar alpha PNG tetap terlihat. Logo organisasi lain tetap.
+
+**Experience, 27 Oktober:** empat logo organisasi disediakan langsung oleh pemilik bersama screenshot LinkedIn: Digital Laboratory (`1692676892289.jpg`), EXERCISE FTUI (`exercise_ftui_logo.jpg`), GDGoC UI (`gdgc_ui_logo.jpg`), dan IME FTUI (`ikatan_mahasiswa_elektro_ftui_ime_ftui_logo.jpg`). Salinan asli tanpa edit di `public/logos/`, digunakan sebagai identitas organisasi pada daftar HTML Experience; EXERCISE dipakai kembali untuk AIgnite. Hak logo tetap pada organisasi masing-masing; tidak ada klaim lisensi baru. Tidak dipakai sebagai foto wajah pada lanyard.
+
 **Terminal/coding, 26 Oktober:** monitor trace/orbit diganti satu CanvasTexture editor 1536×864 yang berbagi painter dengan terminal HTML. Keycap tetap 61 instance pada keyboard yang sama. Budget terbaru 248 mesh/90.432 triangle/182 geometri/12 tekstur. Semua 21 poster diperbarui (794.568 byte). Tidak menambah model/dependency/aset eksternal; karakter kode dan amplop tetap ilustrasi asli proyek. QA-TERMINAL-OPENING.md.
 
 **Urutan badge, 26 Oktober:** Lab dipindah ke slot terdekat kamera bekas IME, sesuai klarifikasi pemilik. Fisik kiri→kanan IME → EXERCISE → Lab; pilihan server/urutan prioritas JSON tetap Lab → EXERCISE → IME, foto keyed ID. Semua 21 poster diperbarui: **790.772 byte**. Tidak ada geometri/model/tekstur baru; budget 249 mesh/90.444 triangle/184 geometri/12 tekstur tetap. Nav marker opacity mewarisi visibility saat UI disembunyikan, sehingga tidak bocor ke poster scene-only. QA terbaru: QA-EXPERIENCE-PROFILE.md.
@@ -159,3 +165,6 @@ Pencarian 21st melalui CLI memerlukan login dan belum tersedia di lingkungan ini
 ## Home social SVG — 26 Oktober 2026
 
 `public/icons/github.svg`, `linkedin.svg`, `instagram.svg`: SVG Simple Icons v11.15.0, disalin dari [repository sumber](https://github.com/simple-icons/simple-icons/tree/11.15.0/icons). [Lisensi CC0](https://github.com/simple-icons/simple-icons/blob/11.15.0/LICENSE.md) disimpan pada `public/icons/SIMPLE-ICONS-LICENSE.md`. `email.svg` adalah geometri amplop sederhana asli proyek. SVG dipakai sebagai CSS mask berwarna currentColor, lokal tanpa CDN/dependency runtime. Tautan akun/email berasal langsung dari pemilik, disimpan pada `src/content/profile.json`.
+
+## Ikon website — 27 Oktober 2026
+Gambar Power berkacamata dari pemilik (Power con lentes😍.jpg) disalin tanpa edit ke src/app/icon.jpg untuk favicon Next.js. Ikon SVG lama dipindahkan ke public/icons/legacy-observatory.svg. Hak karakter/gambar tetap pada pemiliknya; tidak mengklaim lisensi baru.

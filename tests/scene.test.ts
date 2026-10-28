@@ -52,7 +52,7 @@ test('public photo replacements crop, retain their mount on failure and ignore l
   try {
     sources['digital-laboratory']='/photos/lab.webp';sources['exercise-2026']='/photos/missing.jpg';sources['memory-01']='/photos/portrait.jpg';
     cleanup=loadScenePhotos([{id:'digital-laboratory',aspect:1.5,material},{id:'exercise-2026',aspect:1.5,material:other},{id:'memory-01',aspect:1.5,material:portrait}],texture=>owned.push(texture),()=>redraws++);
-    images[0].onload!();assert.equal(material.map,owned[0]);assert.equal(owned[0].repeat.x,.75);assert.equal(owned[0].offset.x,.125);
+      images[0].onload!();assert.equal(material.map,owned[0]);assert.equal(material.transparent,true);assert.equal(owned[0].repeat.x,.75);assert.equal(owned[0].offset.x,.125);
     images[1].onerror!();assert.equal(other.map,placeholder);assert.equal(redraws,1);
     images[2].naturalWidth=400;images[2].naturalHeight=800;images[2].onload!();assert.equal(portrait.map,owned[1]);assert.equal(owned[1].repeat.y,1/3);assert.equal(owned[1].offset.y,(1-1/3)/2);
     const late=images[0].onload!;cleanup();late();assert.equal(redraws,2);assert.equal(images[0].onload,null);assert.equal(images[0].src,'');

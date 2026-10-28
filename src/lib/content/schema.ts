@@ -3,7 +3,13 @@ import { z } from 'zod';
 const text = z.string().trim().min(1);
 const base = z.object({ id: text, slug: text.regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/), title: text, status: z.enum(['draft', 'published']) });
 export const profileSchema = z.object({ name: text, headline: text, intro: text, bio: text, interests: z.array(text).min(1), interestsDescription: text, education:z.object({course:text,institution:text}).optional(), focusAreas:z.array(text).optional(), socialLinks:z.array(z.object({label:text,icon:z.enum(['github','linkedin','instagram','email']),href:z.string().url().refine(value=>value.startsWith('https://')||value.startsWith('mailto:'),'Use HTTPS or mailto links')})).default([]) });
-export const experienceSchema = z.array(z.object({ id: text, organization: text, role: text, year: text.optional(), status: z.enum(['draft', 'published']) }));
+export const aboutSchema = z.object({ heading: text, paragraphs: z.array(text).min(1), portrait: z.object({ src: text.regex(/^\/photos\/[a-z0-9-]+\.(jpg|jpeg|png|webp)$/), alt: text, width: z.number().int().positive(), height: z.number().int().positive() }) });
+export const experienceSchema = z.array(z.object({
+  id: text, organization: text, role: text, year: text.optional(), status: z.enum(['draft', 'published']),
+  organizationName: text.optional(), period: text.optional(), employmentType: text.optional(), location: text.optional(),
+  logo: text.regex(/^\/logos\/[a-z0-9-]+\.(jpg|jpeg|png|webp)$/).optional(), description: text.optional(),
+  skills: z.array(text).optional(), achievements: z.array(text).optional(),
+}));
 export const projectSchema = base.extend({ summary: text });
 export const cabinetSchema = base.extend({ note: text, kind: text });
 export const writingSchema = base.extend({ description: text, lang: z.literal('en'), topics: z.array(text), publishedAt: text.optional(), updatedAt: text.optional() }).superRefine((item, ctx) => {

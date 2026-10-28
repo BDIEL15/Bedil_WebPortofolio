@@ -8,7 +8,7 @@ export async function generateStaticParams() { return (await getPublishedWriting
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const item = await getWritingBySlug((await params).slug);
   if (!item) notFound();
-  return { title: item.title, description: item.description };
+  return { title: { absolute: 'abdiel' }, description: item.description };
 }
 export default async function Article({ params }: { params: Promise<{ slug: string }> }) {
   const item = await getWritingBySlug((await params).slug);

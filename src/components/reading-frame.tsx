@@ -3,7 +3,7 @@
 import {useLayoutEffect} from 'react';
 import {usePathname} from 'next/navigation';
 
-/** Keep native document scrolling, with a clear viewport for fixed reading chrome. */
+/** Measure reading chrome; collections keep their own scroll area below a stationary heading. */
 export function ReadingFrame() {
   const pathname=usePathname();
   useLayoutEffect(()=>{
@@ -16,6 +16,8 @@ export function ReadingFrame() {
       const bottom=getComputedStyle(footer).display==='none'?innerHeight:footer.getBoundingClientRect().top-16;
       main.style.setProperty('--reading-clip-top',Math.max(0,top-bounds.top)+'px');
       main.style.setProperty('--reading-clip-bottom',Math.max(0,bounds.bottom-bottom)+'px');
+      const collection=main.querySelector<HTMLElement>('.collection:has(>.collection-scroll)');
+      if(collection)collection.style.setProperty('--collection-height',Math.max(0,bottom-collection.getBoundingClientRect().top)+'px');
       document.documentElement.style.setProperty('--reading-top',top+'px');
       document.documentElement.style.setProperty('--reading-bottom',innerHeight-bottom+'px');
     };

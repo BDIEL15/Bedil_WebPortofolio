@@ -1,5 +1,67 @@
 [
-  { "id": "digital-laboratory", "organization": "Digital Laboratory", "role": "Lab assistant", "status": "published" },
-  { "id": "exercise-2026", "organization": "EXERCISE FTUI", "role": "Software staff", "year": "2026", "status": "published" },
-  { "id": "ime-2026", "organization": "IME FTUI", "role": "Badan Pengurus Kominfo", "year": "2026", "status": "published" }
+  {
+    "id": "digital-laboratory",
+    "organization": "Digital Laboratory",
+    "organizationName": "Digital Laboratory of University of Indonesia",
+    "role": "Laboratory Assistant",
+    "period": "Jul 2026 — Present",
+    "employmentType": "Part-time",
+    "location": "Depok · On-site",
+    "logo": "/logos/digital-laboratory.jpg",
+    "description": "Currently in charge of Digital System Basics for Computer Engineering Students for Electrical Engineering and Computer Engineering Students at FTUI.",
+    "skills": ["C++", "Computer Hardware"],
+    "status": "published"
+  },
+  {
+    "id": "exercise-2026",
+    "organization": "EXERCISE FTUI",
+    "role": "Software Staff",
+    "year": "2026",
+    "period": "Feb 2026 — Present",
+    "employmentType": "Full-time",
+    "logo": "/logos/exercise-ftui.jpg",
+    "description": "EXERCISE FTUI is the largest technology organization in the Faculty of Engineering, University of Indonesia, dedicated to refining potential into progress through real-world projects and professional workflows. It serves as an innovation accelerator that empowers members to become proficient in bridging technological gaps and leading meaningful change within the community.",
+    "skills": ["Web Development", "React.js"],
+    "status": "published"
+  },
+  {
+    "id": "ime-2026",
+    "organization": "IME FTUI",
+    "organizationName": "Ikatan Mahasiswa Elektro FTUI (IME FTUI)",
+    "role": "Staff of Communication & Information",
+    "year": "2026",
+    "period": "Feb 2026 — Present",
+    "logo": "/logos/ime-ftui.png",
+    "description": "Ikatan Mahasiswa Elektro Fakultas Teknik Universitas Indonesia (IME FTUI) is the official student organization that serves as a forum for students of the Department of Electrical Engineering at UI. It functions as a platform to support its members in academic development, professional networking, and organizational growth within the faculty. In my role as a staff member in the Communication and Information division, I contribute to these objectives through website development, Figma design, content creation, and managing organizational relations to ensure effective communication and digital presence for the community.",
+    "skills": ["Figma (Software)", "Design"],
+    "status": "published"
+  },
+  {
+    "id": "gdgoc-ui-2026",
+    "organization": "GDGoC UI",
+    "organizationName": "Google Developer Groups on Campus Universitas Indonesia (GDGoC UI)",
+    "role": "Community Member",
+    "year": "2026",
+    "period": "Jan 2026 — Present",
+    "logo": "/logos/gdgoc-ui.jpg",
+    "description": "As an open tech hub for all Universitas Indonesia students, GDGoC UI fosters a collaborative environment for learning and technological innovation. By hosting specialized meetups and events, the community empowers individuals with hands-on technical expertise, aiming to drive social progress through technology.",
+    "skills": ["Software Development"],
+    "status": "published"
+  },
+  {
+    "id": "aignite-2025",
+    "organization": "EXERCISE FTUI",
+    "role": "AIgnite: Bootcamp x Internship 2025",
+    "year": "2025",
+    "period": "Oct 2025 — Nov 2025",
+    "logo": "/logos/exercise-ftui.jpg",
+    "description": "Participated in AIgnite, an integrated bootcamp and internship program by Exercise FTUI designed to equip students with the latest technical skills. Through this program, I underwent intensive theoretical training and immediately applied my knowledge through hands-on experience in real-world technology projects.",
+    "achievements": [
+      "Developed an AI-powered Todo List website using React.js and Google AI.",
+      "Implemented intelligent features to enhance task management and user productivity.",
+      "Translated theoretical software engineering concepts into a functional, AI-driven web application."
+    ],
+    "skills": ["Web Development", "React.js"],
+    "status": "published"
+  }
 ]

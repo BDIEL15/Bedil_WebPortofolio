@@ -7,6 +7,7 @@ Keputusan pemilik, 26 Oktober 2026: konten memakai file lokal JSON dan Markdown/
 | Yang ingin diubah | Lokasi | Tampil di |
 | --- | --- | --- |
 | Nama, intro, bio, typing, pendidikan, fokus | `src/content/profile.json` | Home/About; field dipakai sesuai halaman |
+| Teks dan foto About final | `src/content/about.json` | About; heading, paragraphs, portrait. Menggantikan bio profil dan placeholder About |
 | Akun sosial dan email (`socialLinks`) | `src/content/profile.json` | Ikon di intro Home; label, icon, href HTTPS atau mailto |
 | Pengalaman dan urutannya | `src/content/experiences.json` | Experience + tiga name tag 3D pertama |
 | Proyek | `src/content/projects/<slug>.json` | Projects + dialog ringkasan |
@@ -35,6 +36,8 @@ Pengalaman berada dalam satu array di `experiences.json`. Untuk menambah, salin 
 Tambahkan `"year": "2026"` atau periode yang benar jika sudah diketahui; jangan mengarang tanggal. Urutan array adalah prioritas tampilan. Semua entri published tampil di HTML; hanya tiga published pertama masuk name tag 3D. Foto dicocokkan berdasarkan ID, bukan posisi array. Pertahankan ID saat hanya mengubah copy.
 
 ## 2. Buat konten baru
+
+Experience juga mendukung `organizationName` (nama panjang pada HTML; `organization` tetap nama ringkas pada badge 3D), `period`, `employmentType`, `location`, `logo` (URL `/logos/...` lokal), `description`, `skills` dan `achievements` (array teks). `period` menggantikan tampilan `year` pada daftar HTML; `year` tetap dipakai pada badge bila tersedia. Pakai periode bulan/tahun tanpa menghitung durasi secara manual. Logo organisasi disimpan di `public/logos/`; foto lanyard tetap terpisah di `scene-photo-slots.json`.
 
 Dari terminal di folder proyek, gunakan salah satu perintah:
 
@@ -85,7 +88,7 @@ Simpan hanya foto yang siap dibagikan ke `public/photos/`. Gunakan nama deskript
 
 **Semua berkas dalam `public/` bisa dibuka langsung**, meskipun tulisan yang merujuknya masih draft. Simpan foto privat di luar `public/` sampai siap diterbitkan. Mengubah tulisan menjadi draft tidak mencabut foto yang masih ada di folder publik.
 
-Untuk foto lanyard/bingkai, ikuti [SCENE-PHOTOS](SCENE-PHOTOS.md). Perubahan foto scene juga membutuhkan pembaruan poster fallback melalui prosedur dokumen tersebut. Foto About, cover kartu, kontak dan CV belum memiliki field/rendering lengkap; jangan menganggap menaruh file saja akan memasangnya pada UI.
+Untuk foto lanyard/bingkai, ikuti [SCENE-PHOTOS](SCENE-PHOTOS.md). Perubahan foto scene juga membutuhkan pembaruan poster fallback melalui prosedur dokumen tersebut. Foto About diatur melalui `src/content/about.json` (portrait). Cover kartu, kontak dan CV belum memiliki field/rendering lengkap; jangan menganggap menaruh file saja akan memasangnya pada UI.
 
 ## 5. Periksa dan lihat hasil
 

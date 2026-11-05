@@ -4,6 +4,9 @@ import { getCabinetItems, getExperiences, getFeaturedExperiences, getProfile, ge
 import { parseContent, publishedOnly, writingSchema } from '../src/lib/content/schema';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import { renderToStaticMarkup } from 'react-dom/server';
+import {writingComponents} from '../src/components/writing-media';
+import {access} from 'node:fs/promises';
+import path from 'node:path';
 
 test('real profile and only published content cross the public boundary', async () => {
   assert.equal((await getProfile()).name, 'Abdiel Deandra EL Dzaky');
@@ -34,4 +37,31 @@ test('duplicate slugs and invalid publication metadata fail', () => {
   for (const date of [undefined, '2026-02-30', '2099-01-01', 'invalid']) {
     assert.throws(() => parseContent(writingSchema, { ...article, publishedAt: date }, 'test.mdx'), /test.mdx/);
   }
+});
+
+test('published English story renders registered media and all local attachments exist', async () => {
+  const article=await getWritingBySlug('dua-pilihan-satu-perjalanan');
+  assert.ok(article);
+  assert.equal(article.lang,'en');
+  assert.equal(typeof writingComponents.CalculusPreview,'function');
+  assert.equal(typeof writingComponents.FeedPreview,'function');
+  // Next/Image needs Next's runtime; verify MDX registration here and media rendering in the browser.
+  const result=await compileMDX({source:article.content,components:{CalculusPreview:()=> 'PDF preview slot',FeedPreview:()=> 'Feed preview slot'}});
+  const html=renderToStaticMarkup(result.content);
+  assert.match(html,/PDF preview slot/);
+  assert.match(html,/Feed preview slot/);
+  const assets=['pembahasan-soal.pdf','cover.png','slide-1.png','slide-2.png','slide-3.png',...Array.from({length:5},(_,i)=>`calculus-page-${i+1}.webp`)];
+  await Promise.all(assets.map(file=>access(path.join(process.cwd(),'public/writing/ime-ftui-2026',file))));
+});
+
+test('Cabinet publishes the complete deduplicated collection with local covers and safe music URLs', async()=>{
+  const items=await getCabinetItems();
+  assert.equal(items.length,27);
+  const music=items.filter(item=>item.kind==='music');
+  assert.equal(music.length,19);
+  assert.equal(new Set(music.map(item=>item.href)).size,19);
+  assert.equal(music.filter(item=>item.spotifyType==='album').length,1);
+  assert.equal(music.filter(item=>item.preview).length,18);
+  await Promise.all(items.map(item=>access(path.join(process.cwd(),'public',item.image!))));
+  for(const item of music)assert.match(item.href!,/^https:\/\/open\.spotify\.com\/(track|album)\/[a-zA-Z0-9]{22}$/);
 });

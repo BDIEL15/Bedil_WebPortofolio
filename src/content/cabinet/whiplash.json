@@ -1,0 +1,12 @@
+{
+  "id": "whiplash",
+  "slug": "whiplash",
+  "title": "Whiplash",
+  "note": "Film",
+  "kind": "film",
+  "status": "published",
+  "image": "/cabinet/whiplash.jpg",
+  "order": 36,
+  "width": 452,
+  "height": 678
+}

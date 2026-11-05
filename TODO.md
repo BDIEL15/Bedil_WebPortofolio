@@ -1,5 +1,54 @@
 # TODO — Personal Electronics Lab
 
+## Komposisi dan keterbacaan — 4 November 2026
+
+- [x] About/Experience dan Writing terpusat, Cabinet lebih lebar; paragraf tetap rata kiri. Projects tetap kiri/robot kanan, Home tetap tengah. Tidak mengubah kamera/geometri.
+- [x] Scrim mengikuti bacaan dan artikel memakai clip ReadingFrame; akhir About/artikel terjangkau di atas footer pada 320×568, 390×844, 844×390 dan desktop.
+- [x] Judul/intro detail proyek mendahului galeri; satu foto tanpa panah. Galeri jamak, preview Writing, dialog Escape/fokus tetap berfungsi.
+- [x] Label static tidak menjanjikan rotasi; tiga foto badge turun dari 1.769.632 menjadi 80.776 byte (95%), original dipertahankan.
+- [x] EXERCISE fokus pengembangan UI website Exertion 2026 sesuai konfirmasi pemilik; GDGoC tetap membership tanpa klaim kontribusi. Ringkas konteks IME dan perbaiki kalimat Lab dari fakta yang sudah ada.
+- [x] `npm run check`: 17 tes, TypeScript, validasi/kompilasi konten dan syntax prototype lulus. Regresi baru 100 checks; suite heading koleksi, reading-frame, navigation, preview dan home controls lulus; reduced motion/noJS dan galeri keyboard diperiksa.
+- [x] Build dan smoke produksi lokal lulus: 7 route × desktop/mobile HTTP 200, tanpa overflow/page error; renderer tetap saat navigasi, 3 derivative badge termuat. Hasil di `analysis/qa/portfolio-composition/RESULTS.md`.
+- [ ] Review visual pemilik dan HP fisik. Tidak ada commit/push/deploy.
+
+## Finishing portrait — 29 Oktober 2026
+
+- [x] Hapus panel main, gelapkan scene dengan scrim hitam, pusatkan area baca dan heading portrait; Home di tengah vertikal. Explore/static di kiri bawah tanpa tabrakan dengan motion. Pertahankan scroll koleksi dan artikel.
+- [x] Inspeksi screenshot enam route pada 390×844; TypeScript lulus. `npm run check` terhenti saat tsx memanggil `os.userInfo` (uv_os_get_passwd ENOMEM lingkungan).
+- [x] Regresi collection-heading lulus 16 kombinasi (empat route × desktop/tablet/ponsel/landscape), termasuk keyboard scroll, dialog Escape dan navigasi. Tidak ada page error, overflow horizontal atau overlap header/footer.
+- [x] Validasi konten dan kompilasi tulisan published lulus lewat pemanggilan langsung tsx dengan fallback username khusus proses QA; tidak mengubah dependency atau source aplikasi.
+- [x] Cek tambahan 18 layout portrait (enam route × 320×568, 390×844, 768×1024) lulus: main transparan, pusat horizontal tepat, tanpa overflow atau tombol bertumpuk. Screenshot final di analysis/qa/portrait-*-after.png.
+
+## Transisi artikel Writing — 28 Oktober 2026
+
+- [x] PageTransition mengikuti userPaused, bukan effectivePause yang otomatis menghentikan scene 3D saat membaca artikel. Fade native/fallback yang sudah ada kini tidak dibatalkan saat membuka Tugas Bidang maupun kembali ke daftar. Reduced motion, pause eksplisit dan hidden tetap melewati transisi.
+- [x] TypeScript lulus; membuka artikel dan kembali ke Writing diperiksa di browser. Pengukuran frame animasi tidak tersedia lewat API browser sesi ini; build/tes lengkap tidak diulang.
+
+## Writing adaptif — 28 Oktober 2026
+
+- [x] Koreksi pemilik: koleksi asli dengan 0–2 artikel tetap di sisi kiri dan rata kiri, kelompok heading/daftar berada di tengah secara vertikal dalam batas ReadingFrame. Mulai 3 artikel kembali ke daftar biasa. Heading tetap di luar area scroll; layar pendek masih memakai native scroll untuk isi.
+- [x] Catatan “More writing is on the way.” di bawah koleksi published. Preview tetap memakai susunan sampel biasa.
+- [x] TypeScript lulus; browser desktop, 390×844 dan landscape 844×390 diperiksa, tanpa overflow horizontal dan isi berada di atas footer. Keyboard dapat menggulir area isi; preview tiga entri tetap rata awal. Screenshot: analysis/qa/writing-adaptive-desktop.jpg dan writing-adaptive-mobile.jpg. Build/tes lengkap tidak diulang untuk perubahan layout ini.
+
+## Writing: judul dan bahasa — 28 Oktober 2026
+
+- [x] Daftar published Writing hanya judul lalu tanggal; ringkasan tetap tersedia untuk metadata. Artikel IME berjudul “Tugas Bidang” sesuai pemilik; narasi, heading, deskripsi metadata dan keterangan/alt preview memakai bahasa Inggris, lang=en. URL dan dokumen/gambar arsip asli dipertahankan.
+- [x] TypeScript lulus; daftar dan artikel diperiksa di browser. Screenshot: analysis/qa/writing-title-date.jpg. Build/tes lengkap tidak diulang untuk perubahan copy ini.
+
+## Cabinet pribadi — 28 Oktober 2026
+
+- [x] Mengganti contoh Cabinet dengan 27 item pemilik: 18 lagu + 1 album Spotify unik serta 8 buku/film/serial/game. Link menempel dipisahkan, duplikat dibuang; judul/artis/sampul dari metadata Spotify, delapan gambar dari lampiran pemilik.
+- [x] Galeri campuran seperti referensi Clarissa, 3 kolom desktop/2 mobile; heading tetap dan scroll native. Play/pause cuplikan eksplisit, satu audio aktif, berhenti saat hidden/Hide text/unmount; judul musik membuka Spotify. Album membuka Spotify tanpa preview rekaan.
+- [x] `npm run check` lulus 17 tes. Browser 1440×1000, 390×844, 844×390: tanpa overflow, koleksi di antara heading/footer; keyboard scroll, 27 sampul, play/pause Amoeba dengan currentTime berjalan diverifikasi. Screenshot `analysis/qa/cabinet-desktop.png` dan `cabinet-mobile.png`.
+- [ ] Review pemilik/HP fisik. Build produksi/deploy tidak dilakukan; memakai dev server yang sudah aktif. Ketersediaan audio tetap mengikuti layanan Spotify.
+
+## Writing: slide ringkas — 28 Oktober 2026
+
+- [x] Preview PDF/feed maksimal 224px, menyesuaikan tinggi layar dan ruang baca. Kontrol panah + nomor di bawah gambar, tanpa overlay.
+- [x] Smooth scroll native untuk panah/keyboard Writing; reduced motion dan pause eksplisit melewati animasi. Scene artikel tetap berhenti melalui effectivePause; userPaused membedakan preferensi pengguna dari penghentian scene saat membaca. Memakai ProjectGallery yang ada, tanpa dependency baru. Pencarian metadata 21st carousel dilakukan; tidak mengambil kode katalog.
+- [x] TypeScript dan syntax prototype lulus. Browser aktual: tombol next, keyboard kiri/kanan dan mobile 390×844 berfungsi; tidak ada overflow horizontal. Screenshot: analysis/qa/writing-compact-mobile.jpg.
+- [ ] Tes lengkap/build belum terverifikasi: tsx gagal sebelum menjalankan tes karena os.userInfo ENOMEM di lingkungan Windows. Taste inspector gagal Page.enable timeout; verifikasi visual memakai in-app browser. Reduced motion/pause diperiksa pada kode, belum diuji ulang melalui emulasi browser. Review 21st CLI belum selesai.
+
 ## Judul koleksi tetap — 27 Oktober 2026
 
 - [x] Projects, Experience, Writing dan Cabinet: judul/deskripsi berada di luar area scroll. Kartu, preview note, timeline dan tautan lanjutan scroll di bawahnya.
@@ -608,3 +657,42 @@ Keputusan yang masih terbuka: penerimaan/kurasi kandidat Robotics study dan komp
 
 ## Identitas tab website — 27 Oktober 2026
 - [x] Favicon memakai gambar Power yang diberikan pemilik; judul website disingkat menjadi abdiel pada Home dan semua route, termasuk Writing. Browser Experience terverifikasi document.title=abdiel dan rel=icon menuju icon.jpg. Check TypeScript/konten/15 tes lulus. Belum build/deploy.
+
+## Proyek Bank Vault Passcode — 28 Oktober 2026
+- [x] Satu proyek published tim, Completed; foto hardware asli, intro, tujuan, kontribusi pemilik, FSM/passcode flow, teknologi, tantangan servo PWM dan hasil simulasi dari PDF. Perakitan fisik berdasarkan pernyataan pemilik. Skematik halaman 6 menjadi gambar pendukung ukuran penuh; PDF utuh tidak dipublikasikan.
+- [x] Schema Project mendukung category/tags/intro/sections/media opsional. Kartu/dialog memakai komponen yang sudah ada; gambar asli menggantikan ilustrasi bila tersedia. Dummy preview tetap terpisah, judul koleksi tetap fixed. Dialog dibuka ulang dari scrollTop 0.
+- [x] TypeScript/content check/15 tes lulus. Browser desktop dan 390px: kartu/detail, kedua gambar, Escape/fokus kembali, pembukaan ulang, scroll lock, overflow serta console diperiksa. Tidak ada error. Screenshot analysis/qa/bank-vault-detail.png dan bank-vault-mobile.png. Belum build/deploy.
+
+## Galeri proyek — 28 Oktober 2026
+- [x] Cover Bank Vault memakai skematik Proteus; foto rangkaian fisik menjadi slide kedua di galeri atas detail. Keduanya contain tanpa crop. Galeri native scroll-snap tanpa dependency/autoplay, tombol 44px, counter/caption, keyboard kiri/kanan dan tautan ukuran penuh; reset ke slide pertama saat detail dibuka ulang.
+- [x] TypeScript/konten/15 tes lulus. Self-check browser: Next ke slide 2, tombol batas disabled, ArrowLeft kembali ke 1, scroll horizontal mobile ke 2, tutup/buka reset ke 1 dan scrollTop 0, tidak ada overflow dialog. Snapshot desktop/mobile disimpan. Belum build/deploy.
+
+## ArduiMania — 28 Oktober 2026
+- [x] Entri proyek individu published/Completed, bahasa Inggris, untuk Mikon Digilab UI Batch 2025. Memuat kontribusi mandiri, FSM, millis/timing judgement, PROGMEM/pooling, dirty redraw, EEPROM, hardware/library, diagnosis wiring serta tantangan audio. Hasil disebut selesai di Wokwi, bukan perangkat fisik.
+- [x] Screenshot Wokwi asli sebagai cover/media tunggal. Validasi konten lulus (2 proyek published). Browser desktop/390px: kartu/detail tersedia, foto dimuat, navigasi galeri tunggal disabled, tidak ada overflow/console error; viewport dipulihkan. Tidak mengulang tes kode karena perubahan hanya JSON/aset. Belum build/deploy.
+
+## Writing IME FTUI 2026 — 28 Oktober 2026
+- [x] Kontrol preview Writing dipindah menjadi overlay di dalam gambar: panah kiri/kanan 44px dan counter bawah, tanpa footer/caption visual yang memakan tinggi. Alt/caption aksesibel dan keyboard tetap; area gambar mendapat tambahan tinggi 92px dari ruang kontrol lama. Galeri Projects tetap memakai layout sebelumnya.
+- [x] Preview PDF/feed diperkecil dan dipusatkan, maksimum 20rem dengan batas tambahan berdasarkan ruang viewport setelah judul/footer dan kontrol galeri. Rasio A4/4:5 tetap, gambar contain utuh; tautan ukuran penuh/PDF asli dipertahankan. Ukuran menyesuaikan resize tanpa mengubah kartu Projects.
+- [x] Revisi kotak hitam judul: background/shadow/pseudo opaque header dihapus. Teks isi memudar via mask transparan yang mengikuti batas bawah judul sticky, diukur ReadingFrame saat scroll/resize, sehingga tidak bertumpuk tanpa menutup scene dengan panel hitam. Latar redup halaman dan fade bawah tetap.
+- [x] Permintaan shadow pembaca: batas bawah viewport diberi scrim gelap lembut, judul sticky dibuat opaque dengan shadow/fade 28px di bawahnya, isi mendapat jarak awal 28px agar tidak menempel/terpotong judul. Fade tidak menerima pointer dan hilang saat Hide Text. Document scroll tetap bebas.
+- [x] Revisi terbaru pemilik: artikel memakai native document scroll bebas, tanpa tinggi region tetap atau clip-path main di bawah. Padding akhir memberi ruang paragraf penutup sebelum footer/kontrol. Judul memakai sticky di bawah navigasi; koleksi tetap memakai region scroll lama. Menggantikan aturan artikel fixed-height sebelumnya.
+- [x] Check TypeScript/konten/16 tes lulus. Browser desktop dan 390x844 pada akhir dokumen: clip main none, paragraf terakhir sepenuhnya terlihat di bawah judul dan sebelum footer, tidak ada overflow horizontal. Screenshot writing-natural-scroll-end.png/mobile disimpan, viewport dipulihkan. Belum build/deploy.
+- [x] Judul artikel dinaikkan sesuai referensi pemilik: shell memakai justify-content:flex-start, padding atas desktop 108px, margin heading diringkas. Menghilangkan pemusatan vertikal yang sebelumnya menurunkan header. Header tetap terpisah dari scroll isi dan lebar/latar baca dipertahankan.
+- [x] Revisi pemilik menggantikan layout lebar: artikel kembali ke ukuran awal 29rem/17px. Header berisi backlink/judul/tanggal tetap di luar region scroll isi, memakai pengukuran footer ReadingFrame. Latar scene khusus artikel digelapkan hitam 76% untuk keterbacaan, Hide Text tetap menghapus scrim.
+- [x] Verifikasi revisi baca: TypeScript/konten/16 tes lulus; browser desktop dan 390px membuktikan koordinat header tetap sebelum/sesudah scroll isi, tanpa overflow horizontal. Desktop 464px, mobile area isi 363px tinggi pada 390x844. Screenshot writing-fixed-heading.png/mobile disimpan, viewport dipulihkan. Belum build/deploy.
+- [x] Revisi keterbacaan desktop: khusus artikel pada lebar >=1000px, kolom melebar dari 29rem ke 48rem, body 20px/1.8, heading 38px, feed maksimal 36rem. Mobile dan halaman daftar tetap memakai layout yang sudah ada.
+- [x] Artikel MDX pertama published: Dua pilihan, satu perjalanan: Kominfo dan AKPRO. Nada santai Indonesia/Inggris dipertahankan; schema/atribut artikel mendukung bahasa id. Narasi oprec, rasa ragu, sahabat AKPRO dan dua tugas bidang dari pemilik.
+- [x] Preview 5 halaman PDF hasil LaTeX via render WebP, link PDF asli buka/unduh; feed carousel 4:5 cover → slide 1 → 2 → 3. Galeri proyek digunakan ulang dengan label/rasio opsional, default proyek dipertahankan. Tanpa dependency/autoplay.
+- [x] TypeScript/konten/16 tes lulus, termasuk kompilasi slot MDX dan keberadaan 10 aset. Browser desktop/390px: artikel tampil, PDF ke halaman 2/kembali 1, feed next/keyboard hingga 4 dengan batas disabled, tanpa overflow/error console; viewport dipulihkan. Belum build/deploy.
+
+## Cash Register · Coin Change with ICs — 28 Oktober 2026
+- [x] Proyek individu published/Completed untuk open recruitment ASLAB Digilab. Copy bahasa Inggris dirapikan: kalkulator 8-bit, konversi tiga digit desimal, serta solver greedy dengan comparator/multiplexer. Cara kerja dijelaskan dari modul yang diberikan, tanpa mengarang kendala pribadi, nomor IC, metrik, atau tautan demo.
+- [x] Screenshot asli sebagai cover/media tunggal. Content check lulus (3 proyek published); kartu/detail dan gambar diperiksa di browser desktop serta 390px tanpa overflow. Viewport dipulihkan; bukti analysis/qa/cash-register-detail.png dan cash-register-mobile.png. Perubahan hanya JSON/aset/dokumentasi, tanpa mengulang tes kode/build/deploy.
+
+## Crop cover proyek — 28 Oktober 2026
+- [x] Koreksi ruang kosong atas Bank Vault: button card kini flex column dengan area gambar full-width dan tidak menyusut. Isi kartu tidak lagi terpusat vertikal oleh layout bawaan button ketika panjang copy berbeda; foto kartu satu baris memiliki posisi atas/rasio sama, dengan object-fit:cover.
+- [x] Revisi terbaru: screenshot Bank Vault baru dari pemilik menggantikan cover/slide pertama (2338x1293). Tambahan scale 1.5× dihapus karena screenshot baru sudah memiliki framing yang sesuai; cover tetap memenuhi rasio kartu dan foto fisik tetap slide kedua.
+- [x] Sesuai permintaan pemilik, thumbnail proyek memakai object-fit:cover dengan posisi tengah agar memenuhi rasio card tanpa ruang kosong. Galeri detail tetap contain untuk menampilkan skematik lengkap. Menggantikan ketentuan cover contain sebelumnya; file gambar asli tidak diubah.
+- [x] Browser memverifikasi ketiga cover dimuat dengan cover/center; tampilan kartu diperiksa dan screenshot analysis/qa/project-cover-crop.png disimpan. Perubahan CSS kecil, tanpa tes kode tambahan/build/deploy.
+- [x] Koreksi pemilik: cover Bank Vault diperbesar lagi 1.5× khusus thumbnail melalui ID proyek, karena rasio asli sudah mendekati frame sehingga cover saja tidak memberi zoom yang terasa. Galeri detail dan file asli tetap utuh.

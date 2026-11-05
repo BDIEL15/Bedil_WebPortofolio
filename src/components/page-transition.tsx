@@ -7,7 +7,8 @@ import { useMotion } from './motion-provider';
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router=useRouter();
-  const { paused, reduced } = useMotion();
+  // Reading pauses the 3D scene; page fades still follow the user's motion preference.
+  const { userPaused:paused, reduced } = useMotion();
   const ref=useRef<HTMLDivElement>(null),previous=useRef(pathname),request=useRef(0);
   const latest=useRef({paused,reduced});latest.current={paused,reduced};
   const active=useRef<ViewTransition|null>(null),fades=useRef<Animation[]>([]);

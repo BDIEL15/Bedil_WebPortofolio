@@ -1,0 +1,12 @@
+{
+  "id": "house-md",
+  "slug": "house-md",
+  "title": "House M.D.",
+  "note": "TV series",
+  "kind": "series",
+  "status": "published",
+  "image": "/cabinet/house-md.jpg",
+  "order": 6,
+  "width": 452,
+  "height": 678
+}

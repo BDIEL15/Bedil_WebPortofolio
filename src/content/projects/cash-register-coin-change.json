@@ -1,0 +1,40 @@
+{
+  "id": "cash-register-coin-change",
+  "slug": "cash-register-coin-change",
+  "title": "Cash Register · Coin Change with ICs",
+  "category": "Digital systems · Individual project",
+  "summary": "An IC-based cash register combining an 8-bit calculator, a three-digit decimal display, and a greedy coin-change solver built with comparators and multiplexers.",
+  "status": "published",
+  "tags": ["Completed", "Digital logic", "ICs", "Greedy algorithm"],
+  "intro": "An individual project developed for Digilab's laboratory assistant recruitment. I designed the complete circuit, translating arithmetic, binary-to-decimal conversion, and a greedy coin-change algorithm into digital hardware.",
+  "sections": [
+    {
+      "heading": "Purpose",
+      "text": "Develop an IC-based cash register for the Digilab laboratory assistant open recruitment, bringing calculation, decimal output, and change calculation together in one digital system."
+    },
+    {
+      "heading": "My contribution",
+      "text": "I completed the project independently, designing the 8-bit calculator, building the conversion circuit from an 8-bit value to a three-digit decimal output, and implementing the coin-change solver using comparators and multiplexers. I integrated these modules into the complete cash-register circuit."
+    },
+    {
+      "heading": "How it works",
+      "text": "The design separates arithmetic, display conversion, and change calculation into connected modules. The 8-bit calculator handles addition and subtraction, while the conversion circuit represents binary values as three decimal digits for display. The coin-change module follows a greedy approach: it considers denominations from largest to smallest, using comparators to check the remaining amount and multiplexers to select the next calculation path. The remaining amount is then passed to the following stage."
+    },
+    {
+      "heading": "Technology and design focus",
+      "text": "Digital logic ICs, 8-bit arithmetic, binary-to-decimal conversion, decimal displays, comparators, and multiplexers. The central design task was expressing the steps of a greedy coin-change algorithm as a hardware datapath and integrating it with the calculator and display modules."
+    },
+    {
+      "heading": "Outcome · Completed",
+      "text": "The project was completed successfully, combining the 8-bit calculator, three-digit decimal conversion, and IC-based coin-change solver. The supplied schematic shows the design's arithmetic, converter, interface, and coin-change modules."
+    }
+  ],
+  "media": [
+    {
+      "src": "/photos/cash-register-coin-change.png",
+      "alt": "Cash-register circuit schematic with an 8-bit calculator, binary-to-decimal converter, display, input controls, and comparator-based greedy coin-change stages",
+      "width": 2092,
+      "height": 1273
+    }
+  ]
+}

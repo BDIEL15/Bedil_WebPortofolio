@@ -10,9 +10,16 @@ export const experienceSchema = z.array(z.object({
   logo: text.regex(/^\/logos\/[a-z0-9-]+\.(jpg|jpeg|png|webp)$/).optional(), description: text.optional(),
   skills: z.array(text).optional(), achievements: z.array(text).optional(),
 }));
-export const projectSchema = base.extend({ summary: text });
-export const cabinetSchema = base.extend({ note: text, kind: text });
-export const writingSchema = base.extend({ description: text, lang: z.literal('en'), topics: z.array(text), publishedAt: text.optional(), updatedAt: text.optional() }).superRefine((item, ctx) => {
+const projectMediaSchema = z.object({src:text.regex(/^\/photos\/[a-z0-9-]+\.(jpg|jpeg|png|webp)$/),alt:text,width:z.number().int().positive(),height:z.number().int().positive()});
+export const projectSchema = base.extend({ summary: text, category:text.optional(), tags:z.array(text).optional(), intro:text.optional(), sections:z.array(z.object({heading:text,text})).optional(), media:z.array(projectMediaSchema).optional() });
+export const cabinetSchema = base.extend({ note: text, kind: text,
+  image:text.regex(/^\/cabinet\/[a-zA-Z0-9-]+\.(jpg|webp)$/).optional(),
+  width:z.number().int().positive().optional(),height:z.number().int().positive().optional(),
+  href:z.string().url().regex(/^https:\/\/open\.spotify\.com\/(track|album)\/[a-zA-Z0-9]{22}$/).optional(),
+  preview:z.string().url().regex(/^https:\/\/p\.scdn\.co\/mp3-preview\/[a-zA-Z0-9]+$/).optional(),
+  spotifyType:z.enum(['track','album']).optional(),order:z.number().int().nonnegative().default(0),
+});
+export const writingSchema = base.extend({ description: text, lang: z.enum(['en','id']), topics: z.array(text), publishedAt: text.optional(), updatedAt: text.optional() }).superRefine((item, ctx) => {
   if (item.status === 'published' && !item.publishedAt) ctx.addIssue({ code: 'custom', path: ['publishedAt'], message: 'Required for published writing' });
   for (const key of ['publishedAt', 'updatedAt'] as const) {
     const value = item[key];

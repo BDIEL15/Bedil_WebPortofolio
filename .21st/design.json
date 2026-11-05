@@ -93,6 +93,10 @@
     ]
   },
   "decisions": [
+    "29 October 2026: Portrait uses a black scene scrim without a main reading panel. Center reading columns and collection headings; vertically center Home. Home Explore/static controls dock bottom-left, above motion controls on narrow phones. Preserve collection scrolling, article flow and desktop composition.",
+    "28 October 2026, owner correction: Writing stays on the left with left-aligned text and centers the group vertically within the reading frame when there are at most two published entries. Three or more use the standard list. More writing is on the way appears below published content; the heading remains outside native scrolling content.",
+    "28 October 2026: Cabinet uses the owner's 27 music/book/film/series/game covers in a mixed three-column collection (two on phones), inspired by clarissabuilds.com/cabinet. Preserve the warm lab, fixed collection heading and native scroll. Music uses explicit play/pause with one audio element, local cover files and direct Spotify links; no autoplay or additional dependencies.",
+    "28 October 2026: Writing PDF/feed previews use a compact maximum 224px width and plain arrows/counter below the image. Native smooth scrolling is opt-in for Writing and respects explicit user pause and reduced motion; article scene pause stays independent.",
     {
       "date": "2026-10-27",
       "decision": "Projects, Experience, Writing and Cabinet keep heading and description outside a native independently scrolling content region. Fit between fixed navigation and footer, including portrait; preserve scene, palette, typography and dialogs."

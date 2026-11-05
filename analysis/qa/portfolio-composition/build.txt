@@ -1,0 +1,77 @@
+
+> build
+> npm run check && next build --webpack
+
+
+> check
+> tsc --noEmit && npm run content:check && tsx --test tests/content.test.ts tests/content-workflow.test.ts tests/scene.test.ts && npm run check:prototype
+
+
+> content:check
+> tsx scripts/check-content.ts
+
+Konten valid (termasuk metadata draft). Published: 5 experience, 3 project, 27 cabinet, 1 writing.
+Body tulisan published berhasil dikompilasi. Draft tidak ditampilkan.
+✔ content command creates valid drafts and refuses overwrite, traversal and unknown types (1104.2124ms)
+✔ real profile and only published content cross the public boundary (88.1695ms)
+✔ Markdown and trusted MDX render on the server (31.1882ms)
+✔ duplicate slugs and invalid publication metadata fail (2.766ms)
+✔ published English story renders registered media and all local attachments exist (21.7678ms)
+✔ Cabinet publishes the complete deduplicated collection with local covers and safe music URLs (12.1945ms)
+✔ terminal types before preparation and waits for both actual readiness and the last line (1.5602ms)
+✔ workspace typing shares bounded key strokes, corrections and quiet pauses (2.4805ms)
+✔ public photo replacements crop, retain their mount on failure and ignore late loads after cleanup (1.3865ms)
+✔ notebook writing reveals bounded strokes and lifts smoothly back to the first line (2.5187ms)
+✔ robot motion loops with bounded, smooth joint angles and no seam jump (2.2525ms)
+✔ camera views are distinct and overview contains the lab at desktop and portrait sizes (7.4155ms)
+✔ cinematic flights settle exactly, preserve retarget velocity and keep bounded smooth camera travel (1061.2114ms)
+✔ route and poster selection include both new corners and preserve reading fallback (0.3603ms)
+✔ lab props have finite bounded geometry, separated keycaps and supported desk objects (290.5405ms)
+ℹ 248 meshes, 90432 rendered triangles, 182 shared geometries, 12 generated textures
+✔ local robot GLB includes all seven links, a bounded mesh budget, and its license (5.7157ms)
+✔ signal point samples are deterministic, finite and distributed on a unit sphere (2.9651ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2446.8583
+
+> check:prototype
+> node --check prototype/main.js && node --check prototype/lensing.js
+
+▲ Next.js 16.4.2 (webpack)
+✓ Running next.config.ts took 159ms
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 7.9s
+  Running TypeScript ...
+  Finished TypeScript in 1312ms ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/10) ...
+  Generating static pages using 11 workers (2/10) 
+  Generating static pages using 11 workers (4/10) 
+  Generating static pages using 11 workers (7/10) 
+✓ Generating static pages using 11 workers (10/10) in 3.3s
+  Finalizing page optimization ...
+  Collecting build traces ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ƒ /about
+├ ƒ /cabinet
+├ ○ /experience
+├ ○ /icon.jpg
+├ ƒ /projects
+├ ƒ /writing
+└   /writing/[slug]
+  └ ● /writing/dua-pilihan-satu-perjalanan
+
+
+○  (Static)   prerendered as static content
+●  (SSG)      prerendered as static HTML (uses generateStaticParams)
+ƒ  (Dynamic)  server-rendered on demand
+

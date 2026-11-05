@@ -1,0 +1,40 @@
+{
+  "id": "bank-vault-passcode",
+  "slug": "bank-vault-passcode",
+  "title": "Bank Vault Passcode",
+  "category": "Digital systems · Team project",
+  "summary": "A five-digit vault-access prototype built with discrete logic, from a Proteus design to physical hardware. Completed as a team project.",
+  "status": "published",
+  "tags": ["Completed", "Proteus", "FSM", "Digital logic"],
+  "intro": "A completed team project exploring how a five-digit access-control system can be implemented with combinational and sequential logic. The design combines keypad input, password registers, comparison logic, a display, and a servo-controlled vault mechanism.",
+  "sections": [
+    {
+      "heading": "Purpose",
+      "text": "Build an electronic vault-access prototype with a defined authentication sequence and a passcode that can be changed after successful login. The project applies digital-systems concepts to a complete simulated circuit and physical breadboard implementation."
+    },
+    {
+      "heading": "My contribution",
+      "text": "I designed the Proteus circuits for the state-control system, password input, saved-password storage, display, and passcode comparator. I also assembled the physical circuit. The project was developed as a team; these are the parts I personally worked on."
+    },
+    {
+      "heading": "How it works",
+      "text": "The FSM sequences Login → Input Password → Verification → Accepting, with NEXT controlling stage transitions. A 4×4 keypad supplies five 4-bit input codes, held in registers and compared against the saved passcode. A match permits the accepting stage and vault operation; an incorrect code returns the system to Login. After authentication, Change Password and Save Password update the reference registers for the next login. Hard Reset restores the default code, 00000, and the closed-vault state."
+    },
+    {
+      "heading": "Technology",
+      "text": "Proteus for circuit design and simulation; discrete logic gates; MM74C922 keypad encoding; 74LS85 comparators; 74HC190 state sequencing; 74HC273 password registers; 74HC4017 digit selection; display circuitry; and a 555 timer for servo PWM. The physical implementation uses breadboards, logic ICs, jumper wiring, a keypad, and a servo."
+    },
+    {
+      "heading": "Engineering challenge",
+      "text": "The design had to coordinate state transitions, digit selection, register writes, and comparison results so that access and password changes occurred in the correct order. The report also identifies servo control as a challenge: the servo requires PWM rather than a simple HIGH/LOW control signal, so the team used a 555 timer and resistor network to generate the required drive signal."
+    },
+    {
+      "heading": "Outcome · Completed",
+      "text": "The project is complete, with a physical circuit assembled. The report documents successful Proteus simulations of sequential login, rejection of incorrect passcodes, saved-password updates, and servo operation. The photograph shows the assembled hardware."
+    }
+  ],
+  "media": [
+    {"src": "/photos/bank-vault-schematic.png", "alt": "Proteus schematic showing the state-control, passcode storage, comparison, display and vault-control circuits", "width": 2338, "height": 1293},
+    {"src": "/photos/bank-vault-hardware.png", "alt": "Physical bank-vault passcode prototype assembled on breadboards with logic ICs, jumper wiring, keypad and servo", "width": 2048, "height": 1152}
+  ]
+}

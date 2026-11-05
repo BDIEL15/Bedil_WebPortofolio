@@ -8,7 +8,7 @@
     "employmentType": "Part-time",
     "location": "Depok · On-site",
     "logo": "/logos/digital-laboratory.jpg",
-    "description": "Currently in charge of Digital System Basics for Computer Engineering Students for Electrical Engineering and Computer Engineering Students at FTUI.",
+    "description": "Currently responsible for Digital System Basics for Electrical Engineering and Computer Engineering students at FTUI.",
     "skills": ["C++", "Computer Hardware"],
     "status": "published"
   },
@@ -20,7 +20,7 @@
     "period": "Feb 2026 — Present",
     "employmentType": "Full-time",
     "logo": "/logos/exercise-ftui.jpg",
-    "description": "EXERCISE FTUI is the largest technology organization in the Faculty of Engineering, University of Indonesia, dedicated to refining potential into progress through real-world projects and professional workflows. It serves as an innovation accelerator that empowers members to become proficient in bridging technological gaps and leading meaningful change within the community.",
+    "description": "My work focuses on UI development for the Exertion 2026 website.",
     "skills": ["Web Development", "React.js"],
     "status": "published"
   },
@@ -32,7 +32,7 @@
     "year": "2026",
     "period": "Feb 2026 — Present",
     "logo": "/logos/ime-ftui.png",
-    "description": "Ikatan Mahasiswa Elektro Fakultas Teknik Universitas Indonesia (IME FTUI) is the official student organization that serves as a forum for students of the Department of Electrical Engineering at UI. It functions as a platform to support its members in academic development, professional networking, and organizational growth within the faculty. In my role as a staff member in the Communication and Information division, I contribute to these objectives through website development, Figma design, content creation, and managing organizational relations to ensure effective communication and digital presence for the community.",
+    "description": "I contribute to website development, Figma design, content creation, and organizational relations in IME FTUI's Communication and Information division.",
     "skills": ["Figma (Software)", "Design"],
     "status": "published"
   },
@@ -44,7 +44,7 @@
     "year": "2026",
     "period": "Jan 2026 — Present",
     "logo": "/logos/gdgoc-ui.jpg",
-    "description": "As an open tech hub for all Universitas Indonesia students, GDGoC UI fosters a collaborative environment for learning and technological innovation. By hosting specialized meetups and events, the community empowers individuals with hands-on technical expertise, aiming to drive social progress through technology.",
+    "description": "A campus developer community at Universitas Indonesia.",
     "skills": ["Software Development"],
     "status": "published"
   },

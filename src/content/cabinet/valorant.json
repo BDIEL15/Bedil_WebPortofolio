@@ -1,0 +1,12 @@
+{
+  "id": "valorant",
+  "slug": "valorant",
+  "title": "VALORANT",
+  "note": "Game",
+  "kind": "game",
+  "status": "published",
+  "image": "/cabinet/valorant.jpg",
+  "order": 31,
+  "width": 683,
+  "height": 1024
+}

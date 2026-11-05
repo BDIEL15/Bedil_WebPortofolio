@@ -55,11 +55,11 @@ Field yang didukung saat ini:
 
 | Jenis | Field yang diedit |
 | --- | --- |
-| Project | `id`, `slug`, `title`, `summary`, `status` |
+| Project | `id`, `slug`, `title`, `summary`, `status`; opsional `category`, `tags`, `intro`, `sections` (heading/text), `media` (src/alt/width/height) |
 | Cabinet | `id`, `slug`, `title`, `note`, `kind`, `status` |
 | Writing | frontmatter `id`, `slug`, `title`, `description`, `status`, `lang`, `topics`, `publishedAt`, `updatedAt`; naskah setelah frontmatter |
 
-Project saat ini memakai ringkasan yang sama di kartu dan pembuka dialog; belum ada editor field galeri/case study rinci. Cabinet asli menampilkan judul dan catatan, bukan semua detail contoh layout. Menambahkan field yang belum didukung tidak otomatis membuatnya muncul. Gunakan schema yang tersedia sampai kebutuhan detail disepakati.
+Project mendukung foto asli pada kartu dan dialog, intro terpisah, bagian case study, dan gambar pendukung yang dapat dibuka ukuran penuh. `media` memakai URL lokal `/photos/...`; elemen pertama menjadi cover kartu. Semua gambar tampil sebagai galeri geser di atas detail, dengan tombol panah, keyboard, geser horizontal dan tautan ukuran penuh. `status` mengatur publikasi, bukan progres pengerjaan; status pengerjaan seperti Completed dapat ditulis pada tags/Outcome. Cabinet asli menampilkan judul dan catatan, bukan semua detail contoh layout.
 
 Projects/Cabinet mengikuti urutan alfabet nama file. Untuk mengatur prioritas, boleh ubah nama file menjadi `01-nama.json`, `02-nama.json`; nilai ID/slug di dalamnya tetap. Writing otomatis diurutkan dari tanggal publikasi terbaru.
 
@@ -81,6 +81,8 @@ Paragraf dengan **penekanan** dan [tautan](https://example.com).
 Tanggal memakai `YYYY-MM-DD`, tidak di masa depan. `publishedAt` wajib saat status published; `updatedAt` opsional. `lang` saat ini hanya `en`; `topics` berbentuk array, misalnya `[robotics, learning]`. Judul/deskripsi yang mengandung tanda titik dua sebaiknya dibungkus tanda kutip.
 
 Gunakan `.mdx` hanya jika membutuhkan komponen React yang sudah didaftarkan di renderer artikel. Jangan menyalin kode MDX tidak tepercaya. Jangan membuat dua file `.md`/`.mdx` dengan ID atau slug yang sama.
+
+Writing mendukung `lang: en` dan `lang: id`; artikel memakai atribut bahasa sesuai metadata. Tulisan IME memakai `<CalculusPreview />` untuk lima halaman hasil render PDF + tautan buka/unduh, dan `<FeedPreview />` untuk empat desain feed rasio 4:5. Keduanya terdaftar di `src/components/writing-media.tsx` dan menggunakan galeri native yang sama dengan proyek, tanpa autoplay. Aset tulisan tersebut berada di `public/writing/ime-ftui-2026/`. Saat PDF diganti, render ulang seluruh halaman preview agar sesuai; PDF asli tetap berkas unduhan, bukan source `.tex`.
 
 ## 4. Foto dan berkas
 

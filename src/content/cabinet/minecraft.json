@@ -1,0 +1,12 @@
+{
+  "id": "minecraft",
+  "slug": "minecraft",
+  "title": "Minecraft",
+  "note": "Game",
+  "kind": "game",
+  "status": "published",
+  "image": "/cabinet/minecraft.jpg",
+  "order": 11,
+  "width": 720,
+  "height": 1080
+}

@@ -1,0 +1,12 @@
+{
+  "id": "sagaras",
+  "slug": "sagaras",
+  "title": "Sagaras",
+  "note": "Tere Liye",
+  "kind": "book",
+  "status": "published",
+  "image": "/cabinet/sagaras.jpg",
+  "order": 16,
+  "width": 367,
+  "height": 544
+}

@@ -1,0 +1,966 @@
+{
+ "url": "http://127.0.0.1:3000/#main",
+ "at": "2026-11-04T06:27:01.391Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.07
+   ],
+   "motion": {
+    "elements": 4,
+    "css": 0,
+    "transitions": 2,
+    "scripted": 2,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 900,
+     "screens": 1,
+     "words": 44,
+     "img": 1,
+     "video": 0,
+     "canvas": 1,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "personal-lab-desktop.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "chars": 15,
+     "lines": 1,
+     "size": 44,
+     "vw": 3.1,
+     "font": "Libertinus Sans",
+     "weight": 400,
+     "tracking": -0.035,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.42,
+     "top": 342,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "lines": 1,
+     "size": 44,
+     "font": "Libertinus Sans"
+    },
+    "headings": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 44,
+      "vw": 3.1,
+      "font": "Libertinus Sans",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.42,
+      "top": 342,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Libertinus Sans",
+       "share": 0.56,
+       "mono": false
+      },
+      {
+       "family": "Libertinus Serif",
+       "share": 0.44,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      15,
+      17,
+      44
+     ],
+     "sizeCount": 4,
+     "notLoaded": [],
+     "body": {
+      "font": "Libertinus Serif",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.2
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 44,
+      "vw": 3.1,
+      "font": "Libertinus Sans",
+      "text": "Hi, I'm Abdiel."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.75,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0b0a",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.09,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c0b0a",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.09,
+        "l": 0.04
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#e9e2d3",
+       "share": 0.69
+      },
+      {
+       "color": "#b4ac9e",
+       "share": 0.29
+      },
+      {
+       "color": "#d6a47a",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#1d1b17",
+      "hsl": {
+       "h": 40,
+       "s": 0.12,
+       "l": 0.1
+      },
+      "fg": "#e9e2d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Ⅱ Pause motion",
+      "Hide text"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "canvas",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": true,
+     "height": 54,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libertinus serif",
+     "libertinus sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 900,
+    "margins": {
+     "left": 543,
+     "right": 543
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "size": 44,
+      "top": 342,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [],
+    "leftBlocks": 0,
+    "bodySize": 17,
+    "stage": true,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.17
+   ],
+   "motion": {
+    "elements": 4,
+    "css": 0,
+    "transitions": 2,
+    "scripted": 2,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1024,
+     "screens": 1,
+     "words": 45,
+     "img": 1,
+     "video": 0,
+     "canvas": 1,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "personal-lab-tablet.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "chars": 15,
+     "lines": 1,
+     "size": 44,
+     "vw": 5.7,
+     "font": "Libertinus Sans",
+     "weight": 400,
+     "tracking": -0.035,
+     "leading": 1.2,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.83,
+     "top": 365,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "lines": 1,
+     "size": 44,
+     "font": "Libertinus Sans"
+    },
+    "headings": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 44,
+      "vw": 5.7,
+      "font": "Libertinus Sans",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.83,
+      "top": 365,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Libertinus Sans",
+       "share": 0.6,
+       "mono": false
+      },
+      {
+       "family": "Libertinus Serif",
+       "share": 0.4,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      15,
+      17,
+      44
+     ],
+     "sizeCount": 4,
+     "notLoaded": [],
+     "body": {
+      "font": "Libertinus Serif",
+      "size": 17,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.2
+     },
+     "measureChars": 45,
+     "max": {
+      "size": 44,
+      "vw": 5.7,
+      "font": "Libertinus Sans",
+      "text": "Hi, I'm Abdiel."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.77,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0b0a",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.09,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c0b0a",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.09,
+        "l": 0.04
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#e9e2d3",
+       "share": 0.64
+      },
+      {
+       "color": "#b4ac9e",
+       "share": 0.27
+      },
+      {
+       "color": "#d6a47a",
+       "share": 0.1
+      }
+     ],
+     "button": {
+      "bg": "#1d1b17",
+      "hsl": {
+       "h": 40,
+       "s": 0.12,
+       "l": 0.1
+      },
+      "fg": "#e9e2d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Ⅱ Pause motion",
+      "Hide text"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "canvas",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": true,
+     "height": 54,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libertinus serif",
+     "libertinus sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1024,
+    "margins": {
+     "left": 207,
+     "right": 207
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "size": 44,
+      "top": 365,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [],
+    "leftBlocks": 0,
+    "bodySize": 17,
+    "stage": true,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.34
+   ],
+   "motion": {
+    "elements": 4,
+    "css": 0,
+    "transitions": 2,
+    "scripted": 2,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 844,
+     "screens": 1,
+     "words": 46,
+     "img": 1,
+     "video": 0,
+     "canvas": 1,
+     "svg": 0,
+     "sections": 1,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 1,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "personal-lab-mobile.webp"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "chars": 15,
+     "lines": 1,
+     "size": 36,
+     "vw": 9.2,
+     "font": "Libertinus Sans",
+     "weight": 400,
+     "tracking": -0.035,
+     "leading": 1.23,
+     "upper": false,
+     "italic": false,
+     "mono": false,
+     "align": "center",
+     "position": "center",
+     "widthRatio": 0.9,
+     "top": 304,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "Hi, I'm Abdiel.",
+     "words": 3,
+     "lines": 1,
+     "size": 36,
+     "font": "Libertinus Sans"
+    },
+    "headings": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "words": 3,
+      "chars": 15,
+      "lines": 1,
+      "size": 36,
+      "vw": 9.2,
+      "font": "Libertinus Sans",
+      "weight": 400,
+      "tracking": -0.035,
+      "leading": 1.23,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "center",
+      "position": "center",
+      "widthRatio": 0.9,
+      "top": 304,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 1,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Libertinus Sans",
+       "share": 0.6,
+       "mono": false
+      },
+      {
+       "family": "Libertinus Serif",
+       "share": 0.4,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      13,
+      14,
+      16,
+      17,
+      36
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Libertinus Serif",
+      "size": 16,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 15.2
+     },
+     "measureChars": 42,
+     "max": {
+      "size": 36,
+      "vw": 9.2,
+      "font": "Libertinus Sans",
+      "text": "Hi, I'm Abdiel."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.77,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0b0a",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.09,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#0c0b0a",
+       "top": 0,
+       "hsl": {
+        "h": 30,
+        "s": 0.09,
+        "l": 0.04
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#e9e2d3",
+       "share": 0.63
+      },
+      {
+       "color": "#b4ac9e",
+       "share": 0.26
+      },
+      {
+       "color": "#d6a47a",
+       "share": 0.1
+      }
+     ],
+     "button": {
+      "bg": "#1d1b17",
+      "hsl": {
+       "h": 40,
+       "s": 0.12,
+       "l": 0.1
+      },
+      "fg": "#e9e2d3"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 3,
+     "radius": "pill",
+     "height": 44,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Skip to content",
+      "Ⅱ Pause motion",
+      "Hide text"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 1,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 28,
+     "squareMedia": 2,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 1
+     },
+     {
+      "type": "canvas",
+      "ratio": 1
+     }
+    ],
+    "nav": {
+     "links": 6,
+     "fixed": true,
+     "height": 104,
+     "floatingPill": true,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "libertinus serif",
+     "libertinus sans"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 844,
+    "margins": {
+     "left": 29,
+     "right": 29
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hi, I'm Abdiel.",
+      "size": 36,
+      "top": 304,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [],
+    "leftBlocks": 0,
+    "bodySize": 16,
+    "stage": true,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "pill-nav",
+   "width": 1440,
+   "message": "Floating rounded pill navigation.",
+   "fix": "Use a plain bar: wordmark left, a few links, one action.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "palette-terracotta",
+   "width": 1440,
+   "message": "Terracotta / rust-orange accent (text #d6a47a).",
+   "fix": "Use the accent from the drawn palette.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "few-pictures",
+   "width": 1440,
+   "message": "Only 1 picture(s) on the page (1 photographs, footage or raster images, 0 interface fragments). Drawings in SVG do not count.",
+   "fix": "Find real pictures of the subject's world with scripts/assets.mjs (photographs, archival images, maps, engravings, footage), download them to assets/ and give them room: a hero picture, one per section that has a subject, a full-width band. At least four, usually six to twelve."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "name-only-title",
+   "width": 1440,
+   "message": "The h1 is a bare name (\"Hi, I'm Abdiel.\") and nothing else on the first screen says what this is.",
+   "fix": "Keep the name if it leads, and give the line under it (18px or more) the plain words: what it is, for whom, where or when. In the study of 97 Sites of the Day, first screens that named nothing lost usability and content points.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "FAIL",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Only 4 element(s) moved while the page loaded and scrolled.",
+   "fix": "Build the motion layer (SKILL.md step 9, references/motion.md): the signature move, an entrance for the parts of every section, feedback on every control, and one moving picture. Transform and opacity only, with a reduced-motion fallback."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\abdie\\OneDrive\\Documents\\ChatGPT\\Website Portofolio\\analysis\\qa\\review-2026-11-04\\b\\taste-settled\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

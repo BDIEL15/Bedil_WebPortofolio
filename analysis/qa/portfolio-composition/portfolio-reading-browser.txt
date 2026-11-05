@@ -1,0 +1,67 @@
+### Result
+{"results":[{"route":"about","width":320,"geometry":{"top":337.8125,"bottom":381.8125,"footer":442,"header":120,"visibleTop":136,"heading":null}},{"route":"writing/dua-pilihan-satu-perjalanan","width":320,"geometry":{"top":288.90625,"bottom":345,"footer":470,"header":120,"visibleTop":136,"heading":{"top":136,"bottom":298.015625}}},{"route":"about","width":390,"geometry":{"top":613.75,"bottom":657.75,"footer":718,"header":120,"visibleTop":136,"heading":null}},{"route":"writing/dua-pilihan-satu-perjalanan","width":390,"geometry":{"top":565.25,"bottom":621.34375,"footer":746,"header":120,"visibleTop":136,"heading":{"top":136,"bottom":300.484375}}},{"route":"about","width":844,"geometry":{"top":258.1875,"bottom":302.1875,"footer":318.5,"header":78,"visibleTop":94,"heading":null}},{"route":"writing/dua-pilihan-satu-perjalanan","width":844,"geometry":{"top":139.390625,"bottom":167.4375,"footer":346.5,"header":78,"visibleTop":94,"heading":{"top":65.59375,"bottom":210.4375}}},{"route":"about","width":1440,"geometry":{"top":754.65625,"bottom":798.65625,"footer":928.5,"header":78,"visibleTop":229.34375,"heading":null}},{"route":"writing/dua-pilihan-satu-perjalanan","width":1440,"geometry":{"top":748.59375,"bottom":776.640625,"footer":956.5,"header":78,"visibleTop":94,"heading":{"top":94,"bottom":260.046875}}}],"multiplePhotoKeyboard":true,"writingPreviewKeyboard":true,"reducedMotion":true,"noJS":true}
+### Ran Playwright code
+```js
+await (async page=>{
+  const assert=(ok,message)=>{if(!ok)throw Error(message);},results=[];
+  const origin='http://127.0.0.1:3000';
+  for(const [width,height]of [[320,568],[390,844],[844,390],[1440,1000]]){
+    await page.setViewportSize({width,height});
+    for(const route of ['about','writing/dua-pilihan-satu-perjalanan']){
+      await page.goto(`${origin}/${route}`);await page.locator('h1').waitFor({state:'visible'});
+      await page.waitForFunction(()=>document.documentElement.style.getPropertyValue('--reading-top'));
+      await page.evaluate(()=>document.fonts.ready);
+      if(route==='about')await page.locator('.about-explore a').last().focus();
+      else await page.evaluate(()=>window.scrollTo({top:document.documentElement.scrollHeight,behavior:'instant'}));
+      await page.waitForTimeout(150);
+      const geometry=await page.evaluate(route=>{
+        const el=document.querySelector(route==='about'?'.about-explore a:last-child':'.prose>p:last-child');
+        const b=el.getBoundingClientRect(),f=document.querySelector('footer').getBoundingClientRect(),h=document.querySelector('.site-header').getBoundingClientRect();
+        const heading=document.querySelector('.article-heading')?.getBoundingClientRect();
+        const main=document.querySelector('main'),m=main.getBoundingClientRect();
+        return {top:b.top,bottom:b.bottom,footer:f.top,header:h.bottom,visibleTop:m.top+parseFloat(getComputedStyle(main).getPropertyValue('--reading-clip-top')),heading:heading?{top:heading.top,bottom:heading.bottom}:null};
+      },route);
+      assert(geometry.top>=geometry.header,`${route}/${width}: last content under header`);
+      assert(geometry.bottom<=geometry.footer-15,`${route}/${width}: last content under footer`);
+      if(geometry.heading)assert(geometry.visibleTop>=geometry.header+15,`${route}/${width}: article can draw over navigation`);
+      if(width===390)await page.screenshot({path:`analysis/qa/portfolio-composition/end-${route.replaceAll('/','-')}-${width}.png`});
+      results.push({route,width,geometry});
+    }
+  }
+  await page.setViewportSize({width:390,height:844});await page.goto(origin+'/projects');
+  await page.locator('[data-project-id=bank-vault-passcode]').click();
+  const dialog=page.locator('dialog[open]');await dialog.waitFor();
+  await dialog.getByRole('button',{name:'Next photo',exact:true}).click();
+  await page.waitForFunction(()=>document.querySelector('dialog .project-gallery-controls span').textContent==='Photo 2 of 2');
+  await dialog.locator('.project-gallery-track').focus();await page.keyboard.press('ArrowLeft');
+  await page.waitForFunction(()=>document.querySelector('dialog .project-gallery-controls span').textContent==='Photo 1 of 2');
+  await page.keyboard.press('Escape');
+  await page.goto(origin+'/writing/dua-pilihan-satu-perjalanan');
+  const preview=page.locator('.writing-media .project-gallery').first();
+  await preview.locator('.project-gallery-track').focus();await page.keyboard.press('ArrowRight');
+  await page.waitForFunction(()=>document.querySelector('.writing-media .project-gallery-controls span').textContent==='Page 2 of 5');
+  const browser=page.context().browser();
+  const reduced=await browser.newContext({viewport:{width:390,height:844},reducedMotion:'reduce'});
+  try{
+    const p=await reduced.newPage();await p.goto(origin+'/projects');await p.locator('[data-project-id=arduimania]').click();
+    assert(await p.locator('dialog').evaluate(el=>getComputedStyle(el).animationName)==='none','Reduced motion animates detail');
+    await p.keyboard.press('Escape');await p.goto(origin+'/');await p.locator('h1').waitFor({state:'visible'});
+    assert(await p.locator('.observatory').getAttribute('data-paused')==='true','Reduced motion did not pause scene');
+  }finally{await reduced.close();}
+  const noJs=await browser.newContext({viewport:{width:390,height:844},javaScriptEnabled:false});
+  try{
+    const p=await noJs.newPage();
+    for(const route of ['','projects','writing/dua-pilihan-satu-perjalanan']){
+      await p.goto(origin+'/'+route);
+      assert(await p.locator('h1').isVisible(),`NoJS ${route}: heading missing`);
+      assert(await p.locator('.site-header nav a').count()===6,`NoJS ${route}: navigation missing`);
+      assert(await p.locator('.scene-poster img').isVisible(),`NoJS ${route}: poster missing`);
+      assert(await p.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`NoJS ${route}: overflow`);
+    }
+  }finally{await noJs.close();}
+  return {results,multiplePhotoKeyboard:true,writingPreviewKeyboard:true,reducedMotion:true,noJS:true};
+}
+)(page);
+```
+### Events
+- New console entries: .playwright-cli\console-2026-11-04T07-09-22-772Z.log#L465-L490

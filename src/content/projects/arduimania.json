@@ -1,0 +1,52 @@
+{
+  "id": "arduimania",
+  "slug": "arduimania",
+  "title": "ArduiMania",
+  "category": "Embedded systems · Individual project",
+  "summary": "A four-lane rhythm game for Arduino Uno, inspired by osu!mania. Built in Wokwi with real-time input, a TFT display, persistent highscores, and buzzer audio.",
+  "status": "published",
+  "tags": ["Completed", "Arduino Uno", "C++", "Wokwi"],
+  "intro": "An individual Microcontroller course project for Digilab UI, Batch 2025, combining a love of music and rhythm games with embedded-systems design. ArduiMania runs on a simulated Arduino Uno with an ILI9341 TFT, four input buttons, and buzzer audio.",
+  "sections": [
+    {
+      "heading": "Purpose",
+      "text": "Build a playable four-lane rhythm game that demonstrates responsive input handling, non-blocking timing, and memory management within the Arduino Uno's constraints. The project was developed for the Microcontroller course at Digilab UI, Batch 2025."
+    },
+    {
+      "heading": "My contribution",
+      "text": "I developed the project independently: the idea and game concept, FSM architecture, Wokwi wiring, firmware, note charts and melodies, testing, and presentation. I also prepared detailed code explanations and presentation materials."
+    },
+    {
+      "heading": "How it works",
+      "text": "An FSM manages song selection, the 3-2-1-GO countdown, gameplay, and results. Notes fall down four lanes toward a hit zone. Their vertical positions are calculated by linearly interpolating the difference between millis() and each note's target hit time. The game avoids delay(), allowing input, rendering, and audio scheduling to continue without blocking. The results screen reports score, accuracy, and maximum combo."
+    },
+    {
+      "heading": "Timing and judgement",
+      "text": "Each button press is matched against the nearest note in its lane. Timing windows produce PERFECT at up to 30 ms, GOOD at up to 80 ms, and BAD at up to 150 ms; notes that pass without being hit become MISS. Higher combos increase the score awarded per hit. Software debounce prevents mechanical button transitions from being treated as repeated inputs."
+    },
+    {
+      "heading": "Memory and rendering",
+      "text": "The Uno has only 2 KB of SRAM, so chart and melody data are stored in flash using PROGMEM. Active notes use a fixed-size object pool and static data structures rather than dynamic allocation. Dirty flags and partial redraws update only the display areas that change, avoiding the cost of repeatedly redrawing the full 240×320 screen. Per-chart highscores are saved in EEPROM."
+    },
+    {
+      "heading": "Technology",
+      "text": "Wokwi simulation with an Arduino Uno, a 240×320 ILI9341 TFT over SPI, four push buttons, and passive buzzer audio. Firmware is written in Arduino C++ using Adafruit ILI9341/GFX and EEPROM, with millis()-based scheduling, PROGMEM, an FSM, object pooling, software debounce, and tone() for melodies and hit feedback."
+    },
+    {
+      "heading": "Engineering challenges",
+      "text": "I replaced an OLED that was too small with the ILI9341 TFT, changing the display interface from I2C to SPI and reworking the wiring. Slow full-screen rendering led to dirty-rectangle updates. When Wokwi buttons did not respond, a diagnostic sketch printing digitalRead values helped identify wiring across the wrong contacts; connecting opposite switch contacts resolved it. SRAM limits required moving data into PROGMEM and keeping allocations static. Audio also needed coordination because tone() supports one tone at a time, so melody and hit feedback can briefly interrupt one another."
+    },
+    {
+      "heading": "Outcome · Completed",
+      "text": "The game is complete and running in Wokwi, including its FSM flow, note judgement, combo and scoring system, EEPROM highscores, and audio. Detailed code documentation and presentation materials were also prepared. The supplied screenshot shows the simulated wiring and ArduiMania splash screen."
+    }
+  ],
+  "media": [
+    {
+      "src": "/photos/arduimania-wokwi.png",
+      "alt": "ArduiMania in Wokwi, showing an Arduino Uno, ILI9341 TFT splash screen, four game buttons, audio components and wiring",
+      "width": 1516,
+      "height": 985
+    }
+  ]
+}

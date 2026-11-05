@@ -1,0 +1,105 @@
+ M .21st/design.json
+ M AGENTS.md
+ M TODO.md
+ M docs/ASSETS.md
+ M docs/EDIT-CONTENT.md
+ M src/app/cabinet/page.tsx
+ M src/app/globals.css
+ M src/app/projects/page.tsx
+ M src/app/writing/[slug]/page.tsx
+ M src/app/writing/page.tsx
+ M src/components/motion-provider.tsx
+ M src/components/page-transition.tsx
+ M src/components/reading-frame.tsx
+ M src/components/sample-collection.tsx
+ M src/lib/content/schema.ts
+ M tests/content.test.ts
+?? .impeccable/
+?? analysis/qa/arduimania-detail.png
+?? analysis/qa/arduimania-mobile.png
+?? analysis/qa/bank-vault-cover-zoom.png
+?? analysis/qa/bank-vault-detail.png
+?? analysis/qa/bank-vault-gallery-mobile.png
+?? analysis/qa/bank-vault-gallery.png
+?? analysis/qa/bank-vault-mobile.png
+?? analysis/qa/bank-vault-new-schematic.png
+?? analysis/qa/cabinet-desktop.png
+?? analysis/qa/cabinet-mobile.png
+?? analysis/qa/cash-register-detail.png
+?? analysis/qa/cash-register-mobile.png
+?? analysis/qa/portfolio-composition/
+?? analysis/qa/portrait-about-after.png
+?? analysis/qa/portrait-about-before.png
+?? analysis/qa/portrait-before.png
+?? analysis/qa/portrait-cabinet-after.png
+?? analysis/qa/portrait-experience-after.png
+?? analysis/qa/portrait-home-after.png
+?? analysis/qa/portrait-projects-after.png
+?? analysis/qa/portrait-tablet-after.png
+?? analysis/qa/portrait-writing-after.png
+?? analysis/qa/project-cover-crop.png
+?? analysis/qa/project-covers-aligned.png
+?? analysis/qa/review-2026-11-04/
+?? analysis/qa/writing-adaptive-desktop.jpg
+?? analysis/qa/writing-adaptive-mobile.jpg
+?? analysis/qa/writing-compact-mobile.jpg
+?? analysis/qa/writing-feed-desktop.png
+?? analysis/qa/writing-feed-mobile.png
+?? analysis/qa/writing-fixed-heading-mobile.png
+?? analysis/qa/writing-fixed-heading.png
+?? analysis/qa/writing-ime-article.png
+?? analysis/qa/writing-left-middle.jpg
+?? analysis/qa/writing-natural-scroll-end.png
+?? analysis/qa/writing-natural-scroll-mobile.png
+?? analysis/qa/writing-overlay-controls.png
+?? analysis/qa/writing-pdf-preview.png
+?? analysis/qa/writing-reading-shadows.png
+?? analysis/qa/writing-small-feed.png
+?? analysis/qa/writing-small-pdf.png
+?? analysis/qa/writing-title-date.jpg
+?? analysis/qa/writing-title-top.png
+?? analysis/qa/writing-transparent-title.png
+?? analysis/qa/writing-wide-desktop.png
+?? docs/superpowers/
+?? public/cabinet/
+?? public/photos/arduimania-wokwi.png
+?? public/photos/bank-vault-hardware.png
+?? public/photos/bank-vault-proteus.png
+?? public/photos/bank-vault-schematic.png
+?? public/photos/cash-register-coin-change.png
+?? public/writing/
+?? src/components/cabinet-collection.tsx
+?? src/components/project-gallery.tsx
+?? src/components/writing-media.tsx
+?? src/content/cabinet/bumi.json
+?? src/content/cabinet/house-md.json
+?? src/content/cabinet/minecraft.json
+?? src/content/cabinet/music-01.json
+?? src/content/cabinet/music-02.json
+?? src/content/cabinet/music-03.json
+?? src/content/cabinet/music-04.json
+?? src/content/cabinet/music-05.json
+?? src/content/cabinet/music-06.json
+?? src/content/cabinet/music-07.json
+?? src/content/cabinet/music-08.json
+?? src/content/cabinet/music-09.json
+?? src/content/cabinet/music-10.json
+?? src/content/cabinet/music-11.json
+?? src/content/cabinet/music-12.json
+?? src/content/cabinet/music-13.json
+?? src/content/cabinet/music-14.json
+?? src/content/cabinet/music-15.json
+?? src/content/cabinet/music-16.json
+?? src/content/cabinet/music-17.json
+?? src/content/cabinet/music-18.json
+?? src/content/cabinet/music-19.json
+?? src/content/cabinet/sagaras.json
+?? src/content/cabinet/sore.json
+?? src/content/cabinet/the-social-network.json
+?? src/content/cabinet/valorant.json
+?? src/content/cabinet/whiplash.json
+?? src/content/projects/arduimania.json
+?? src/content/projects/bank-vault-passcode.json
+?? src/content/projects/cash-register-coin-change.json
+?? src/content/writing/dua-pilihan-satu-perjalanan.mdx
+?? tests/portfolio-composition-browser.js

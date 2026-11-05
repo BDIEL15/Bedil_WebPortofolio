@@ -1,0 +1,12 @@
+{
+  "id": "the-social-network",
+  "slug": "the-social-network",
+  "title": "The Social Network",
+  "note": "Film",
+  "kind": "film",
+  "status": "published",
+  "image": "/cabinet/the-social-network.jpg",
+  "order": 26,
+  "width": 2250,
+  "height": 3000
+}

@@ -18,6 +18,11 @@ export function ReadingFrame() {
       main.style.setProperty('--reading-clip-bottom',Math.max(0,bounds.bottom-bottom)+'px');
       const collection=main.querySelector<HTMLElement>('.collection:has(>.collection-scroll)');
       if(collection)collection.style.setProperty('--collection-height',Math.max(0,bottom-collection.getBoundingClientRect().top)+'px');
+      const article=main.querySelector<HTMLElement>('.article'),articleHeading=article?.querySelector<HTMLElement>('.article-heading'),articleBody=article?.querySelector<HTMLElement>('.article-scroll');
+      if(article&&articleHeading&&articleBody){
+        article.style.setProperty('--article-fade-top',Math.max(0,articleHeading.getBoundingClientRect().bottom-articleBody.getBoundingClientRect().top)+'px');
+        article.style.setProperty('--writing-preview-height',Math.max(140,bottom-top-articleHeading.getBoundingClientRect().height-48)+'px');
+      }
       document.documentElement.style.setProperty('--reading-top',top+'px');
       document.documentElement.style.setProperty('--reading-bottom',innerHeight-bottom+'px');
     };

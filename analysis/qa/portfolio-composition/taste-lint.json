@@ -1,0 +1,37 @@
+{
+ "files": 49,
+ "findings": [
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "file": "src/app/globals.css",
+   "line": 522,
+   "match": "linear-gradient(",
+   "message": "Gradient fill. Use a flat colour or a real image (a neutral scrim over a photo is the one exception)."
+  },
+  {
+   "level": "FAIL",
+   "id": "gradient",
+   "file": "src/app/globals.css",
+   "line": 526,
+   "match": "linear-gradient(",
+   "message": "Gradient fill. Use a flat colour or a real image (a neutral scrim over a photo is the one exception)."
+  },
+  {
+   "level": "FAIL",
+   "id": "shadow",
+   "file": "src/lib/scene/create-personal-lab-scene.ts",
+   "line": 134,
+   "match": "shadow",
+   "message": "Shadow. Elements at rest carry none; only real overlays (menu, dialog, sticky bar) may."
+  },
+  {
+   "level": "WARN",
+   "id": "em-dash",
+   "file": "(all files)",
+   "line": 0,
+   "match": "5 em dashes",
+   "message": "Em-dash habit. Use a full stop or a comma; keep at most one or two on a page."
+  }
+ ]
+}

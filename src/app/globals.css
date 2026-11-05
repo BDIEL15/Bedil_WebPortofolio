@@ -237,7 +237,6 @@ html[data-lab-boot=revealing] :is(.motion-controls,.scene-caption){animation:cop
 }
 @media(max-aspect-ratio:11/10){
   .observatory:is([data-page=projects],[data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]) .scene:after{background:linear-gradient(transparent 35%,#14120f52 55%,#14120fe0 82%)} /* taste-skill-ignore: neutral portrait reading scrim. */
-  .observatory:is([data-page=projects],[data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]) main{background:#14120ff2}
   .observatory:is([data-page=projects],[data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]) .site-header{margin-bottom:0}
   .observatory:is([data-page=projects],[data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]) main{margin-top:50svh}
   .observatory:is([data-page=projects],[data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]) .collection,
@@ -252,7 +251,7 @@ html[data-lab-boot=revealing] :is(.motion-controls,.scene-caption){animation:cop
 @media(max-aspect-ratio:11/10){.observatory:is([data-page=writing],[data-page=cabinet]) .collection{padding:24px 20px}}
 
 /* Soft controls and content previews retain the workbench's warm editorial palette. */
-:root{--surface:#1d1b17;--surface-hover:#29251f;--picture:#252b26;--round-control:999px;--round-card:24px}
+:root{--surface:#1d1b17;--surface-hover:#29251f;--surface-dialog:#1c1a16;--picture:#252b26;--round-control:999px;--round-card:24px}
 button{border-radius:var(--round-control)}
 button:hover{background:var(--surface-hover)}
 .observatory[data-page] .site-header{border-radius:var(--round-control);padding:5px;max-width:100%;background:#191713f2}
@@ -286,6 +285,32 @@ button:hover{background:var(--surface-hover)}
 .showcase-card:active{transform:translateY(0)}
 .showcase-card:focus-visible{outline-offset:5px}
 .card-picture{position:relative;background:var(--picture);aspect-ratio:1.75;overflow:hidden}
+.project-cover{object-fit:cover;object-position:center}
+.showcase-projects .showcase-card{display:flex;flex-direction:column}
+.showcase-projects .card-picture{width:100%;flex-shrink:0}
+.project-gallery-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.project-gallery-track:focus-visible{outline:2px solid var(--accent);outline-offset:-3px}
+.project-gallery-slide{position:relative;display:block;flex:0 0 100%;aspect-ratio:16/10;scroll-snap-align:start;scroll-snap-stop:always;background:var(--picture)}
+.project-gallery-slide img{object-fit:contain}
+.project-gallery-footer{padding:12px 24px 0}
+.project-gallery-controls{display:flex;align-items:center;justify-content:center;gap:18px;font:13px/1.4 var(--sans);color:var(--muted)}
+.project-gallery-controls button{width:44px;min-height:44px;border-radius:50%;background:var(--surface-hover);color:var(--ink);font-size:22px}
+.project-gallery-controls button:disabled{opacity:.3}
+.project-gallery-caption{margin:10px 0 0;text-align:center;color:var(--muted);font:13px/1.5 var(--sans)}
+.writing-media{margin:24px 0 30px;min-width:0}
+.writing-media .project-gallery{width:min(100%,14rem,28svh,calc(var(--writing-preview-height,40svh) * .6));margin-inline:auto;background:transparent}
+.writing-media .project-gallery-track{border-radius:8px}
+.writing-media .project-gallery-slide img{height:100%;max-width:none}
+.writing-media .project-gallery-footer{padding:4px 0 0}
+.writing-media .project-gallery-controls{justify-content:space-between;gap:8px}
+.writing-media .project-gallery-controls button{background:transparent;color:var(--ink);transition:background-color 180ms var(--ease)}
+.writing-media .project-gallery-controls button:enabled:hover{background:var(--surface-hover)}
+.writing-media .project-gallery-controls span{font-variant-numeric:tabular-nums;white-space:nowrap}
+.writing-media .project-gallery-caption{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.writing-media-note{margin:14px 0;color:var(--muted);font:14px/1.5 var(--sans)}
+.writing-media-links{display:flex;flex-wrap:wrap;gap:12px 24px;margin:16px 0}
+.writing-media-links a{display:inline-flex;align-items:center;min-height:44px}
+.writing-feed{max-width:30rem;margin-inline:auto}
 .showcase-projects>li:first-child .card-picture{aspect-ratio:2.35}
 .showcase-cabinet .card-picture{aspect-ratio:1.45;background:#2e2b25}
 .collection-art{display:block;width:100%;height:100%;stroke:#bdbaa1;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
@@ -362,10 +387,10 @@ button:hover{background:var(--surface-hover)}
   .about-copy .story-lead{font-size:19px;line-height:1.6;margin-bottom:26px}
 }
 @media(min-aspect-ratio:11/10) and (min-width:700px){.observatory:not([data-page=home]) .scene:after{background:linear-gradient(90deg,#14120ff2 0%,#14120fe8 38%,#14120fa8 50%,#14120f35 65%,transparent 80%)}} /* taste-skill-ignore: neutral reading scrim widened for the larger HTML content area. */
-.detail-dialog{width:min(100% - 32px,760px);max-height:calc(100svh - 48px);padding:0;border:0;border-radius:28px;color:var(--ink);background:#1c1a16;overscroll-behavior:contain;scrollbar-width:thin}
+.detail-dialog{width:min(100% - 32px,760px);max-height:calc(100svh - 48px);padding:0;border:0;border-radius:28px;color:var(--ink);background:var(--surface-dialog);overscroll-behavior:contain;scrollbar-width:thin}
 .detail-dialog::backdrop{background:#080706d9}
 .detail-dialog[open]{animation:detail-appear 240ms var(--ease) both}
-.dialog-toolbar{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;color:var(--muted);background:#1c1a16;font:13px/1.45 var(--sans)}
+.dialog-toolbar{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 24px;color:var(--muted);background:var(--surface-dialog);font:13px/1.45 var(--sans)}
 .dialog-toolbar button{padding:9px 15px;white-space:nowrap;background:#302a23;color:var(--ink)}
 .dialog-toolbar button span{font-size:19px;margin-left:10px}
 .detail-picture{height:230px;background:var(--picture)}
@@ -381,7 +406,7 @@ button:hover{background:var(--surface-hover)}
 .observatory[data-paused=true] .showcase-card,.observatory[data-paused=true] nav a,.observatory[data-paused=true] button,.observatory[data-paused=true] .card-arrow{transition:none}
 .observatory[data-paused=true] .detail-dialog{animation:none}
 @media(max-aspect-ratio:11/10){
-  .observatory:not([data-page=home]) #main{border-radius:28px;overflow:visible}
+  .observatory:not([data-page=home]) #main{overflow:visible}
   .observatory[data-page] .collection,.observatory[data-page] .story-page{padding:28px}
 }
 @media(max-width:699px){
@@ -488,6 +513,23 @@ html{scroll-padding-top:var(--reading-top,144px);scroll-padding-bottom:var(--rea
 }
 
 /* Collection titles stay outside the independently scrolling list. */
+.observatory .page-shell:has(.article){height:auto;min-height:100svh;padding-bottom:180px;justify-content:flex-start}
+@media(min-width:700px){.observatory[data-page] .page-shell:has(.article){padding-top:108px}}
+.article-heading h1{margin-top:12px;margin-bottom:12px}
+.article:has(>.article-scroll){min-height:0}
+.article-heading{position:sticky;top:var(--reading-top,96px);z-index:4;padding:12px 0 22px}
+.article-heading time{font:14px var(--sans);color:var(--muted)}
+.article-scroll{padding:28px 0 24px;outline-offset:-2px;mask-image:linear-gradient(to bottom,transparent var(--article-fade-top,0px),#000 calc(var(--article-fade-top,0px) + 28px))}
+.article-scroll:focus-visible{outline:1px solid var(--accent)}
+.article-scroll>.prose{margin-top:0}
+.observatory:has(.article) .scene:after{background:rgba(0,0,0,.76)}
+.observatory:has(.article):after{content:'';position:fixed;inset:auto 0 0;height:110px;z-index:4;pointer-events:none;background:linear-gradient(transparent,#0c0b0ae6 78%,#0c0b0a)}
+.observatory[data-focus-view=true]:has(.article):after{display:none}
+@media(max-height:550px){
+  .observatory .page-shell:has(.article){padding-top:112px}
+  .article-heading{padding-bottom:12px}
+  .article-heading h1{font-size:24px;margin:10px 0}
+}
 .observatory:is([data-page=projects],[data-page=experience],[data-page=writing],[data-page=cabinet]) .page-shell{height:100svh;min-height:0;padding-bottom:0}
 .observatory:is([data-page=projects],[data-page=experience],[data-page=writing],[data-page=cabinet]) #main{margin-top:0}
 .observatory[data-page] .collection:has(>.collection-scroll){display:flex;flex-direction:column;height:var(--collection-height,calc(100svh - 280px));min-height:0;margin-top:0;padding-top:0;padding-bottom:0}
@@ -496,6 +538,9 @@ html{scroll-padding-top:var(--reading-top,144px);scroll-padding-bottom:var(--rea
 .collection-scroll{min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-width:thin;scrollbar-color:#655a4a transparent;scroll-padding:12px;padding:0 12px 16px 6px;margin-left:-6px;outline-offset:-2px}
 .collection-scroll:focus-visible{outline:1px solid var(--accent)}
 .collection-scroll>:first-child{margin-top:0}
+.collection-writing[data-sparse=true]{text-align:left;justify-content:center}
+.collection-writing[data-sparse=true] .collection-scroll{margin-left:0;padding-inline:6px}
+.writing-upcoming{margin:32px 0 8px;color:var(--muted);font:15px/1.5 var(--sans)}
 @media(max-width:699px){.collection-heading{padding-bottom:18px}}
 @media(max-height:550px){
   .observatory:is([data-page=projects],[data-page=experience],[data-page=writing],[data-page=cabinet]) .page-shell{padding-top:112px}
@@ -504,3 +549,72 @@ html{scroll-padding-top:var(--reading-top,144px);scroll-padding-bottom:var(--rea
   .collection-heading :is(.collection-intro,.story-lead,.experience-intro){font-size:15px;line-height:1.3;margin-bottom:4px}
   .collection-heading br{display:none}
 }
+
+/* Mixed personal collection, using the existing fixed title and reading frame. */
+.cabinet-hint{font:13px/1.5 var(--sans);color:var(--muted);margin:12px 0 0}
+.cabinet-status{font:13px/1.5 var(--sans);color:var(--accent);margin:0 0 12px}
+.cabinet-status:empty{display:none}
+.cabinet-grid{columns:3;column-gap:22px;margin:0;padding:0 2px}
+.cabinet-item{break-inside:avoid;display:inline-block;width:100%;vertical-align:top;margin:0 0 26px}
+.cabinet-cover{position:relative;margin-bottom:10px;background:#25211c;border-radius:8px;overflow:hidden}
+.cabinet-cover img{display:block;width:100%;height:auto}
+.cabinet-item[data-kind=music] .cabinet-cover img{aspect-ratio:1;object-fit:cover}
+.cabinet-item h2{font:16px/1.3 var(--sans);margin:0 0 4px;overflow-wrap:anywhere}
+.cabinet-item h2 a{display:block;padding:3px 0}
+.cabinet-item h2 a span{color:var(--accent)}
+.cabinet-item>p{font:13px/1.45 var(--sans);color:var(--muted);margin:0}
+.cabinet-play{position:absolute;right:8px;bottom:8px;min-width:44px;min-height:44px;padding:10px;background:#171510eb;color:var(--ink);border-radius:50%;font-size:16px}
+.cabinet-play:hover,.cabinet-play[aria-pressed=true]{background:var(--accent);color:var(--ground)}
+.cabinet-play:focus-visible{outline-offset:-4px}
+.cabinet-album{position:absolute;right:8px;bottom:8px;padding:4px 10px;background:#171510eb;border-radius:20px;font:12px var(--sans)}
+@media(max-width:699px){.cabinet-grid{columns:2;column-gap:18px}.cabinet-item{margin-bottom:24px}.cabinet-item h2{font-size:15px}}
+@media(max-height:550px){.cabinet-hint{display:none}}
+
+/* Portrait reading shares one darkened scene, without a panel behind the copy. */
+@media(max-aspect-ratio:11/10){
+  .observatory[data-page] .scene:after{background:rgb(0 0 0 / .72);opacity:1}
+  .observatory[data-page] .scene-scrim{opacity:0}
+  .observatory[data-focus-view=true][data-page] .scene:after{opacity:0}
+  .observatory[data-page] .page-shell{width:min(calc(100% - 40px),40rem);margin-inline:auto;padding-top:var(--reading-top,152px)}
+  .observatory[data-page] #main{width:100%;margin:0 auto;background:transparent;border-radius:0}
+  .observatory[data-page] :is(.collection,.story-page){width:100%;margin:0 auto;padding-inline:0}
+  .observatory[data-page] :is(.collection-heading,.about-heading){text-align:center}
+  .observatory[data-page] .collection-heading :is(.collection-intro,.experience-intro){margin-inline:auto}
+  .observatory[data-page=home] .page-shell{padding:0}
+  .observatory[data-page=home] .home-intro{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding:var(--reading-top,152px) 0 144px}
+  .observatory[data-page=home] .home-links{flex-shrink:0}
+  .observatory[data-page=about] .about-heading{justify-content:center}
+  .observatory[data-page=about] .about-copy{margin-inline:auto}
+  .observatory[data-page=about] .about-explore{text-align:center}
+  .observatory[data-page=about] .about-explore-links{justify-content:center}
+  .observatory[data-page] .page-shell:has(.article){padding-top:var(--reading-top,152px)}
+  .observatory[data-page] .scene-caption{position:fixed;left:max(20px,env(safe-area-inset-left));right:auto;bottom:calc(24px + env(safe-area-inset-bottom));width:max-content;max-width:calc(100% - 40px);margin:0;justify-content:flex-start;padding:0 8px}
+  .observatory[data-page] .scene-caption .view-controls{text-align:left}
+  .observatory[data-page] .scene-caption .view-controls>div{justify-content:flex-start}
+}
+@media(max-width:699px) and (max-aspect-ratio:11/10){
+  /* Stack the left controls above the motion row on narrow phones. */
+  .observatory[data-page] .scene-caption{bottom:calc(68px + env(safe-area-inset-bottom))}
+}
+
+/* Each reading surface has its own composition; Projects keeps the robot beside it. */
+.observatory[data-page=about] .about-page{width:min(100%,40rem);margin-inline:auto}
+.observatory[data-page=about] .about-heading{justify-content:center}
+.observatory[data-page=about] .about-copy{max-width:none;text-align:left}
+.observatory[data-page=about] .about-explore{text-align:center}
+.observatory[data-page=about] .about-explore-links{justify-content:center}
+.observatory[data-page=experience] .experience-page{width:min(100%,42rem);margin-inline:auto}
+.observatory[data-page=cabinet] .collection{width:min(100%,60rem);margin-inline:auto}
+.observatory[data-page=writing] .collection{width:min(100%,40rem);margin-inline:auto}
+.observatory[data-page] .page-shell:has(.article){width:min(calc(100% - 64px),40rem)}
+.observatory:is([data-page=experience],[data-page=writing],[data-page=cabinet]) .collection-heading{text-align:center}
+.observatory:is([data-page=experience],[data-page=writing],[data-page=cabinet]) .collection-heading p{margin-inline:auto}
+.observatory:is([data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]):not([data-focus-view=true]) .scene:after{background:linear-gradient(90deg,#0c0b0a80,#0c0b0aeb 28%,#0c0b0aeb 72%,#0c0b0a80)} /* taste-skill-ignore: neutral reading scrim follows the centered HTML column. */
+.observatory:has(.article):not([data-focus-view=true]) .scene:after{background:rgb(12 11 10 / .86)}
+.detail-copy.detail-overview{padding-bottom:24px}
+.detail-overview .detail-intro{margin-bottom:0}
+.detail-copy.detail-sections{padding-top:12px}
+@media(max-aspect-ratio:11/10){
+  .observatory:is([data-page=about],[data-page=experience],[data-page=writing],[data-page=cabinet]):not([data-focus-view=true]) .scene:after{background:rgb(12 11 10 / .84)}
+}
+@media(max-width:699px){.observatory[data-page] .page-shell:has(.article){width:calc(100% - 40px)}}

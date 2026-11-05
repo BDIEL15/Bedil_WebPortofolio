@@ -1,0 +1,12 @@
+{
+  "id": "bumi",
+  "slug": "bumi",
+  "title": "Bumi",
+  "note": "Tere Liye",
+  "kind": "book",
+  "status": "published",
+  "image": "/cabinet/bumi.jpg",
+  "order": 1,
+  "width": 305,
+  "height": 453
+}

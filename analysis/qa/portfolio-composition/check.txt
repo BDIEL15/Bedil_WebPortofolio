@@ -1,0 +1,40 @@
+
+> check
+> tsc --noEmit && npm run content:check && tsx --test tests/content.test.ts tests/content-workflow.test.ts tests/scene.test.ts && npm run check:prototype
+
+
+> content:check
+> tsx scripts/check-content.ts
+
+Konten valid (termasuk metadata draft). Published: 5 experience, 3 project, 27 cabinet, 1 writing.
+Body tulisan published berhasil dikompilasi. Draft tidak ditampilkan.
+✔ content command creates valid drafts and refuses overwrite, traversal and unknown types (1488.2608ms)
+✔ real profile and only published content cross the public boundary (67.3674ms)
+✔ Markdown and trusted MDX render on the server (42.8898ms)
+✔ duplicate slugs and invalid publication metadata fail (2.9438ms)
+✔ published English story renders registered media and all local attachments exist (38.0025ms)
+✔ Cabinet publishes the complete deduplicated collection with local covers and safe music URLs (23.7524ms)
+✔ terminal types before preparation and waits for both actual readiness and the last line (2.4851ms)
+✔ workspace typing shares bounded key strokes, corrections and quiet pauses (3.6305ms)
+✔ public photo replacements crop, retain their mount on failure and ignore late loads after cleanup (2.3363ms)
+✔ notebook writing reveals bounded strokes and lifts smoothly back to the first line (3.4494ms)
+✔ robot motion loops with bounded, smooth joint angles and no seam jump (3.3776ms)
+✔ camera views are distinct and overview contains the lab at desktop and portrait sizes (9.1386ms)
+✔ cinematic flights settle exactly, preserve retarget velocity and keep bounded smooth camera travel (1291.7714ms)
+✔ route and poster selection include both new corners and preserve reading fallback (0.3235ms)
+✔ lab props have finite bounded geometry, separated keycaps and supported desk objects (324.9782ms)
+ℹ 248 meshes, 90432 rendered triangles, 182 shared geometries, 12 generated textures
+✔ local robot GLB includes all seven links, a bounded mesh budget, and its license (15.4003ms)
+✔ signal point samples are deterministic, finite and distributed on a unit sphere (4.3183ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3253.8105
+
+> check:prototype
+> node --check prototype/main.js && node --check prototype/lensing.js
+

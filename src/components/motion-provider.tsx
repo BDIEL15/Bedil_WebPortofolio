@@ -4,7 +4,7 @@ import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState
 import { usePathname } from 'next/navigation';
 import { labViewForPath } from '@/lib/scene/lab-camera';
 
-const MotionContext = createContext({ paused: true, reduced: false, ready:false,booting:false,setBooting:(_value:boolean)=>{}, focusView: false, exitFocus: () => {} });
+const MotionContext = createContext({ paused: true, userPaused:true, reduced: false, ready:false,booting:false,setBooting:(_value:boolean)=>{}, focusView: false, exitFocus: () => {} });
 export function useMotion() { return useContext(MotionContext); }
 
 export function MotionProvider({ children }: { children: React.ReactNode }) {
@@ -43,7 +43,7 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
     return () => query.removeEventListener('change', change);
   }, []);
   const effectivePause = paused || reading;
-  return <MotionContext value={{ paused: effectivePause, reduced, ready,booting,setBooting, focusView, exitFocus: () => setFocusView(false) }}>
+  return <MotionContext value={{ paused: effectivePause, userPaused:paused, reduced, ready,booting,setBooting, focusView, exitFocus: () => setFocusView(false) }}>
     <div className="observatory" data-page={pathname==='/'||['/projects','/about','/experience','/writing','/cabinet'].includes(pathname)?labViewForPath(pathname):'content'} data-paused={effectivePause} data-focus-view={focusView}>
       {children}
       <div className="motion-controls" inert={booting} aria-hidden={booting||undefined}>
